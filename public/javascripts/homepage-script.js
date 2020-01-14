@@ -1,5 +1,10 @@
-const button = document.querySelector('button');
+const loginButton = document.querySelector('.login');
+const signupButton = document.querySelector('.signup');
 
-button.addEventListener('click', () => {
+loginButton.addEventListener('click', () => {
   window.location = '/login';
+});
+
+signupButton.addEventListener('click', () => {
+  window.location = '/signup';
 });

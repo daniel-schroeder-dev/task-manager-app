@@ -28,10 +28,6 @@ form {
   align-items: center;
 }
 
-/*form :active {
-  color: blue;
-}*/
-
 .form-element {
   margin: 18px 0;
   width: 100%;
@@ -46,11 +42,14 @@ input:focus {
   border-color: #617fde;
 }
 
+::placeholder {
+  color: #AAA;
+}
 
 input {
   border: none;
-  border-bottom: 1px solid black;
-  width: 264px;
+  border-bottom: 1px solid #DDD;
+  width: 268px;
   height: 20px;
 }
 
@@ -63,6 +62,7 @@ input[type="submit"] {
   height: 38px;
   background-color: #617fde;
   color: #FFF;
+  border-radius: 3px;
 }
 
 label {
