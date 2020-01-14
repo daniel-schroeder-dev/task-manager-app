@@ -6,7 +6,7 @@ A simple task management app.
 
 This project is meant to showcase some skills I've learned over the past 6 months while taking courses on NodeJS development. The back-end will use Node/Express/MongoDB, and the front-end will use JS/CSS/HTML, with no frameworks.
 
-As this is a learning project for my developer portfolio, I will be blogging at [Dev Blog] while I create the project. I will keep a list of TODO's for the project at [TODO].
+As this is a learning project for my developer portfolio, I will be blogging at [Dev Blog](https://github.com/daniel-schroeder-dev/task-manager-app/blob/master/dev-blog.md) while I create the project. I will keep a list of TODO's for the project at [TODO](https://github.com/daniel-schroeder-dev/task-manager-app/blob/master/TODO.md).
 
 ## Caveats
 
