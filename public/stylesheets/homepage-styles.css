@@ -1,10 +1,47 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  border: 1px solid black;
+  padding: 75px 300px;
+  font: 24px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /*border: 1px solid black;*/
   max-width: 1350px;
+  color: #434343;
 }
 
-a {
-  color: #00B7FF;
+.homepage-container {
+  /*border: 1px solid blue;*/
+  width: 1000px;
+  margin: 40px auto;
 }
+
+.homepage-container p {
+  margin-left: 3px;
+  margin-bottom: 35px;
+}
+
+.site-name {
+  font-size: 60px;
+  margin-bottom: 0;
+}
+
+button {
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #617fde;
+  color: #FFF;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:first-child {
+  margin-right: 15px;
+  margin-left: 3px;
+}
+
+button:last-child {
+  margin-left: 15px;
+}
+
+button:focus {
+  outline: none;
+}
+
