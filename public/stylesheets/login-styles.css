@@ -1,40 +1,86 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  border: 1px solid black;
   max-width: 1350px;
+  box-sizing: border-box;
 }
 
-a {
-  color: #00B7FF;
-}
-
-.login-container {
-  margin: 100px auto;
-  width: 400px;
-  border: 1px solid blue;
+.site-icon {
+  width: 200px;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
 }
 
+.site-icon i {
+  font-size: 60px;
+  color: #555;
+}
 
 form {
-  padding: 20px;
-  margin: 0 auto;
-  width: 400px;
-  border: 1px solid blue;
+  padding: 50px;
+  margin: 40px auto;
+  width: 300px;
+  border: 1px solid #DDD;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
 }
 
+/*form :active {
+  color: blue;
+}*/
+
 .form-element {
-  margin: 10px 0;
+  margin: 18px 0;
+  width: 100%;
+}
+
+.form-element:last-child {
+  margin-bottom: 0;
+}
+
+input:focus {
+  outline: none;
+  border-color: #617fde;
+}
+
+
+input {
+  border: none;
+  border-bottom: 1px solid black;
+  width: 264px;
+  height: 20px;
+}
+
+input[type="submit"] {
+  border: none;
+  width: 100%;
+  margin-top: 18px;
+  padding: 5px;
+  font-size: 14px;
+  height: 38px;
+  background-color: #617fde;
+  color: #FFF;
 }
 
 label {
-  text-align: right;
-  width: 80px;
-  display: inline-block;
+  padding-right: 12px;
+  vertical-align: bottom;
 }
+
+label[for="email"] {
+  display: inline-block;
+  margin-bottom: -2px;
+}
+
+i {
+  font-size: 16px;
+  color: #aaa;
+}
+
+.active {
+  color: #617fde;
+}
+

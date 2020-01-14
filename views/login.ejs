@@ -3,21 +3,26 @@
 <head>
   <meta charset="utf-8">
   <title>Login</title>
+  <link rel="stylesheet" type="text/css" href="font-awesome/css/all.min.css">
   <link rel="stylesheet" type="text/css" href="/stylesheets/login-styles.css">
 </head>
 <body>
+    <div class="site-icon">
+      <i class="fas fa-clipboard-list"></i>
+    </div>
     <form action="/login" method="post">
       <div class="form-element">
-        <label for="email">Email: </label>
+        <label for="email"><i class="fas fa-envelope"></i></label>
         <input type="email" name="email" id="email" required>
       </div>
       <div class="form-element">
-        <label for="password">Password: </label>
+        <label for="password"><i class="fas fa-key"></i></label>
         <input type="password" name="password" id="password" requried>
       </div>
       <div class="form-element">
-        <input type="submit" value="Login/Signup">
+        <input type="submit" value="Login">
       </div>
     </form>
+    <script type="text/javascript" src="/javascripts/login-script.js"></script>
 </body>
 </html>
