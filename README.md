@@ -47,3 +47,15 @@ Task Update:
   - Completed status
   - Deleted status
 
+## Caveats
+
+As this is just a simple project app for my portfolio, I won't be focusing on certain aspects, such as:
+
+1. Mobile-friendly/Mobile-first
+  - I've done this with client sites, and while essential for any real app, the time it would take to do so in this app isn't worth it for me.
+2. Extensive error-handling/testing
+  - I will have some minimal error-handling and testing (through Postman) built-in, but nothing like what I would have in a real app.
+3. Cross-browser compatibility
+  - I'm just going to target the latest version of Google Chrome. The time trade-off for cross-browser testing isn't worth it for this app.
+
+
