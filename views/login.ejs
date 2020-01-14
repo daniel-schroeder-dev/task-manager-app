@@ -3,8 +3,21 @@
 <head>
   <meta charset="utf-8">
   <title>Login</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/login-styles.css">
 </head>
 <body>
-  <h1>Login</h1>
+    <form action="/login" method="post">
+      <div class="form-element">
+        <label for="email">Email: </label>
+        <input type="email" name="email" id="email" required>
+      </div>
+      <div class="form-element">
+        <label for="password">Password: </label>
+        <input type="password" name="password" id="password" requried>
+      </div>
+      <div class="form-element">
+        <input type="submit" value="Login/Signup">
+      </div>
+    </form>
 </body>
 </html>
