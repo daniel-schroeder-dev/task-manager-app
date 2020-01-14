@@ -2,27 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Login</title>
+  <title>Sign Up</title>
   <link rel="stylesheet" type="text/css" href="/stylesheets/login_signup-styles.css">
 </head>
 <body>
     <div class="site-icon">
       <i class="fas fa-clipboard-list"></i>
     </div>
-    <form action="/login" method="post">
+    <form action="/signup" method="post">
+      <div class="form-element">
+        <label for="username"><i class="fas fa-user"></i></label>
+        <input type="text" name="username" id="username" required autofocus placeholder="Username">
+      </div>
       <div class="form-element">
         <label for="email"><i class="fas fa-envelope"></i></label>
-        <input type="email" name="email" id="email" required autofocus placeholder="Email">
+        <input type="email" name="email" id="email" required placeholder="Email">
       </div>
       <div class="form-element">
         <label for="password"><i class="fas fa-key"></i></label>
         <input type="password" name="password" id="password" requried placeholder="Password">
       </div>
       <div class="form-element">
-        <input type="submit" value="Login">
+        <input type="submit" value="Sign Up">
       </div>
       <div class="form-element">
-        <p>Don't have an account? <a href="/signup">Sign Up</a></p>
+        <p>Have an account already? <a href="/login">Login</a></p>
       </div>
     </form>
     <script type="text/javascript" src="/javascripts/login_singup-script.js"></script>

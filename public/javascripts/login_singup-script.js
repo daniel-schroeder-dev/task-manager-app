@@ -7,5 +7,6 @@ document.addEventListener('focusin', function(e) {
 });
 
 document.addEventListener('focusout', function(e) {
+  if (!lastActive.classList) return;
   lastActive.classList.remove('active');
 });
