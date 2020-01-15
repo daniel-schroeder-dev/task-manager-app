@@ -1,3 +1,5 @@
+@import url('./normalize.css');
+
 body {
   padding: 75px 300px;
   font: 24px "Lucida Grande", Helvetica, Arial, sans-serif;
