@@ -9,6 +9,8 @@ const loginRouter = require('./routes/login');
 const signupRouter = require('./routes/signup');
 const usersRouter = require('./routes/users');
 
+require('./src/db/connect');
+
 const app = express();
 
 // view engine setup
