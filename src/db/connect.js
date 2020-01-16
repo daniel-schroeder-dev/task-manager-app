@@ -1,12 +1,11 @@
 const mongoose = require('mongoose');
 
-const MONGODB_URL = 'mongodb://localhost:27017/task-manager-app-ds';
 const connectionOptions = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 };
 
-mongoose.connect(MONGODB_URL, connectionOptions)
+mongoose.connect(process.env.MONGODB_URL, connectionOptions)
   .catch((err) => {
     console.log('Error on initial DB connection: ', err);
   });
