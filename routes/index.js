@@ -12,6 +12,7 @@ router.get('/inbox/tasks', (req, res, next) => {
   } else {
     req.session.views = 1;
   }
+  console.log(req.session);
   res.render('dashboard', { pageTitle: 'Inbox', views: req.session.views });
 });
 

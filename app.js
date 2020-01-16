@@ -19,6 +19,9 @@ app.use(session({
   resave: false, // don't save session if unmodified
   saveUninitialized: false, // don't create session until something stored
   secret: process.env.SESSION_SECRET,
+  cookie: {
+    httpOnly: true, // explicitly setting so I remember this exists
+  },
 }));
 
 // view engine setup
