@@ -7,7 +7,6 @@
     "dev": "nodemon -e js,ejs,css ./bin/www"
   },
   "dependencies": {
-    "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
     "ejs": "~2.6.1",
