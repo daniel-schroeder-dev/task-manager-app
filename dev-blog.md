@@ -25,3 +25,18 @@ I haven't really studied CSS layout enough, but I'm trying to use some modern to
 #### Neat CSS discoveries
 
 I'm already finding some cool CSS functionality that I wasn't aware of before starting this app. The `@import` rule is nice for concatenating CSS files. I'm using it to throw the `subset.css` stylesheet, which has the Font Awesome CSS that I'm using, into the `login_signup-styles.css`. I'm also using CSS custom variables to put a name to related styles. 
+
+## 1-16-2020
+
+#### Sessions
+
+I'm going to be using sessions in this app to keep track of the User's login status. I haven't used them in Node before (only PHP a few years ago), but it seems straighforward enough to implement with the `express-session` npm module. Redis seems to be a good option for session storage, I will research adding that to the project soon.
+
+#### SPA
+
+The main `dashboard.ejs` file will serve as the heart of the app, and will be a single page application. I've never made one of these before, but I think I understand the basic concepts enough to get one going in this case.
+
+#### Environment Variables
+
+I'm using `dotenv` in this project as opposed to `env-vars` which was used in the Node course I took. `dotenv` was very easy to understand and setup. I still need to setup the heroku environment variables though.
+
