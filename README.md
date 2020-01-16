@@ -13,7 +13,7 @@ As this is a learning project for my developer portfolio, I will be blogging at 
 As this is just a simple project app for my portfolio, I won't be focusing on certain aspects, such as:
 
 1. Mobile-friendly/Mobile-first
-  - I've done this with client sites, and while essential for any real app, the time it would take to do so in this app isn't worth it for me.
+  - I've done this with client sites, and while essential for any real app, the time it would take to do so in this app isn't worth it for me. What I would like to do is make a mobile version with something like React Native in the future.
 2. Extensive error-handling/testing
   - I will have some minimal error-handling and testing (through Postman) built-in, but nothing like what I would have in a real app.
 3. Cross-browser compatibility
@@ -24,17 +24,17 @@ As this is just a simple project app for my portfolio, I won't be focusing on ce
 There will be four sections to the app:
 
 1. Splash page that shows features of the app
-2. Simple user signup/login page
+2. Simple user signup/login pages
 3. Task manangement dashboard
 4. User profile page
 
 The task management dashboard will allow the user to:
 
-1. Group related tasks into lists.
-2. View tasks that are due today.
-3. View tasks that are due in the next 7 days.
-4. View completed tasks.
-5. View deleted tasks.
+1. Group related tasks into lists
+2. View tasks that are due today
+3. View tasks that are due in the next 7 days
+4. View completed tasks
+5. View deleted tasks
 
 The main workflow for a user should be:
 
