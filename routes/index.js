@@ -6,14 +6,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/inbox/tasks', (req, res, next) => {
-  var body = '';
-  if (req.session.views) {
-    ++req.session.views;
-  } else {
-    req.session.views = 1;
-  }
-  console.log(req.session);
-  res.render('dashboard', { pageTitle: 'Inbox', views: req.session.views });
+  res.render('dashboard', { pageTitle: 'Inbox' });
 });
 
 module.exports = router;

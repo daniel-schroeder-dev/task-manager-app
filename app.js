@@ -1,7 +1,7 @@
 require('dotenv').config()
 const createError = require('http-errors');
 const express = require('express');
-const session = require('express-session');
+const cookieParser = require('cookie-parser');
 const path = require('path');
 const logger = require('morgan');
 
@@ -14,20 +14,11 @@ require('./src/db/connect');
 
 const app = express();
 
-// Populates req.session
-app.use(session({
-  resave: false, // don't save session if unmodified
-  saveUninitialized: false, // don't create session until something stored
-  secret: process.env.SESSION_SECRET,
-  cookie: {
-    httpOnly: true, // explicitly setting so I remember this exists
-  },
-}));
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(cookieParser());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
