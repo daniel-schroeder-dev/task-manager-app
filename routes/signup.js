@@ -9,7 +9,10 @@ router.get('/', (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   const user = await User.create(req.body);
-  res.cookie('jwt', user.authToken);
+  res.cookie('jwt', user.authToken, {
+    httpOnly: true,
+    expires: new Date(Date.now() + (1000 * 60 * 60 * 24 * 7)),
+  });
   res.redirect(303, '/inbox/tasks');
 });
 
