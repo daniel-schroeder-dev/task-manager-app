@@ -8,7 +8,8 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', async (req, res, next) => {
-  await User.create(req.body);
+  const user = await User.create(req.body);
+  res.cookie('jwt', user.authToken);
   res.redirect(303, '/inbox/tasks');
 });
 
