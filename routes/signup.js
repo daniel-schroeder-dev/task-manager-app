@@ -8,8 +8,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', async (req, res, next) => {
-  const user = await User.create(req.body);
-  console.log(user);
+  await User.create(req.body);
   res.redirect(303, '/inbox/tasks');
 });
 
