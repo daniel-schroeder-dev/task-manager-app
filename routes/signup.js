@@ -7,8 +7,9 @@ router.get('/', (req, res, next) => {
   res.render('signup');
 });
 
-router.post('/', (req, res, next) => {
-  console.log(new User(req.body));
+router.post('/', async (req, res, next) => {
+  const user = await User.create(req.body);
+  console.log(user);
   res.redirect(303, '/inbox/tasks');
 });
 
