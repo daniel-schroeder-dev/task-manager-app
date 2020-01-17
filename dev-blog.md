@@ -40,3 +40,8 @@ The main `dashboard.ejs` file will serve as the heart of the app, and will be a 
 
 I'm using `dotenv` in this project as opposed to `env-vars` which was used in the Node course I took. `dotenv` was very easy to understand and setup. I still need to setup the heroku environment variables though.
 
+## 1-17-2020
+
+#### Sessions Out, JWT In
+
+After reading up on sessions for awhile, I decided to fall back to using JWT authentication for this app, at least for now. The main point of building this app is to practice concepts I've already learned, not to add more complexity, and setting up Redis and express-session would involve learning a slightly new way of authentication, so I'm going to stick with what I know for now but may drop in another strategy in the future.
