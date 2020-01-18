@@ -6,26 +6,30 @@
   <link rel="stylesheet" type="text/css" href="/stylesheets/login_signup-styles.css">
 </head>
 <body>
-    <div class="site-icon">
-      <i class="fas fa-clipboard-list"></i>
+
+  <div class="site-icon">
+    <i class="fas fa-clipboard-list"></i>
+  </div>
+
+  <div class="login-error"><%= err %></div>
+
+  <form action="/login" method="post">
+    <div class="form-element">
+      <label for="email"><i class="fas fa-envelope"></i></label>
+      <input type="email" name="email" id="email" required autofocus placeholder="Email" autocomplete="email">
     </div>
-    <form action="/login" method="post">
-      <div class="form-element">
-        <label for="email"><i class="fas fa-envelope"></i></label>
-        <input type="email" name="email" id="email" required autofocus placeholder="Email" autocomplete="email">
-      </div>
-      <div class="form-element">
-        <label for="password"><i class="fas fa-key"></i></label>
-        <input type="password" name="password" id="password" required placeholder="Password" autocomplete="current-password">
-      </div>
-      <div class="form-element">
-        <input type="submit" value="Login">
-      </div>
-      <div class="form-element">
-        <p>Don't have an account? <a href="/signup">Sign Up</a></p>
-      </div>
-    </form>
-    <div><%= err %></div>
-    <script type="text/javascript" src="/javascripts/login_singup-script.js"></script>
+    <div class="form-element">
+      <label for="password"><i class="fas fa-key"></i></label>
+      <input type="password" name="password" id="password" required placeholder="Password" autocomplete="current-password">
+    </div>
+    <div class="form-element">
+      <input type="submit" value="Login">
+    </div>
+    <div class="form-element">
+      <p>Don't have an account? <a href="/signup">Sign Up</a></p>
+    </div>
+  </form>
+  
+<script type="text/javascript" src="/javascripts/login_singup-script.js"></script>
 </body>
 </html>

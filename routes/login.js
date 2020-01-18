@@ -11,9 +11,9 @@ router.get('/', (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   const [ user ] = await User.find({ email: req.body.email });
-  if (!user) return res.status(401).render('login', { err: 'Invalid email' });
+  if (!user) return res.status(401).render('login', { err: 'Invalid Email Address' });
   const passwordMatch = await bcrypt.compare(req.body.password, user.password);
-  if (!passwordMatch) return res.status(401).render('login', { err: 'Invalid password' });
+  if (!passwordMatch) return res.status(401).render('login', { err: 'Invalid Password' });
   await user.generateAuthToken();
   await user.save();
   res.cookie('jwt', user.authToken, {
