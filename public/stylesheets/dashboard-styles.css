@@ -69,22 +69,22 @@ img {
   color: #aaa;
 }
 
-.due-date-container {
-  position: relative;
-}
-
-.due-date-container > div {
+.list-container > div {
   padding: 8px;
   margin-bottom: 6px;
+}
+
+.list-container i {
+  margin-right: 8px;
+}
+
+.due-date-container {
+  position: relative;
 }
 
 i {
   font-size: 18px;
   color: #7a7a7a;
-}
-
-.due-date-container i {
-  margin-right: 8px;
 }
 
 .todays-date {
@@ -97,3 +97,9 @@ i {
   left: 2px;
 }
 
+.create-lists-container div:first-child {
+  border-bottom: 1px solid black;
+  text-align: center;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}

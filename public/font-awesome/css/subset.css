@@ -48,3 +48,9 @@
 
 .fa-archive:before {
   content: "\f187"; }
+
+.fa-plus-circle:before {
+  content: "\f055"; }
+
+.fa-bars:before {
+  content: "\f0c9"; }
