@@ -25,6 +25,7 @@ body {
   grid-column-end: 2;
   background-color: rgba(44,66,118,.06);
   padding: 16px;
+  height: 100vh;
 }
 
 .center {
@@ -97,9 +98,21 @@ i {
   left: 2px;
 }
 
+.create-lists-container {
+  border-bottom: 1px solid rgba(0,0,0,.08);
+}
+
 .create-lists-container div:first-child {
   border-bottom: 1px solid black;
   text-align: center;
   padding-bottom: 8px;
   margin-bottom: 16px;
+}
+
+.create-lists-container div:first-child span {
+  margin-right: 10px;
+}
+
+.completed-lists-container {
+  margin-top: 16px;
 }

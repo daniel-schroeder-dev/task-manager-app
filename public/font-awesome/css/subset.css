@@ -54,3 +54,9 @@
 
 .fa-bars:before {
   content: "\f0c9"; }
+
+.fa-check-square:before {
+  content: "\f14a"; }
+
+.fa-trash:before {
+  content: "\f1f8"; }
