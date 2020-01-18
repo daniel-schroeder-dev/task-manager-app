@@ -20,7 +20,7 @@ userSchema.statics.create = async function(userData) {
 };
 
 userSchema.methods.generateAuthToken = async function() {
-  this.authToken = await jwt.sign({ _id: this._id }, 'secret');
+  this.authToken = await jwt.sign({ _id: this._id }, process.env.JWT_SECRET);
   this.authTokens.push(this.authToken);
 };
 

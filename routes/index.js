@@ -8,7 +8,6 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/inbox/tasks', auth, async (req, res, next) => {
-  console.log(req.user.authTokens);
   res.render('dashboard', { pageTitle: 'Inbox' });
 });
 
