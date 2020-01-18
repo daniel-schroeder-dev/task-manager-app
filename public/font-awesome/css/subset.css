@@ -36,3 +36,6 @@
 
 .fa-user:before {
   content: "\f007"; }
+
+.fa-search:before {
+  content: "\f002"; }

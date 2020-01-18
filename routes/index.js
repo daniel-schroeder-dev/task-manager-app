@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/inbox/tasks', auth, async (req, res, next) => {
-  res.render('dashboard', { pageTitle: 'Inbox' });
+  res.render('dashboard', { pageTitle: 'Inbox', username: req.user.username });
 });
 
 module.exports = router;

@@ -1,8 +1,9 @@
+@import url('../font-awesome/css/subset.css');
 @import url('./normalize.css');
 
 body {
   /*padding: 75px 300px;*/
-  font: 24px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   border: 1px solid black;
   margin: 0 auto;
   max-width: 1500px;
@@ -21,6 +22,8 @@ body {
 .left {
   grid-column-start: 1;
   grid-column-end: 2;
+  background-color: rgba(44,66,118,.06);
+  padding: 16px;
 }
 
 .center {
@@ -31,4 +34,36 @@ body {
 .right {
   grid-column-start: 3;
   grid-column-end: 4;
+}
+
+img {
+  width: 30px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.profile-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.profile-container > span {
+  display: inline-block;
+  max-width: 100px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.profile-container > div {
+  display: flex;
+  align-items: center;
+}
+
+.fa-search {
+  margin-bottom: 3px;
+  display: inline-block;
+  font-size: 18px;
+  color: #aaa;
 }
