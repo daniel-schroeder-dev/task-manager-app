@@ -8,7 +8,6 @@ module.exports = async (req, res, next) => {
     req.user = await User.findById(_id);
     if (!req.user) return res.redirect('/login');
   } catch (e) {
-    console.log(e);
     return res.redirect('/login');
   }
   next();
