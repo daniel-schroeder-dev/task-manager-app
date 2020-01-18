@@ -6,7 +6,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-  res.json({ body: req.body });
+  res.redirect(303, '/inbox/tasks');
 });
 
 module.exports = router;
