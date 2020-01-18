@@ -1,0 +1,34 @@
+@import url('./normalize.css');
+
+body {
+  /*padding: 75px 300px;*/
+  font: 24px "Lucida Grande", Helvetica, Arial, sans-serif;
+  border: 1px solid black;
+  margin: 0 auto;
+  max-width: 1500px;
+  color: #434343;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 20% 45% 35%;
+}
+
+.col {
+  border: 1px solid green;
+}
+
+.left {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+.center {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+.right {
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
