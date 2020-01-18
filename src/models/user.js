@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
   email: String,
   password: String,
   authToken: String,
-  authTokens: Array,
+  authTokens: [String],
 });
 
 userSchema.statics.create = async function(userData) {
@@ -20,7 +20,7 @@ userSchema.statics.create = async function(userData) {
 };
 
 userSchema.methods.generateAuthToken = async function() {
-  this.authToken = await jwt.sign({ _id: this._id }, 'secret', { expiresIn: '7d'});
+  this.authToken = await jwt.sign({ _id: this._id }, 'secret');
   this.authTokens.push(this.authToken);
 };
 
