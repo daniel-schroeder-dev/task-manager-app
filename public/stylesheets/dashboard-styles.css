@@ -4,7 +4,7 @@
 body {
   /*padding: 75px 300px;*/
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
   margin: 0 auto;
   max-width: 1500px;
   color: #434343;
@@ -12,11 +12,12 @@ body {
 
 .container {
   display: grid;
-  grid-template-columns: 20% 45% 35%;
+  grid-template-columns: 18% 46% 36%;
 }
 
 .col {
-  border: 1px solid green;
+  /*border: 1px solid green;*/
+  border-right: 1px solid rgba(0, 0, 0, 0.07);
 }
 
 .left {
@@ -64,7 +65,7 @@ img {
 .fa-search {
   margin-bottom: 3px;
   display: inline-block;
-  font-size: 18px;
+  font-size: 16px;
   color: #aaa;
 }
 
