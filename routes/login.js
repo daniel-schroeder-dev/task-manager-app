@@ -20,7 +20,7 @@ router.post('/', async (req, res, next) => {
     httpOnly: true,
     expires: new Date(Date.now() + (1000 * 60 * 60 * 24 * 7)),
   });
-  res.redirect(303, '/inbox/tasks');
+  res.redirect(303, '/inbox');
 });
 
 module.exports = router;
