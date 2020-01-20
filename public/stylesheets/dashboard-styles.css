@@ -158,3 +158,71 @@ i {
   color: #aaa;
 }
 
+/* #addListBox */
+
+#addListBox {
+  width: 400px;
+  position: absolute;
+  top: 100px;
+  /* puts the left edge at the center of the page */
+  left: 50%;
+  /* pulls the left edge 1/2 of the width back to the left, centering the el */
+  margin-left: -200px;
+  background-color: #fff;
+  box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  padding: 38px;
+}
+
+.listBoxHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#addListBox h2 {
+  margin: 0;
+}
+
+#close {
+  color: #ababab;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#addListBox > input {
+  width: 100%;
+  height: 38px;
+  padding-left: 12px;
+  margin-top: 18px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, .14);
+  box-sizing: border-box;
+}
+
+.toggleButtons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 22px;
+}
+
+.toggleButtons button {
+  padding: 6px;
+  width: 100px;
+  margin-left: 8px;
+}
+
+.btn {
+  border: 1px solid rgba(0, 0, 0, .14);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-close {
+  background-color: rgba(46,73,136,.08);
+  color: #444;
+}
+
+.btn-save {
+  background-color: rgba(75,111,222,.74);
+  color: #fff;
+}
