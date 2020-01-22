@@ -185,6 +185,21 @@ i {
 
 .fade-in {
   animation: 100ms ease-in fadeIn;
+  opacity: 1;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.fade-out {
+  animation: 100ms ease-in fadeOut;
+  opacity: 0;
 }
 
 .is-paused {
