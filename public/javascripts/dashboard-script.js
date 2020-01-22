@@ -8,18 +8,41 @@ if (todaysDate < 10) {
 }
 
 const addListBox = document.getElementById('addListBox');
+const createListInput = document.getElementById('createList');
+const createListsContainer = document.querySelector('.create-lists-container');
+
+const createTaskList = (listName) => {
+  const div = document.createElement('div');
+  const i = document.createElement('i');
+  const span = document.createElement('span');
+  i.classList.add('fas', 'fa-bars');
+  span.textContent = listName;
+  div.appendChild(i);
+  div.appendChild(span);
+  createListsContainer.firstElementChild.after(div);
+};
+
+const removeAddListBox = () => {
+  addListBox.classList.remove('fade-in');
+  addListBox.classList.add('fade-out');
+  setTimeout(() => {
+    addListBox.classList.add('is-paused');
+    addListBox.classList.add('fade-in');
+    addListBox.classList.remove('fade-out');
+    createListInput.value = '';
+  }, 100);
+};
 
 document.addEventListener('click', (e) => {
   if (e.target.id === 'addListButton' || e.target.parentElement.id === 'addListButton') {
     return addListBox.classList.remove('is-paused');
   }
   if (e.target.id === 'close' || e.target.classList.contains('btn-close')) {
-    addListBox.classList.remove('fade-in');
-    addListBox.classList.add('fade-out');
-    return setTimeout(() => {
-      addListBox.classList.add('is-paused');
-      addListBox.classList.add('fade-in');
-      addListBox.classList.remove('fade-out');
-    }, 100);
+    return removeAddListBox();
+  }
+  if (e.target.classList.contains('btn-save')) {
+    createTaskList(createListInput.value);
+    removeAddListBox();
+    return;
   }
 });
