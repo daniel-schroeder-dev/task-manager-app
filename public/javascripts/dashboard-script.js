@@ -7,9 +7,10 @@ if (todaysDate < 10) {
   dateSpan.style.marginLeft = '2px';
 }
 
-const addListBox = document.getElementById('addListBox');
 const createListInput = document.getElementById('createList');
 const createListsContainer = document.querySelector('.create-lists-container');
+const saveButton = document.querySelector('.btn-save');
+const addListBox = document.getElementById('addListBox');
 
 const createTaskList = (listName) => {
   const div = document.createElement('div');
@@ -30,6 +31,7 @@ const removeAddListBox = () => {
     addListBox.classList.add('fade-in');
     addListBox.classList.remove('fade-out');
     createListInput.value = '';
+    saveButton.setAttribute('disabled', true);
   }, 100);
 };
 
@@ -45,4 +47,9 @@ document.addEventListener('click', (e) => {
     removeAddListBox();
     return;
   }
+});
+
+createListInput.addEventListener('keyup', function(e) {
+  if (this.value.length) return saveButton.removeAttribute('disabled');
+  saveButton.setAttribute('disabled', true);
 });
