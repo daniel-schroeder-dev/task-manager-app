@@ -87,6 +87,7 @@ const removeAddListBox = () => {
 
 document.addEventListener('click', (e) => {
   if (e.target.id === 'addListButton' || e.target.parentElement.id === 'addListButton') {
+    addListBox.style.display = 'block';
     return addListBox.classList.remove('is-paused');
   }
   if (e.target.id === 'close' || e.target.classList.contains('btn-close')) {
@@ -129,5 +130,13 @@ createTaskInput.addEventListener('keyup', function(e) {
   taskContainer.querySelector('.active-task').classList.remove('active-task');
   taskContainer.prepend(li);
   this.value = '';
+});
+
+taskContainer.addEventListener('click', (e) => {
+  console.log(e.target);
+  let currentNode = e.target;
+  if (currentNode.tagName !== 'SPAN') currentNode = currentNode.querySelector('span');
+  currentNode.setAttribute('contenteditable', 'true');
+  currentNode.focus();
 });
 

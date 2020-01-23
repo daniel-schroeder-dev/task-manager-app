@@ -172,6 +172,7 @@ i {
   background-color: #fff;
   box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.2);
   padding: 38px;
+  display: none;
 }
 
 @keyframes fadeIn {
@@ -200,6 +201,7 @@ i {
 .fade-out {
   animation: 100ms ease-in fadeOut;
   opacity: 0;
+  display: none;
 }
 
 .is-paused {
@@ -281,11 +283,17 @@ i {
   margin-right: 10px;
 }
 
+#taskContainer li:hover {
+  background-color: rgba(44,66,118,.06);
+}
+
 #taskContainer li {
   padding: 12px;
   border-bottom: 1px solid #dadada;
   margin-top: 4px;
+  cursor: pointer;
 }
+
 
 #taskContainer span {
   outline: none;
