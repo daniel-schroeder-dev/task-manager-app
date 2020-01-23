@@ -72,6 +72,12 @@
     <div class="col center">
       <h1 id="pageTitle"><%= pageTitle %></h1>
       <input type="text" name="createTask" id="createTask" placeholder="Add Task to &quot;<%= pageTitle %>&quot;">
+      <div id="task-container">
+        <ul>
+          <li class="active-task"><i class="far fa-square"></i><span contenteditable="true">New task</span></li>
+          <li><i class="fas fa-check-square"></i><span contenteditable="true">Completed Task</span></li>
+        </ul>
+      </div>
       <div class="site-icon">
         <i class="fas fa-clipboard-list"></i>
         <p>Tap the input box to create some new tasks</p>

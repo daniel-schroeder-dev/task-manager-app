@@ -270,3 +270,29 @@ i {
 .task-list-nav:visited {
   color: inherit;
 }
+
+#task-container ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 24px;
+}
+
+#task-container i {
+  margin-right: 10px;
+}
+
+#task-container li {
+  padding: 12px;
+  border-bottom: 1px solid #dadada;
+  margin-top: 4px;
+}
+
+#task-container span {
+  outline: none;
+}
+
+#task-container .active-task {
+  background-color: rgba(75,111,222,.12);
+  border-radius: 5px;
+  border-bottom: none;
+}
