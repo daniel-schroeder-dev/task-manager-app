@@ -259,3 +259,11 @@ i {
   background-color: rgba(75,111,222,.74);
   color: #fff;
 }
+
+.task-list-nav {
+  text-decoration: none;
+}
+
+.task-list-nav:visited {
+  color: inherit;
+}

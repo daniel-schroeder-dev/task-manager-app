@@ -32,7 +32,7 @@
         </div>
         <div>
           <i class="fas fa-archive"></i>
-          <span>Inbox</span>
+          <span><a href="/inbox" class="task-list-nav">Inbox</a></span>
         </div>
       </div>
       
@@ -40,10 +40,10 @@
         <div>
           <span>Lists</span>
         </div>
-        <div>
+        <!-- <div>
           <i class="fas fa-bars"></i>
           <span>Example List</span>
-        </div>
+        </div> -->
         <div id="addListButton">
           <i class="fas fa-plus-circle"></i>
           <span>Add List</span>          
@@ -63,8 +63,8 @@
     </div>
 
     <div class="col center">
-      <h1><%= pageTitle %></h1>
-      <input type="text" name="createTask" id="createTask" placeholder="Add Task to &quot;Inbox&quot;">
+      <h1 id="pageTitle"><%= pageTitle %></h1>
+      <input type="text" name="createTask" id="createTask" placeholder="Add Task to &quot;<%= pageTitle %>&quot;">
       <div class="site-icon">
         <i class="fas fa-clipboard-list"></i>
         <p>Tap the input box to create some new tasks</p>
