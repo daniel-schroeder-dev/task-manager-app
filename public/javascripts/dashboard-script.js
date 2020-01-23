@@ -106,3 +106,28 @@ createListInput.addEventListener('keyup', function(e) {
   saveButton.setAttribute('disabled', true);
 });
 
+const createTaskInput = document.getElementById('createTask');
+const taskContainer = document.getElementById('taskContainer');
+
+/*
+<li class="active-task">
+  <i class="far fa-square"></i>
+  <span contenteditable="true">New task</span>
+</li>
+*/
+
+createTaskInput.addEventListener('keyup', function(e) {
+  if (e.keyCode !== 13) return;
+  const li = document.createElement('li');
+  const i = document.createElement('i');
+  const span = document.createElement('span');
+  li.classList.add('active-task');
+  i.classList.add('far', 'fa-square');
+  span.textContent = this.value;
+  li.appendChild(i);
+  li.appendChild(span);
+  taskContainer.querySelector('.active-task').classList.remove('active-task');
+  taskContainer.prepend(li);
+  this.value = '';
+});
+
