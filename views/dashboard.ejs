@@ -31,8 +31,10 @@
           <span>Next 7 Days</span>
         </div>
         <div>
-          <i class="fas fa-archive"></i>
-          <span><a href="/inbox" class="task-list-nav">Inbox</a></span>
+          <a href="/inbox" class="task-list-nav">
+            <i class="fas fa-archive"></i>
+            <span>Inbox</span>
+          </a>
         </div>
       </div>
       
@@ -40,15 +42,13 @@
         <div>
           <span>Lists</span>
         </div>
-        <!-- <div>
-          <i class="fas fa-bars"></i>
-          <span><a class="task-list-nav" href="/page-url">Example List</a></span>
-        </div> -->
         <% tasks.forEach((task) => { %>
         <% if (task.name === 'Inbox') return; %>
         <div>
-          <i class="fas fa-bars"></i>
-          <span><a class="task-list-nav" href="<%= task.pageUrl %>"><%= task.name %></a></span>
+          <a class="task-list-nav" href="<%= task.pageUrl %>">
+            <i class="fas fa-bars"></i>
+            <span><%= task.name %></span>
+          </a>
         </div>
         <% }); %>
         <div id="addListButton">

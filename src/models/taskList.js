@@ -8,6 +8,8 @@ const taskListSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   },
+  /* TODO: figure out why timestamps won't work and I have to add this manually */
+  createdAt: Date,
 });
 
 module.exports = mongoose.model('TaskList', taskListSchema);

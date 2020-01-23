@@ -34,17 +34,21 @@ const createTaskListDOMElement = (listName) => {
   a.classList.add('task-list-nav');
   /* TODO: this happens in changePageURL as well, make it DRY */
   a.href = '/' + listName.toLowerCase().replace(/\s/gi, '-');
-  a.textContent = listName;
+  span.textContent = listName;
+  // fix wierd margin collapse when DOM element is added but page isn't reloaded.
+  span.style.marginLeft = '4px' 
   i.classList.add('fas', 'fa-bars');
-  span.appendChild(a);
-  div.appendChild(i);
-  div.appendChild(span);
+  a.appendChild(i);
+  a.appendChild(span);
+  div.appendChild(a);
   createListsContainer.firstElementChild.after(div);
 };
 
 const createTaskList = async (listName) => {
   createTaskListDOMElement(listName);
+  
   const pageUrl = '/' + listName.toLowerCase().replace(/\s/gi, '-');
+  
   const data = {
     pageUrl,
     name: listName,
@@ -64,7 +68,8 @@ const createTaskList = async (listName) => {
     body: JSON.stringify(data) // body data type must match "Content-Type" header
   });
   const json = await response.json();
-  console.log(json);
+  
+  console.log('Saved taskList to DB: ', json);
 
 };
 

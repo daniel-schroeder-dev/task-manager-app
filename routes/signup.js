@@ -14,6 +14,7 @@ router.post('/', async (req, res, next) => {
     name: 'Inbox',
     pageUrl: '/inbox',
     ownerId: user._id,
+    createdAt: Date.now(),
   });
   await inbox.save();
   res.cookie('jwt', user.authToken, {

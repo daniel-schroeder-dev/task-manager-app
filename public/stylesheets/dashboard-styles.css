@@ -262,6 +262,9 @@ i {
 
 .task-list-nav {
   text-decoration: none;
+  /* Need a bigger target to click on for nav */
+  display: inline-block;
+  width: 100%;
 }
 
 .task-list-nav:visited {

@@ -6,6 +6,7 @@ const router = express.Router();
 
 router.post('/', auth, async (req, res, next) => {
   req.body.ownerId = req.user._id;
+  req.body.createdAt = Date.now();
   const taskList = new TaskList(req.body);
   try {
     await taskList.save();
