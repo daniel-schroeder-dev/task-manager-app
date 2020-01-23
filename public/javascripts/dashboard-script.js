@@ -117,13 +117,14 @@ const taskContainer = document.getElementById('taskContainer');
 </li>
 */
 
-createTaskInput.addEventListener('keyup', function(e) {
+createTaskInput.addEventListener('keydown', function(e) {
   if (e.keyCode !== 13) return;
   const li = document.createElement('li');
   const i = document.createElement('i');
   const span = document.createElement('span');
   li.classList.add('active-task');
   i.classList.add('far', 'fa-square');
+  span.setAttribute('contenteditable', 'true');
   span.textContent = this.value;
   li.appendChild(i);
   li.appendChild(span);
@@ -136,7 +137,11 @@ taskContainer.addEventListener('click', (e) => {
   console.log(e.target);
   let currentNode = e.target;
   if (currentNode.tagName !== 'SPAN') currentNode = currentNode.querySelector('span');
-  currentNode.setAttribute('contenteditable', 'true');
   currentNode.focus();
 });
 
+taskContainer.addEventListener('keydown', (e) => {
+  if (e.keyCode !== 13) return;
+  e.target.blur();
+  createTaskInput.focus();
+});
