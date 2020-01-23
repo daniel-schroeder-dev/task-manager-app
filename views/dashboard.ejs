@@ -42,8 +42,15 @@
         </div>
         <!-- <div>
           <i class="fas fa-bars"></i>
-          <span>Example List</span>
+          <span><a class="task-list-nav" href="/page-url">Example List</a></span>
         </div> -->
+        <% tasks.forEach((task) => { %>
+        <% if (task.name === 'Inbox') return; %>
+        <div>
+          <i class="fas fa-bars"></i>
+          <span><a class="task-list-nav" href="<%= task.pageUrl %>"><%= task.name %></a></span>
+        </div>
+        <% }); %>
         <div id="addListButton">
           <i class="fas fa-plus-circle"></i>
           <span>Add List</span>          

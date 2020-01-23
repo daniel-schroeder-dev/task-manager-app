@@ -1,5 +1,6 @@
 const express = require('express');
 const User = require('../src/models/user');
+const TaskList = require('../src/models/taskList');
 
 const router = express.Router();
 
@@ -9,6 +10,12 @@ router.get('/', (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   const user = await User.create(req.body);
+  const inbox = new TaskList({
+    name: 'Inbox',
+    pageUrl: '/inbox',
+    ownerId: user._id,
+  });
+  await inbox.save();
   res.cookie('jwt', user.authToken, {
     httpOnly: true,
     expires: new Date(Date.now() + (1000 * 60 * 60 * 24 * 7)),
