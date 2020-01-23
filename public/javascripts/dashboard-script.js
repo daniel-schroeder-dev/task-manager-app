@@ -13,14 +13,12 @@ const saveButton = document.querySelector('.btn-save');
 const addListBox = document.getElementById('addListBox');
 const pageTitleElement = document.getElementById('pageTitle');
 
-const changePageURL = async (pageName) => {
+const changePageURL = (pageName) => {
   if (window.history.state && window.history.state.pageName === pageName) return;
   const formattedPageName = pageName.toLowerCase().replace(/\s/gi, '-');
   const url = '/' + formattedPageName;
   window.history.replaceState({ pageName }, '', url);
-  /* TODO: fetch the task data from the server here */
-  //   const response = await fetch(url);
-  //   const pageData = await response.json();
+  
 };
 
 const updatePageState = (pageName) => {
@@ -28,7 +26,7 @@ const updatePageState = (pageName) => {
   pageTitleElement.nextElementSibling.setAttribute('placeholder', `Add Task to "${pageName}"`);
 };
 
-const createTaskList = (listName) => {
+const createTaskListDOMElement = (listName) => {
   const div = document.createElement('div');
   const i = document.createElement('i');
   const span = document.createElement('span');
@@ -42,8 +40,32 @@ const createTaskList = (listName) => {
   div.appendChild(i);
   div.appendChild(span);
   createListsContainer.firstElementChild.after(div);
-  changePageURL(listName);
-  updatePageState(listName);
+};
+
+const createTaskList = async (listName) => {
+  createTaskListDOMElement(listName);
+  const pageUrl = '/' + listName.toLowerCase().replace(/\s/gi, '-');
+  const data = {
+    pageUrl,
+    name: listName,
+  };
+
+  const response = await fetch('/createTaskList', {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: 'follow', // manual, *follow, error
+    referrerPolicy: 'no-referrer', // no-referrer, *client
+    body: JSON.stringify(data) // body data type must match "Content-Type" header
+  });
+  const json = await response.json();
+  console.log(json);
+
 };
 
 const removeAddListBox = () => {
@@ -67,6 +89,8 @@ document.addEventListener('click', (e) => {
   }
   if (e.target.classList.contains('btn-save')) {
     createTaskList(createListInput.value);
+    changePageURL(createListInput.value);
+    updatePageState(createListInput.value);
     removeAddListBox();
     return;
   }
