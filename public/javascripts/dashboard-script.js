@@ -128,13 +128,21 @@ createTaskInput.addEventListener('keydown', function(e) {
   span.textContent = this.value;
   li.appendChild(i);
   li.appendChild(span);
-  taskContainer.querySelector('.active-task').classList.remove('active-task');
+  if (taskContainer.querySelector('.active-task')) {
+    taskContainer.querySelector('.active-task').classList.remove('active-task');
+  }
   taskContainer.prepend(li);
   this.value = '';
 });
 
 taskContainer.addEventListener('click', (e) => {
-  console.log(e.target);
+  if (e.target.tagName === 'I') {
+    e.target.classList.toggle('far');
+    e.target.classList.toggle('fa-square');
+    e.target.classList.toggle('fas');
+    e.target.classList.toggle('fa-check-square');
+    return;
+  }
   let currentNode = e.target;
   if (currentNode.tagName !== 'SPAN') currentNode = currentNode.querySelector('span');
   currentNode.focus();
