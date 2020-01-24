@@ -110,6 +110,10 @@ createListInput.addEventListener('keyup', function(e) {
 const createTaskInput = document.getElementById('createTask');
 const taskContainer = document.getElementById('taskContainer');
 
+if (taskContainer.querySelector('li')) {
+  document.querySelector('.site-icon').style.display = 'none';
+}
+
 /*
 <li class="active-task">
   <i class="far fa-square"></i>
