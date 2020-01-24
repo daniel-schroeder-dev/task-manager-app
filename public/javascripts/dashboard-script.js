@@ -12,6 +12,7 @@ const createListsContainer = document.querySelector('.create-lists-container');
 const saveButton = document.querySelector('.btn-save');
 const addListBox = document.getElementById('addListBox');
 const pageTitleElement = document.getElementById('pageTitle');
+const editTaskBox = document.getElementById('editTaskBox');
 
 const changePageURL = (pageName) => {
   if (window.history.state && window.history.state.pageName === pageName) return;
@@ -99,6 +100,10 @@ document.addEventListener('click', (e) => {
     updatePageState(createListInput.value);
     removeAddListBox();
     return;
+  }
+  if (e.target.classList.contains('ellipsis')) {
+    editTaskBox.style.display = 'block';
+    return editTaskBox.classList.remove('is-paused');
   }
 });
 
