@@ -292,8 +292,8 @@ i {
   border-bottom: 1px solid #dadada;
   margin-top: 4px;
   cursor: pointer;
+  position: relative;
 }
-
 
 #taskContainer span {
   outline: none;
@@ -303,4 +303,9 @@ i {
   background-color: rgba(75,111,222,.12);
   border-radius: 5px;
   border-bottom: none;
+}
+
+.ellipsis {
+  position: absolute;
+  right: -20px;
 }

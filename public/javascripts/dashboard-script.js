@@ -118,6 +118,7 @@ if (taskContainer.querySelector('li')) {
 <li class="active-task">
   <i class="far fa-square"></i>
   <span contenteditable="true">New task</span>
+  <span class="ellipsis">&#8230;</span>
 </li>
 */
 
@@ -125,13 +126,17 @@ createTaskInput.addEventListener('keydown', function(e) {
   if (e.keyCode !== 13) return;
   const li = document.createElement('li');
   const i = document.createElement('i');
-  const span = document.createElement('span');
+  const spanTaskName = document.createElement('span');
+  const spanEllipsis = document.createElement('span');
   li.classList.add('active-task');
   i.classList.add('far', 'fa-square');
-  span.setAttribute('contenteditable', 'true');
-  span.textContent = this.value;
+  spanEllipsis.classList.add('ellipsis');
+  spanTaskName.setAttribute('contenteditable', 'true');
+  spanTaskName.textContent = this.value;
+  spanEllipsis.innerHTML = '&hellip;';
   li.appendChild(i);
-  li.appendChild(span);
+  li.appendChild(spanTaskName);
+  li.appendChild(spanEllipsis);
   if (taskContainer.querySelector('.active-task')) {
     taskContainer.querySelector('.active-task').classList.remove('active-task');
   }
