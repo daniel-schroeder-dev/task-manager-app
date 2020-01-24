@@ -86,13 +86,27 @@ const removeAddListBox = () => {
   }, 100);
 };
 
+const removeBox = (boxID) => {
+  const box = document.getElementById(boxID);
+  box.classList.remove('fade-in');
+  box.classList.add('fade-out');
+  setTimeout(() => {
+    box.classList.add('is-paused');
+    box.classList.add('fade-in');
+    box.classList.remove('fade-out');
+    box.style.display = 'none';
+    createListInput.value = '';
+    saveButton.setAttribute('disabled', true);
+  }, 100);
+};
+
 document.addEventListener('click', (e) => {
   if (e.target.id === 'addListButton' || e.target.parentElement.id === 'addListButton') {
     addListBox.style.display = 'block';
     return addListBox.classList.remove('is-paused');
   }
   if (e.target.id === 'close' || e.target.classList.contains('btn-close')) {
-    return removeAddListBox();
+    return removeBox(e.target.getAttribute('data-target'));
   }
   if (e.target.classList.contains('btn-save')) {
     createTaskList(createListInput.value);

@@ -93,11 +93,11 @@
   <div id="addListBox" class="is-paused fade-in">
     <div class="listBoxHeader">
       <h2>Add List</h2>
-      <span id="close">&#10006;</span>
+      <span id="close" data-target="addListBox">&#10006;</span>
     </div>
     <input type="text" name="createList" id="createList" placeholder="List Name">
     <div class="toggleButtons">
-      <button class="btn btn-close">Close</button>
+      <button class="btn btn-close" data-target="addListBox">Close</button>
       <button class="btn btn-save" disabled>Save</button>
     </div>
   </div>
@@ -105,11 +105,10 @@
   <div id="editTaskBox" class="is-paused fade-in">
     <div class="listBoxHeader">
       <h2>Edit task box</h2>
-      <span id="close">&#10006;</span>
+      <span id="close" data-target="editTaskBox">&#10006;</span>
     </div>
-    <input type="text" name="createList" id="createList" placeholder="List Name">
     <div class="toggleButtons">
-      <button class="btn btn-close">Close</button>
+      <button class="btn btn-close" data-target="editTaskBox">Close</button>
       <button class="btn btn-save" disabled>Save</button>
     </div>
   </div>
