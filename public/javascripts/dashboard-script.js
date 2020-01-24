@@ -131,6 +131,9 @@ createTaskInput.addEventListener('keydown', function(e) {
   if (taskContainer.querySelector('.active-task')) {
     taskContainer.querySelector('.active-task').classList.remove('active-task');
   }
+  if (!taskContainer.querySelector('li')) {
+    document.querySelector('.site-icon').style.display = 'none';
+  }
   taskContainer.prepend(li);
   this.value = '';
 });
