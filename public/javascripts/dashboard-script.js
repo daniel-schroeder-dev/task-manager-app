@@ -304,8 +304,10 @@ if (taskContainer.querySelector('li')) {
 setTodaysDate();
 
 // grab any taskLists that the DB has loaded.
-const loadedTaskLists = document.getElementById('createListsContainer').querySelectorAll('.task-list-nav span');
+const loadedTaskListsSpanElements = document.getElementById('createListsContainer').querySelectorAll('.task-list-nav span');
 
-loadedTaskLists.forEach((taskList) => {
-  taskLists.push(new TaskList(taskList.textContent));
+loadedTaskListsSpanElements.forEach((taskListSpan) => {
+  const taskList = new TaskList(taskListSpan.textContent);
+  taskList._id = taskListSpan.getAttribute('data-id');
+  taskLists.push(taskList);
 });
