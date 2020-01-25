@@ -10,6 +10,7 @@ const loginRouter = require('./routes/login');
 const signupRouter = require('./routes/signup');
 const usersRouter = require('./routes/users');
 const createTaskListRouter = require('./routes/createTaskList');
+const createTaskRouter = require('./routes/createTask');
 
 require('./src/db/connect');
 
@@ -29,6 +30,7 @@ app.use('/login', loginRouter);
 app.use('/signup', signupRouter);
 app.use('/users', usersRouter);
 app.use('/createTaskList', createTaskListRouter);
+app.use('/createTask', createTaskRouter);
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
