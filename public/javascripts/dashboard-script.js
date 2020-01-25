@@ -7,7 +7,7 @@ const taskContainer = document.getElementById('taskContainer');
 const createTaskInput = document.getElementById('createTask');
 const addListButton = document.getElementById('addListButton');
 const saveButton = document.querySelector('.btn-save');
-const editTaskBox = document.getElementById('editTaskBox');
+
 
 const TaskList = function(listName) {
   
@@ -128,6 +128,7 @@ document.addEventListener('click', (e) => {
     return;
   }
   if (e.target.classList.contains('ellipsis')) {
+    const editTaskBox = document.getElementById('editTaskBox');
     editTaskBox.style.display = 'block';
     return editTaskBox.classList.remove('is-paused');
   }
