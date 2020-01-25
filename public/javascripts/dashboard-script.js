@@ -209,6 +209,7 @@ createTaskInput.addEventListener('keydown', function(e) {
   
   taskContainer.prepend(li);
   this.value = '';
+  
 });
 
 taskContainer.addEventListener('click', (e) => {
