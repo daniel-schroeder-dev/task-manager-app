@@ -63,10 +63,11 @@ const TaskList = function(listName) {
 
 };
 
-const Task = function(description) {
+const Task = function(description, ownerId) {
 
   this.description = description;
   this.completed = false;
+  this.ownerId = ownerId;
 
   this.createTaskDOMElement = function() {
     
@@ -89,6 +90,32 @@ const Task = function(description) {
     li.appendChild(spanEllipsis);
 
     return li;
+
+  };
+
+  this.createTaskDB = async function() {
+    
+    const data = {
+      description: this.description,
+      completed: this.completed,
+      // ownerId: 
+    };
+
+    const response = await fetch('/createTask', {
+      method: 'POST', // *GET, POST, PUT, DELETE, etc.
+      mode: 'cors', // no-cors, *cors, same-origin
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'same-origin', // include, *same-origin, omit
+      headers: {
+        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      redirect: 'follow', // manual, *follow, error
+      referrerPolicy: 'no-referrer', // no-referrer, *client
+      body: JSON.stringify(data) // body data type must match "Content-Type" header
+    });
+
+    const json = await response.json();
 
   };
 
@@ -211,6 +238,14 @@ createTaskInput.addEventListener('keydown', function(e) {
   if (e.keyCode !== ENTER_KEYCODE) return;
 
   /* TODO: need to add the task to the associated TaskList */
+  const taskList = taskLists.find((taskList) => {
+    return taskList.listName === this.previousElementSibling.value;
+  });
+
+  console.log(taskList);
+
+  return;
+
   const task = new Task(this.value);
   const taskDOMElement = task.createTaskDOMElement();
   
@@ -265,3 +300,10 @@ if (taskContainer.querySelector('li')) {
 
 // sets the date in the 'Today' icon
 setTodaysDate();
+
+// grab any taskLists that the DB has loaded.
+const loadedTaskLists = document.getElementById('createListsContainer').querySelectorAll('.task-list-nav span');
+
+loadedTaskLists.forEach((taskList) => {
+  taskLists.push(new TaskList(taskList.textContent));
+});
