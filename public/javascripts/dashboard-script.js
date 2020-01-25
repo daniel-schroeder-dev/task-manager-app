@@ -139,7 +139,7 @@ document.addEventListener('click', (e) => {
   // create a new TaskList in the DOM/DB, update the URL and page state
   if (e.target.classList.contains('btn-save')) {
     
-    const createListsContainer = document.querySelector('.create-lists-container');
+    const createListsContainer = document.getElementById('createListsContainer');
     const taskListName = createListInput.value;
     const taskList = new TaskList(taskListName);
     const taskListDOMElement = taskList.createTaskListDOMElement();

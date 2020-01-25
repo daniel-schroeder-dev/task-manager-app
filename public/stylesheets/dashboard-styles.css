@@ -95,18 +95,18 @@ i {
   left: 2px;
 }
 
-.create-lists-container {
+.createListsContainer {
   border-bottom: 1px solid rgba(0,0,0,.08);
 }
 
-.create-lists-container div:first-child {
+.createListsContainer div:first-child {
   border-bottom: 1px solid black;
   text-align: center;
   padding-bottom: 8px;
   margin-bottom: 16px;
 }
 
-.create-lists-container div:first-child span {
+.createListsContainer div:first-child span {
   margin-right: 10px;
 }
 
