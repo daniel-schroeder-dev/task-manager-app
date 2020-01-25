@@ -168,6 +168,13 @@ i {
   display: none;
 }
 
+/*** Animations ***/
+
+.fade-in {
+  animation: 100ms ease-in fadeIn;
+  opacity: 1;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -177,9 +184,10 @@ i {
   }
 }
 
-.fade-in {
-  animation: 100ms ease-in fadeIn;
-  opacity: 1;
+.fade-out {
+  animation: 100ms ease-in fadeOut;
+  opacity: 0;
+  display: none;
 }
 
 @keyframes fadeOut {
@@ -189,12 +197,6 @@ i {
   to {
     opacity: 0;
   }
-}
-
-.fade-out {
-  animation: 100ms ease-in fadeOut;
-  opacity: 0;
-  display: none;
 }
 
 .is-paused {
