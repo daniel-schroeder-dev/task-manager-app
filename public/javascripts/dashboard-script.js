@@ -120,6 +120,8 @@ const Task = function(description, ownerId) {
 
     const json = await response.json();
 
+    console.log('Task created: ', json);
+
   };
 
 }
@@ -247,6 +249,8 @@ createTaskInput.addEventListener('keydown', function(e) {
 
   const task = new Task(this.value, taskList._id);
   const taskDOMElement = task.createTaskDOMElement();
+
+  task.createTaskDB();
 
   taskList.tasks.push(task);
   
