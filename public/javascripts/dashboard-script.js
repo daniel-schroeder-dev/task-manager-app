@@ -7,10 +7,7 @@ const taskContainer = document.getElementById('taskContainer');
 const createTaskInput = document.getElementById('createTask');
 const addListButton = document.getElementById('addListButton');
 const saveButton = document.querySelector('.btn-save');
-const addListBox = document.getElementById('addListBox');
 const editTaskBox = document.getElementById('editTaskBox');
-
-
 
 const TaskList = function(listName) {
   
@@ -107,6 +104,7 @@ const removeBox = (boxID) => {
 };
 
 addListButton.addEventListener('click', () => {
+  const addListBox = document.getElementById('addListBox');
   addListBox.style.display = 'block';
   addListBox.classList.remove('is-paused');
 });
