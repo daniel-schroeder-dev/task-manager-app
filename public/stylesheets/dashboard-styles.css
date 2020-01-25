@@ -8,6 +8,17 @@ body {
   color: #434343;
 }
 
+img {
+  width: 30px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+i {
+  font-size: 18px;
+  color: #7a7a7a;
+}
+
 .container {
   display: grid;
   grid-template-columns: 18% 46% 36%;
@@ -33,12 +44,6 @@ body {
 #rightCol {
   grid-column-start: 3;
   grid-column-end: 4;
-}
-
-img {
-  width: 30px;
-  border-radius: 50%;
-  margin-right: 8px;
 }
 
 #profileContainer {
@@ -78,11 +83,6 @@ img {
 
 #dueDateContainer {
   position: relative;
-}
-
-i {
-  font-size: 18px;
-  color: #7a7a7a;
 }
 
 #todaysDate {
@@ -167,9 +167,6 @@ i {
   padding: 38px;
   display: none;
 }
-
-/* #addListBox */
-
 
 @keyframes fadeIn {
   from {
