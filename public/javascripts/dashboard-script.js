@@ -1,13 +1,10 @@
 const taskLists = [];
 
-
 const createListInput = document.getElementById('createList');
-
 const taskContainer = document.getElementById('taskContainer');
 const createTaskInput = document.getElementById('createTask');
 const addListButton = document.getElementById('addListButton');
 const saveButton = document.querySelector('.btn-save');
-
 
 const TaskList = function(listName) {
   
@@ -99,7 +96,7 @@ const removeBox = (boxID) => {
     box.classList.add('fade-in');
     box.classList.remove('fade-out');
     box.style.display = 'none';
-    createListInput.value = '';
+    if (boxID === 'addListBox') createListInput.value = '';
     saveButton.setAttribute('disabled', true);
   }, 100);
 };
