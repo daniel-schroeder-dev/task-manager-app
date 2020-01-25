@@ -2,13 +2,10 @@
 @import url('./normalize.css');
 
 body {
-  /*padding: 75px 300px;*/
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  /*border: 1px solid black;*/
   margin: 0 auto;
   max-width: 1500px;
   color: #434343;
-  /*box-sizing: border-box;*/
 }
 
 .container {
@@ -17,7 +14,6 @@ body {
 }
 
 .col {
-  /*border: 1px solid green;*/
   border-right: 1px solid rgba(0, 0, 0, 0.07);
 }
 
@@ -159,9 +155,7 @@ i {
   color: #aaa;
 }
 
-/* #addListBox */
-
-#addListBox {
+.toggle-box {
   width: 400px;
   position: absolute;
   top: 100px;
@@ -174,6 +168,9 @@ i {
   padding: 38px;
   display: none;
 }
+
+/* #addListBox */
+
 
 @keyframes fadeIn {
   from {
@@ -308,18 +305,4 @@ i {
 .ellipsis {
   position: absolute;
   right: -20px;
-}
-
-#editTaskBox {
-  width: 400px;
-  position: absolute;
-  top: 100px;
-  /* puts the left edge at the center of the page */
-  left: 50%;
-  /* pulls the left edge 1/2 of the width back to the left, centering the el */
-  margin-left: -200px;
-  background-color: #fff;
-  box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.2);
-  padding: 38px;
-  display: none;
 }
