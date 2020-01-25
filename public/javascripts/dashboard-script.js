@@ -239,7 +239,7 @@ createTaskInput.addEventListener('keydown', function(e) {
 
   /* TODO: need to add the task to the associated TaskList */
   const taskList = taskLists.find((taskList) => {
-    return taskList.listName === this.previousElementSibling.value;
+    return taskList.listName === this.previousElementSibling.textContent;
   });
 
   console.log(taskList);
