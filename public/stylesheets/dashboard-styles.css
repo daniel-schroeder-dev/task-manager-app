@@ -303,3 +303,27 @@ i {
   position: absolute;
   right: -20px;
 }
+
+@media (max-width: 1024px) {
+
+  .container {
+    grid-template-columns: 0% 60% 40%;
+  }
+
+  #leftCol {
+    display: none;
+  }
+
+}
+
+@media (max-width: 800px) {
+  
+  #rightCol {
+    display: none;
+  }
+
+  .container {
+    grid-template-columns: 0% 100% 0%;
+  }
+
+}
