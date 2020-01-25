@@ -1,6 +1,6 @@
 const taskLists = [];
 
-const pageTitleElement = document.getElementById('pageTitle');
+
 const createListInput = document.getElementById('createList');
 const createListsContainer = document.querySelector('.create-lists-container');
 const taskContainer = document.getElementById('taskContainer');
@@ -85,6 +85,7 @@ const changePageURL = (pageName) => {
 };
 
 const updatePageState = (pageName) => {
+  const pageTitleElement = document.getElementById('pageTitle');
   pageTitleElement.textContent = pageName;
   pageTitleElement.nextElementSibling.setAttribute('placeholder', `Add Task to "${pageName}"`);
 };
