@@ -30,7 +30,7 @@ body {
   grid-column-end: 3;
 }
 
-.right {
+#rightCol {
   grid-column-start: 3;
   grid-column-end: 4;
 }
