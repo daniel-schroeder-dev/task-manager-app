@@ -59,6 +59,8 @@ const TaskList = function(listName) {
 
     const json = await response.json();
 
+    this._id = json._id;
+
   };
 
 };
