@@ -247,6 +247,8 @@ createTaskInput.addEventListener('keydown', function(e) {
 
   const task = new Task(this.value, taskList._id);
   const taskDOMElement = task.createTaskDOMElement();
+
+  taskList.tasks.push(task);
   
   // the task that is just created will be the .active-task, so make sure to remove .active-task from any tasks in the taskContainer before adding the newly created task
   if (taskContainer.querySelector('.active-task')) {
