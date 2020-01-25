@@ -95,22 +95,22 @@ i {
   left: 2px;
 }
 
-.createListsContainer {
+#createListsContainer {
   border-bottom: 1px solid rgba(0,0,0,.08);
 }
 
-.createListsContainer div:first-child {
+#createListsContainer div:first-child {
   border-bottom: 1px solid black;
   text-align: center;
   padding-bottom: 8px;
   margin-bottom: 16px;
 }
 
-.createListsContainer div:first-child span {
+#createListsContainer div:first-child span {
   margin-right: 10px;
 }
 
-.completed-lists-container {
+#completedListsContainer {
   margin-top: 16px;
 }
 
