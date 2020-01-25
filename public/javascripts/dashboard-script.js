@@ -2,7 +2,7 @@ const taskLists = [];
 
 
 const createListInput = document.getElementById('createList');
-const createListsContainer = document.querySelector('.create-lists-container');
+
 const taskContainer = document.getElementById('taskContainer');
 const createTaskInput = document.getElementById('createTask');
 const addListButton = document.getElementById('addListButton');
@@ -115,10 +115,11 @@ document.addEventListener('click', (e) => {
     return removeBox(e.target.getAttribute('data-target'));
   }
   if (e.target.classList.contains('btn-save')) {
+    const createListsContainer = document.querySelector('.create-lists-container');
     const taskListName = createListInput.value;
     const taskList = new TaskList(taskListName);
-    taskLists.push(taskList);
     const taskListDOMElement = taskList.createTaskListDOMElement();
+    taskLists.push(taskList);
     createListsContainer.firstElementChild.after(taskListDOMElement);
     taskList.createTaskListDB();
     changePageURL(taskListName);
