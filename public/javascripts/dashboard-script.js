@@ -197,6 +197,7 @@ createTaskInput.addEventListener('keydown', function(e) {
   li.appendChild(spanTaskName);
   li.appendChild(spanEllipsis);
   
+  // the task that is just created will be the .active-task, so make sure to remove .active-task from any tasks in the taskContainer before adding the newly created task
   if (taskContainer.querySelector('.active-task')) {
     taskContainer.querySelector('.active-task').classList.remove('active-task');
   }
