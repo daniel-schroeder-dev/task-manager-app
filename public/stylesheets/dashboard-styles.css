@@ -41,21 +41,21 @@ img {
   margin-right: 8px;
 }
 
-.profile-container {
+#profileContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
 }
 
-.profile-container > span {
+#profileContainer > span {
   display: inline-block;
   max-width: 100px;
   text-overflow: ellipsis;
   overflow: hidden;
 }
 
-.profile-container > div {
+#profileContainer > div {
   display: flex;
   align-items: center;
 }
