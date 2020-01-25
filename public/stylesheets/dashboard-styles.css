@@ -140,17 +140,17 @@ i {
   color: #ababab;
 }
 
-.site-icon {
+#siteIcon {
   text-align: center;
   margin-top: 80px;
 }
 
-.site-icon i {
+#siteIcon i {
   font-size: 120px;
   color: #cacaca;
 }
 
-.site-icon p {
+#siteIcon p {
   margin-top: 24px;
   color: #aaa;
 }

@@ -204,12 +204,12 @@ createTaskInput.addEventListener('keydown', function(e) {
   }
 
   if (!taskContainer.querySelector('li')) {
-    document.querySelector('.site-icon').style.display = 'none';
+    document.getElementById('siteIcon').style.display = 'none';
   }
   
   taskContainer.prepend(li);
   this.value = '';
-  
+
 });
 
 taskContainer.addEventListener('click', (e) => {
@@ -242,9 +242,9 @@ taskContainer.addEventListener('keydown', (e) => {
 
 /* Init stuff to run on page load */
 
-// When the page first loads, check to see if we need to wipe the .site-icon from the taskContainer 
+// When the page first loads, check to see if we need to wipe the siteIcon from the taskContainer 
 if (taskContainer.querySelector('li')) {
-  document.querySelector('.site-icon').style.display = 'none';
+  document.getElementById('siteIcon').style.display = 'none';
 }
 
 // sets the date in the 'Today' icon
