@@ -205,7 +205,7 @@ i {
   animation-play-state: paused;
 }
 
-.listBoxHeader {
+.list-box-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
