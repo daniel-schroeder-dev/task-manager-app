@@ -100,7 +100,7 @@ const Task = function(description, ownerId) {
     const data = {
       description: this.description,
       completed: this.completed,
-      // ownerId: 
+      ownerId: this.ownerId,
     };
 
     const response = await fetch('/createTask', {
@@ -244,11 +244,7 @@ createTaskInput.addEventListener('keydown', function(e) {
     return taskList.listName === this.previousElementSibling.textContent;
   });
 
-  console.log(taskList);
-
-  return;
-
-  const task = new Task(this.value);
+  const task = new Task(this.value, taskList._id);
   const taskDOMElement = task.createTaskDOMElement();
   
   // the task that is just created will be the .active-task, so make sure to remove .active-task from any tasks in the taskContainer before adding the newly created task
