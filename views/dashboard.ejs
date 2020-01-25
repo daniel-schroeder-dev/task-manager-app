@@ -48,7 +48,7 @@
         <div>
           <a class="task-list-nav" href="<%= task.pageUrl %>">
             <i class="fas fa-bars"></i>
-            <span><%= task.name %></span>
+            <span data-id=<%= task._id %>><%= task.name %></span>
           </a>
         </div>
         <% }); %>
