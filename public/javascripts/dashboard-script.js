@@ -11,6 +11,7 @@ const TaskList = function(listName) {
   
   this.listName = listName;
   this.url = '/' + listName.toLowerCase().replace(/\s/gi, '-');
+  this.tasks = [];
 
   this.createTaskListDOMElement = function() {
     
