@@ -63,6 +63,36 @@ const TaskList = function(listName) {
 
 };
 
+const Task = function(description) {
+
+  this.description = description;
+
+  this.createTaskDOMElement = function() {
+    
+    const li = document.createElement('li');
+    const i = document.createElement('i');
+    const spanTaskName = document.createElement('span');
+    const spanEllipsis = document.createElement('span');
+    
+    li.classList.add('active-task');
+    i.classList.add('far', 'fa-square');
+    spanEllipsis.classList.add('ellipsis');
+    
+    spanTaskName.setAttribute('contenteditable', 'true');
+    spanTaskName.textContent = this.description;
+    
+    spanEllipsis.innerHTML = '&hellip;';
+    
+    li.appendChild(i);
+    li.appendChild(spanTaskName);
+    li.appendChild(spanEllipsis);
+
+    return li;
+
+  };
+
+}
+
 const setTodaysDate = () => {
   
   const dateSpan = document.getElementById('date');
@@ -178,24 +208,10 @@ createListInput.addEventListener('keyup', function(e) {
 createTaskInput.addEventListener('keydown', function(e) {
   
   if (e.keyCode !== ENTER_KEYCODE) return;
-  
-  const li = document.createElement('li');
-  const i = document.createElement('i');
-  const spanTaskName = document.createElement('span');
-  const spanEllipsis = document.createElement('span');
-  
-  li.classList.add('active-task');
-  i.classList.add('far', 'fa-square');
-  spanEllipsis.classList.add('ellipsis');
-  
-  spanTaskName.setAttribute('contenteditable', 'true');
-  spanTaskName.textContent = this.value;
-  
-  spanEllipsis.innerHTML = '&hellip;';
-  
-  li.appendChild(i);
-  li.appendChild(spanTaskName);
-  li.appendChild(spanEllipsis);
+
+  /* TODO: need to add the task to the associated TaskList */
+  const task = new Task(this.value);
+  const taskDOMElement = task.createTaskDOMElement();
   
   // the task that is just created will be the .active-task, so make sure to remove .active-task from any tasks in the taskContainer before adding the newly created task
   if (taskContainer.querySelector('.active-task')) {
@@ -206,7 +222,7 @@ createTaskInput.addEventListener('keydown', function(e) {
     document.getElementById('siteIcon').style.display = 'none';
   }
   
-  taskContainer.prepend(li);
+  taskContainer.prepend(taskDOMElement);
   this.value = '';
 
 });
