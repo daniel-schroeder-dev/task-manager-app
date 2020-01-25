@@ -119,8 +119,8 @@ document.addEventListener('click', (e) => {
     const taskListName = createListInput.value;
     const taskList = new TaskList(taskListName);
     const taskListDOMElement = taskList.createTaskListDOMElement();
-    taskLists.push(taskList);
     createListsContainer.firstElementChild.after(taskListDOMElement);
+    taskLists.push(taskList);
     taskList.createTaskListDB();
     changePageURL(taskListName);
     updatePageState(taskListName);
