@@ -66,6 +66,7 @@ const TaskList = function(listName) {
 const Task = function(description) {
 
   this.description = description;
+  this.completed = false;
 
   this.createTaskDOMElement = function() {
     
