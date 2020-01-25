@@ -78,8 +78,6 @@ const setTodaysDate = () => {
 };
 
 const changePageURL = (pageName) => {
-
-  // if (window.history.state && window.history.state.pageName === pageName) return;
   
   const formattedPageName = pageName.toLowerCase().replace(/\s/gi, '-');
   const url = '/' + formattedPageName;
