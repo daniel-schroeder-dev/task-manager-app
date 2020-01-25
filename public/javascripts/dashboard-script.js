@@ -1,4 +1,5 @@
 const taskLists = [];
+const ENTER_KEYCODE = 13;
 
 const createListInput = document.getElementById('createList');
 const taskContainer = document.getElementById('taskContainer');
@@ -178,7 +179,7 @@ createListInput.addEventListener('keyup', function(e) {
 /* TODO: this should create a Task object and save to the DB */
 createTaskInput.addEventListener('keydown', function(e) {
   
-  if (e.keyCode !== 13) return;
+  if (e.keyCode !== ENTER_KEYCODE) return;
   
   const li = document.createElement('li');
   const i = document.createElement('i');
@@ -233,7 +234,7 @@ taskContainer.addEventListener('click', (e) => {
 });
 
 taskContainer.addEventListener('keydown', (e) => {
-  if (e.keyCode !== 13) return;
+  if (e.keyCode !== ENTER_KEYCODE) return;
   e.target.blur();
   createTaskInput.focus();
 });
