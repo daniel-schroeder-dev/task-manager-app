@@ -7,11 +7,13 @@ const createTaskInput = document.getElementById('createTask');
 const addListButton = document.getElementById('addListButton');
 const saveButton = document.querySelector('.btn-save');
 
-const TaskList = function(listName) {
+const TaskList = function(name, url, tasks, ownerId, _id) {
   
-  this.listName = listName;
-  this.url = '/' + listName.toLowerCase().replace(/\s/gi, '-');
-  this.tasks = [];
+  this.name = name;
+  this.url = url || '/' + name.toLowerCase().replace(/\s/gi, '-');
+  this.tasks = tasks || [];
+  this.ownerId = ownerId || null;
+  this._id = _id || null;
 
   this.createTaskListDOMElement = function() {
     
@@ -23,7 +25,7 @@ const TaskList = function(listName) {
     a.classList.add('task-list-nav');
     a.href = this.url
 
-    span.textContent = this.listName;
+    span.textContent = this.name;
     // fix wierd margin collapse when DOM element is added but page isn't reloaded.
     span.style.marginLeft = '4px' 
 
@@ -41,7 +43,7 @@ const TaskList = function(listName) {
     
     const data = {
       pageUrl: this.url,
-      name: this.listName,
+      name: this.name,
     };
 
     const response = await fetch('/taskLists', {
@@ -85,8 +87,6 @@ const TaskList = function(listName) {
     });
 
     const json = await response.json();
-
-    console.log(json);
 
   };
 
@@ -148,8 +148,6 @@ const Task = function(description, ownerId) {
 
     this._id = json._id;
 
-    console.log('Task created: ', json);
-
   };
 
 }
@@ -159,16 +157,17 @@ const loadTaskLists = async () => {
   const responseTaskLists = await fetch('/taskLists');
   const taskLists = await responseTaskLists.json();
 
-
   return taskLists;
 
 };
 
 const initTaskLists = async () => {
   
-  const taskLists = await loadTaskLists();
+  const lists = await loadTaskLists();
 
-  console.log(taskLists);
+  lists.forEach((taskList) => {
+    taskLists.push(new TaskList(taskList.name, taskList.pageUrl, taskList.tasks, taskList.ownerId, taskList._id));
+  });
 
 };
 
@@ -288,7 +287,7 @@ createTaskInput.addEventListener('keydown', async function(e) {
   if (e.keyCode !== ENTER_KEYCODE) return;
 
   const taskList = taskLists.find((taskList) => {
-    return taskList.listName === this.previousElementSibling.textContent;
+    return taskList.name === this.previousElementSibling.textContent;
   });
 
   const task = new Task(this.value, taskList._id);
@@ -356,10 +355,10 @@ setTodaysDate();
 initTaskLists();
 
 // grab any taskLists that the DB has loaded.
-const loadedTaskListsSpanElements = document.getElementById('createListsContainer').querySelectorAll('.task-list-nav span');
+// const loadedTaskListsSpanElements = document.getElementById('createListsContainer').querySelectorAll('.task-list-nav span');
 
-loadedTaskListsSpanElements.forEach((taskListSpan) => {
-  const taskList = new TaskList(taskListSpan.textContent);
-  taskList._id = taskListSpan.getAttribute('data-id');
-  taskLists.push(taskList);
-});
+// loadedTaskListsSpanElements.forEach((taskListSpan) => {
+//   const taskList = new TaskList(taskListSpan.textContent);
+//   taskList._id = taskListSpan.getAttribute('data-id');
+//   taskLists.push(taskList);
+// });
