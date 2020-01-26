@@ -370,8 +370,9 @@ taskContainer.addEventListener('keydown', (e) => {
 });
 
 leftCol.addEventListener('click', (e) => {
-  if (e.target.tagName === 'A' || e.target.parentElement.tagName === 'A')
+  if (e.target.tagName !== 'A' && e.target.parentElement.tagName !== 'A') return;
   e.preventDefault();
+  console.log(e.target);
   let taskListName = '';
   if (e.target.tagName === 'A') {
     let tokens = e.target.getAttribute('href').slice(1).split('');
