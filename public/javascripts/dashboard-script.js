@@ -154,23 +154,21 @@ const Task = function(description, ownerId) {
 
 }
 
-const loadTaskData = async () => {
+const loadTaskLists = async () => {
 
   const responseTaskLists = await fetch('/taskLists');
   const taskLists = await responseTaskLists.json();
 
-  const responseTasks = await fetch('/tasks');
-  const tasks = await responseTasks.json();
 
-  return { taskLists, tasks };
+  return taskLists;
 
 };
 
 const initTaskLists = async () => {
   
-  const taskData = await loadTaskData();
+  const taskLists = await loadTaskLists();
 
-  console.log(taskData);
+  console.log(taskLists);
 
 };
 
