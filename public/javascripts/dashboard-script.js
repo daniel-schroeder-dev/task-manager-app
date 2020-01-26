@@ -116,6 +116,8 @@ const Task = function(description, ownerId) {
     
     spanTaskName.setAttribute('contenteditable', 'true');
     spanTaskName.textContent = this.description;
+    // fix wierd margin collapse when DOM element is added but page isn't reloaded.
+    spanTaskName.style.marginLeft = '3.5px' 
     
     spanEllipsis.innerHTML = '&hellip;';
     
