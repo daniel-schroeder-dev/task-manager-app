@@ -414,6 +414,7 @@ taskContainer.addEventListener('click', (e) => {
 
 });
 
+// will give focus to the createTaskInput whenever a user is editing a task in the taskContainer and hits 'Enter'
 taskContainer.addEventListener('keydown', (e) => {
   if (e.keyCode !== ENTER_KEYCODE) return;
   e.target.blur();
