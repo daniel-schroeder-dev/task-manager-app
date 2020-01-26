@@ -288,6 +288,8 @@ document.addEventListener('click', (e) => {
     updatePageState(taskListName);
     
     removeBox('addListBox');
+
+    createTaskInput.focus();
     
     return;
   
