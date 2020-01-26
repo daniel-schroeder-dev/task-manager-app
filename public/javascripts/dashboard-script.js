@@ -64,10 +64,10 @@ const TaskList = function(listName) {
 
   };
 
-  this.updateTaskListDB = function() {
+  this.updateTaskListDB = async function(task) {
 
     const data = {
-      tasks: this.tasks;
+      task,
     };
 
     const response = await fetch('/taskLists', {
@@ -146,6 +146,8 @@ const Task = function(description, ownerId) {
 
     const json = await response.json();
 
+    this._id = json._id;
+
     console.log('Task created: ', json);
 
   };
@@ -168,7 +170,7 @@ const initTaskLists = async () => {
   
   const taskData = await loadTaskData();
 
-  console.log(taskData);
+  // console.log(taskData);
 
 };
 
@@ -283,7 +285,7 @@ createListInput.addEventListener('keyup', function(e) {
   saveButton.setAttribute('disabled', true);
 });
 
-createTaskInput.addEventListener('keydown', function(e) {
+createTaskInput.addEventListener('keydown', async function(e) {
   
   if (e.keyCode !== ENTER_KEYCODE) return;
 
@@ -294,11 +296,12 @@ createTaskInput.addEventListener('keydown', function(e) {
   const task = new Task(this.value, taskList._id);
   const taskDOMElement = task.createTaskDOMElement();
 
-  task.createTaskDB();
+  // we need the _id field of this task for the taskList.updateTaskListDB(task) call below, so make sure to await the result so that the task has the _id field.
+  await task.createTaskDB();
 
   taskList.tasks.push(task);
 
-  taskList.updateTaskListDB();
+  taskList.updateTaskListDB(task);
   
   // the task that is just created will be the .active-task, so make sure to remove .active-task from any tasks in the taskContainer before adding the newly created task
   if (taskContainer.querySelector('.active-task')) {
@@ -355,10 +358,10 @@ setTodaysDate();
 initTaskLists();
 
 // grab any taskLists that the DB has loaded.
-// const loadedTaskListsSpanElements = document.getElementById('createListsContainer').querySelectorAll('.task-list-nav span');
+const loadedTaskListsSpanElements = document.getElementById('createListsContainer').querySelectorAll('.task-list-nav span');
 
-// loadedTaskListsSpanElements.forEach((taskListSpan) => {
-//   const taskList = new TaskList(taskListSpan.textContent);
-//   taskList._id = taskListSpan.getAttribute('data-id');
-//   taskLists.push(taskList);
-// });
+loadedTaskListsSpanElements.forEach((taskListSpan) => {
+  const taskList = new TaskList(taskListSpan.textContent);
+  taskList._id = taskListSpan.getAttribute('data-id');
+  taskLists.push(taskList);
+});
