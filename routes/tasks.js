@@ -4,6 +4,11 @@ const Task = require('../src/models/task');
 
 const router = express.Router();
 
+router.get('/', auth, async (req, res, next) => {
+  const tasks = await Task.find();
+  res.json(tasks);
+});
+
 router.post('/', auth, async (req, res, next) => {
   req.body.createdAt = Date.now();
   const task = new Task(req.body);
