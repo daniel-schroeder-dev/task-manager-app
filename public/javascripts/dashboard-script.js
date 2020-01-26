@@ -120,7 +120,7 @@ const Task = function(name, ownerId, description, completed, _id) {
     
     spanTaskName.setAttribute('contenteditable', 'true');
     spanTaskName.textContent = this.name;
-    
+
     // fix wierd margin collapse when DOM element is added but page isn't reloaded.
     spanTaskName.style.marginLeft = '3.5px' 
     
@@ -202,9 +202,8 @@ const setTodaysDate = () => {
 };
 
 const changePageURL = (pageName) => {
-
-  const formattedPageName = pageName.toLowerCase().replace(/\s/gi, '-');
-  const url = '/' + formattedPageName;
+  
+  const url = '/' + pageName.toLowerCase().replace(/\s/gi, '-');
   
   window.history.replaceState({ pageName }, '', url);
   
