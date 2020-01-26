@@ -46,7 +46,7 @@
         <% taskLists.forEach((taskList) => { %>
         <% if (taskList.name === 'Inbox') return; %>
         <div>
-          <a class="task-list-nav" href="<%= taskList.pageUrl %>">
+          <a class="task-list-nav" href="<%= taskList.url %>">
             <i class="fas fa-bars"></i>
             <span data-id=<%= taskList._id %>><%= taskList.name %></span>
           </a>

@@ -43,7 +43,7 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
   this.createTaskListDB = async function() {
     
     const data = {
-      pageUrl: this.url,
+      url: this.url,
       name: this.name,
     };
 
@@ -180,7 +180,7 @@ const initTaskLists = async () => {
       return new Task(task.name, task.description, task.ownerId, task.completed, task._id);
     });
 
-    taskLists.push(new TaskList(taskList.name, taskList.pageUrl, tasks, taskList.ownerId, taskList._id));
+    taskLists.push(new TaskList(taskList.name, taskList.url, tasks, taskList.ownerId, taskList._id));
   });
 
 };
