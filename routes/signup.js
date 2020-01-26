@@ -12,7 +12,7 @@ router.post('/', async (req, res, next) => {
   const user = await User.create(req.body);
   const inbox = new TaskList({
     name: 'Inbox',
-    pageUrl: '/inbox',
+    url: '/inbox',
     ownerId: user._id,
     createdAt: Date.now(),
   });
