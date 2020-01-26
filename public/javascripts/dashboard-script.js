@@ -199,7 +199,7 @@ const setTodaysDate = () => {
 };
 
 const changePageURL = (pageName) => {
-  
+
   const formattedPageName = pageName.toLowerCase().replace(/\s/gi, '-');
   const url = '/' + formattedPageName;
   
@@ -372,12 +372,12 @@ taskContainer.addEventListener('keydown', (e) => {
 leftCol.addEventListener('click', (e) => {
   if (e.target.tagName !== 'A' && e.target.parentElement.tagName !== 'A') return;
   e.preventDefault();
-  console.log(e.target);
   let taskListName = '';
   if (e.target.tagName === 'A') {
-    let tokens = e.target.getAttribute('href').slice(1).split('');
-    tokens[0] = tokens[0].toUpperCase();
-    taskListName = tokens.join('');
+    const taskList = taskLists.find((taskList) => {
+      return taskList.url === e.target.getAttribute('href');
+    });
+    taskListName = taskList.name;
   } else {
     taskListName = e.target.textContent;
   }
@@ -396,13 +396,5 @@ if (taskContainer.querySelector('li')) {
 // sets the date in the 'Today' icon
 setTodaysDate();
 
+// creates TaskList and Task objects to mirror the DB data
 initTaskLists();
-
-// grab any taskLists that the DB has loaded.
-// const loadedTaskListsSpanElements = document.getElementById('createListsContainer').querySelectorAll('.task-list-nav span');
-
-// loadedTaskListsSpanElements.forEach((taskListSpan) => {
-//   const taskList = new TaskList(taskListSpan.textContent);
-//   taskList._id = taskListSpan.getAttribute('data-id');
-//   taskLists.push(taskList);
-// });
