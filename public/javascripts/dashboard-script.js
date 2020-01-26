@@ -13,8 +13,8 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
   this.name = name;
   this.url = url || '/' + name.toLowerCase().replace(/\s/gi, '-');
   this.tasks = tasks || [];
-  this.ownerId = ownerId || null;
-  this._id = _id || null;
+  this.ownerId = ownerId;
+  this._id = _id;
 
   this.createTaskListDOMElement = function() {
     
