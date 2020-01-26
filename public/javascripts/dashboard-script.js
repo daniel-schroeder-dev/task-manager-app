@@ -305,11 +305,12 @@ document.addEventListener('click', (e) => {
 
 });
 
-// disable the saveButton when there are no characters in the createListInput
 createListInput.addEventListener('keyup', function(e) {
+  // save the list when 'Enter' is pressed. Shortcut for just clicking the 'Save' button.
   if (e.keyCode === ENTER_KEYCODE) {
     this.nextElementSibling.querySelector('.btn-save').click();
   }
+  // disable the saveButton when there are no characters in the createListInput
   if (this.value.length) return saveButton.removeAttribute('disabled');
   saveButton.setAttribute('disabled', true);
 });
