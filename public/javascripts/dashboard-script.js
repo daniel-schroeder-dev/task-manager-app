@@ -66,7 +66,12 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
 
   };
 
-  const updateTaskListDB = async function(task) {
+  this.addTask = function(task) {
+    this.tasks.push(task);
+    updateTaskListDB(task);
+  }
+
+  async function updateTaskListDB(task) {
 
     const data = {
       task,
@@ -89,11 +94,6 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
     const json = await response.json();
 
   };
-
-  this.addTask = function(task) {
-    this.tasks.push(task);
-    updateTaskListDB(task);
-  }
 
 };
 
