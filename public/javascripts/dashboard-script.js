@@ -307,6 +307,9 @@ document.addEventListener('click', (e) => {
 
 // disable the saveButton when there are no characters in the createListInput
 createListInput.addEventListener('keyup', function(e) {
+  if (e.keyCode === ENTER_KEYCODE) {
+    this.nextElementSibling.querySelector('.btn-save').click();
+  }
   if (this.value.length) return saveButton.removeAttribute('disabled');
   saveButton.setAttribute('disabled', true);
 });
