@@ -237,12 +237,10 @@ createListInput.addEventListener('keyup', function(e) {
   saveButton.setAttribute('disabled', true);
 });
 
-/* TODO: this should create a Task object and save to the DB */
 createTaskInput.addEventListener('keydown', function(e) {
   
   if (e.keyCode !== ENTER_KEYCODE) return;
 
-  /* TODO: need to add the task to the associated TaskList */
   const taskList = taskLists.find((taskList) => {
     return taskList.listName === this.previousElementSibling.textContent;
   });
