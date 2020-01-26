@@ -266,14 +266,7 @@ const removeBox = (boxID) => {
 /********************* Event Listeners ***********************/
 
 
-addListButton.addEventListener('click', () => {
 
-  const addListBox = document.getElementById('addListBox');
-
-  addListBox.style.display = 'block';
-  addListBox.classList.remove('is-paused');
-
-});
 
 document.addEventListener('click', (e) => {
 
@@ -320,6 +313,15 @@ document.addEventListener('click', (e) => {
 
 });
 
+addListButton.addEventListener('click', () => {
+
+  const addListBox = document.getElementById('addListBox');
+
+  addListBox.style.display = 'block';
+  addListBox.classList.remove('is-paused');
+
+});
+
 createListInput.addEventListener('keyup', function(e) {
   // save the list when 'Enter' is pressed. Shortcut for just clicking the 'Save' button.
   if (e.keyCode === ENTER_KEYCODE) {
@@ -360,6 +362,23 @@ createTaskInput.addEventListener('keydown', async function(e) {
 
 });
 
+leftCol.addEventListener('click', (e) => {
+  if (e.target.tagName !== 'A' && e.target.parentElement.tagName !== 'A') return;
+  e.preventDefault();
+  let taskListName = '';
+  if (e.target.tagName === 'A') {
+    const taskList = taskLists.find((taskList) => {
+      return taskList.url === e.target.getAttribute('href');
+    });
+    taskListName = taskList.name;
+  } else {
+    taskListName = e.target.textContent;
+  }
+  changePageURL(taskListName);
+  updatePageState(taskListName);
+  updateTaskListUI(taskListName);
+});
+
 taskContainer.addEventListener('click', (e) => {
   
   // toggle completed icon
@@ -386,23 +405,6 @@ taskContainer.addEventListener('keydown', (e) => {
   if (e.keyCode !== ENTER_KEYCODE) return;
   e.target.blur();
   createTaskInput.focus();
-});
-
-leftCol.addEventListener('click', (e) => {
-  if (e.target.tagName !== 'A' && e.target.parentElement.tagName !== 'A') return;
-  e.preventDefault();
-  let taskListName = '';
-  if (e.target.tagName === 'A') {
-    const taskList = taskLists.find((taskList) => {
-      return taskList.url === e.target.getAttribute('href');
-    });
-    taskListName = taskList.name;
-  } else {
-    taskListName = e.target.textContent;
-  }
-  changePageURL(taskListName);
-  updatePageState(taskListName);
-  updateTaskListUI(taskListName);
 });
 
 
