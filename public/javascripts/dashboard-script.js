@@ -98,11 +98,12 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
 
 };
 
-const Task = function(description, ownerId) {
+const Task = function(description, ownerId, completed, _id) {
 
   this.description = description;
-  this.completed = false;
+  this.completed = completed || false;
   this.ownerId = ownerId;
+  this._id = _id || null;
 
   this.createTaskDOMElement = function() {
     
@@ -174,7 +175,11 @@ const initTaskLists = async () => {
   const lists = await loadTaskLists();
 
   lists.forEach((taskList) => {
-    taskLists.push(new TaskList(taskList.name, taskList.pageUrl, taskList.tasks, taskList.ownerId, taskList._id));
+    const tasks = taskList.tasks.map((task) => {
+      return new Task(task.description, task.ownerId, task.completed, task._id);
+    });
+
+    taskLists.push(new TaskList(taskList.name, taskList.pageUrl, tasks, taskList.ownerId, taskList._id));
   });
 
 };
@@ -213,6 +218,17 @@ const updatePageState = (pageName) => {
     taskContainer.firstChild.remove();
   }
 
+};
+
+const updateTaskListUI = (taskListName) => {
+  const taskList = taskLists.find(taskList => taskList.name === taskListName);
+  taskList.tasks.forEach((task, i) => {
+    const taskDOMElement = task.createTaskDOMElement();
+    if (i !== taskList.tasks.length - 1) {
+      taskDOMElement.classList.remove('active-task');
+    }
+    taskContainer.prepend(taskDOMElement);
+  });
 };
 
 const removeBox = (boxID) => {
@@ -366,6 +382,7 @@ leftCol.addEventListener('click', (e) => {
   }
   changePageURL(taskListName);
   updatePageState(taskListName);
+  updateTaskListUI(taskListName);
 });
 
 /* Init stuff to run on page load */
