@@ -98,12 +98,13 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
 
 };
 
-const Task = function(description, ownerId, completed, _id) {
+const Task = function(name, description, ownerId, completed, _id) {
 
+  this.name = name;
   this.description = description;
   this.completed = completed || false;
   this.ownerId = ownerId;
-  this._id = _id || null;
+  this._id = _id;
 
   this.createTaskDOMElement = function() {
     
@@ -117,7 +118,7 @@ const Task = function(description, ownerId, completed, _id) {
     spanEllipsis.classList.add('ellipsis');
     
     spanTaskName.setAttribute('contenteditable', 'true');
-    spanTaskName.textContent = this.description;
+    spanTaskName.textContent = this.name;
     // fix wierd margin collapse when DOM element is added but page isn't reloaded.
     spanTaskName.style.marginLeft = '3.5px' 
     
@@ -134,7 +135,7 @@ const Task = function(description, ownerId, completed, _id) {
   this.createTaskDB = async function() {
     
     const data = {
-      description: this.description,
+      name: this.name,
       completed: this.completed,
       ownerId: this.ownerId,
     };
@@ -176,7 +177,7 @@ const initTaskLists = async () => {
 
   lists.forEach((taskList) => {
     const tasks = taskList.tasks.map((task) => {
-      return new Task(task.description, task.ownerId, task.completed, task._id);
+      return new Task(task.name, task.description, task.ownerId, task.completed, task._id);
     });
 
     taskLists.push(new TaskList(taskList.name, taskList.pageUrl, tasks, taskList.ownerId, taskList._id));
