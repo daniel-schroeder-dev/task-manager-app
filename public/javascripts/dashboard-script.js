@@ -66,7 +66,7 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
 
   };
 
-  this.updateTaskListDB = async function(task) {
+  const updateTaskListDB = async function(task) {
 
     const data = {
       task,
@@ -89,6 +89,11 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
     const json = await response.json();
 
   };
+
+  this.addTask = function(task) {
+    this.tasks.push(task);
+    updateTaskListDB(task);
+  }
 
 };
 
@@ -296,9 +301,7 @@ createTaskInput.addEventListener('keydown', async function(e) {
   // we need the _id field of this task for the taskList.updateTaskListDB(task) call below, so make sure to await the result so that the task has the _id field.
   await task.createTaskDB();
 
-  taskList.tasks.push(task);
-
-  taskList.updateTaskListDB(task);
+  taskList.addTask(task);
   
   // the task that is just created will be the .active-task, so make sure to remove .active-task from any tasks in the taskContainer before adding the newly created task
   if (taskContainer.querySelector('.active-task')) {
