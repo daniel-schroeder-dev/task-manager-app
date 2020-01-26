@@ -207,6 +207,11 @@ const updatePageState = (pageName) => {
   
   pageTitleElement.textContent = pageName;
   pageTitleElement.nextElementSibling.setAttribute('placeholder', `Add Task to "${pageName}"`);
+
+  while (taskContainer.firstChild) {
+    taskContainer.firstChild.remove();
+  }
+
 };
 
 const removeBox = (boxID) => {
