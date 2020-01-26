@@ -222,6 +222,11 @@ const updatePageState = (pageName) => {
 
 const updateTaskListUI = (taskListName) => {
   const taskList = taskLists.find(taskList => taskList.name === taskListName);
+  if (!taskList.tasks.length) {
+    document.getElementById('siteIcon').style.display = 'block';
+  } else {
+    document.getElementById('siteIcon').style.display = 'none';
+  }
   taskList.tasks.forEach((task, i) => {
     const taskDOMElement = task.createTaskDOMElement();
     if (i !== taskList.tasks.length - 1) {
@@ -290,6 +295,8 @@ document.addEventListener('click', (e) => {
     removeBox('addListBox');
 
     createTaskInput.focus();
+
+    document.getElementById('siteIcon').style.display = 'block';
     
     return;
   
