@@ -5,7 +5,7 @@ const TaskList = require('../src/models/taskList');
 const router = express.Router();
 
 router.get('/', auth, async (req, res, next) => {
-  const taskLists = await TaskList.find();
+  const taskLists = await TaskList.find().populate('tasks').exec();
   res.json(taskLists);
 });
 

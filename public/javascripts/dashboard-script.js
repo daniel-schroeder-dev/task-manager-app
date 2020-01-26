@@ -64,6 +64,32 @@ const TaskList = function(listName) {
 
   };
 
+  this.updateTaskListDB = function() {
+
+    const data = {
+      tasks: this.tasks;
+    };
+
+    const response = await fetch('/taskLists', {
+      method: 'PUT', // *GET, POST, PUT, DELETE, etc.
+      mode: 'cors', // no-cors, *cors, same-origin
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'same-origin', // include, *same-origin, omit
+      headers: {
+        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      redirect: 'follow', // manual, *follow, error
+      referrerPolicy: 'no-referrer', // no-referrer, *client
+      body: JSON.stringify(data) // body data type must match "Content-Type" header
+    });
+
+    const json = await response.json();
+
+    console.log(json);
+
+  };
+
 };
 
 const Task = function(description, ownerId) {
@@ -142,7 +168,7 @@ const initTaskLists = async () => {
   
   const taskData = await loadTaskData();
 
-  
+  console.log(taskData);
 
 };
 
@@ -271,6 +297,8 @@ createTaskInput.addEventListener('keydown', function(e) {
   task.createTaskDB();
 
   taskList.tasks.push(task);
+
+  taskList.updateTaskListDB();
   
   // the task that is just created will be the .active-task, so make sure to remove .active-task from any tasks in the taskContainer before adding the newly created task
   if (taskContainer.querySelector('.active-task')) {
