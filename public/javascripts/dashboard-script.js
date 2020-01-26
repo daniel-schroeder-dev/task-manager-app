@@ -367,20 +367,29 @@ createTaskInput.addEventListener('keydown', async function(e) {
 });
 
 leftCol.addEventListener('click', (e) => {
+
   if (e.target.tagName !== 'A' && e.target.parentElement.tagName !== 'A') return;
+  
   e.preventDefault();
+  
   let taskListName = '';
+  
   if (e.target.tagName === 'A') {
+
     const taskList = taskLists.find((taskList) => {
       return taskList.url === e.target.getAttribute('href');
     });
+
     taskListName = taskList.name;
+
   } else {
     taskListName = e.target.textContent;
   }
+  
   changePageURL(taskListName);
   updatePageState(taskListName);
   updateTaskListUI(taskListName);
+
 });
 
 taskContainer.addEventListener('click', (e) => {
