@@ -104,7 +104,7 @@ const Task = function(description, ownerId) {
       ownerId: this.ownerId,
     };
 
-    const response = await fetch('/createTask', {
+    const response = await fetch('/tasks', {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
