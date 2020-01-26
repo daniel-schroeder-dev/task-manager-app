@@ -131,12 +131,18 @@ const loadTaskData = async () => {
   const responseTaskLists = await fetch('/taskLists');
   const taskLists = await responseTaskLists.json();
 
-  console.log('taskLists: ', taskLists);
-
   const responseTasks = await fetch('/tasks');
   const tasks = await responseTasks.json();
 
-  console.log('tasks: ', tasks);
+  return { taskLists, tasks };
+
+};
+
+const initTaskLists = async () => {
+  
+  const taskData = await loadTaskData();
+
+  
 
 };
 
@@ -318,7 +324,7 @@ if (taskContainer.querySelector('li')) {
 // sets the date in the 'Today' icon
 setTodaysDate();
 
-loadTaskData();
+initTaskLists();
 
 // grab any taskLists that the DB has loaded.
 // const loadedTaskListsSpanElements = document.getElementById('createListsContainer').querySelectorAll('.task-list-nav span');
