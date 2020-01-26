@@ -262,6 +262,10 @@ const removeBox = (boxID) => {
 
 };
 
+
+/********************* Event Listeners ***********************/
+
+
 addListButton.addEventListener('click', () => {
 
   const addListBox = document.getElementById('addListBox');
@@ -401,7 +405,9 @@ leftCol.addEventListener('click', (e) => {
   updateTaskListUI(taskListName);
 });
 
-/* Init stuff to run on page load */
+
+/************************** Init Page Load ************************/
+
 
 // When the page first loads, check to see if we need to wipe the siteIcon from the taskContainer 
 if (taskContainer.querySelector('li')) {
