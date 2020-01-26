@@ -333,7 +333,7 @@ createTaskInput.addEventListener('keydown', async function(e) {
     return taskList.name === this.previousElementSibling.textContent;
   });
 
-  const task = new Task(this.value, taskList._id);
+  const task = new Task(this.value, '', taskList._id);
   const taskDOMElement = task.createTaskDOMElement();
 
   // we need the _id field of this task for the taskList.updateTaskListDB(task) call below, so make sure to await the result so that the task has the _id field.
