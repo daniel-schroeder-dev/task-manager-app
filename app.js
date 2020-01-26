@@ -9,8 +9,8 @@ const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
 const signupRouter = require('./routes/signup');
 const usersRouter = require('./routes/users');
-const createTaskListRouter = require('./routes/createTaskList');
-const createTaskRouter = require('./routes/createTask');
+const taskListsRouter = require('./routes/taskLists');
+const tasksRouter = require('./routes/tasks');
 
 require('./src/db/connect');
 
@@ -29,8 +29,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/login', loginRouter);
 app.use('/signup', signupRouter);
 app.use('/users', usersRouter);
-app.use('/createTaskList', createTaskListRouter);
-app.use('/createTask', createTaskRouter);
+app.use('/taskLists', taskListsRouter);
+app.use('/tasks', tasksRouter);
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
