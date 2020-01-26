@@ -98,7 +98,7 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
 
 };
 
-const Task = function(name, description, ownerId, completed, _id) {
+const Task = function(name, ownerId, description, completed, _id) {
 
   this.name = name;
   this.description = description;
@@ -177,7 +177,7 @@ const initTaskLists = async () => {
 
   lists.forEach((taskList) => {
     const tasks = taskList.tasks.map((task) => {
-      return new Task(task.name, task.description, task.ownerId, task.completed, task._id);
+      return new Task(task.name, task.ownerId, task.description, task.completed, task._id);
     });
 
     taskLists.push(new TaskList(taskList.name, taskList.url, tasks, taskList.ownerId, taskList._id));
@@ -333,7 +333,7 @@ createTaskInput.addEventListener('keydown', async function(e) {
     return taskList.name === this.previousElementSibling.textContent;
   });
 
-  const task = new Task(this.value, '', taskList._id);
+  const task = new Task(this.value, taskList._id);
   const taskDOMElement = task.createTaskDOMElement();
 
   // we need the _id field of this task for the taskList.updateTaskListDB(task) call below, so make sure to await the result so that the task has the _id field.
