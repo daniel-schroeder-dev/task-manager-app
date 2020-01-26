@@ -10,11 +10,11 @@ router.get('/', function(req, res, next) {
 
 router.get('/*', auth, async (req, res, next) => {
   const [ taskList ] = await TaskList.find({ pageUrl: req.url });
-  let tasks = await TaskList.find( { ownerId: req.user._id });
-  tasks = tasks.sort((a, b) => {
+  let taskLists = await TaskList.find( { ownerId: req.user._id });
+  taskLists = taskLists.sort((a, b) => {
     return Date.parse(b.createdAt) - Date.parse(a.createdAt);
   })
-  res.render('dashboard', { pageTitle: taskList.name, username: req.user.username, tasks });
+  res.render('dashboard', { pageTitle: taskList.name, username: req.user.username, taskLists });
 });
 
 module.exports = router;

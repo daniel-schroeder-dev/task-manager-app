@@ -170,7 +170,7 @@ const initTaskLists = async () => {
   
   const taskData = await loadTaskData();
 
-  // console.log(taskData);
+  console.log(taskData);
 
 };
 
