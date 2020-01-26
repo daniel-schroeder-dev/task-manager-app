@@ -1,6 +1,7 @@
 const taskLists = [];
 const ENTER_KEYCODE = 13;
 
+const leftCol = document.getElementById('leftCol');
 const createListInput = document.getElementById('createList');
 const taskContainer = document.getElementById('taskContainer');
 const createTaskInput = document.getElementById('createTask');
@@ -350,6 +351,21 @@ taskContainer.addEventListener('keydown', (e) => {
   if (e.keyCode !== ENTER_KEYCODE) return;
   e.target.blur();
   createTaskInput.focus();
+});
+
+leftCol.addEventListener('click', (e) => {
+  if (e.target.tagName === 'A' || e.target.parentElement.tagName === 'A')
+  e.preventDefault();
+  let taskListName = '';
+  if (e.target.tagName === 'A') {
+    let tokens = e.target.getAttribute('href').slice(1).split('');
+    tokens[0] = tokens[0].toUpperCase();
+    taskListName = tokens.join('');
+  } else {
+    taskListName = e.target.textContent;
+  }
+  changePageURL(taskListName);
+  updatePageState(taskListName);
 });
 
 /* Init stuff to run on page load */
