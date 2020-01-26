@@ -126,6 +126,20 @@ const Task = function(description, ownerId) {
 
 }
 
+const loadTaskData = async () => {
+
+  const responseTaskLists = await fetch('/taskLists');
+  const taskLists = await responseTaskLists.json();
+
+  console.log('taskLists: ', taskLists);
+
+  const responseTasks = await fetch('/tasks');
+  const tasks = await responseTasks.json();
+
+  console.log('tasks: ', tasks);
+
+};
+
 const setTodaysDate = () => {
   
   const dateSpan = document.getElementById('date');
@@ -304,11 +318,13 @@ if (taskContainer.querySelector('li')) {
 // sets the date in the 'Today' icon
 setTodaysDate();
 
-// grab any taskLists that the DB has loaded.
-const loadedTaskListsSpanElements = document.getElementById('createListsContainer').querySelectorAll('.task-list-nav span');
+loadTaskData();
 
-loadedTaskListsSpanElements.forEach((taskListSpan) => {
-  const taskList = new TaskList(taskListSpan.textContent);
-  taskList._id = taskListSpan.getAttribute('data-id');
-  taskLists.push(taskList);
-});
+// grab any taskLists that the DB has loaded.
+// const loadedTaskListsSpanElements = document.getElementById('createListsContainer').querySelectorAll('.task-list-nav span');
+
+// loadedTaskListsSpanElements.forEach((taskListSpan) => {
+//   const taskList = new TaskList(taskListSpan.textContent);
+//   taskList._id = taskListSpan.getAttribute('data-id');
+//   taskLists.push(taskList);
+// });
