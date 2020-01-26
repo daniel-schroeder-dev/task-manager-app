@@ -106,33 +106,7 @@ const Task = function(name, ownerId, description, completed, _id) {
   this.completed = completed || false;
   this.ownerId = ownerId;
   this._id = _id;
-
-  this.createTaskDOMElement = function() {
-    
-    const li = document.createElement('li');
-    const i = document.createElement('i');
-    const spanTaskName = document.createElement('span');
-    const spanEllipsis = document.createElement('span');
-    
-    li.classList.add('active-task');
-    i.classList.add('far', 'fa-square');
-    spanEllipsis.classList.add('ellipsis');
-    
-    spanTaskName.setAttribute('contenteditable', 'true');
-    spanTaskName.textContent = this.name;
-
-    // fix wierd margin collapse when DOM element is added but page isn't reloaded.
-    spanTaskName.style.marginLeft = '3.5px' 
-    
-    spanEllipsis.innerHTML = '&hellip;';
-    
-    li.appendChild(i);
-    li.appendChild(spanTaskName);
-    li.appendChild(spanEllipsis);
-
-    return li;
-
-  };
+  this.element = createTaskDOMElement(this.name);
 
   this.createTaskDB = async function() {
     
@@ -162,7 +136,34 @@ const Task = function(name, ownerId, description, completed, _id) {
 
   };
 
-}
+  function createTaskDOMElement(taskName) {
+
+    const li = document.createElement('li');
+    const i = document.createElement('i');
+    const spanTaskName = document.createElement('span');
+    const spanEllipsis = document.createElement('span');
+    
+    li.classList.add('active-task');
+    i.classList.add('far', 'fa-square');
+    spanEllipsis.classList.add('ellipsis');
+    
+    spanTaskName.setAttribute('contenteditable', 'true');
+    spanTaskName.textContent = taskName;
+
+    // fix wierd margin collapse when DOM element is added but page isn't reloaded.
+    spanTaskName.style.marginLeft = '3.5px' 
+    
+    spanEllipsis.innerHTML = '&hellip;';
+    
+    li.appendChild(i);
+    li.appendChild(spanTaskName);
+    li.appendChild(spanEllipsis);
+
+    return li;
+
+  }
+
+};
 
 const loadTaskLists = async () => {
 
@@ -230,11 +231,13 @@ const updateTaskListUI = (taskListName) => {
     document.getElementById('siteIcon').style.display = 'none';
   }
   taskList.tasks.forEach((task, i) => {
-    const taskDOMElement = task.createTaskDOMElement();
+    // const taskDOMElement = task.createTaskDOMElement();
     if (i !== taskList.tasks.length - 1) {
-      taskDOMElement.classList.remove('active-task');
+      // taskDOMElement.classList.remove('active-task');
+      task.element.classList.remove('active-task');
     }
-    taskContainer.prepend(taskDOMElement);
+    // taskContainer.prepend(taskDOMElement);
+    taskContainer.prepend(task.element);
   });
 };
 
@@ -345,7 +348,7 @@ createTaskInput.addEventListener('keydown', async function(e) {
   });
 
   const task = new Task(this.value, taskList._id);
-  const taskDOMElement = task.createTaskDOMElement();
+  // const taskDOMElement = task.createTaskDOMElement();
 
   // we need the _id field of this task for the taskList.updateTaskListDB(task) call below, so make sure to await the result so that the task has the _id field.
   await task.createTaskDB();
@@ -361,7 +364,8 @@ createTaskInput.addEventListener('keydown', async function(e) {
     document.getElementById('siteIcon').style.display = 'none';
   }
   
-  taskContainer.prepend(taskDOMElement);
+  // taskContainer.prepend(taskDOMElement);
+  taskContainer.prepend(task.element);
   this.value = '';
 
 });
