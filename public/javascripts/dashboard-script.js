@@ -143,7 +143,6 @@ const Task = function(name, ownerId, description, completed, _id) {
     const spanTaskName = document.createElement('span');
     const spanEllipsis = document.createElement('span');
     
-    li.classList.add('active-task');
     i.classList.add('far', 'fa-square');
     spanEllipsis.classList.add('ellipsis');
     
@@ -231,12 +230,9 @@ const updateTaskListUI = (taskListName) => {
     document.getElementById('siteIcon').style.display = 'none';
   }
   taskList.tasks.forEach((task, i) => {
-    // const taskDOMElement = task.createTaskDOMElement();
-    if (i !== taskList.tasks.length - 1) {
-      // taskDOMElement.classList.remove('active-task');
-      task.element.classList.remove('active-task');
+    if (i === taskList.tasks.length - 1) {
+      task.element.classList.add('active-task');
     }
-    // taskContainer.prepend(taskDOMElement);
     taskContainer.prepend(task.element);
   });
 };
@@ -364,7 +360,7 @@ createTaskInput.addEventListener('keydown', async function(e) {
     document.getElementById('siteIcon').style.display = 'none';
   }
   
-  // taskContainer.prepend(taskDOMElement);
+  task.element.classList.add('active-task');
   taskContainer.prepend(task.element);
   this.value = '';
 
