@@ -27,6 +27,7 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
     a.href = this.url
 
     span.textContent = this.name;
+
     // fix wierd margin collapse when DOM element is added but page isn't reloaded.
     span.style.marginLeft = '4px' 
 
@@ -119,6 +120,7 @@ const Task = function(name, ownerId, description, completed, _id) {
     
     spanTaskName.setAttribute('contenteditable', 'true');
     spanTaskName.textContent = this.name;
+    
     // fix wierd margin collapse when DOM element is added but page isn't reloaded.
     spanTaskName.style.marginLeft = '3.5px' 
     
