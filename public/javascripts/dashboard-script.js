@@ -318,7 +318,7 @@ addListButton.addEventListener('click', () => {
 
 });
 
-createListInput.addEventListener('keydown', function(e) {
+createListInput.addEventListener('keyup', function(e) {
 
   // save the list when 'Enter' is pressed. Shortcut for just clicking the 'Save' button.
   if (e.keyCode === ENTER_KEYCODE) {
