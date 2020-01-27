@@ -283,7 +283,6 @@ i {
 .task-container li {
   padding: 12px;
   border-bottom: 1px solid #dadada;
-  margin-top: 4px;
   cursor: pointer;
   position: relative;
 }
