@@ -312,6 +312,10 @@ i {
   color: #ababab;
 }
 
+#completedTaskHeader {
+  margin-top: 24px;
+}
+
 @media (max-width: 1024px) {
 
   .container {
