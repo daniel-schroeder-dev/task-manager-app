@@ -323,6 +323,7 @@ completedTaskHeader.addEventListener('click', function(e) {
   const toggleIcon = this.querySelector('i');
   toggleIcon.classList.toggle('fa-caret-down');
   toggleIcon.classList.toggle('fa-caret-right');
+  this.classList.toggle('tasks-hidden');
   if (toggleIcon.classList.contains('fa-caret-right')) {
     completedTaskContainer.style.display = 'none';
   } else {

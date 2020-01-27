@@ -338,6 +338,11 @@ i.fas.fa-caret-right {
   top: 2px;
 }
 
+#completedTaskHeader.tasks-hidden {
+  border-bottom: 1px solid #ababab;
+  padding-bottom: 12px;
+}
+
 @media (max-width: 1024px) {
 
   .container {
