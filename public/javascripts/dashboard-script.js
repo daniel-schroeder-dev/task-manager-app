@@ -158,7 +158,9 @@ const Task = function(name, ownerId, description, completed, _id) {
 
 /*************** Global Helper Functions *******************/
 
-
+/*
+*   Set the URL to the taskListName.
+*/
 const changePageURL = (taskListName) => {
   
   const url = '/' + taskListName.toLowerCase().replace(/\s/gi, '-');
