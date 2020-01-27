@@ -267,21 +267,20 @@ i {
   color: inherit;
 }
 
-#incompleteTaskContainer {
+.task-container {
   list-style-type: none;
   padding: 0;
-  margin-top: 24px;
 }
 
-#incompleteTaskContainer i {
+.task-container i {
   margin-right: 10px;
 }
 
-#incompleteTaskContainer li:hover {
+.task-container li:hover {
   background-color: rgba(44,66,118,.06);
 }
 
-#incompleteTaskContainer li {
+.task-container li {
   padding: 12px;
   border-bottom: 1px solid #dadada;
   margin-top: 4px;
@@ -289,7 +288,7 @@ i {
   position: relative;
 }
 
-#incompleteTaskContainer span {
+.task-container span {
   outline: none;
 }
 
@@ -297,6 +296,10 @@ i {
   background-color: rgba(75,111,222,.12);
   border-radius: 5px;
   border-bottom: none;
+}
+
+#incompleteTaskContainer {
+  margin-top: 24px;
 }
 
 .ellipsis {
