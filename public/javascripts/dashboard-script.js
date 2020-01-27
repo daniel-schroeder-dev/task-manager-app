@@ -341,6 +341,7 @@ centerCol.addEventListener('click', function(e) {
     completedTaskContainer.classList.toggle('hidden');
 
     return;
+    
   }
 
   // toggle completed icon
@@ -351,7 +352,7 @@ centerCol.addEventListener('click', function(e) {
     e.target.classList.toggle('fa-square');
     e.target.classList.toggle('fas');
     e.target.classList.toggle('fa-check-square');
-    
+
     return;
 
   }
