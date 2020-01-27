@@ -419,6 +419,14 @@ centerCol.addEventListener('click', function(e) {
   }
 
   /*
+  
+  *** TODO ***
+
+  This should also toggle the completed status of the Task object, and move the Task into the completedTaskContainer, along with adding it to the completedTaskList.
+
+  */
+
+  /*
   *   Toggles the completed checkbox of a Task.
   */
   if (e.target.tagName === 'I') {
