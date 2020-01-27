@@ -4,6 +4,7 @@ const ENTER_KEYCODE = 13;
 const leftCol = document.getElementById('leftCol');
 const createListInput = document.getElementById('createList');
 const incompleteTaskContainer = document.getElementById('incompleteTaskContainer');
+const completedTaskContainer = document.getElementById('completedTaskContainer');
 const createTaskInput = document.getElementById('createTask');
 const addListButton = document.getElementById('addListButton');
 const saveButton = document.querySelector('.btn-save');
