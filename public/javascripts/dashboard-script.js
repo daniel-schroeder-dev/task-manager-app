@@ -40,9 +40,9 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
       body: JSON.stringify(data),
     });
 
-    const json = await response.json();
+    const taskList = await response.json();
 
-    this._id = json._id;
+    this._id = taskList._id;
 
   };
 
