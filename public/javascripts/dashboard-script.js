@@ -276,9 +276,7 @@ document.addEventListener('click', (e) => {
     const createListsContainer = document.getElementById('createListsContainer');
     const taskListName = createListInput.value;
     const taskList = new TaskList(taskListName);
-    // const taskListDOMElement = taskList.createTaskListDOMElement();
     
-    // createListsContainer.firstElementChild.after(taskListDOMElement);
     createListsContainer.firstElementChild.after(taskList.element);
     
     taskLists.push(taskList);
@@ -342,7 +340,6 @@ createTaskInput.addEventListener('keydown', async function(e) {
   });
 
   const task = new Task(this.value, taskList._id);
-  // const taskDOMElement = task.createTaskDOMElement();
 
   // we need the _id field of this task for the taskList.updateTaskListDB(task) call below, so make sure to await the result so that the task has the _id field.
   await task.createTaskDB();
