@@ -318,7 +318,7 @@ addListButton.addEventListener('click', () => {
 
 });
 
-completedTaskHeader.addEventListener('click', (e) => {
+completedTaskHeader.addEventListener('click', function(e) {
   console.log(e.target);
 });
 
