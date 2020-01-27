@@ -179,11 +179,13 @@ const initTaskLists = async () => {
   const lists = await loadTaskLists();
 
   lists.forEach((taskList) => {
+
     const tasks = taskList.tasks.map((task) => {
       return new Task(task.name, task.ownerId, task.description, task.completed, task._id);
     });
 
     taskLists.push(new TaskList(taskList.name, taskList.url, tasks, taskList.ownerId, taskList._id));
+  
   });
 
 };
