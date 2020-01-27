@@ -267,21 +267,21 @@ i {
   color: inherit;
 }
 
-#taskContainer {
+#incompleteTaskContainer {
   list-style-type: none;
   padding: 0;
   margin-top: 24px;
 }
 
-#taskContainer i {
+#incompleteTaskContainer i {
   margin-right: 10px;
 }
 
-#taskContainer li:hover {
+#incompleteTaskContainer li:hover {
   background-color: rgba(44,66,118,.06);
 }
 
-#taskContainer li {
+#incompleteTaskContainer li {
   padding: 12px;
   border-bottom: 1px solid #dadada;
   margin-top: 4px;
@@ -289,11 +289,11 @@ i {
   position: relative;
 }
 
-#taskContainer span {
+#incompleteTaskContainer span {
   outline: none;
 }
 
-#taskContainer .active-task {
+#incompleteTaskContainer .active-task {
   background-color: rgba(75,111,222,.12);
   border-radius: 5px;
   border-bottom: none;

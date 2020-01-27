@@ -3,7 +3,7 @@ const ENTER_KEYCODE = 13;
 
 const leftCol = document.getElementById('leftCol');
 const createListInput = document.getElementById('createList');
-const taskContainer = document.getElementById('taskContainer');
+const incompleteTaskContainer = document.getElementById('incompleteTaskContainer');
 const createTaskInput = document.getElementById('createTask');
 const addListButton = document.getElementById('addListButton');
 const saveButton = document.querySelector('.btn-save');
@@ -234,8 +234,8 @@ const updatePageState = (pageName) => {
   pageTitleElement.textContent = pageName;
   pageTitleElement.nextElementSibling.setAttribute('placeholder', `Add Task to "${pageName}"`);
 
-  while (taskContainer.firstChild) {
-    taskContainer.firstChild.remove();
+  while (incompleteTaskContainer.firstChild) {
+    incompleteTaskContainer.firstChild.remove();
   }
 
 };
@@ -254,7 +254,7 @@ const updateTaskListUI = (taskListName) => {
     if (i === taskList.tasks.length - 1) {
       task.element.classList.add('active-task');
     }
-    taskContainer.prepend(task.element);
+    incompleteTaskContainer.prepend(task.element);
   });
 
 };
@@ -345,17 +345,17 @@ createTaskInput.addEventListener('keydown', async function(e) {
 
   taskList.addTask(task);
   
-  // the task that is just created will be the .active-task, so make sure to remove .active-task from any tasks in the taskContainer before adding the newly created task
-  if (taskContainer.querySelector('.active-task')) {
-    taskContainer.querySelector('.active-task').classList.remove('active-task');
+  // the task that is just created will be the .active-task, so make sure to remove .active-task from any tasks in the incompleteTaskContainer before adding the newly created task
+  if (incompleteTaskContainer.querySelector('.active-task')) {
+    incompleteTaskContainer.querySelector('.active-task').classList.remove('active-task');
   }
 
-  if (!taskContainer.querySelector('li')) {
+  if (!incompleteTaskContainer.querySelector('li')) {
     siteIcon.style.display = 'none';
   }
   
   task.element.classList.add('active-task');
-  taskContainer.prepend(task.element);
+  incompleteTaskContainer.prepend(task.element);
   this.value = '';
 
 });
@@ -386,7 +386,7 @@ leftCol.addEventListener('click', (e) => {
 
 });
 
-taskContainer.addEventListener('click', (e) => {
+incompleteTaskContainer.addEventListener('click', (e) => {
   
   // toggle completed icon
   /* TODO: toggle completed status of Task */
@@ -408,8 +408,8 @@ taskContainer.addEventListener('click', (e) => {
 
 });
 
-// will give focus to the createTaskInput whenever a user is editing a task in the taskContainer and hits 'Enter'
-taskContainer.addEventListener('keydown', (e) => {
+// will give focus to the createTaskInput whenever a user is editing a task in the incompleteTaskContainer and hits 'Enter'
+incompleteTaskContainer.addEventListener('keydown', (e) => {
   if (e.keyCode !== ENTER_KEYCODE) return;
   e.target.blur();
   createTaskInput.focus();
@@ -419,8 +419,8 @@ taskContainer.addEventListener('keydown', (e) => {
 /************************** Init Page Load ************************/
 
 
-// When the page first loads, check to see if we need to wipe the siteIcon from the taskContainer 
-if (taskContainer.querySelector('li')) {
+// When the page first loads, check to see if we need to wipe the siteIcon from the incompleteTaskContainer 
+if (incompleteTaskContainer.querySelector('li')) {
   siteIcon.style.display = 'none';
 }
 
