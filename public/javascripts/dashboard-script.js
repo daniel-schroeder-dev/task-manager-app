@@ -335,13 +335,13 @@ centerCol.addEventListener('click', (e) => {
     return;
   }
   
-  // let currentNode = e.target;
+  let currentNode = e.target;
   
-  // if (currentNode.tagName !== 'SPAN') {
-  //   currentNode = currentNode.querySelector('span');
-  // }
+  if (currentNode.tagName !== 'SPAN') {
+    currentNode = currentNode.querySelector('span[contenteditable="true"]');
+  }
 
-  // currentNode.focus();
+  currentNode.focus();
 
   // if (!currentNode.parentElement.classList.contains('active-task')) {
   //   this.querySelector('.active-task').classList.remove('active-task');
