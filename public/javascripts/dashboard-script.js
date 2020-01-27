@@ -7,6 +7,7 @@ const taskContainer = document.getElementById('taskContainer');
 const createTaskInput = document.getElementById('createTask');
 const addListButton = document.getElementById('addListButton');
 const saveButton = document.querySelector('.btn-save');
+const siteIcon = document.getElementById('siteIcon');
 
 
 /**************** Constructor Functions **********************/
@@ -244,9 +245,9 @@ const updateTaskListUI = (taskListName) => {
   const taskList = taskLists.find(taskList => taskList.name === taskListName);
   
   if (!taskList.tasks.length) {
-    document.getElementById('siteIcon').style.display = 'block';
+    siteIcon.style.display = 'block';
   } else {
-    document.getElementById('siteIcon').style.display = 'none';
+    siteIcon.style.display = 'none';
   }
   
   taskList.tasks.forEach((task, i) => {
@@ -290,7 +291,7 @@ document.addEventListener('click', (e) => {
 
     createTaskInput.focus();
 
-    document.getElementById('siteIcon').style.display = 'block';
+    siteIcon.style.display = 'block';
     
     return;
   
@@ -353,7 +354,7 @@ createTaskInput.addEventListener('keydown', async function(e) {
   }
 
   if (!taskContainer.querySelector('li')) {
-    document.getElementById('siteIcon').style.display = 'none';
+    siteIcon.style.display = 'none';
   }
   
   task.element.classList.add('active-task');
@@ -423,7 +424,7 @@ taskContainer.addEventListener('keydown', (e) => {
 
 // When the page first loads, check to see if we need to wipe the siteIcon from the taskContainer 
 if (taskContainer.querySelector('li')) {
-  document.getElementById('siteIcon').style.display = 'none';
+  siteIcon.style.display = 'none';
 }
 
 // sets the date in the 'Today' icon
