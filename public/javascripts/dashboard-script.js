@@ -294,7 +294,7 @@ document.addEventListener('click', (e) => {
     siteIcon.style.display = 'block';
     
     return;
-  
+
   }
   
   if (e.target.classList.contains('ellipsis')) {
@@ -305,6 +305,7 @@ document.addEventListener('click', (e) => {
     editTaskBox.classList.remove('is-paused');
     
     return;
+
   }
 
 });
@@ -334,6 +335,7 @@ centerCol.addEventListener('click', function(e) {
     e.target.classList.toggle('fa-check-square');
     
     return;
+    
   }
   
   let currentNode = e.target;
