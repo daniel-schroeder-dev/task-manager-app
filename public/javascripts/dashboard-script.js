@@ -321,7 +321,33 @@ addListButton.addEventListener('click', () => {
 });
 
 centerCol.addEventListener('click', (e) => {
+  
   console.log(e.target);
+
+  // toggle completed icon
+  /* TODO: toggle completed status of Task */
+  if (e.target.tagName === 'I') {
+    if (e.target.classList.contains('fa-caret-down') || e.target.classList.contains('fa-caret-right')) return;
+    e.target.classList.toggle('far');
+    e.target.classList.toggle('fa-square');
+    e.target.classList.toggle('fas');
+    e.target.classList.toggle('fa-check-square');
+    return;
+  }
+  
+  // let currentNode = e.target;
+  
+  // if (currentNode.tagName !== 'SPAN') {
+  //   currentNode = currentNode.querySelector('span');
+  // }
+
+  // currentNode.focus();
+
+  // if (!currentNode.parentElement.classList.contains('active-task')) {
+  //   this.querySelector('.active-task').classList.remove('active-task');
+  //   currentNode.parentElement.classList.add('active-task');
+  // }
+
 });
 
 completedTaskHeader.addEventListener('click', function(e) {
@@ -403,32 +429,32 @@ leftCol.addEventListener('click', (e) => {
 
 });
 
-incompleteTaskContainer.addEventListener('click', function(e) {
+// incompleteTaskContainer.addEventListener('click', function(e) {
   
-  // toggle completed icon
-  /* TODO: toggle completed status of Task */
-  if (e.target.tagName === 'I') {
-    e.target.classList.toggle('far');
-    e.target.classList.toggle('fa-square');
-    e.target.classList.toggle('fas');
-    e.target.classList.toggle('fa-check-square');
-    return;
-  }
+//   // toggle completed icon
+//   /* TODO: toggle completed status of Task */
+//   if (e.target.tagName === 'I') {
+//     e.target.classList.toggle('far');
+//     e.target.classList.toggle('fa-square');
+//     e.target.classList.toggle('fas');
+//     e.target.classList.toggle('fa-check-square');
+//     return;
+//   }
  
-  let currentNode = e.target;
+//   let currentNode = e.target;
  
-  if (currentNode.tagName !== 'SPAN') {
-    currentNode = currentNode.querySelector('span');
-  }
+//   if (currentNode.tagName !== 'SPAN') {
+//     currentNode = currentNode.querySelector('span');
+//   }
 
-  currentNode.focus();
+//   currentNode.focus();
 
-  if (!currentNode.parentElement.classList.contains('active-task')) {
-    this.querySelector('.active-task').classList.remove('active-task');
-    currentNode.parentElement.classList.add('active-task');
-  }
+//   if (!currentNode.parentElement.classList.contains('active-task')) {
+//     this.querySelector('.active-task').classList.remove('active-task');
+//     currentNode.parentElement.classList.add('active-task');
+//   }
 
-});
+// });
 
 // will give focus to the createTaskInput whenever a user is editing a task in the incompleteTaskContainer and hits 'Enter'
 incompleteTaskContainer.addEventListener('keydown', (e) => {
