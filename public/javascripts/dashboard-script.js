@@ -441,7 +441,9 @@ centerCol.addEventListener('click', function(e) {
   }
 
   /*
-  *   Add focus to the Task that was clicked and make it the only .active-task.
+  *   At this point, other options have been ruled out so I assume that the 
+  *   user is clicking a Task and wants to edit it. So, here I add focus to 
+  *   the Task that was clicked and make it the only .active-task.
   */
   
   let currentNode = e.target;
