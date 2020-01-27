@@ -82,3 +82,6 @@
 
 .fa-caret-down:before {
   content: "\f0d7"; }
+
+.fa-caret-right:before {
+  content: "\f0da"; }
