@@ -257,13 +257,16 @@ const updatePageState = (taskListName) => {
   pageTitleElement.textContent = taskListName;
   pageTitleElement.nextElementSibling.setAttribute('placeholder', `Add Task to "${taskListName}"`);
 
+};
+
+/*
+*   
+*/
+const updateTaskListUI = (taskListName) => {
+
   while (incompleteTaskContainer.firstChild) {
     incompleteTaskContainer.firstChild.remove();
   }
-
-};
-
-const updateTaskListUI = (taskListName) => {
 
   const taskList = taskLists.find(taskList => taskList.name === taskListName);
   
