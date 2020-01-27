@@ -316,6 +316,11 @@ i {
   margin-top: 24px;
 }
 
+#completedTaskHeader,
+#completedTaskHeader i {
+  color: #ababab;
+}
+
 @media (max-width: 1024px) {
 
   .container {
