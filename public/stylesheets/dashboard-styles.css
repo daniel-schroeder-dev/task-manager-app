@@ -343,6 +343,10 @@ i.fas.fa-caret-right {
   padding-bottom: 12px;
 }
 
+.hidden {
+  display: none;
+}
+
 @media (max-width: 1024px) {
 
   .container {

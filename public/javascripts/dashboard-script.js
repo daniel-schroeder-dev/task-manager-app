@@ -324,11 +324,7 @@ completedTaskHeader.addEventListener('click', function(e) {
   toggleIcon.classList.toggle('fa-caret-down');
   toggleIcon.classList.toggle('fa-caret-right');
   this.classList.toggle('tasks-hidden');
-  if (toggleIcon.classList.contains('fa-caret-right')) {
-    completedTaskContainer.style.display = 'none';
-  } else {
-    completedTaskContainer.style.display = 'block';
-  }
+  completedTaskContainer.classList.toggle('hidden');
 });
 
 // NOTE: this has to be a 'keyup' event. You refactored once before to make it match the createTaskInput, but it broke the functionality because the saveButton stayed disabled when only 1 character was entered. Apparently, when the 'keydown' event fires, the createListInput will not have the value of the character in the input stored yet, so you can't check for it the listener.
