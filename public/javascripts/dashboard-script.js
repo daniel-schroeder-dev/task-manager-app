@@ -15,31 +15,7 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
   this.tasks = tasks || [];
   this.ownerId = ownerId;
   this._id = _id;
-
-  this.createTaskListDOMElement = function() {
-    
-    const div = document.createElement('div');
-    const i = document.createElement('i');
-    const span = document.createElement('span');
-    const a = document.createElement('a');
-    
-    a.classList.add('task-list-nav');
-    a.href = this.url
-
-    span.textContent = this.name;
-
-    // fix wierd margin collapse when DOM element is added but page isn't reloaded.
-    span.style.marginLeft = '4px' 
-
-    i.classList.add('fas', 'fa-bars');
-
-    a.appendChild(i);
-    a.appendChild(span);
-    div.appendChild(a);
-
-    return div;
-
-  };
+  this.element = createTaskListDOMElement(this.name, this.url);
 
   this.createTaskListDB = async function() {
     
@@ -71,6 +47,31 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
   this.addTask = function(task) {
     this.tasks.push(task);
     updateTaskListDB(task);
+  }
+
+  function createTaskListDOMElement(taskListName, url) {
+    
+    const div = document.createElement('div');
+    const i = document.createElement('i');
+    const span = document.createElement('span');
+    const a = document.createElement('a');
+    
+    a.classList.add('task-list-nav');
+    a.href = url
+
+    span.textContent = taskListName;
+
+    // fix wierd margin collapse when DOM element is added but page isn't reloaded.
+    span.style.marginLeft = '4px' 
+
+    i.classList.add('fas', 'fa-bars');
+
+    a.appendChild(i);
+    a.appendChild(span);
+    div.appendChild(a);
+
+    return div;
+
   }
 
   async function updateTaskListDB(task) {
@@ -284,9 +285,10 @@ document.addEventListener('click', (e) => {
     const createListsContainer = document.getElementById('createListsContainer');
     const taskListName = createListInput.value;
     const taskList = new TaskList(taskListName);
-    const taskListDOMElement = taskList.createTaskListDOMElement();
+    // const taskListDOMElement = taskList.createTaskListDOMElement();
     
-    createListsContainer.firstElementChild.after(taskListDOMElement);
+    // createListsContainer.firstElementChild.after(taskListDOMElement);
+    createListsContainer.firstElementChild.after(taskList.element);
     
     taskLists.push(taskList);
     taskList.createTaskListDB();
