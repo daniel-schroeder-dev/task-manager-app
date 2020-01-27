@@ -398,7 +398,7 @@ leftCol.addEventListener('click', (e) => {
 
 });
 
-incompleteTaskContainer.addEventListener('click', (e) => {
+incompleteTaskContainer.addEventListener('click', function(e) {
   
   // toggle completed icon
   /* TODO: toggle completed status of Task */
