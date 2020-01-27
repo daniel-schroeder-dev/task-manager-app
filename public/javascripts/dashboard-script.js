@@ -121,9 +121,9 @@ const Task = function(name, ownerId, description, completed, _id) {
       body: JSON.stringify(data),
     });
 
-    const json = await response.json();
+    const task = await response.json();
 
-    this._id = json._id;
+    this._id = task._id;
 
   };
 
