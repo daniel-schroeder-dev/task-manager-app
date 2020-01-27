@@ -323,11 +323,11 @@ addListButton.addEventListener('click', () => {
 
 centerCol.addEventListener('click', function(e) {
   
+  if (e.target.id === 'completedTaskHeader' || e.target.parentElement.id === 'completedTaskHeader') return;
+
   // toggle completed icon
   /* TODO: toggle completed status of Task */
   if (e.target.tagName === 'I') {
-    
-    if (e.target.classList.contains('fa-caret-down') || e.target.classList.contains('fa-caret-right')) return;
     
     e.target.classList.toggle('far');
     e.target.classList.toggle('fa-square');
@@ -335,11 +335,11 @@ centerCol.addEventListener('click', function(e) {
     e.target.classList.toggle('fa-check-square');
     
     return;
-    
+
   }
   
   let currentNode = e.target;
-  
+
   if (currentNode.tagName !== 'SPAN') {
     currentNode = currentNode.querySelector('span[contenteditable="true"]');
   }
