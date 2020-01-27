@@ -320,10 +320,8 @@ addListButton.addEventListener('click', () => {
 
 });
 
-centerCol.addEventListener('click', (e) => {
+centerCol.addEventListener('click', function(e) {
   
-  console.log(e.target);
-
   // toggle completed icon
   /* TODO: toggle completed status of Task */
   if (e.target.tagName === 'I') {
@@ -343,10 +341,11 @@ centerCol.addEventListener('click', (e) => {
 
   currentNode.focus();
 
-  // if (!currentNode.parentElement.classList.contains('active-task')) {
-  //   this.querySelector('.active-task').classList.remove('active-task');
-  //   currentNode.parentElement.classList.add('active-task');
-  // }
+  if (!currentNode.parentElement.classList.contains('active-task')) {
+    const currentActiveTask = this.querySelector('.active-task');
+    if (currentActiveTask) currentActiveTask.classList.remove('active-task');
+    currentNode.parentElement.classList.add('active-task');
+  }
 
 });
 
