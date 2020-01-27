@@ -304,6 +304,11 @@ i {
   right: -20px;
 }
 
+.completed-task,
+.completed-task i {
+  color: #ababab;
+}
+
 @media (max-width: 1024px) {
 
   .container {
