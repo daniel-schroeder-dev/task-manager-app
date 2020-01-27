@@ -322,6 +322,10 @@ i {
   color: #ababab;
 }
 
+#completedTaskHeader span {
+  margin-left: 8px;
+}
+
 @media (max-width: 1024px) {
 
   .container {
