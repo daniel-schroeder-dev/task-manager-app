@@ -323,7 +323,25 @@ addListButton.addEventListener('click', () => {
 
 centerCol.addEventListener('click', function(e) {
   
-  if (e.target.id === 'completedTaskHeader' || e.target.parentElement.id === 'completedTaskHeader') return;
+  if (e.target.id === 'completedTaskHeader' || e.target.parentElement.id === 'completedTaskHeader') {
+
+    let toggleIcon = '';
+
+    if (e.target.tagName === 'I') {
+      toggleIcon = e.target;
+    } else if (e.target.id === 'completedTaskHeader') {
+      toggleIcon = e.target.querySelector('i');
+    } else {
+      toggleIcon = e.target.previousElementSibling;
+    }
+    
+    toggleIcon.classList.toggle('fa-caret-down');
+    toggleIcon.classList.toggle('fa-caret-right');
+    completedTaskHeader.classList.toggle('tasks-hidden');
+    completedTaskContainer.classList.toggle('hidden');
+
+    return;
+  }
 
   // toggle completed icon
   /* TODO: toggle completed status of Task */
@@ -362,17 +380,6 @@ centerCol.addEventListener('keydown', (e) => {
  
   e.target.blur();
   createTaskInput.focus();
-
-});
-
-completedTaskHeader.addEventListener('click', function(e) {
-
-  const toggleIcon = this.querySelector('i');
-  
-  toggleIcon.classList.toggle('fa-caret-down');
-  toggleIcon.classList.toggle('fa-caret-right');
-  this.classList.toggle('tasks-hidden');
-  completedTaskContainer.classList.toggle('hidden');
 
 });
 
