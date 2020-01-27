@@ -418,6 +418,11 @@ incompleteTaskContainer.addEventListener('click', function(e) {
 
   currentNode.focus();
 
+  if (!currentNode.parentElement.classList.contains('active-task')) {
+    this.querySelector('.active-task').classList.remove('active-task');
+    currentNode.parentElement.classList.add('active-task');
+  }
+
 });
 
 // will give focus to the createTaskInput whenever a user is editing a task in the incompleteTaskContainer and hits 'Enter'
