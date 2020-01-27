@@ -559,6 +559,8 @@ createTaskInput.addEventListener('keydown', async function(e) {
   I'm not sure this if() is neccessary, it may be more efficient not to
   perform the DOM query every time a Task is created, an instead just always
   set the siteIcon's display property to none. As of now, the condition will 
+  run only when the first Task is added. But, I'm querying the DOM everytime
+  to run the conditional, so I dunno...
   
   */
   if (!centerCol.querySelector('li')) {
