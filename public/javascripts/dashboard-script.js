@@ -2,6 +2,7 @@ const taskLists = [];
 const ENTER_KEYCODE = 13;
 
 const leftCol = document.getElementById('leftCol');
+const centerCol = document.getElementById('centerCol');
 const createListInput = document.getElementById('createList');
 const incompleteTaskContainer = document.getElementById('incompleteTaskContainer');
 const completedTaskHeader = document.getElementById('completedTaskHeader');
@@ -317,6 +318,10 @@ addListButton.addEventListener('click', () => {
 
   createListInput.focus();
 
+});
+
+centerCol.addEventListener('click', (e) => {
+  console.log(e.target);
 });
 
 completedTaskHeader.addEventListener('click', function(e) {
