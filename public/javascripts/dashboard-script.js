@@ -5,6 +5,7 @@ const leftCol = document.getElementById('leftCol');
 const createListInput = document.getElementById('createList');
 const incompleteTaskContainer = document.getElementById('incompleteTaskContainer');
 const completedTaskHeader = document.getElementById('completedTaskHeader');
+const completedTaskContainer = document.getElementById('completedTaskContainer');
 const createTaskInput = document.getElementById('createTask');
 const addListButton = document.getElementById('addListButton');
 const saveButton = document.querySelector('.btn-save');
@@ -322,6 +323,11 @@ completedTaskHeader.addEventListener('click', function(e) {
   const toggleIcon = this.querySelector('i');
   toggleIcon.classList.toggle('fa-caret-down');
   toggleIcon.classList.toggle('fa-caret-right');
+  if (toggleIcon.classList.contains('fa-caret-right')) {
+    completedTaskContainer.style.display = 'none';
+  } else {
+    completedTaskContainer.style.display = 'block';
+  }
 });
 
 // NOTE: this has to be a 'keyup' event. You refactored once before to make it match the createTaskInput, but it broke the functionality because the saveButton stayed disabled when only 1 character was entered. Apparently, when the 'keydown' event fires, the createListInput will not have the value of the character in the input stored yet, so you can't check for it the listener.
