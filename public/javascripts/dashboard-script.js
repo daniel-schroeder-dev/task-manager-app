@@ -159,11 +159,11 @@ const Task = function(name, ownerId, description, completed, _id) {
 /*************** Global Helper Functions *******************/
 
 
-const changePageURL = (pageName) => {
+const changePageURL = (taskListName) => {
   
-  const url = '/' + pageName.toLowerCase().replace(/\s/gi, '-');
+  const url = '/' + taskListName.toLowerCase().replace(/\s/gi, '-');
   
-  window.history.replaceState({ pageName }, '', url);
+  window.history.replaceState({ taskListName }, '', url);
   
 };
 
