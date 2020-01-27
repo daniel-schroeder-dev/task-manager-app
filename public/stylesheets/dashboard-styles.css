@@ -335,6 +335,7 @@ i.fas.fa-caret-right {
 #completedTaskHeader span {
   position: absolute;
   left: 33px;
+  top: 2px;
 }
 
 @media (max-width: 1024px) {
