@@ -4,7 +4,7 @@ const ENTER_KEYCODE = 13;
 const leftCol = document.getElementById('leftCol');
 const createListInput = document.getElementById('createList');
 const incompleteTaskContainer = document.getElementById('incompleteTaskContainer');
-const completedTaskContainer = document.getElementById('completedTaskContainer');
+const completedTaskHeader = document.getElementById('completedTaskHeader');
 const createTaskInput = document.getElementById('createTask');
 const addListButton = document.getElementById('addListButton');
 const saveButton = document.querySelector('.btn-save');
@@ -316,6 +316,10 @@ addListButton.addEventListener('click', () => {
 
   createListInput.focus();
 
+});
+
+completedTaskHeader.addEventListener('click', (e) => {
+  console.log(e.target);
 });
 
 // NOTE: this has to be a 'keyup' event. You refactored once before to make it match the createTaskInput, but it broke the functionality because the saveButton stayed disabled when only 1 character was entered. Apparently, when the 'keydown' event fires, the createListInput will not have the value of the character in the input stored yet, so you can't check for it the listener.
