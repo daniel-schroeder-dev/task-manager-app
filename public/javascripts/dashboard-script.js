@@ -325,11 +325,14 @@ centerCol.addEventListener('click', function(e) {
   // toggle completed icon
   /* TODO: toggle completed status of Task */
   if (e.target.tagName === 'I') {
+    
     if (e.target.classList.contains('fa-caret-down') || e.target.classList.contains('fa-caret-right')) return;
+    
     e.target.classList.toggle('far');
     e.target.classList.toggle('fa-square');
     e.target.classList.toggle('fas');
     e.target.classList.toggle('fa-check-square');
+    
     return;
   }
   
@@ -351,18 +354,24 @@ centerCol.addEventListener('click', function(e) {
 
 // will give focus to the createTaskInput whenever a user is editing a task in a taskContainer and hits 'Enter'
 centerCol.addEventListener('keydown', (e) => {
+ 
   if (e.keyCode !== ENTER_KEYCODE) return;
   if (!e.target.hasAttribute('contenteditable')) return;
+ 
   e.target.blur();
   createTaskInput.focus();
+
 });
 
 completedTaskHeader.addEventListener('click', function(e) {
+
   const toggleIcon = this.querySelector('i');
+  
   toggleIcon.classList.toggle('fa-caret-down');
   toggleIcon.classList.toggle('fa-caret-right');
   this.classList.toggle('tasks-hidden');
   completedTaskContainer.classList.toggle('hidden');
+
 });
 
 // NOTE: this has to be a 'keyup' event. You refactored once before to make it match the createTaskInput, but it broke the functionality because the saveButton stayed disabled when only 1 character was entered. Apparently, when the 'keydown' event fires, the createListInput will not have the value of the character in the input stored yet, so you can't check for it the listener.
@@ -435,8 +444,6 @@ leftCol.addEventListener('click', (e) => {
   updateTaskListUI(taskListName);
 
 });
-
-
 
 
 /************************** Init Page Load ************************/
