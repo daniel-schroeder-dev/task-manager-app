@@ -349,6 +349,14 @@ centerCol.addEventListener('click', function(e) {
 
 });
 
+// will give focus to the createTaskInput whenever a user is editing a task in a taskContainer and hits 'Enter'
+centerCol.addEventListener('keydown', (e) => {
+  if (e.keyCode !== ENTER_KEYCODE) return;
+  if (!e.target.hasAttribute('contenteditable')) return;
+  e.target.blur();
+  createTaskInput.focus();
+});
+
 completedTaskHeader.addEventListener('click', function(e) {
   const toggleIcon = this.querySelector('i');
   toggleIcon.classList.toggle('fa-caret-down');
@@ -428,12 +436,7 @@ leftCol.addEventListener('click', (e) => {
 
 });
 
-// will give focus to the createTaskInput whenever a user is editing a task in the incompleteTaskContainer and hits 'Enter'
-incompleteTaskContainer.addEventListener('keydown', (e) => {
-  if (e.keyCode !== ENTER_KEYCODE) return;
-  e.target.blur();
-  createTaskInput.focus();
-});
+
 
 
 /************************** Init Page Load ************************/
