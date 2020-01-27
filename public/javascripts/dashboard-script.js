@@ -250,12 +250,12 @@ const setTodaysDate = () => {
 *   the currently loaded TaskList, and clears the incompleteTaskContainer of
 *   DOM elements.
 */
-const updatePageState = (pageName) => {
+const updatePageState = (taskListName) => {
 
   const pageTitleElement = document.getElementById('pageTitle');
   
-  pageTitleElement.textContent = pageName;
-  pageTitleElement.nextElementSibling.setAttribute('placeholder', `Add Task to "${pageName}"`);
+  pageTitleElement.textContent = taskListName;
+  pageTitleElement.nextElementSibling.setAttribute('placeholder', `Add Task to "${taskListName}"`);
 
   while (incompleteTaskContainer.firstChild) {
     incompleteTaskContainer.firstChild.remove();
