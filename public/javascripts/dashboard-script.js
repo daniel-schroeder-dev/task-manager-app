@@ -63,7 +63,7 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
 
     span.textContent = taskListName;
 
-    // fix wierd margin collapse when DOM element is added but page isn't reloaded.
+    // Fix wierd margin collapse when DOM element is added but page isn't reloaded.
     span.style.marginLeft = '4px' 
 
     i.classList.add('fas', 'fa-bars');
@@ -140,7 +140,7 @@ const Task = function(name, ownerId, description, completed, _id) {
     spanTaskName.setAttribute('contenteditable', 'true');
     spanTaskName.textContent = taskName;
 
-    // fix wierd margin collapse when DOM element is added but page isn't reloaded.
+    // Fix wierd margin collapse when DOM element is added but page isn't reloaded.
     spanTaskName.style.marginLeft = '3.5px' 
     
     spanEllipsis.innerHTML = '&hellip;';
@@ -211,7 +211,7 @@ const removeBox = (boxID) => {
   box.classList.remove('fade-in');
   box.classList.add('fade-out');
   
-  // this is neccessary to give the fade-out animation time to run before adding back the .fade-in and .is-paused classes.  
+  // This is neccessary to give the fade-out animation time to run before adding back the .fade-in and .is-paused classes.  
   setTimeout(() => {
 
     box.classList.add('is-paused');
@@ -238,7 +238,7 @@ const setTodaysDate = () => {
   
   dateSpan.textContent = todaysDate;
 
-  // when there is only 1 character, this will help center the date inside the calendar icon
+  // When there is only 1 character, this will help center the date inside the calendar icon.
   if (todaysDate < 10) {
     dateSpan.style.marginLeft = '2px';
   }
@@ -247,8 +247,7 @@ const setTodaysDate = () => {
 
 /*
 *   Changes the page title and placeholder for the createTaskInput to match
-*   the currently loaded TaskList, and clears the incompleteTaskContainer of
-*   DOM elements.
+*   the currently loaded TaskList.
 */
 const updatePageState = (taskListName) => {
 
@@ -260,7 +259,17 @@ const updatePageState = (taskListName) => {
 };
 
 /*
-*   
+
+*** TODO ***
+
+This method should wipe all tasks from the centerCol, not just the incompleteTaskContainer, as there could be Tasks in the completedTaskContainer that need to be removed as well.
+
+*/
+
+/*
+*   1. Wipes the incompleteTaskContainer of all Tasks.
+*   2. Toggles the siteIcon.
+*   3. Adds all Tasks in the TaskList to the incompleteTaskContainer.
 */
 const updateTaskListUI = (taskListName) => {
 
@@ -288,15 +297,29 @@ const updateTaskListUI = (taskListName) => {
 
 /********************* Event Listeners ***********************/
 
-
+/*
+*   This listener will perform ONE of the following options on 'click':
+*
+*     a.) Removes addListBox or editTaskBox from the DOM when a close button 
+*     is clicked.
+*
+*     b.) Creates a new TaskList in the DOM/DB and updates the URL to be the 
+*     TaskList name when a save button is clicked.
+*
+*     c.) Shows the editTaskBox when the ellipsis is clicked.
+*/
 document.addEventListener('click', (e) => {
 
-  // works to close the addListBox or the editTaskBox
+  /*
+  *   Close the addListBox or the editTaskBox.
+  */
   if (e.target.id === 'close' || e.target.classList.contains('btn-close')) {
     return removeBox(e.target.getAttribute('data-target'));
   }
   
-  // create a new TaskList in the DOM/DB, update the URL and page state
+  /*
+  *   Create a new TaskList in the DOM/DB, update the URL and page state.
+  */
   if (e.target.classList.contains('btn-save')) {
     
     const createListsContainer = document.getElementById('createListsContainer');
@@ -320,6 +343,9 @@ document.addEventListener('click', (e) => {
 
   }
   
+  /*
+  *   Show the editTaskBox.
+  */
   if (e.target.classList.contains('ellipsis')) {
     
     const editTaskBox = document.getElementById('editTaskBox');
@@ -333,6 +359,10 @@ document.addEventListener('click', (e) => {
 
 });
 
+/*
+*   Show the addListBox when the addListButton is clicked and give the 
+*   createListInput focus.
+*/
 addListButton.addEventListener('click', () => {
 
   const addListBox = document.getElementById('addListBox');
@@ -344,10 +374,21 @@ addListButton.addEventListener('click', () => {
 
 });
 
+
+/*
+*   This event listener performs ONE of the following options on 'click':
+*
+*     a.) Toggles the caret icon and shows/hides the completedTaskContainer.
+*
+*     b.) Toggles the completed checkbox of a Task.
+*
+*     c.) Adds focus to the Task that was clicked and makes it the only
+*     .active-task.
+*/
 centerCol.addEventListener('click', function(e) {
   
   /*
-  *   Toggles the caret icon, and shows/hides the completedTaskContainer
+  *   Toggles the caret icon, and shows/hides the completedTaskContainer.
   */
   if (e.target.id === 'completedTaskHeader' || e.target.parentElement.id === 'completedTaskHeader') {
 
@@ -371,7 +412,7 @@ centerCol.addEventListener('click', function(e) {
   }
 
   /*
-  *   Toggles the completed checkbox of a Task
+  *   Toggles the completed checkbox of a Task.
   */
   if (e.target.tagName === 'I') {
     
@@ -385,7 +426,7 @@ centerCol.addEventListener('click', function(e) {
   }
 
   /*
-  *   Add focus to the Task that was clicked and make it the only .active-task
+  *   Add focus to the Task that was clicked and make it the only .active-task.
   */
   
   let currentNode = e.target;
@@ -427,11 +468,13 @@ The createListInput event listener below has to be a 'keyup' event. You refactor
 */
 
 /*
-*   1. Shorcut to create a new TaskList from the createListInput when 'Enter' 
-*   key is pressed.
+*   This listener will perform ONE of the following options on 'keyup':
 *
-*   2. Only allow 'save' button to be clicked when there are characters in the
-*   createListInput.
+*     a.) Shorcut to create a new TaskList from the createListInput when 
+*     'Enter' key is pressed.
+*
+*     b.) Only allow 'save' button to be clicked when there are characters in 
+*     the createListInput.
 */
 createListInput.addEventListener('keyup', function(e) {
 
@@ -457,12 +500,12 @@ createListInput.addEventListener('keyup', function(e) {
 *   When the user presses the 'Enter' key in the createTaskInput, this 
 *   event listener handles all Task creation logic:
 *   
-*   1. Creates a new Task
-*   2. Adds the Task to the DB
-*   3. Adds the Task to the appropriate TaskList
-*   4. Ensures the Task is set as the .active-task
-*   5. Adds the Task to the incompleteTaskContainer in the DOM
-*   6. Wipes the value from the createTaskInput
+*   1. Creates a new Task.
+*   2. Adds the Task to the DB.
+*   3. Adds the Task to the appropriate TaskList.
+*   4. Ensures the Task is set as the .active-task.
+*   5. Adds the Task to the incompleteTaskContainer in the DOM.
+*   6. Wipes the value from the createTaskInput.
 */
 createTaskInput.addEventListener('keydown', async function(e) {
   
@@ -474,16 +517,33 @@ createTaskInput.addEventListener('keydown', async function(e) {
 
   const task = new Task(this.value, taskList._id);
 
-  // we need the _id field of this task for the taskList.updateTaskListDB(task) call below, so make sure to await the result so that the task has the _id field.
+  /* 
+  *   Have to 'await' this Task to be created in the DB because the _id field
+  *   that Mongoose adds to the Task will be needed for the taskList.addTask()
+  *   call to work correctly.
+  */
   await task.createTaskDB();
 
   taskList.addTask(task);
   
-  // the task that is just created will be the .active-task, so make sure to remove .active-task from any tasks in the incompleteTaskContainer before adding the newly created task
+  /*
+  *   The task that is just created will be the .active-task, so make sure to 
+  *   remove .active-task from any tasks in the centerCol before adding the 
+  *   newly created task to the DOM.
+  */
   if (centerCol.querySelector('.active-task')) {
     centerCol.querySelector('.active-task').classList.remove('active-task');
   }
 
+  /*
+
+  *** REFACTOR? ***
+  
+  I'm not sure this if() is neccessary, it may be more efficient not to
+  perform the DOM query every time a Task is created, an instead just always
+  set the siteIcon's display property to none. As of now, the condition will 
+  
+  */
   if (!centerCol.querySelector('li')) {
     siteIcon.style.display = 'none';
   }
