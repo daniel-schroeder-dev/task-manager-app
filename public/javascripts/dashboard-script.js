@@ -8,6 +8,10 @@ const createTaskInput = document.getElementById('createTask');
 const addListButton = document.getElementById('addListButton');
 const saveButton = document.querySelector('.btn-save');
 
+
+/**************** Constructor Functions **********************/
+
+
 const TaskList = function(name, url, tasks, ownerId, _id) {
   
   this.name = name;
@@ -165,13 +169,16 @@ const Task = function(name, ownerId, description, completed, _id) {
 
 };
 
-const loadTaskLists = async () => {
 
-  const responseTaskLists = await fetch('/taskLists');
-  const taskLists = await responseTaskLists.json();
+/*************** Global Helper Functions *******************/
 
-  return taskLists;
 
+const changePageURL = (pageName) => {
+  
+  const url = '/' + pageName.toLowerCase().replace(/\s/gi, '-');
+  
+  window.history.replaceState({ pageName }, '', url);
+  
 };
 
 const initTaskLists = async () => {
@@ -190,6 +197,39 @@ const initTaskLists = async () => {
 
 };
 
+const loadTaskLists = async () => {
+
+  const responseTaskLists = await fetch('/taskLists');
+  const taskLists = await responseTaskLists.json();
+
+  return taskLists;
+
+};
+
+const removeBox = (boxID) => {
+  
+  const box = document.getElementById(boxID);
+  
+  box.classList.remove('fade-in');
+  box.classList.add('fade-out');
+  
+  // this is neccessary to give the fade-out animation time to run before adding back the .fade-in and .is-paused classes.  
+  setTimeout(() => {
+
+    box.classList.add('is-paused');
+    box.classList.add('fade-in');
+    box.classList.remove('fade-out');
+    
+    box.style.display = 'none';
+    
+    if (boxID === 'addListBox') createListInput.value = '';
+    
+    saveButton.setAttribute('disabled', true);
+
+  }, 100);
+
+};
+
 const setTodaysDate = () => {
   
   const dateSpan = document.getElementById('date');
@@ -202,14 +242,6 @@ const setTodaysDate = () => {
     dateSpan.style.marginLeft = '2px';
   }
 
-};
-
-const changePageURL = (pageName) => {
-  
-  const url = '/' + pageName.toLowerCase().replace(/\s/gi, '-');
-  
-  window.history.replaceState({ pageName }, '', url);
-  
 };
 
 const updatePageState = (pageName) => {
@@ -244,34 +276,8 @@ const updateTaskListUI = (taskListName) => {
 
 };
 
-const removeBox = (boxID) => {
-  
-  const box = document.getElementById(boxID);
-  
-  box.classList.remove('fade-in');
-  box.classList.add('fade-out');
-  
-  // this is neccessary to give the fade-out animation time to run before adding back the .fade-in and .is-paused classes.  
-  setTimeout(() => {
-
-    box.classList.add('is-paused');
-    box.classList.add('fade-in');
-    box.classList.remove('fade-out');
-    
-    box.style.display = 'none';
-    
-    if (boxID === 'addListBox') createListInput.value = '';
-    
-    saveButton.setAttribute('disabled', true);
-
-  }, 100);
-
-};
-
 
 /********************* Event Listeners ***********************/
-
-
 
 
 document.addEventListener('click', (e) => {
