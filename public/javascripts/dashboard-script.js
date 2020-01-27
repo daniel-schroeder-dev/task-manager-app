@@ -274,16 +274,15 @@ document.addEventListener('click', (e) => {
   if (e.target.classList.contains('btn-save')) {
     
     const createListsContainer = document.getElementById('createListsContainer');
-    const taskListName = createListInput.value;
-    const taskList = new TaskList(taskListName);
+    const taskList = new TaskList(createListInput.value);
     
     createListsContainer.firstElementChild.after(taskList.element);
     
     taskLists.push(taskList);
     taskList.createTaskListDB();
     
-    changePageURL(taskListName);
-    updatePageState(taskListName);
+    changePageURL(taskList.name);
+    updatePageState(taskList.name);
     
     removeBox('addListBox');
 
