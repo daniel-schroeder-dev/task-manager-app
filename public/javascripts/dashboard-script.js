@@ -95,7 +95,7 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
 
     const json = await response.json();
 
-  };
+  }
 
 };
 
@@ -223,18 +223,22 @@ const updatePageState = (pageName) => {
 };
 
 const updateTaskListUI = (taskListName) => {
+
   const taskList = taskLists.find(taskList => taskList.name === taskListName);
+  
   if (!taskList.tasks.length) {
     document.getElementById('siteIcon').style.display = 'block';
   } else {
     document.getElementById('siteIcon').style.display = 'none';
   }
+  
   taskList.tasks.forEach((task, i) => {
     if (i === taskList.tasks.length - 1) {
       task.element.classList.add('active-task');
     }
     taskContainer.prepend(task.element);
   });
+
 };
 
 const removeBox = (boxID) => {
