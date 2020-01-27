@@ -418,7 +418,7 @@ createTaskInput.addEventListener('keydown', async function(e) {
     centerCol.querySelector('.active-task').classList.remove('active-task');
   }
 
-  if (!incompleteTaskContainer.querySelector('li')) {
+  if (!centerCol.querySelector('li')) {
     siteIcon.style.display = 'none';
   }
   
@@ -459,7 +459,7 @@ leftCol.addEventListener('click', (e) => {
 
 
 // When the page first loads, check to see if we need to wipe the siteIcon from the incompleteTaskContainer 
-if (incompleteTaskContainer.querySelector('li')) {
+if (centerCol.querySelector('li')) {
   siteIcon.style.display = 'none';
 }
 
