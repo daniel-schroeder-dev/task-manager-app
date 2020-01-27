@@ -414,8 +414,8 @@ createTaskInput.addEventListener('keydown', async function(e) {
   taskList.addTask(task);
   
   // the task that is just created will be the .active-task, so make sure to remove .active-task from any tasks in the incompleteTaskContainer before adding the newly created task
-  if (incompleteTaskContainer.querySelector('.active-task')) {
-    incompleteTaskContainer.querySelector('.active-task').classList.remove('active-task');
+  if (centerCol.querySelector('.active-task')) {
+    centerCol.querySelector('.active-task').classList.remove('active-task');
   }
 
   if (!incompleteTaskContainer.querySelector('li')) {
