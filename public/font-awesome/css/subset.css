@@ -79,3 +79,6 @@
 
 .fa-square:before {
   content: "\f0c8"; }
+
+.fa-caret-down:before {
+  content: "\f0d7"; }
