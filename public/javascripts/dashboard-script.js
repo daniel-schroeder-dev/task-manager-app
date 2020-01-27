@@ -318,6 +318,7 @@ addListButton.addEventListener('click', () => {
 
 });
 
+// NOTE: this has to be a 'keyup' event. You refactored once before to make it match the createTaskInput, but it broke the functionality because the saveButton stayed disabled when only 1 character was entered. Apparently, when the 'keydown' event fires, the createListInput will not have the value of the character in the input stored yet, so you can't check for it the listener.
 createListInput.addEventListener('keyup', function(e) {
 
   // save the list when 'Enter' is pressed. Shortcut for just clicking the 'Save' button.
