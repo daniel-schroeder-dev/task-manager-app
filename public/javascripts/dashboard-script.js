@@ -167,6 +167,11 @@ const changePageURL = (pageName) => {
   
 };
 
+/*
+*   Loads TaskLists from the DB and instantiates the appropriate TaskList and 
+*   Task objects for client-side use. Stores all TaskLists in the taskLists 
+*   array.
+*/
 const initTaskLists = async () => {
   
   const lists = await loadTaskLists();
@@ -183,6 +188,10 @@ const initTaskLists = async () => {
 
 };
 
+
+/*
+*   Loads TaskLists from the DB.
+*/
 const loadTaskLists = async () => {
 
   const responseTaskLists = await fetch('/taskLists');
@@ -192,6 +201,9 @@ const loadTaskLists = async () => {
 
 };
 
+/*
+*   Removes the box with boxID from the DOM and resets the state of the box.
+*/
 const removeBox = (boxID) => {
   
   const box = document.getElementById(boxID);
@@ -216,6 +228,9 @@ const removeBox = (boxID) => {
 
 };
 
+/*
+*   Sets the date in the 'Today' icon representing tasks due today.
+*/
 const setTodaysDate = () => {
   
   const dateSpan = document.getElementById('date');
@@ -230,6 +245,11 @@ const setTodaysDate = () => {
 
 };
 
+/*
+*   Changes the page title and placeholder for the createTaskInput to match
+*   the currently loaded TaskList, and clears the incompleteTaskContainer of
+*   DOM elements.
+*/
 const updatePageState = (pageName) => {
 
   const pageTitleElement = document.getElementById('pageTitle');
@@ -323,6 +343,9 @@ addListButton.addEventListener('click', () => {
 
 centerCol.addEventListener('click', function(e) {
   
+  /*
+  *   Toggles the caret icon, and shows/hides the completedTaskContainer
+  */
   if (e.target.id === 'completedTaskHeader' || e.target.parentElement.id === 'completedTaskHeader') {
 
     let toggleIcon = '';
@@ -344,8 +367,9 @@ centerCol.addEventListener('click', function(e) {
     
   }
 
-  // toggle completed icon
-  /* TODO: toggle completed status of Task */
+  /*
+  *   Toggles the completed checkbox of a Task
+  */
   if (e.target.tagName === 'I') {
     
     e.target.classList.toggle('far');
@@ -356,6 +380,10 @@ centerCol.addEventListener('click', function(e) {
     return;
 
   }
+
+  /*
+  *   Add focus to the Task that was clicked and make it the only .active-task
+  */
   
   let currentNode = e.target;
 
@@ -373,7 +401,10 @@ centerCol.addEventListener('click', function(e) {
 
 });
 
-// will give focus to the createTaskInput whenever a user is editing a task in a taskContainer and hits 'Enter'
+/*
+*   Give focus to the createTaskInput whenever a user is editing a task 
+*   in a taskContainer and hits 'Enter'.
+*/
 centerCol.addEventListener('keydown', (e) => {
  
   if (e.keyCode !== ENTER_KEYCODE) return;
@@ -384,21 +415,52 @@ centerCol.addEventListener('keydown', (e) => {
 
 });
 
-// NOTE: this has to be a 'keyup' event. You refactored once before to make it match the createTaskInput, but it broke the functionality because the saveButton stayed disabled when only 1 character was entered. Apparently, when the 'keydown' event fires, the createListInput will not have the value of the character in the input stored yet, so you can't check for it the listener.
+/* 
+
+*** NOTE ***
+
+The createListInput event listener below has to be a 'keyup' event. You refactored once before to make it match the createTaskInput event listener, but it broke the functionality because the saveButton stayed disabled when only 1 character was entered. Apparently, when the 'keydown' event fires, the createListInput will not have the value of the character in the input stored yet, so you can't check for it the listener.
+
+*/
+
+/*
+*   1. Shorcut to create a new TaskList from the createListInput when 'Enter' 
+*   key is pressed.
+*
+*   2. Only allow 'save' button to be clicked when there are characters in the
+*   createListInput.
+*/
 createListInput.addEventListener('keyup', function(e) {
 
-  // save the list when 'Enter' is pressed. Shortcut for just clicking the 'Save' button.
+  /*
+  *   Save the list when 'Enter' key is pressed. Shortcut for just clicking the
+  *   'Save' button. 
+  */
   if (e.keyCode === ENTER_KEYCODE) {
     this.nextElementSibling.querySelector('.btn-save').click();
   }
 
-  // disable the saveButton when there are no characters in the createListInput
+  /*
+  *   Enable the saveButton when there are no characters in the
+  *   createListInput.
+  */
   if (this.value.length) return saveButton.removeAttribute('disabled');
   
   saveButton.setAttribute('disabled', true);
 
 });
 
+/*
+*   When the user presses the 'Enter' key in the createTaskInput, this 
+*   event listener handles all Task creation logic:
+*   
+*   1. Creates a new Task
+*   2. Adds the Task to the DB
+*   3. Adds the Task to the appropriate TaskList
+*   4. Ensures the Task is set as the .active-task
+*   5. Adds the Task to the incompleteTaskContainer in the DOM
+*   6. Wipes the value from the createTaskInput
+*/
 createTaskInput.addEventListener('keydown', async function(e) {
   
   if (e.keyCode !== ENTER_KEYCODE) return;
@@ -429,6 +491,10 @@ createTaskInput.addEventListener('keydown', async function(e) {
 
 });
 
+/*
+*   Loads the appropriate TaskList into the centerCol and changes the URL to
+*   the TaskList name.
+*/
 leftCol.addEventListener('click', (e) => {
 
   if (e.target.tagName !== 'A' && e.target.parentElement.tagName !== 'A') return;
@@ -459,13 +525,22 @@ leftCol.addEventListener('click', (e) => {
 /************************** Init Page Load ************************/
 
 
-// When the page first loads, check to see if we need to wipe the siteIcon from the incompleteTaskContainer 
+/*
+*   When the page first loads, check to see if we need to wipe the siteIcon 
+*   from the centerCol.
+*/
 if (centerCol.querySelector('li')) {
   siteIcon.style.display = 'none';
 }
 
-// sets the date in the 'Today' icon
+/*
+*   Sets the date in the 'Today' icon representing tasks due today.
+*/
 setTodaysDate();
 
-// creates TaskList and Task objects to mirror the DB data
+/*
+*   Loads TaskLists from the DB and instantiates the appropriate TaskList and 
+*   Task objects for client-side use. Stores all TaskLists in the taskLists 
+*   array.
+*/
 initTaskLists();
