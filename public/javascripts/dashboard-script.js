@@ -217,7 +217,13 @@ const removeBox = (boxID) => {
 
   *** RESEARCH ***
   
-  I honestly don't understand why I need this setTimeout() call to get this fade-in/fade-out animation to work, but it was the only thing I tried that worked so I'm using it. I'm not sure if the issue is the animation itself, or the way in which I'm triggering it. I have a vague understanding that setTimeout() will run this code in a different portion of the event loop, but I really need to understand this concept deeply if I'm going to use it in my code.
+  I honestly don't understand why I need this setTimeout() call to get this 
+  fade-in/fade-out animation to work, but it was the only thing I tried that 
+  worked so I'm using it. I'm not sure if the issue is the animation itself, 
+  or the way in which I'm triggering it. I have a vague understanding that 
+  setTimeout() will run this code in a different portion of the event loop, 
+  but I really need to understand this concept deeply if I'm going to use it 
+  in my code.
 
   */
 
@@ -275,7 +281,9 @@ const updatePageState = (taskListName) => {
 
 *** TODO ***
 
-This method should wipe all tasks from the centerCol, not just the incompleteTaskContainer, as there could be Tasks in the completedTaskContainer that need to be removed as well.
+This method should wipe all tasks from the centerCol, not just the 
+incompleteTaskContainer, as there could be Tasks in the completedTaskContainer 
+that need to be removed as well.
 
 */
 
@@ -435,7 +443,9 @@ centerCol.addEventListener('click', function(e) {
   
   *** TODO ***
 
-  This should also toggle the completed status of the Task object, and move the Task into the completedTaskContainer, along with adding it to the completedTaskList.
+  This should also toggle the completed status of the Task object, and move 
+  the Task into the completedTaskContainer, along with adding it to the 
+  completedTaskList.
 
   */
 
@@ -493,7 +503,12 @@ centerCol.addEventListener('keydown', (e) => {
 
 *** NOTE ***
 
-The createListInput event listener below has to be a 'keyup' event. You refactored once before to make it match the createTaskInput event listener, but it broke the functionality because the saveButton stayed disabled when only 1 character was entered. Apparently, when the 'keydown' event fires, the createListInput will not have the value of the character in the input stored yet, so you can't check for it the listener.
+The createListInput event listener below has to be a 'keyup' event. You 
+refactored once before to make it match the createTaskInput event listener, 
+but it broke the functionality because the saveButton stayed disabled when 
+only 1 character was entered. Apparently, when the 'keydown' event fires, the 
+createListInput will not have the value of the character in the input stored 
+yet, so you can't check for it the listener.
 
 */
 
