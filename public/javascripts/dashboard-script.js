@@ -236,14 +236,12 @@ const changePageURL = () => {
 */
 const initTaskLists = async () => {
 
-  taskLists = await loadTaskLists();
-
-  taskLists = taskLists.map((taskList) => {
+  taskLists = (await loadTaskLists()).map((taskList) => {
     taskList.tasks = taskList.tasks.map((task) => {
       return new Task(task.name, task.ownerId, task.description, task.completed, task._id);
     });
     return new TaskList(taskList.name, taskList.url, taskList.tasks, taskList.ownerId, taskList._id);
-  });
+  });;
 
   /*
   *   1. Determine the current taskList that is loaded and set activeTaskList
