@@ -27,6 +27,7 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
   this.incompleteTaskContainer = createIncompleteTaskContainer();
   this.completedTaskHeader = document.getElementById('completedTaskHeader');
   this.completedTaskContainer = createCompletedTaskContainer();
+  this.element = createTopLevelDOMElement(this);
 
   this.createTaskListDB = async function() {
     
@@ -52,6 +53,14 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
   this.addTask = function(task) {
     this.tasks.push(task);
     updateTaskListDB(task);
+  }
+
+  function createTopLevelDOMElement(taskList) {
+    const div = document.createElement('div');
+    div.append(taskList.incompleteTaskContainer);
+    div.append(taskList.completedTaskHeader)
+    div.append(taskList.completedTaskContainer);
+    return div;
   }
 
   function createIncompleteTaskContainer() {
