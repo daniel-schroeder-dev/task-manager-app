@@ -194,7 +194,12 @@ Task.prototype.createTaskDOMElement = function() {
   const spanTaskName = document.createElement('span');
   const spanEllipsis = document.createElement('span');
   
-  i.classList.add('far', 'fa-square');
+  if (this.completed) {
+    i.classList.add('fas', 'fa-check-square');
+  } else {
+    i.classList.add('far', 'fa-square');
+  }
+
   spanEllipsis.classList.add('ellipsis');
   
   spanTaskName.setAttribute('contenteditable', 'true');
