@@ -7,7 +7,6 @@ const centerCol = document.getElementById('centerCol');
 
 const taskListNavContainer = document.getElementById('taskListNavContainer');
 
-
 const completedTaskToggle = document.getElementById('completedTaskToggle');
 
 const createListInput = document.getElementById('createList');
@@ -23,6 +22,12 @@ const siteIcon = document.getElementById('siteIcon');
 
 const TaskContainer = function(element) {
   this.element = element;
+};
+
+TaskContainer.prototype.add = function(element) {
+  siteIcon.style.display = 'none';
+  completedTaskToggle.style.display = 'block';
+  this.element.prepend(element);
 };
 
 const TaskList = function(name, url, tasks, ownerId, _id) {
@@ -94,9 +99,9 @@ TaskList.prototype.populateTaskContainers = function() {
       task.element.classList.add('active-task');
     }
     if (task.completed) {
-      completedTaskContainer.prepend(task.element);
+      completedTaskContainer.add(task.element);
     } else {
-      incompleteTaskContainer.prepend(task.element);
+      incompleteTaskContainer.add(task.element);
     }
   });
 };
@@ -385,23 +390,11 @@ const updatePageState = () => {
 
 /*
 *   1. Wipes the incompleteTaskContainer of all Tasks.
-*   2. Toggles the siteIcon.
-*   3. Adds all Tasks in the TaskList to the incompleteTaskContainer.
+*   2. Adds all Tasks in the TaskList to the incompleteTaskContainer.
 */
 const updateTaskListUI = (taskListToRemove) => {
-
   taskListToRemove.tasks.forEach(task => task.element.remove());
-
-  if (!activeTaskList.tasks.length) {
-    siteIcon.style.display = 'block';
-    completedTaskToggle.style.display = 'none';
-  } else {
-    siteIcon.style.display = 'none';
-    completedTaskToggle.style.display = 'block';
-  }
-
   activeTaskList.populateTaskContainers();
-
 };
 
 
@@ -492,7 +485,7 @@ centerCol.addEventListener('click', function(e) {
     toggleIcon.classList.toggle('fa-caret-down');
     toggleIcon.classList.toggle('fa-caret-right');
     completedTaskToggle.classList.toggle('tasks-hidden');
-    completedTaskContainer.classList.toggle('hidden');
+    completedTaskContainer.element.classList.toggle('hidden');
 
     return;
     
@@ -529,9 +522,9 @@ centerCol.addEventListener('click', function(e) {
     task.element.classList.remove('active-task');
 
     if (e.target.classList.contains('fa-check-square')) {
-      completedTaskContainer.prepend(task.element);
+      completedTaskContainer.add(task.element);
     } else {
-      incompleteTaskContainer.append(task.element);
+      incompleteTaskContainer.add(task.element);
     }
 
     task.toggleCompletedStatus();
@@ -645,7 +638,7 @@ createTaskInput.addEventListener('keydown', async function(e) {
   }
 
   task.element.classList.add('active-task');
-  incompleteTaskContainer.prepend(task.element);
+  incompleteTaskContainer.add(task.element);
 
   /* 
   *   Have to 'await' this Task to be created in the DB because the _id field
