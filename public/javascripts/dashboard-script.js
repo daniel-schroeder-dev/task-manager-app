@@ -51,7 +51,7 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
 
   };
 
-  this.addTask = async function(task) {
+  this.addTask = function(task) {
     this.tasks.push(task);
     task.element.classList.add('active-task');
     this.incompleteTaskContainer.prepend(task.element);
