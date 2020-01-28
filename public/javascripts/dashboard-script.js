@@ -512,10 +512,7 @@ centerCol.addEventListener('click', function(e) {
   */
   if (e.target.tagName === 'I') {
     
-    e.target.classList.toggle('far');
-    e.target.classList.toggle('fa-square');
-    e.target.classList.toggle('fas');
-    e.target.classList.toggle('fa-check-square');
+    toggleCompletedCheckbox(e.target);
 
     const taskElement = e.target.parentElement;
 
