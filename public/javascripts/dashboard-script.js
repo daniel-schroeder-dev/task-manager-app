@@ -39,7 +39,6 @@ TaskList.prototype.addTask = function(task) {
 
 };
 
-
 TaskList.prototype.createTaskListDB = async function() {
 
   const data = {
@@ -125,28 +124,28 @@ const Task = function(name, ownerId, description, completed, _id) {
 
   this.createTaskDOMElement();
 
-  this.createTaskDB = async function() {
+};
+
+Task.prototype.createTaskDB = async function() {
     
-    const data = {
-      name: this.name,
-      completed: this.completed,
-      ownerId: this.ownerId,
-      description: this.description,
-    };
-
-    const response = await fetch('/tasks', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
-
-    const task = await response.json();
-
-    this._id = task._id;
-
+  const data = {
+    name: this.name,
+    completed: this.completed,
+    ownerId: this.ownerId,
+    description: this.description,
   };
+
+  const response = await fetch('/tasks', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+
+  const task = await response.json();
+
+  this._id = task._id;
 
 };
 
@@ -282,7 +281,6 @@ const initTaskLists = async () => {
   });
 
 };
-
 
 /*
 *   Loads TaskLists from the DB.
