@@ -714,6 +714,8 @@ createTaskInput.addEventListener('keydown', async function(e) {
   */
   await task.createTaskDB();
 
+  task.setTaskList(taskList);
+
   /*
   *   The task that is just created will be the .active-task, so make sure to 
   *   remove .active-task from any tasks in the centerCol before adding the 
