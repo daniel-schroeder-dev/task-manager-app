@@ -360,9 +360,10 @@ that need to be removed as well.
 */
 const updateTaskListUI = (taskListName, taskListToRemove) => {
 
-  while (incompleteTaskContainer.firstChild) {
-    incompleteTaskContainer.firstChild.remove();
-  }
+  // while (incompleteTaskContainer.firstChild) {
+  //   incompleteTaskContainer.firstChild.remove();
+  // }
+  taskListToRemove.element.remove();
 
   const taskList = taskLists.find(taskList => taskList.name === taskListName);
   
@@ -409,6 +410,8 @@ document.addEventListener('click', (e) => {
   */
   if (e.target.classList.contains('btn-save')) {
     
+    const taskListNameToRemove = document.getElementById('pageTitle').textContent;
+    const taskListToRemove = taskLists.find(taskList => taskList.name === taskListNameToRemove);
     const createListsContainer = document.getElementById('createListsContainer');
     const taskList = new TaskList(createListInput.value);
     
@@ -419,7 +422,7 @@ document.addEventListener('click', (e) => {
     
     changePageURL(taskList.name);
     updatePageState(taskList.name);
-    updateTaskListUI(taskList.name);
+    updateTaskListUI(taskList.name, taskListToRemove);
     
     removeBox('addListBox');
 
