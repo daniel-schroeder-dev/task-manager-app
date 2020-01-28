@@ -33,8 +33,8 @@ TaskList.prototype.addTask = function(task) {
   
   this.tasks.push(task);
   
-  task.element.classList.add('active-task');
-  incompleteTaskContainer.prepend(task.element);
+  // task.element.classList.add('active-task');
+  // incompleteTaskContainer.prepend(task.element);
   this.updateTaskListDB(task);
 
 };
@@ -657,15 +657,6 @@ createTaskInput.addEventListener('keydown', async function(e) {
 
   const task = new Task(this.value, activeTaskList._id);
 
-  /* 
-  *   Have to 'await' this Task to be created in the DB because the _id field
-  *   that Mongoose adds to the Task will be needed for the taskList.addTask()
-  *   call to work correctly.
-  */
-  await task.createTaskDB();
-
-  task.taskList = activeTaskList;
-
   /*
   *   The task that is just created will be the .active-task, so make sure to 
   *   remove .active-task from any tasks in the centerCol before adding the 
@@ -674,6 +665,18 @@ createTaskInput.addEventListener('keydown', async function(e) {
   if (centerCol.querySelector('.active-task')) {
     centerCol.querySelector('.active-task').classList.remove('active-task');
   }
+
+  task.element.classList.add('active-task');
+  incompleteTaskContainer.prepend(task.element);
+
+  /* 
+  *   Have to 'await' this Task to be created in the DB because the _id field
+  *   that Mongoose adds to the Task will be needed for the taskList.addTask()
+  *   call to work correctly.
+  */
+  await task.createTaskDB();
+
+  task.taskList = activeTaskList;
 
   activeTaskList.addTask(task);
   siteIcon.style.display = 'none';
