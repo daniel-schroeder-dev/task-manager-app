@@ -63,7 +63,7 @@ TaskList.prototype.createTaskListNavDOMElement = function() {
   const span = document.createElement('span');
   const a = document.createElement('a');
 
-  this.navElement.classList.add('task-list-nav-container');
+  this.navElement.classList.add('task-list-nav-item');
   
   a.classList.add('task-list-nav');
   a.href = this.url;
@@ -252,7 +252,7 @@ const initTaskLists = async () => {
   *   2. Assign them to the appropriate taskList.navElement.
   */
 
-  const taskListNavElements = Array.from(document.querySelectorAll('.task-list-nav-container'));
+  const taskListNavElements = Array.from(document.querySelectorAll('.task-list-nav-item'));
 
   taskLists.forEach((taskList) => {
     taskList.navElement = taskListNavElements.find((taskListNavElement) => {
