@@ -215,6 +215,10 @@ const Task = function(name, ownerId, description, completed, _id) {
 
 };
 
+Task.prototype.setTaskList = function(taskList) {
+  this.taskList = taskList;
+};
+
 
 /*************** Global Helper Functions *******************/
 
