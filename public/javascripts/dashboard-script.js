@@ -26,6 +26,7 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
   this.navElement = createTaskListNavDOMElement(this.name, this.url);
   this.incompleteTaskContainer = createIncompleteTaskContainer();
   this.completedTaskHeader = document.getElementById('completedTaskHeader');
+  this.completedTaskContainer = createCompletedTaskContainer();
 
   this.createTaskListDB = async function() {
     
@@ -57,6 +58,13 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
     const ul = document.createElement('ul');
     ul.classList.add('task-container');
     ul.id = 'incompleteTaskContainer';
+    return ul;
+  }
+
+  function createCompletedTaskContainer() {
+    const ul = document.createElement('ul');
+    ul.classList.add('task-container');
+    ul.id = 'completedTaskContainer';
     return ul;
   }
 
