@@ -95,7 +95,7 @@ TaskList.prototype.populateTaskContainers = function() {
 
 TaskList.prototype.updateTaskListDB = async function(task) {
 
-  const data = task.getDBProps();
+  const data = task;
 
   const response = await fetch('/taskLists', {
     method: 'PUT',
@@ -173,17 +173,6 @@ Task.prototype.createTaskDOMElement = function() {
 
 };
 
-Task.prototype.getDBProps = function() {
-  const props = {
-    name: this.name,
-    completed: this.completed,
-    description: this.description,
-    ownerId: this.ownerId,
-    _id: this._id,
-  };
-  return props;
-};
-
 Task.prototype.toggleCompletedStatus = function() {
   this.completed = !this.completed;
   this.update();
@@ -191,7 +180,7 @@ Task.prototype.toggleCompletedStatus = function() {
 
 Task.prototype.update = async function() {
 
-  const data = this.getDBProps();
+  const data = this;
 
   const response = await fetch('/tasks', {
     method: 'PUT',
