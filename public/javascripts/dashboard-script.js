@@ -203,7 +203,7 @@ Task.prototype.update = async function() {
 /*************** Global Helper Functions *******************/
 
 /*
-*   Set the URL to the taskListName.
+*   Set the page URL to the activeTaskList.name.
 */
 const changePageURL = () => {
   
