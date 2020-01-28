@@ -529,9 +529,7 @@ centerCol.addEventListener('click', function(e) {
 
     const taskElement = e.target.parentElement;
 
-    const taskElementName = taskElement.querySelector('span[contenteditable="true"]').textContent;
-
-    const task = activeTaskList.tasks.find(task => task.name === taskElementName);
+    const task = activeTaskList.tasks.find(task => task.element === taskElement);
 
     task.toggleCompletedStatus();
 
