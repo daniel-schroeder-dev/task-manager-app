@@ -10,7 +10,7 @@ const completedTaskHeader = document.getElementById('completedTaskHeader');
 const completedTaskContainer = document.getElementById('completedTaskContainer');
 const createTaskInput = document.getElementById('createTask');
 const addListButton = document.getElementById('addListButton');
-const saveButton = document.querySelector('.btn-save');
+const saveListButton = document.querySelector('#addListBox .btn-save');
 const siteIcon = document.getElementById('siteIcon');
 
 
@@ -311,7 +311,7 @@ const removeBox = (boxID) => {
     
     if (boxID === 'addListBox') createListInput.value = '';
     
-    saveButton.setAttribute('disabled', true);
+    saveListButton.setAttribute('disabled', true);
 
   }, 100);
 
@@ -574,7 +574,7 @@ centerCol.addEventListener('keydown', (e) => {
 
 The createListInput event listener below has to be a 'keyup' event. You 
 refactored once before to make it match the createTaskInput event listener, 
-but it broke the functionality because the saveButton stayed disabled when 
+but it broke the functionality because the saveListButton stayed disabled when 
 only 1 character was entered. Apparently, when the 'keydown' event fires, the 
 createListInput will not have the value of the character in the input stored 
 yet, so you can't check for it the listener.
@@ -601,12 +601,12 @@ createListInput.addEventListener('keyup', function(e) {
   }
 
   /*
-  *   Enable the saveButton when there are no characters in the
+  *   Enable the saveListButton when there are no characters in the
   *   createListInput.
   */
-  if (this.value.length) return saveButton.removeAttribute('disabled');
+  if (this.value.length) return saveListButton.removeAttribute('disabled');
   
-  saveButton.setAttribute('disabled', true);
+  saveListButton.setAttribute('disabled', true);
 
 });
 
