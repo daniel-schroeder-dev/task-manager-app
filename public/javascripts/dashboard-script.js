@@ -57,6 +57,8 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
     const i = document.createElement('i');
     const span = document.createElement('span');
     const a = document.createElement('a');
+
+    div.classList.add('task-list-nav-container');
     
     a.classList.add('task-list-nav');
     a.href = url
@@ -212,7 +214,9 @@ const initTaskLists = async () => {
   *   2. Assign them to the appropriate taskList.navElement.
   */
 
-  // const taskListNavElements = document.querySelectorAll('')
+  const taskListNavElements = document.querySelectorAll('.task-list-nav-container');
+
+  console.log(taskListNavElements);
 
 };
 
