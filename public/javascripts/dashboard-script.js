@@ -23,7 +23,7 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
   this.tasks = tasks || [];
   this.ownerId = ownerId;
   this._id = _id;
-  this.element = createTaskListDOMElement(this.name, this.url);
+  this.navElement = createTaskListNavDOMElement(this.name, this.url);
 
   this.createTaskListDB = async function() {
     
@@ -51,7 +51,7 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
     updateTaskListDB(task);
   }
 
-  function createTaskListDOMElement(taskListName, url) {
+  function createTaskListNavDOMElement(taskListName, url) {
     
     const div = document.createElement('div');
     const i = document.createElement('i');
@@ -365,7 +365,7 @@ document.addEventListener('click', (e) => {
     const createListsContainer = document.getElementById('createListsContainer');
     const taskList = new TaskList(createListInput.value);
     
-    createListsContainer.firstElementChild.after(taskList.element);
+    createListsContainer.firstElementChild.after(taskList.navElement);
     
     taskLists.push(taskList);
     taskList.createTaskListDB();
