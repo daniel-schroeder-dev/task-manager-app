@@ -609,15 +609,15 @@ centerCol.addEventListener('click', function(e) {
     
     */
 
-    taskElement.remove();
-    taskElement.classList.remove('active-task');
+    task.element.remove();
+    task.element.classList.remove('active-task');
 
     if (e.target.classList.contains('fa-check-square')) {
-      taskElement.classList.add('completed-task');
-      completedTaskContainer.prepend(taskElement);
+      task.element.classList.add('completed-task');
+      activeTaskList.completedTaskContainer.prepend(task.element);
     } else {
-      taskElement.classList.remove('completed-task');
-      incompleteTaskContainer.append(taskElement);
+      task.element.classList.remove('completed-task');
+      activeTaskList.incompleteTaskContainer.append(task.element);
     }
 
     return;
