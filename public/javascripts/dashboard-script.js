@@ -374,8 +374,6 @@ const updateTaskListUI = (taskListToAdd, taskListToRemove) => {
 
   taskListToAdd.populateTaskContainers();
 
-  activeTaskList = taskListToAdd;
-  
 };
 
 
@@ -674,18 +672,18 @@ leftCol.addEventListener('click', (e) => {
   if (e.target.tagName !== 'A' && e.target.parentElement.tagName !== 'A') return;
   
   e.preventDefault();
-  
-  let taskList = null;
+
+  const taskListToRemove = activeTaskList;
   
   if (e.target.tagName === 'A') {
 
-    taskList = taskLists.find((taskList) => {
+    activeTaskList = taskLists.find((taskList) => {
       return taskList.url === e.target.getAttribute('href');
     });
 
   } else {
 
-    taskList = taskLists.find((taskList) => {
+    activeTaskList = taskLists.find((taskList) => {
       return taskList.name === e.target.textContent;
     });
 
@@ -693,7 +691,7 @@ leftCol.addEventListener('click', (e) => {
   
   changePageURL(taskList.name);
   updatePageState(taskList.name);
-  updateTaskListUI(taskList, activeTaskList);
+  updateTaskListUI(activeTaskList, taskListToRemove);
 
 });
 
