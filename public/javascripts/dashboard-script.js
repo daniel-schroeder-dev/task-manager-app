@@ -688,6 +688,8 @@ saveListButton.addEventListener('click', function(e) {
 */
 if (centerCol.querySelector('li')) {
   siteIcon.style.display = 'none';
+} else {
+  completedTaskHeader.style.display = 'none';
 }
 
 /*
