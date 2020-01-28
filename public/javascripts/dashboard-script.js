@@ -719,11 +719,7 @@ createTaskInput.addEventListener('keydown', async function(e) {
   
   if (e.keyCode !== ENTER_KEYCODE) return;
 
-  const taskList = taskLists.find((taskList) => {
-    return taskList.name === this.previousElementSibling.textContent;
-  });
-
-  const task = new Task(this.value, taskList._id);
+  const task = new Task(this.value, activeTaskList._id);
 
   /* 
   *   Have to 'await' this Task to be created in the DB because the _id field
@@ -732,7 +728,7 @@ createTaskInput.addEventListener('keydown', async function(e) {
   */
   await task.createTaskDB();
 
-  task.setTaskList(taskList);
+  task.setTaskList(activeTaskList);
 
   /*
   *   The task that is just created will be the .active-task, so make sure to 
@@ -743,7 +739,7 @@ createTaskInput.addEventListener('keydown', async function(e) {
     centerCol.querySelector('.active-task').classList.remove('active-task');
   }
 
-  taskList.addTask(task);
+  activeTaskList.addTask(task);
 
   /*
 
@@ -757,7 +753,7 @@ createTaskInput.addEventListener('keydown', async function(e) {
   
   */
   if (!centerCol.querySelector('li')) {
-    taskList.siteIcon.style.display = 'none';
+    activeTaskList.siteIcon.style.display = 'none';
   }
   
   this.value = '';
