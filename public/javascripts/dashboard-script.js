@@ -348,16 +348,6 @@ const updatePageState = () => {
 };
 
 /*
-
-*** TODO ***
-
-This method should wipe all tasks from the centerCol, not just the 
-incompleteTaskContainer, as there could be Tasks in the completedTaskContainer 
-that need to be removed as well.
-
-*/
-
-/*
 *   1. Wipes the incompleteTaskContainer of all Tasks.
 *   2. Toggles the siteIcon.
 *   3. Adds all Tasks in the TaskList to the incompleteTaskContainer.
@@ -456,7 +446,6 @@ addListButton.addEventListener('click', () => {
   createListInput.focus();
 
 });
-
 
 /*
 *   This event listener performs ONE of the following options on 'click':
