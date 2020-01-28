@@ -41,7 +41,7 @@ TaskList.prototype.addTask = function(task) {
   
   task.element.classList.add('active-task');
   this.incompleteTaskContainer.prepend(task.element);
-  
+  console.log(task);
   this.updateTaskListDB(task);
 
 };
@@ -218,6 +218,17 @@ const Task = function(name, ownerId, description, completed, _id) {
 
 Task.prototype.setTaskList = function(taskList) {
   this.taskList = taskList;
+};
+
+Task.prototype.getDBProps = function() {
+  const props = {
+    name: this.name,
+    completed: this.completed,
+    description: this.description,
+    ownerId: this.ownerId,
+    _id: this._id,
+  };
+  return props;
 };
 
 
@@ -411,7 +422,9 @@ const updateTaskListUI = (taskListToAdd, taskListToRemove) => {
 
   taskListToAdd.populateTaskContainers();
 
-  centerCol.append(taskListToAdd.element);
+  activeTaskList = taskListToAdd;
+
+  centerCol.append(activeTaskList.element);
   
 };
 
