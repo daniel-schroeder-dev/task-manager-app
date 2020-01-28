@@ -359,6 +359,7 @@ const updateTaskListUI = (taskListToRemove) => {
 
   if (!activeTaskList.tasks.length) {
     siteIcon.style.display = 'block';
+    completedTaskHeader.style.display = 'none';
   } else {
     siteIcon.style.display = 'none';
   }
