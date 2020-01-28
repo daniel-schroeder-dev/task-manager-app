@@ -422,7 +422,7 @@ document.addEventListener('click', (e) => {
     
     changePageURL(taskList.name);
     updatePageState(taskList.name);
-    updateTaskListUI(taskList.name, taskListToRemove);
+    updateTaskListUI(taskList.element, taskListToRemove);
     
     removeBox('addListBox');
 
