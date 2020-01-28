@@ -375,6 +375,13 @@ const setTodaysDate = () => {
 
 };
 
+const toggleCompletedCheckbox = (checkbox) => {
+  checkbox.classList.toggle('far');
+  checkbox.classList.toggle('fa-square');
+  checkbox.classList.toggle('fas');
+  checkbox.classList.toggle('fa-check-square');
+};
+
 /*
 *   Changes the page title and placeholder for the createTaskInput to match
 *   the currently loaded TaskList.
