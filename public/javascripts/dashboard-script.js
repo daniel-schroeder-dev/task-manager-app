@@ -22,6 +22,9 @@ const siteIcon = document.getElementById('siteIcon');
 
 /**************** Constructor Functions **********************/
 
+const TaskContainer = function(element) {
+  this.element = element;
+};
 
 const TaskList = function(name, url, tasks, ownerId, _id) {
   
