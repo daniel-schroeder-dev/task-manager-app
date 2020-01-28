@@ -41,7 +41,6 @@ TaskList.prototype.addTask = function(task) {
   
   task.element.classList.add('active-task');
   this.incompleteTaskContainer.prepend(task.element);
-  console.log(task);
   this.updateTaskListDB(task);
 
 };
@@ -585,6 +584,10 @@ centerCol.addEventListener('click', function(e) {
     e.target.classList.toggle('fa-check-square');
 
     const taskElement = e.target.parentElement;
+
+    const taskElementName = taskElement.querySelector('span[contenteditable="true"]').textContent;
+
+    const task = activeTaskList.tasks.find(task => task.name === taskElementName);
 
     /*
 
