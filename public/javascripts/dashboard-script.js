@@ -719,8 +719,9 @@ saveListButton.addEventListener('click', function(e) {
 
 
 /*
-*   When the page first loads, check to see if we need to wipe the siteIcon 
-*   from the centerCol.
+*   When the page first loads, if there are any tasks in the centerCol, 
+*   remove the siteIcon. If there aren't any tasks, remove the 
+*   completedTaskToggle.
 */
 if (centerCol.querySelector('li')) {
   siteIcon.style.display = 'none';
