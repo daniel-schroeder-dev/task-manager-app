@@ -258,6 +258,7 @@ i {
 
 .task-list-nav {
   text-decoration: none;
+  color: inherit;
   /* Need a bigger target to click on for nav */
   display: inline-block;
   width: 100%;
