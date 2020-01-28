@@ -51,8 +51,10 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
 
   };
 
-  this.addTask = function(task) {
+  this.addTask = async function(task) {
     this.tasks.push(task);
+    task.element.classList.add('active-task');
+    this.incompleteTaskContainer.prepend(task.element);
     updateTaskListDB(task);
   }
 
@@ -705,8 +707,6 @@ createTaskInput.addEventListener('keydown', async function(e) {
   */
   await task.createTaskDB();
 
-  taskList.addTask(task);
-  
   /*
   *   The task that is just created will be the .active-task, so make sure to 
   *   remove .active-task from any tasks in the centerCol before adding the 
@@ -715,6 +715,8 @@ createTaskInput.addEventListener('keydown', async function(e) {
   if (centerCol.querySelector('.active-task')) {
     centerCol.querySelector('.active-task').classList.remove('active-task');
   }
+
+  taskList.addTask(task);
 
   /*
 
@@ -728,11 +730,9 @@ createTaskInput.addEventListener('keydown', async function(e) {
   
   */
   if (!centerCol.querySelector('li')) {
-    siteIcon.style.display = 'none';
+    taskList.siteIcon.style.display = 'none';
   }
   
-  task.element.classList.add('active-task');
-  incompleteTaskContainer.prepend(task.element);
   this.value = '';
 
 });
