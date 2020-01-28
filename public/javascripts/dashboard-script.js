@@ -176,7 +176,7 @@ const changePageURL = (taskListName) => {
 *   and Task objects for client-side use. 
 *   2. Stores all TaskLists in the taskLists array.
 *   3. Associates server-generated DOM elements with correct Task.element in
-*   in the taskLists array.
+*   in the taskLists array and TaskList.navElement.
 */
 const initTaskLists = async () => {
   
@@ -216,12 +216,11 @@ const initTaskLists = async () => {
 
   const taskListNavElements = Array.from(document.querySelectorAll('.task-list-nav-container'));
 
-  // taskLists.forEach((taskList) => {
-  //   taskList.navElement = taskListNavElements.find((taskListNavElement) => {
-  //     console.log(taskListNavElement.lastElementChild.lastElementChild.textContent);
-  //     taskListNavElement.lastElementChild.textContent === taskList.name;
-  //   });
-  // });
+  taskLists.forEach((taskList) => {
+    taskList.navElement = taskListNavElements.find((taskListNavElement) => {
+      return taskListNavElement.lastElementChild.lastElementChild.textContent === taskList.name;
+    });
+  });
 
 };
 
