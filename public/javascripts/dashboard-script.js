@@ -247,7 +247,7 @@ Task.prototype.update = async function() {
   });
 
   const json = await response.json();
-  
+
 };
 
 /*************** Global Helper Functions *******************/
@@ -608,26 +608,6 @@ centerCol.addEventListener('click', function(e) {
     const taskElementName = taskElement.querySelector('span[contenteditable="true"]').textContent;
 
     const task = activeTaskList.tasks.find(task => task.name === taskElementName);
-
-    /*
-
-    *** NOTE ***
-    
-    This is a point where I realized that I need to be associating the DOM
-    elements that are generated server-side with the task.element property
-    whenever the page is loaded, so that marking a task as completed won't
-    involve so much convoluted querying. I'm leaving the code below just in 
-    case I'm wrong about my new direction, I'll have where I left off saved.
-
-    const taskName = taskElement.querySelector('span[contenteditable="true"]').textContent;
-
-    const taskListName = document.getElementById('pageTitle').textContent;
-
-    const [ taskList ] = taskLists.filter(taskList => taskList.name === taskListName);
-
-    const [ task ] = taskList.tasks.filter(task => task.name === taskName);
-    
-    */
 
     task.element.remove();
     task.element.classList.remove('active-task');
