@@ -234,6 +234,20 @@ Task.prototype.toggleCompletedStatus = function() {
   this.update();
 };
 
+Task.prototype.update = async function() {
+
+  const data = this.getDBProps();
+
+  const response = await fetch('/tasks', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+
+  const json = await response.json();
+};
 
 /*************** Global Helper Functions *******************/
 
