@@ -233,6 +233,8 @@ const initTaskLists = async () => {
 
   currentDisplayedTaskList.completedTaskContainer = document.getElementById('completedTaskContainer');
 
+  currentDisplayedTaskList.element = document.querySelector('#centerCol div');
+
   const currentDisplayedTasks = Array.from(document.querySelectorAll('.task-container li'));
 
   currentDisplayedTaskList.tasks.forEach((task) => {
