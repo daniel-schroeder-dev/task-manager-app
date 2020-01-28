@@ -358,7 +358,7 @@ that need to be removed as well.
 *   2. Toggles the siteIcon.
 *   3. Adds all Tasks in the TaskList to the incompleteTaskContainer.
 */
-const updateTaskListUI = (taskListName) => {
+const updateTaskListUI = (taskListName, taskListToRemove) => {
 
   while (incompleteTaskContainer.firstChild) {
     incompleteTaskContainer.firstChild.remove();
