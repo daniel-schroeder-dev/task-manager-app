@@ -440,7 +440,7 @@ const updateTaskListUI = (taskListToAdd, taskListToRemove) => {
 
   activeTaskList = taskListToAdd;
 
-  centerCol.append(activeTaskList.element);
+  centerCol.insertBefore(activeTaskList.element, siteIcon);
   
 };
 
@@ -500,8 +500,6 @@ document.addEventListener('click', (e) => {
     removeBox('addListBox');
 
     createTaskInput.focus();
-
-    // activeTaskList.siteIcon.style.display = 'block';
     
     return;
 
