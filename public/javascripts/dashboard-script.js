@@ -1,5 +1,5 @@
 const taskLists = [];
-const activeTaskList = {};
+let activeTaskList = {};
 const ENTER_KEYCODE = 13;
 
 const leftCol = document.getElementById('leftCol');
@@ -266,19 +266,19 @@ const initTaskLists = async () => {
 
   const currentDisplayedTaskListName = document.getElementById('pageTitle').textContent;
 
-  const currentDisplayedTaskList = taskLists.find(taskList => taskList.name === currentDisplayedTaskListName);
+  activeTaskList = taskLists.find(taskList => taskList.name === currentDisplayedTaskListName);
 
-  currentDisplayedTaskList.incompleteTaskContainer = document.getElementById('incompleteTaskContainer');
+  activeTaskList.incompleteTaskContainer = document.getElementById('incompleteTaskContainer');
 
-  currentDisplayedTaskList.completedTaskHeader = document.getElementById('completedTaskHeader');
+  activeTaskList.completedTaskHeader = document.getElementById('completedTaskHeader');
 
-  currentDisplayedTaskList.completedTaskContainer = document.getElementById('completedTaskContainer');
+  activeTaskList.completedTaskContainer = document.getElementById('completedTaskContainer');
 
-  currentDisplayedTaskList.element = document.querySelector('#centerCol div');
+  activeTaskList.element = document.querySelector('#centerCol div');
 
   const currentDisplayedTasks = Array.from(document.querySelectorAll('.task-container li'));
 
-  currentDisplayedTaskList.tasks.forEach((task) => {
+  activeTaskList.tasks.forEach((task) => {
     task.element = currentDisplayedTasks.find(taskElement => taskElement.children[1].textContent === task.name);
   });
 
