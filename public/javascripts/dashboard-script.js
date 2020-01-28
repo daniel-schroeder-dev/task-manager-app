@@ -1,4 +1,5 @@
 const taskLists = [];
+const activeTaskList = {};
 const ENTER_KEYCODE = 13;
 
 const leftCol = document.getElementById('leftCol');
