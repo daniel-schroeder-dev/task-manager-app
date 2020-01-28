@@ -395,6 +395,7 @@ const updateTaskListUI = (taskListToRemove) => {
     completedTaskToggle.style.display = 'none';
   } else {
     siteIcon.style.display = 'none';
+    completedTaskToggle.style.display = 'block';
   }
 
   activeTaskList.populateTaskContainers();
