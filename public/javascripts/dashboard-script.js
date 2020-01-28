@@ -6,8 +6,7 @@ const leftCol = document.getElementById('leftCol');
 const centerCol = document.getElementById('centerCol');
 
 const taskListNavContainer = document.getElementById('taskListNavContainer');
-const incompleteTaskContainer = document.getElementById('incompleteTaskContainer');
-const completedTaskContainer = document.getElementById('completedTaskContainer');
+
 
 const completedTaskToggle = document.getElementById('completedTaskToggle');
 
@@ -743,3 +742,7 @@ setTodaysDate();
 *   array.
 */
 initTaskLists();
+
+const incompleteTaskContainer = new TaskContainer(document.getElementById('incompleteTaskContainer'));
+const completedTaskContainer = new TaskContainer(document.getElementById('completedTaskContainer'));
+
