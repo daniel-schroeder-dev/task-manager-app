@@ -485,26 +485,28 @@ document.addEventListener('click', (e) => {
 
     */
     
-    const taskListNameToRemove = document.getElementById('pageTitle').textContent;
-    const taskListToRemove = taskLists.find(taskList => taskList.name === taskListNameToRemove);
+    // const taskListNameToRemove = document.getElementById('pageTitle').textContent;
+    // const taskListToRemove = taskLists.find(taskList => taskList.name === taskListNameToRemove);
+
+    const taskListToRemove = activeTaskList;
 
     const createListsContainer = document.getElementById('createListsContainer');
-    const taskList = new TaskList(createListInput.value);
+    activeTaskList = new TaskList(createListInput.value);
     
-    createListsContainer.firstElementChild.after(taskList.navElement);
+    createListsContainer.firstElementChild.after(activeTaskList.navElement);
     
-    taskLists.push(taskList);
-    taskList.createTaskListDB();
+    taskLists.push(activeTaskList);
+    activeTaskList.createTaskListDB();
     
-    changePageURL(taskList.name);
-    updatePageState(taskList.name);
-    updateTaskListUI(taskList, taskListToRemove);
+    changePageURL(activeTaskList.name);
+    updatePageState(activeTaskList.name);
+    updateTaskListUI(activeTaskList, taskListToRemove);
     
     removeBox('addListBox');
 
     createTaskInput.focus();
 
-    siteIcon.style.display = 'block';
+    // activeTaskList.siteIcon.style.display = 'block';
     
     return;
 
