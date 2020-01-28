@@ -245,7 +245,7 @@ const initTaskLists = async () => {
   */
 
   setActiveTaskList();
-  setTaskElementsInActiveTask();
+  setTaskElementsInActiveTaskList();
 
   /*
   *   1. Get all TaskList nav elements.
@@ -333,12 +333,14 @@ const setActiveTaskList = () => {
   activeTaskList = taskLists.find(taskList => taskList.name === currentDisplayedTaskListName);
 };
 
-const setTaskElementsInActiveTask = () => {
-  const currentDisplayedTasks = Array.from(document.querySelectorAll('.task-container li'));
+const setTaskElementsInActiveTaskListList = () => {
+
+  const currentDisplayedTasks = document.querySelectorAll('.task-container li');
 
   activeTaskList.tasks.forEach((task) => {
-    task.element = currentDisplayedTasks.find(taskElement => taskElement.children[1].textContent === task.name);
+    task.element = Array.prototype.find.call(currentDisplayedTasks, ((taskElement) => taskElement.children[1].textContent === task.name));
   });
+
 };
 
 /*
