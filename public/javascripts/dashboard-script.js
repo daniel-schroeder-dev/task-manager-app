@@ -23,135 +23,136 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
   this.tasks = tasks || [];
   this.ownerId = ownerId;
   this._id = _id;
-  this.navElement = createTaskListNavDOMElement(this.name, this.url);
-  this.incompleteTaskContainer = createIncompleteTaskContainer();
-  this.completedTaskHeader = createCompletedTaskHeader();
-  this.completedTaskContainer = createCompletedTaskContainer();
-  this.element = createTopLevelDOMElement(this);
+  
   this.siteIcon = document.getElementById('siteIcon');
+  
+  this.createTaskListNavDOMElement();
+  this.createIncompleteTaskContainer();
+  this.createCompletedTaskHeader();
+  this.createCompletedTaskContainer();
+  this.createTopLevelDOMElement();
 
-  this.createTaskListDB = async function() {
-    
-    const data = {
-      url: this.url,
-      name: this.name,
-    };
+};
 
-    const response = await fetch('/taskLists', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
+TaskList.prototype.addTask = function(task) {
+  
+  this.tasks.push(task);
+  
+  task.element.classList.add('active-task');
+  this.incompleteTaskContainer.prepend(task.element);
+  
+  this.updateTaskListDB(task);
 
-    const taskList = await response.json();
+};
 
-    this._id = taskList._id;
+TaskList.prototype.createCompletedTaskContainer = function() {
+  this.completedTaskContainer = document.createElement('ul');
+  this.completedTaskContainer.classList.add('task-container');
+  this.completedTaskContainer.id = 'completedTaskContainer';
+};
 
+TaskList.prototype.createCompletedTaskHeader = function() {
+  this.completedTaskHeader = document.createElement('div');
+  const i = document.createElement('i');
+  const span = document.createElement('span');
+
+  this.completedTaskHeader.id = 'completedTaskHeader';
+  i.classList.add('fas', 'fa-caret-down');
+  span.textContent = 'Completed';
+
+  this.completedTaskHeader.append(i);
+  this.completedTaskHeader.append(span);
+
+  return this.completedTaskHeader;
+};
+
+TaskList.prototype.createIncompleteTaskContainer = function() {
+  this.incompleteTaskContainer = document.createElement('ul');
+  this.incompleteTaskContainer.classList.add('task-container');
+  this.incompleteTaskContainer.id = 'incompleteTaskContainer';
+};
+
+TaskList.prototype.createTaskListDB = async function() {
+
+  const data = {
+    url: this.url,
+    name: this.name,
   };
 
-  this.addTask = function(task) {
-    this.tasks.push(task);
-    task.element.classList.add('active-task');
-    this.incompleteTaskContainer.prepend(task.element);
-    updateTaskListDB(task);
-  }
+  const response = await fetch('/taskLists', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
 
-  this.populateTaskContainers = function() {
-    this.tasks.forEach((task, i) => {
-      if (i === this.tasks.length - 1) {
-        task.element.classList.add('active-task');
-      }
-      if (task.completed) {
-        this.completedTaskContainer.prepend(task.element);
-      } else {
-        this.incompleteTaskContainer.prepend(task.element);
-      }
-    });
-  }
+  const taskList = await response.json();
 
-  function createCompletedTaskHeader() {
-    const div = document.createElement('div');
-    const i = document.createElement('i');
-    const span = document.createElement('span');
+  this._id = taskList._id;
 
-    div.id = 'completedTaskHeader';
-    i.classList.add('fas', 'fa-caret-down');
-    span.textContent = 'Completed';
+};
 
-    div.append(i);
-    div.append(span);
-
-    return div;
-  }
-
-  function createTopLevelDOMElement(taskList) {
-    const div = document.createElement('div');
-    div.append(taskList.incompleteTaskContainer);
-    div.append(taskList.completedTaskHeader)
-    div.append(taskList.completedTaskContainer);
-    return div;
-  }
-
-  function createIncompleteTaskContainer() {
-    const ul = document.createElement('ul');
-    ul.classList.add('task-container');
-    ul.id = 'incompleteTaskContainer';
-    return ul;
-  }
-
-  function createCompletedTaskContainer() {
-    const ul = document.createElement('ul');
-    ul.classList.add('task-container');
-    ul.id = 'completedTaskContainer';
-    return ul;
-  }
-
-  function createTaskListNavDOMElement(taskListName, url) {
+TaskList.prototype.createTaskListNavDOMElement = function() {
     
-    const div = document.createElement('div');
-    const i = document.createElement('i');
-    const span = document.createElement('span');
-    const a = document.createElement('a');
+  this.navElement = document.createElement('div');
+  const i = document.createElement('i');
+  const span = document.createElement('span');
+  const a = document.createElement('a');
 
-    div.classList.add('task-list-nav-container');
-    
-    a.classList.add('task-list-nav');
-    a.href = url
+  this.navElement.classList.add('task-list-nav-container');
+  
+  a.classList.add('task-list-nav');
+  a.href = this.url;
 
-    span.textContent = taskListName;
+  span.textContent = this.name;
 
-    // Fix wierd margin collapse when DOM element is added but page isn't reloaded.
-    span.style.marginLeft = '4px' 
+  // Fix wierd margin collapse when DOM element is added but page isn't reloaded.
+  span.style.marginLeft = '4px' 
 
-    i.classList.add('fas', 'fa-bars');
+  i.classList.add('fas', 'fa-bars');
 
-    a.appendChild(i);
-    a.appendChild(span);
-    div.appendChild(a);
+  a.appendChild(i);
+  a.appendChild(span);
+  this.navElement.appendChild(a);
 
-    return div;
+};
 
-  }
+TaskList.prototype.createTopLevelDOMElement = function() {
+  this.element = document.createElement('div');
+  this.element.append(this.incompleteTaskContainer);
+  this.element.append(this.completedTaskHeader)
+  this.element.append(this.completedTaskContainer);
+};
 
-  async function updateTaskListDB(task) {
+TaskList.prototype.populateTaskContainers = function() {
+  this.tasks.forEach((task, i) => {
+    if (i === this.tasks.length - 1) {
+      task.element.classList.add('active-task');
+    }
+    if (task.completed) {
+      this.completedTaskContainer.prepend(task.element);
+    } else {
+      this.incompleteTaskContainer.prepend(task.element);
+    }
+  });
+};
 
-    const data = {
-      task,
-    };
+TaskList.prototype.updateTaskListDB = async function(task) {
 
-    const response = await fetch('/taskLists', {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
+  const data = {
+    task,
+  };
 
-    const json = await response.json();
+  const response = await fetch('/taskLists', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
 
-  }
+  const json = await response.json();
 
 };
 
