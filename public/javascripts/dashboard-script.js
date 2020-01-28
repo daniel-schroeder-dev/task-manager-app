@@ -141,9 +141,7 @@ TaskList.prototype.populateTaskContainers = function() {
 
 TaskList.prototype.updateTaskListDB = async function(task) {
 
-  const data = {
-    task,
-  };
+  const data = task.getDBProps();
 
   const response = await fetch('/taskLists', {
     method: 'PUT',
