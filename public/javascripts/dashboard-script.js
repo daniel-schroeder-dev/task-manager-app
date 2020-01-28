@@ -209,6 +209,17 @@ const changePageURL = () => {
   
   const url = '/' + activeTaskList.name.toLowerCase().replace(/\s/gi, '-');
   
+  /*
+
+  *** RESEARCH ***
+  
+  I'm not exactly sure how the HistoryAPI works, or if I'm using this
+  correctly. I copied this from a project I did using the HistoryAPI, 
+  but I need to understand what's happening here if this code is going
+  to stay in this project.
+
+  */
+
   window.history.replaceState({ taskListName: activeTaskList.name }, '', url);
   
 };
