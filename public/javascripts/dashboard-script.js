@@ -5,7 +5,7 @@ const ENTER_KEYCODE = 13;
 const leftCol = document.getElementById('leftCol');
 const centerCol = document.getElementById('centerCol');
 const createListInput = document.getElementById('createList');
-const createListsContainer = document.getElementById('createListsContainer');
+const taskListNavContainer = document.getElementById('taskListNavContainer');
 const incompleteTaskContainer = document.getElementById('incompleteTaskContainer');
 const completedTaskHeader = document.getElementById('completedTaskHeader');
 const completedTaskContainer = document.getElementById('completedTaskContainer');
@@ -663,7 +663,7 @@ saveListButton.addEventListener('click', function(e) {
   const taskListToRemove = activeTaskList;
   activeTaskList = new TaskList(createListInput.value);
 
-  createListsContainer.firstElementChild.after(activeTaskList.navElement);
+  taskListNavContainer.firstElementChild.after(activeTaskList.navElement);
   
   taskLists.push(activeTaskList);
   activeTaskList.createTaskListDB();
