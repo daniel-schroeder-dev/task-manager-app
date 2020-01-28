@@ -785,13 +785,10 @@ leftCol.addEventListener('click', (e) => {
     });
 
   }
-
-  const taskListNameToRemove = document.getElementById('pageTitle').textContent;
-  const taskListToRemove = taskLists.find(taskList => taskList.name === taskListNameToRemove);
   
   changePageURL(taskList.name);
   updatePageState(taskList.name);
-  updateTaskListUI(taskList, taskListToRemove);
+  updateTaskListUI(taskList, activeTaskList);
 
 });
 
