@@ -441,7 +441,7 @@ const updateTaskListUI = (taskListToAdd, taskListToRemove) => {
 
   activeTaskList = taskListToAdd;
 
-  centerCol.insertBefore(activeTaskList.element, siteIcon);
+  // centerCol.insertBefore(activeTaskList.element, siteIcon);
   
 };
 
