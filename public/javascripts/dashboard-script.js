@@ -390,7 +390,7 @@ const updatePageState = () => {
 
 /*
 *   1. Wipes the incompleteTaskContainer of all Tasks.
-*   2. Adds all Tasks in the TaskList to the incompleteTaskContainer.
+*   2. Adds all Tasks in the activeTaskList to correct the TaskContainers.
 */
 const updateTaskListUI = (taskListToRemove) => {
   taskListToRemove.tasks.forEach(task => task.element.remove());
