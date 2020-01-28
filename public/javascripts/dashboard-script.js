@@ -394,6 +394,17 @@ const toggleCompletedCheckbox = (checkbox) => {
   checkbox.classList.toggle('fa-check-square');
 };
 
+const toggleCompletedStatus = (checkbox) => {
+  
+  toggleCompletedCheckbox(checkbox);
+
+  const taskElement = checkbox.parentElement;
+  const task = activeTaskList.tasks.find(task => task.element === taskElement);
+
+  task.toggleCompletedStatus();
+
+};
+
 /*
 *   Changes the page title and placeholder for the createTaskInput to match
 *   the currently loaded TaskList.
@@ -525,12 +536,7 @@ centerCol.addEventListener('click', function(e) {
   */
   if (e.target.tagName === 'I') {
     
-    toggleCompletedCheckbox(e.target);
-
-    const taskElement = e.target.parentElement;
-    const task = activeTaskList.tasks.find(task => task.element === taskElement);
-
-    task.toggleCompletedStatus();
+    toggleCompletedStatus(e.target);
 
     return;
 
