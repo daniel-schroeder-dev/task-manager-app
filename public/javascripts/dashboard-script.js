@@ -247,7 +247,9 @@ const initTaskLists = async () => {
   lists.forEach((taskList) => {
 
     const tasks = taskList.tasks.map((task) => {
-      return new Task(task.name, task.ownerId, task.description, task.completed, task._id);
+      const task = new Task(task.name, task.ownerId, task.description, task.completed, task._id);
+      task.setTaskList(taskList);
+      return task;
     });
 
     taskLists.push(new TaskList(taskList.name, taskList.url, tasks, taskList.ownerId, taskList._id));
