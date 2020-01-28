@@ -371,28 +371,20 @@ that need to be removed as well.
 *   2. Toggles the siteIcon.
 *   3. Adds all Tasks in the TaskList to the incompleteTaskContainer.
 */
-const updateTaskListUI = (taskListName, taskListToRemove) => {
+const updateTaskListUI = (taskListToAdd, taskListToRemove) => {
 
-  // while (incompleteTaskContainer.firstChild) {
-  //   incompleteTaskContainer.firstChild.remove();
-  // }
   taskListToRemove.element.remove();
 
-  // const taskList = taskLists.find(taskList => taskList.name === taskListName);
-  
-  if (!taskList.tasks.length) {
+  if (!taskListToAdd.tasks.length) {
     siteIcon.style.display = 'block';
   } else {
     siteIcon.style.display = 'none';
   }
-  
-  taskList.tasks.forEach((task, i) => {
-    if (i === taskList.tasks.length - 1) {
-      task.element.classList.add('active-task');
-    }
-    incompleteTaskContainer.prepend(task.element);
-  });
 
+  taskListToAdd.populateTaskContainers();
+
+  centerCol.append(taskListToAdd.element);
+  
 };
 
 
@@ -435,7 +427,7 @@ document.addEventListener('click', (e) => {
     
     changePageURL(taskList.name);
     updatePageState(taskList.name);
-    updateTaskListUI(taskList.element, taskListToRemove);
+    updateTaskListUI(taskList, taskListToRemove);
     
     removeBox('addListBox');
 
