@@ -38,7 +38,7 @@ TaskList.prototype.addTask = function(task) {
   this.tasks.push(task);
   
   task.element.classList.add('active-task');
-  this.incompleteTaskContainer.prepend(task.element);
+  incompleteTaskContainer.prepend(task.element);
   this.updateTaskListDB(task);
 
 };
