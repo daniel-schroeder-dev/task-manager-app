@@ -337,6 +337,10 @@ const setTaskElementsInActiveTaskList = () => {
 
 };
 
+/*
+*   Sets the taskList.navElement of each taskList in the global taskLists
+*   array to reference the taskListNavElements in the DOM.
+*/
 const setTaskListNavElements = () => {
 
   const taskListNavElements = document.querySelectorAll('.task-list-nav-item');
