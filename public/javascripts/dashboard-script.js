@@ -1,4 +1,4 @@
-const taskLists = [];
+let taskLists = [];
 let activeTaskList = {};
 const ENTER_KEYCODE = 13;
 
@@ -236,16 +236,13 @@ const changePageURL = () => {
 */
 const initTaskLists = async () => {
 
-  const lists = await loadTaskLists();
+  taskLists = await loadTaskLists();
 
-  lists.forEach((taskList) => {
-
-    const tasks = taskList.tasks.map((task) => {
+  taskLists = taskLists.map((taskList) => {
+    taskList.tasks = taskList.tasks.map((task) => {
       return new Task(task.name, task.ownerId, task.description, task.completed, task._id);
     });
-
-    taskLists.push(new TaskList(taskList.name, taskList.url, tasks, taskList.ownerId, taskList._id));
-  
+    return new TaskList(taskList.name, taskList.url, taskList.tasks, taskList.ownerId, taskList._id);
   });
 
   /*
