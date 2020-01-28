@@ -55,6 +55,19 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
     updateTaskListDB(task);
   }
 
+  this.populateTaskContainers = function() {
+    this.tasks.forEach((task, i) => {
+      if (i === taskList.tasks.length - 1) {
+        task.element.classList.add('active-task');
+      }
+      if (task.completed) {
+        this.completedTaskContainer.prepend(task.element);
+      } else {
+        this.incompleteTaskContainer.prepend(task.element);
+      }
+    });
+  }
+
   function createTopLevelDOMElement(taskList) {
     const div = document.createElement('div');
     div.append(taskList.incompleteTaskContainer);
@@ -365,7 +378,7 @@ const updateTaskListUI = (taskListName, taskListToRemove) => {
   // }
   taskListToRemove.element.remove();
 
-  const taskList = taskLists.find(taskList => taskList.name === taskListName);
+  // const taskList = taskLists.find(taskList => taskList.name === taskListName);
   
   if (!taskList.tasks.length) {
     siteIcon.style.display = 'block';
