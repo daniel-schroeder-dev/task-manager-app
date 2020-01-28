@@ -247,6 +247,7 @@ Task.prototype.update = async function() {
   });
 
   const json = await response.json();
+  
 };
 
 /*************** Global Helper Functions *******************/
