@@ -316,11 +316,17 @@ const instantiateTasksAndTaskLists = async () => {
 *   displayed on the page.
 */
 const setActiveTaskList = () => {
+
   const currentDisplayedTaskListName = document.getElementById('pageTitle').textContent;
 
   activeTaskList = taskLists.find(taskList => taskList.name === currentDisplayedTaskListName);
+
 };
 
+/*
+*   Sets up the task.element property of the tasks in the activeTaskList to 
+*   reference the DOM elements displayed on the page.
+*/
 const setTaskElementsInActiveTaskList = () => {
 
   const currentDisplayedTasks = document.querySelectorAll('.task-container li');
