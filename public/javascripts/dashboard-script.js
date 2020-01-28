@@ -244,9 +244,7 @@ const initTaskLists = async () => {
   *   in the activeTaskList.tasks array.
   */
 
-  const currentDisplayedTaskListName = document.getElementById('pageTitle').textContent;
-
-  activeTaskList = taskLists.find(taskList => taskList.name === currentDisplayedTaskListName);
+  setActiveTaskList();
 
   const currentDisplayedTasks = Array.from(document.querySelectorAll('.task-container li'));
 
@@ -332,6 +330,12 @@ const instantiateTasksAndTaskLists = async () => {
     });
     return new TaskList(taskList.name, taskList.url, taskList.tasks, taskList.ownerId, taskList._id);
   });;
+};
+
+const setActiveTaskList = () => {
+  const currentDisplayedTaskListName = document.getElementById('pageTitle').textContent;
+
+  activeTaskList = taskLists.find(taskList => taskList.name === currentDisplayedTaskListName);
 };
 
 /*
