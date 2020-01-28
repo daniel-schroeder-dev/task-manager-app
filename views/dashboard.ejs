@@ -106,7 +106,7 @@
         <ul id="completedTaskContainer" class="task-container">
           <% tasks.forEach((task) => { %>
             <% if (task.completed) { %>
-              <li class="completed-task">
+              <li>
                 <i class="fas fa-check-square"></i>
                 <span contenteditable="true"><%= task.name %></span>
                 <span class="ellipsis">&#8230;</span>

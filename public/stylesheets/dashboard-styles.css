@@ -307,10 +307,15 @@ i {
   right: -20px;
 }
 
-.completed-task,
-.completed-task i {
+#completedTaskContainer,
+#completedTaskContainer i {
   color: #ababab;
 }
+
+/*.completed-task,
+.completed-task i {
+  color: #ababab;
+}*/
 
 #completedTaskHeader {
   margin-top: 24px;
