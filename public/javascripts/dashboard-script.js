@@ -375,10 +375,7 @@ const updateTaskListUI = (taskListToRemove) => {
 *     a.) Removes addListBox or editTaskBox from the DOM when a close button 
 *     is clicked.
 *
-*     b.) Creates a new TaskList in the DOM/DB and updates the URL to be the 
-*     TaskList name when a save button is clicked.
-*
-*     c.) Shows the editTaskBox when the ellipsis is clicked.
+*     b.) Shows the editTaskBox when the ellipsis is clicked.
 */
 document.addEventListener('click', (e) => {
 
@@ -387,33 +384,6 @@ document.addEventListener('click', (e) => {
   */
   if (e.target.id === 'close' || e.target.classList.contains('btn-close')) {
     return removeBox(e.target.getAttribute('data-target'));
-  }
-  
-  /*
-  *   Create a new TaskList in the DOM/DB, update the URL and page state.
-  */
-  if (e.target.classList.contains('btn-save')) {
-
-    const taskListToRemove = activeTaskList;
-
-    const createListsContainer = document.getElementById('createListsContainer');
-    activeTaskList = new TaskList(createListInput.value);
-    
-    createListsContainer.firstElementChild.after(activeTaskList.navElement);
-    
-    taskLists.push(activeTaskList);
-    activeTaskList.createTaskListDB();
-    
-    changePageURL();
-    updatePageState();
-    updateTaskListUI(taskListToRemove);
-    
-    removeBox('addListBox');
-
-    createTaskInput.focus();
-    
-    return;
-
   }
   
   /*
@@ -682,6 +652,32 @@ leftCol.addEventListener('click', (e) => {
   updatePageState();
   updateTaskListUI(taskListToRemove);
 
+});
+
+/*
+*   Create a new TaskList in the DOM/DB, update the URL and page state.
+*/
+saveListButton.addEventListener('click', function(e) {
+
+  const taskListToRemove = activeTaskList;
+  activeTaskList = new TaskList(createListInput.value);
+
+  // move to global scope?
+  const createListsContainer = document.getElementById('createListsContainer');
+  
+  createListsContainer.firstElementChild.after(activeTaskList.navElement);
+  
+  taskLists.push(activeTaskList);
+  activeTaskList.createTaskListDB();
+  
+  changePageURL();
+  updatePageState();
+  updateTaskListUI(taskListToRemove);
+  
+  removeBox('addListBox');
+
+  createTaskInput.focus();
+  
 });
 
 
