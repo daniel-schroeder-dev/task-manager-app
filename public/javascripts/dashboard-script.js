@@ -657,8 +657,8 @@ createTaskInput.addEventListener('keydown', async function(e) {
   await task.createTaskDB();
 
   activeTaskList.addTask(task);
-  siteIcon.style.display = 'none';
-  completedTaskToggle.style.display = 'block';
+  // siteIcon.style.display = 'none';
+  // completedTaskToggle.style.display = 'block';
   this.value = '';
 
 });
