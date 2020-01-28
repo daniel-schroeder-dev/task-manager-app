@@ -229,6 +229,11 @@ Task.prototype.getDBProps = function() {
   return props;
 };
 
+Task.prototype.toggleCompletedStatus = function() {
+  this.completed = !this.completed;
+  this.update();
+};
+
 
 /*************** Global Helper Functions *******************/
 
@@ -613,14 +618,14 @@ centerCol.addEventListener('click', function(e) {
     task.element.classList.remove('active-task');
 
     if (e.target.classList.contains('fa-check-square')) {
-      task.completed = true;
       task.element.classList.add('completed-task');
       activeTaskList.completedTaskContainer.prepend(task.element);
     } else {
-      task.completed = false;
       task.element.classList.remove('completed-task');
       activeTaskList.incompleteTaskContainer.append(task.element);
     }
+
+    task.toggleCompletedStatus();
 
     return;
 
