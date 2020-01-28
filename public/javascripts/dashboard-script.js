@@ -199,11 +199,11 @@ Task.prototype.update = async function() {
 /*
 *   Set the URL to the taskListName.
 */
-const changePageURL = (taskListName) => {
+const changePageURL = () => {
   
-  const url = '/' + taskListName.toLowerCase().replace(/\s/gi, '-');
+  const url = '/' + activeTaskList.name.toLowerCase().replace(/\s/gi, '-');
   
-  window.history.replaceState({ taskListName }, '', url);
+  window.history.replaceState({ taskListName: activeTaskList.name }, '', url);
   
 };
 
@@ -414,7 +414,7 @@ document.addEventListener('click', (e) => {
     taskLists.push(activeTaskList);
     activeTaskList.createTaskListDB();
     
-    changePageURL(activeTaskList.name);
+    changePageURL();
     updatePageState(activeTaskList.name);
     updateTaskListUI(activeTaskList, taskListToRemove);
     
@@ -689,7 +689,7 @@ leftCol.addEventListener('click', (e) => {
 
   }
   
-  changePageURL(activeTaskList.name);
+  changePageURL();
   updatePageState(activeTaskList.name);
   updateTaskListUI(activeTaskList, taskListToRemove);
 
