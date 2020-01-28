@@ -5,6 +5,7 @@ const ENTER_KEYCODE = 13;
 const leftCol = document.getElementById('leftCol');
 const centerCol = document.getElementById('centerCol');
 const createListInput = document.getElementById('createList');
+const createListsContainer = document.getElementById('createListsContainer');
 const incompleteTaskContainer = document.getElementById('incompleteTaskContainer');
 const completedTaskHeader = document.getElementById('completedTaskHeader');
 const completedTaskContainer = document.getElementById('completedTaskContainer');
@@ -662,9 +663,6 @@ saveListButton.addEventListener('click', function(e) {
   const taskListToRemove = activeTaskList;
   activeTaskList = new TaskList(createListInput.value);
 
-  // move to global scope?
-  const createListsContainer = document.getElementById('createListsContainer');
-  
   createListsContainer.firstElementChild.after(activeTaskList.navElement);
   
   taskLists.push(activeTaskList);
