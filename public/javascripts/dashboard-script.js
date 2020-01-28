@@ -170,19 +170,11 @@ const changePageURL = (taskListName) => {
 };
 
 /*
-
-*** TODO ***
-
-initTaskLists() should determine the currently loaded taskList on the page, and
-setup DOM elements for the TaskList and the Task elements that are on the page
-that reference the elements on the page.
-
-*/
-
-/*
-*   Loads TaskLists from the DB and instantiates the appropriate TaskList and 
-*   Task objects for client-side use. Stores all TaskLists in the taskLists 
-*   array.
+*   1. Loads TaskLists from the DB and instantiates the appropriate TaskList 
+*   and Task objects for client-side use. 
+*   2. Stores all TaskLists in the taskLists array.
+*   3. Associates server-generated DOM elements with correct Task.element in
+*   in the taskLists array.
 */
 const initTaskLists = async () => {
   
@@ -198,9 +190,22 @@ const initTaskLists = async () => {
   
   });
 
+  /*
+  *   1. Determine the current taskList that is loaded.
+  *   2. Get a reference from the taskLists array to the loaded taskList.
+  *   3. Associate the DOM elements representing Tasks with the correct Task 
+  *   in the taskList.tasks array.
+  */
+
   const currentDisplayedTaskListName = document.getElementById('pageTitle').textContent;
 
-  const [ currentDisplayedTaskList ] = taskLists.filter(taskList => taskList.name === currentDisplayedTaskListName);
+  const currentDisplayedTaskList = taskLists.find(taskList => taskList.name === currentDisplayedTaskListName);
+
+  const currentDisplayedTasks = Array.from(document.querySelectorAll('.task-container li'));
+
+  currentDisplayedTaskList.tasks.forEach((task) => {
+    task.element = currentDisplayedTasks.find(taskElement => taskElement.children[1].textContent === task.name);
+  });
 
 };
 
