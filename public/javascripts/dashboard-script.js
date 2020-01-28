@@ -94,6 +94,10 @@ TaskList.prototype.createTaskListNavDOMElement = function() {
 };
 
 TaskList.prototype.populateTaskContainers = function() {
+  if (!this.tasks.length) {
+    siteIcon.style.display = 'block';
+    completedTaskToggle.style.display = 'none';
+  }
   this.tasks.forEach((task, i) => {
     if (i === this.tasks.length - 1) {
       task.element.classList.add('active-task');
@@ -657,8 +661,6 @@ createTaskInput.addEventListener('keydown', async function(e) {
   await task.createTaskDB();
 
   activeTaskList.addTask(task);
-  // siteIcon.style.display = 'none';
-  // completedTaskToggle.style.display = 'block';
   this.value = '';
 
 });
