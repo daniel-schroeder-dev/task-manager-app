@@ -25,9 +25,10 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
   this._id = _id;
   this.navElement = createTaskListNavDOMElement(this.name, this.url);
   this.incompleteTaskContainer = createIncompleteTaskContainer();
-  this.completedTaskHeader = document.getElementById('completedTaskHeader');
+  this.completedTaskHeader = createCompletedTaskHeader();
   this.completedTaskContainer = createCompletedTaskContainer();
   this.element = createTopLevelDOMElement(this);
+  this.siteIcon = document.getElementById('siteIcon');
 
   this.createTaskListDB = async function() {
     
@@ -57,7 +58,7 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
 
   this.populateTaskContainers = function() {
     this.tasks.forEach((task, i) => {
-      if (i === taskList.tasks.length - 1) {
+      if (i === this.tasks.length - 1) {
         task.element.classList.add('active-task');
       }
       if (task.completed) {
@@ -66,6 +67,21 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
         this.incompleteTaskContainer.prepend(task.element);
       }
     });
+  }
+
+  function createCompletedTaskHeader() {
+    const div = document.createElement('div');
+    const i = document.createElement('i');
+    const span = document.createElement('span');
+
+    div.id = 'completedTaskHeader';
+    i.classList.add('fas', 'fa-caret-down');
+    span.textContent = 'Completed';
+
+    div.append(i);
+    div.append(span);
+
+    return div;
   }
 
   function createTopLevelDOMElement(taskList) {
@@ -244,6 +260,8 @@ const initTaskLists = async () => {
 
   currentDisplayedTaskList.incompleteTaskContainer = document.getElementById('incompleteTaskContainer');
 
+  currentDisplayedTaskList.completedTaskHeader = document.getElementById('completedTaskHeader');
+
   currentDisplayedTaskList.completedTaskContainer = document.getElementById('completedTaskContainer');
 
   currentDisplayedTaskList.element = document.querySelector('#centerCol div');
@@ -376,9 +394,9 @@ const updateTaskListUI = (taskListToAdd, taskListToRemove) => {
   taskListToRemove.element.remove();
 
   if (!taskListToAdd.tasks.length) {
-    siteIcon.style.display = 'block';
+    taskListToAdd.siteIcon.style.display = 'block';
   } else {
-    siteIcon.style.display = 'none';
+    taskListToAdd.siteIcon.style.display = 'none';
   }
 
   taskListToAdd.populateTaskContainers();
@@ -414,9 +432,18 @@ document.addEventListener('click', (e) => {
   *   Create a new TaskList in the DOM/DB, update the URL and page state.
   */
   if (e.target.classList.contains('btn-save')) {
+
+    /*
+
+    *** TODO ***
+    
+    Make getting the taskListToRemove into a function, you use it in two places.
+
+    */
     
     const taskListNameToRemove = document.getElementById('pageTitle').textContent;
     const taskListToRemove = taskLists.find(taskList => taskList.name === taskListNameToRemove);
+
     const createListsContainer = document.getElementById('createListsContainer');
     const taskList = new TaskList(createListInput.value);
     
@@ -720,23 +747,28 @@ leftCol.addEventListener('click', (e) => {
   
   e.preventDefault();
   
-  let taskListName = '';
+  let taskList = null;
   
   if (e.target.tagName === 'A') {
 
-    const taskList = taskLists.find((taskList) => {
+    taskList = taskLists.find((taskList) => {
       return taskList.url === e.target.getAttribute('href');
     });
 
-    taskListName = taskList.name;
-
   } else {
-    taskListName = e.target.textContent;
+
+    taskList = taskLists.find((taskList) => {
+      return taskList.name === e.target.textContent;
+    });
+
   }
+
+  const taskListNameToRemove = document.getElementById('pageTitle').textContent;
+  const taskListToRemove = taskLists.find(taskList => taskList.name === taskListNameToRemove);
   
-  changePageURL(taskListName);
-  updatePageState(taskListName);
-  updateTaskListUI(taskListName);
+  changePageURL(taskList.name);
+  updatePageState(taskList.name);
+  updateTaskListUI(taskList, taskListToRemove);
 
 });
 
