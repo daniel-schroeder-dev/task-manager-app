@@ -459,6 +459,19 @@ centerCol.addEventListener('click', function(e) {
     e.target.classList.toggle('fas');
     e.target.classList.toggle('fa-check-square');
 
+    const task = e.target.parentElement;
+    
+    task.remove();
+    task.classList.remove('active-task');
+
+    if (e.target.classList.contains('fa-check-square')) {
+      task.classList.add('completed-task');
+      completedTaskContainer.prepend(task);
+    } else {
+      task.classList.remove('completed-task');
+      incompleteTaskContainer.append(task);
+    }
+
     return;
 
   }
