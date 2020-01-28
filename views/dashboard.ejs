@@ -108,7 +108,7 @@
             <% if (task.completed) { %>
               <li class="completed-task">
                 <i class="fas fa-check-square"></i>
-                <span contenteditable="true">Completed Task</span>
+                <span contenteditable="true"><%= task.name %></span>
                 <span class="ellipsis">&#8230;</span>
               </li>
             <% } %>
