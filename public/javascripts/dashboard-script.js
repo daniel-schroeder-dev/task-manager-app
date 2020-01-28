@@ -523,13 +523,13 @@ centerCol.addEventListener('click', function(e) {
     task.element.remove();
     task.element.classList.remove('active-task');
 
-    if (e.target.classList.contains('fa-check-square')) {
+    task.toggleCompletedStatus();
+
+    if (task.completed) {
       completedTaskContainer.add(task.element);
     } else {
       incompleteTaskContainer.add(task.element);
     }
-
-    task.toggleCompletedStatus();
 
     return;
 
