@@ -20,4 +20,9 @@ router.post('/', auth, async (req, res, next) => {
   res.json(task);
 });
 
+router.put('/', auth, async (req, res, next) => {
+  const updatedTask = await Task.findByIdAndUpdate(req.body._id, req.body, { new: true });
+  res.json(updatedTask);
+});
+
 module.exports = router;
