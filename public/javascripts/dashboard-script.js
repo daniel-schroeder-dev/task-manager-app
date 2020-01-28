@@ -198,6 +198,10 @@ const initTaskLists = async () => {
   
   });
 
+  const currentDisplayedTaskListName = document.getElementById('pageTitle').textContent;
+
+  const [ currentDisplayedTaskList ] = taskLists.filter(taskList => taskList.name === currentDisplayedTaskListName);
+
 };
 
 
