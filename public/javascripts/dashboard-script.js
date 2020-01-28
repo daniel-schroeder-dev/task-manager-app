@@ -26,10 +26,10 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
   this._id = _id;
   
   this.createTaskListNavDOMElement();
-  this.createIncompleteTaskContainer();
-  this.createCompletedTaskHeader();
-  this.createCompletedTaskContainer();
-  this.createTopLevelDOMElement();
+  // this.createIncompleteTaskContainer();
+  // this.createCompletedTaskHeader();
+  // this.createCompletedTaskContainer();
+  // this.createTopLevelDOMElement();
 
 };
 
@@ -43,32 +43,32 @@ TaskList.prototype.addTask = function(task) {
 
 };
 
-TaskList.prototype.createCompletedTaskContainer = function() {
-  this.completedTaskContainer = document.createElement('ul');
-  this.completedTaskContainer.classList.add('task-container');
-  this.completedTaskContainer.id = 'completedTaskContainer';
-};
+// TaskList.prototype.createCompletedTaskContainer = function() {
+//   this.completedTaskContainer = document.createElement('ul');
+//   this.completedTaskContainer.classList.add('task-container');
+//   this.completedTaskContainer.id = 'completedTaskContainer';
+// };
 
-TaskList.prototype.createCompletedTaskHeader = function() {
-  this.completedTaskHeader = document.createElement('div');
-  const i = document.createElement('i');
-  const span = document.createElement('span');
+// TaskList.prototype.createCompletedTaskHeader = function() {
+//   this.completedTaskHeader = document.createElement('div');
+//   const i = document.createElement('i');
+//   const span = document.createElement('span');
 
-  this.completedTaskHeader.id = 'completedTaskHeader';
-  i.classList.add('fas', 'fa-caret-down');
-  span.textContent = 'Completed';
+//   this.completedTaskHeader.id = 'completedTaskHeader';
+//   i.classList.add('fas', 'fa-caret-down');
+//   span.textContent = 'Completed';
 
-  this.completedTaskHeader.append(i);
-  this.completedTaskHeader.append(span);
+//   this.completedTaskHeader.append(i);
+//   this.completedTaskHeader.append(span);
 
-  return this.completedTaskHeader;
-};
+//   return this.completedTaskHeader;
+// };
 
-TaskList.prototype.createIncompleteTaskContainer = function() {
-  this.incompleteTaskContainer = document.createElement('ul');
-  this.incompleteTaskContainer.classList.add('task-container');
-  this.incompleteTaskContainer.id = 'incompleteTaskContainer';
-};
+// TaskList.prototype.createIncompleteTaskContainer = function() {
+//   this.incompleteTaskContainer = document.createElement('ul');
+//   this.incompleteTaskContainer.classList.add('task-container');
+//   this.incompleteTaskContainer.id = 'incompleteTaskContainer';
+// };
 
 TaskList.prototype.createTaskListDB = async function() {
 
@@ -116,12 +116,12 @@ TaskList.prototype.createTaskListNavDOMElement = function() {
 
 };
 
-TaskList.prototype.createTopLevelDOMElement = function() {
-  this.element = document.createElement('div');
-  this.element.append(this.incompleteTaskContainer);
-  this.element.append(this.completedTaskHeader)
-  this.element.append(this.completedTaskContainer);
-};
+// TaskList.prototype.createTopLevelDOMElement = function() {
+//   this.element = document.createElement('div');
+//   this.element.append(this.incompleteTaskContainer);
+//   this.element.append(this.completedTaskHeader)
+//   this.element.append(this.completedTaskContainer);
+// };
 
 TaskList.prototype.populateTaskContainers = function() {
   this.tasks.forEach((task, i) => {
@@ -129,9 +129,9 @@ TaskList.prototype.populateTaskContainers = function() {
       task.element.classList.add('active-task');
     }
     if (task.completed) {
-      this.completedTaskContainer.prepend(task.element);
+      completedTaskContainer.prepend(task.element);
     } else {
-      this.incompleteTaskContainer.prepend(task.element);
+      incompleteTaskContainer.prepend(task.element);
     }
   });
 };
@@ -295,13 +295,13 @@ const initTaskLists = async () => {
 
   activeTaskList = taskLists.find(taskList => taskList.name === currentDisplayedTaskListName);
 
-  activeTaskList.incompleteTaskContainer = document.getElementById('incompleteTaskContainer');
+  // activeTaskList.incompleteTaskContainer = document.getElementById('incompleteTaskContainer');
 
-  activeTaskList.completedTaskHeader = document.getElementById('completedTaskHeader');
+  // activeTaskList.completedTaskHeader = document.getElementById('completedTaskHeader');
 
-  activeTaskList.completedTaskContainer = document.getElementById('completedTaskContainer');
+  // activeTaskList.completedTaskContainer = document.getElementById('completedTaskContainer');
 
-  activeTaskList.element = document.querySelector('#centerCol div');
+  // activeTaskList.element = document.querySelector('#centerCol div');
 
   const currentDisplayedTasks = Array.from(document.querySelectorAll('.task-container li'));
 

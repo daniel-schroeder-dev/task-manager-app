@@ -83,7 +83,6 @@
       <h1 id="pageTitle"><%= pageTitle %></h1>
       <input type="text" name="createTask" id="createTask" placeholder="Add Task to &quot;<%= pageTitle %>&quot;">
       
-      <div>
         <ul id="incompleteTaskContainer" class="task-container">
           <% tasks.forEach((task, i) => { %>
             <% if (task.completed) return; %>
@@ -98,10 +97,12 @@
               </li>
           <% }); %>
         </ul>
+
         <div id="completedTaskHeader">
           <i class="fas fa-caret-down"></i>
           <span>Completed</span>
         </div>
+        
         <ul id="completedTaskContainer" class="task-container">
           <% tasks.forEach((task) => { %>
             <% if (task.completed) { %>
@@ -114,13 +115,10 @@
           <% }); %>
         </ul>
       
-      </div>
-      
       <div id="siteIcon">
         <i class="fas fa-clipboard-list"></i>
         <p>Tap the input box to create some new tasks</p>
       </div>
-    
     
     </div>
 
