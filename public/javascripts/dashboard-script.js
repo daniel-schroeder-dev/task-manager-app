@@ -620,6 +620,7 @@ createTaskInput.addEventListener('keydown', async function(e) {
 
   activeTaskList.addTask(task);
   siteIcon.style.display = 'none';
+  completedTaskHeader.style.display = 'block';
   this.value = '';
 
 });
