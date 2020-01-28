@@ -311,6 +311,10 @@ const instantiateTasksAndTaskLists = async () => {
   });;
 };
 
+/*
+*   Sets the activeTaskList global variable to the taskList that is currently
+*   displayed on the page.
+*/
 const setActiveTaskList = () => {
   const currentDisplayedTaskListName = document.getElementById('pageTitle').textContent;
 
