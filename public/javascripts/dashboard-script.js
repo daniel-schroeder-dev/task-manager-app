@@ -214,9 +214,14 @@ const initTaskLists = async () => {
   *   2. Assign them to the appropriate taskList.navElement.
   */
 
-  const taskListNavElements = document.querySelectorAll('.task-list-nav-container');
+  const taskListNavElements = Array.from(document.querySelectorAll('.task-list-nav-container'));
 
-  console.log(taskListNavElements);
+  // taskLists.forEach((taskList) => {
+  //   taskList.navElement = taskListNavElements.find((taskListNavElement) => {
+  //     console.log(taskListNavElement.lastElementChild.lastElementChild.textContent);
+  //     taskListNavElement.lastElementChild.textContent === taskList.name;
+  //   });
+  // });
 
 };
 
