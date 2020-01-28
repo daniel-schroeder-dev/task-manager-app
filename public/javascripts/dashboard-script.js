@@ -207,6 +207,13 @@ const initTaskLists = async () => {
     task.element = currentDisplayedTasks.find(taskElement => taskElement.children[1].textContent === task.name);
   });
 
+  /*
+  *   1. Get all TaskList nav elements.
+  *   2. Assign them to the appropriate taskList.navElement.
+  */
+
+  // const taskListNavElements = document.querySelectorAll('')
+
 };
 
 
