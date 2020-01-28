@@ -689,8 +689,8 @@ leftCol.addEventListener('click', (e) => {
 
   }
   
-  changePageURL(taskList.name);
-  updatePageState(taskList.name);
+  changePageURL(activeTaskList.name);
+  updatePageState(activeTaskList.name);
   updateTaskListUI(activeTaskList, taskListToRemove);
 
 });
