@@ -23,19 +23,19 @@
         <div id="todaysDate">
           <span id="date"></span>
         </div>
-        <div class="task-list-nav-container">
+        <div class="task-list-nav-item">
           <a href="/today" class="task-list-nav">
             <i class="fas fa-calendar"></i>
             <span>Today</span>
           </a>
         </div>
-        <div class="task-list-nav-container">
+        <div class="task-list-nav-item">
           <a href="/week" class="task-list-nav">
             <i class="fas fa-calendar-alt"></i>
             <span>Next 7 Days</span>
           </a>
         </div>
-        <div class="task-list-nav-container">
+        <div class="task-list-nav-item">
           <a href="/inbox" class="task-list-nav">
             <i class="fas fa-archive"></i>
             <span>Inbox</span>
@@ -49,7 +49,7 @@
         </div>
         <% taskLists.forEach((taskList) => { %>
         <% if (taskList.name === 'Inbox') return; %>
-        <div class="task-list-nav-container">
+        <div class="task-list-nav-item">
           <a class="task-list-nav" href="<%= taskList.url %>">
             <i class="fas fa-bars"></i>
             <span data-id=<%= taskList._id %>><%= taskList.name %></span>
@@ -63,13 +63,13 @@
       </div>
 
       <div id="completedListsContainer" class="list-container">
-        <div class="task-list-nav-container">
+        <div class="task-list-nav-item">
           <a href="/completed" class="task-list-nav">
             <i class="fas fa-check-square"></i>
             <span>Completed</span>
           </a>
         </div>
-        <div class="task-list-nav-container">
+        <div class="task-list-nav-item">
           <a href="/trash" class="task-list-nav">
             <i class="fas fa-trash"></i>
             <span>Trash</span>
