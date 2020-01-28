@@ -25,6 +25,7 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
   this._id = _id;
   this.navElement = createTaskListNavDOMElement(this.name, this.url);
   this.incompleteTaskContainer = createIncompleteTaskContainer();
+  this.completedTaskHeader = document.getElementById('completedTaskHeader');
 
   this.createTaskListDB = async function() {
     
