@@ -528,7 +528,6 @@ centerCol.addEventListener('click', function(e) {
     toggleCompletedCheckbox(e.target);
 
     const taskElement = e.target.parentElement;
-
     const task = activeTaskList.tasks.find(task => task.element === taskElement);
 
     task.toggleCompletedStatus();
