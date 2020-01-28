@@ -4,14 +4,19 @@ const ENTER_KEYCODE = 13;
 
 const leftCol = document.getElementById('leftCol');
 const centerCol = document.getElementById('centerCol');
-const createListInput = document.getElementById('createList');
+
 const taskListNavContainer = document.getElementById('taskListNavContainer');
 const incompleteTaskContainer = document.getElementById('incompleteTaskContainer');
-const completedTaskToggle = document.getElementById('completedTaskToggle');
 const completedTaskContainer = document.getElementById('completedTaskContainer');
+
+const completedTaskToggle = document.getElementById('completedTaskToggle');
+
+const createListInput = document.getElementById('createList');
 const createTaskInput = document.getElementById('createTask');
+
 const addListButton = document.getElementById('addListButton');
 const saveListButton = document.querySelector('#addListBox .btn-save');
+
 const siteIcon = document.getElementById('siteIcon');
 
 
