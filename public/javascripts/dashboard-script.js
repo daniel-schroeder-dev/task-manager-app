@@ -473,17 +473,6 @@ document.addEventListener('click', (e) => {
   */
   if (e.target.classList.contains('btn-save')) {
 
-    /*
-
-    *** TODO ***
-    
-    Make getting the taskListToRemove into a function, you use it in two places.
-
-    */
-    
-    // const taskListNameToRemove = document.getElementById('pageTitle').textContent;
-    // const taskListToRemove = taskLists.find(taskList => taskList.name === taskListNameToRemove);
-
     const taskListToRemove = activeTaskList;
 
     const createListsContainer = document.getElementById('createListsContainer');
