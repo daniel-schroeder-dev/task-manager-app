@@ -757,9 +757,10 @@ createTaskInput.addEventListener('keydown', async function(e) {
   to run the conditional, so I dunno...
   
   */
-  if (!centerCol.querySelector('li')) {
-    activeTaskList.siteIcon.style.display = 'none';
-  }
+  // if (!centerCol.querySelector('li')) {
+  //   activeTaskList.siteIcon.style.display = 'none';
+  // }
+  activeTaskList.siteIcon.style.display = 'none';
   
   this.value = '';
 
