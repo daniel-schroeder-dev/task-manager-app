@@ -93,18 +93,18 @@ i {
   left: 2px;
 }
 
-#createListsContainer {
+#taskListNavContainer {
   border-bottom: 1px solid rgba(0,0,0,.08);
 }
 
-#createListsContainer div:first-child {
+#taskListNavContainer div:first-child {
   border-bottom: 1px solid black;
   text-align: center;
   padding-bottom: 8px;
   margin-bottom: 16px;
 }
 
-#createListsContainer div:first-child span {
+#taskListNavContainer div:first-child span {
   margin-right: 10px;
 }
 
