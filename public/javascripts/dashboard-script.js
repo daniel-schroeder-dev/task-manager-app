@@ -170,6 +170,7 @@ const Task = function(name, ownerId, description, completed, _id) {
       name: this.name,
       completed: this.completed,
       ownerId: this.ownerId,
+      description: this.description,
     };
 
     const response = await fetch('/tasks', {
