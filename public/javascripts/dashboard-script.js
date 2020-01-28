@@ -170,6 +170,16 @@ const changePageURL = (taskListName) => {
 };
 
 /*
+
+*** TODO ***
+
+initTaskLists() should determine the currently loaded taskList on the page, and
+setup DOM elements for the TaskList and the Task elements that are on the page
+that reference the elements on the page.
+
+*/
+
+/*
 *   Loads TaskLists from the DB and instantiates the appropriate TaskList and 
 *   Task objects for client-side use. Stores all TaskLists in the taskLists 
 *   array.
@@ -460,17 +470,37 @@ centerCol.addEventListener('click', function(e) {
     e.target.classList.toggle('fas');
     e.target.classList.toggle('fa-check-square');
 
-    const task = e.target.parentElement;
+    const taskElement = e.target.parentElement;
+
+    /*
+
+    *** NOTE ***
     
-    task.remove();
-    task.classList.remove('active-task');
+    This is a point where I realized that I need to be associating the DOM
+    elements that are generated server-side with the task.element property
+    whenever the page is loaded, so that marking a task as completed won't
+    involve so much convoluted querying. I'm leaving the code below just in 
+    case I'm wrong about my new direction, I'll have where I left off saved.
+
+    const taskName = taskElement.querySelector('span[contenteditable="true"]').textContent;
+
+    const taskListName = document.getElementById('pageTitle').textContent;
+
+    const [ taskList ] = taskLists.filter(taskList => taskList.name === taskListName);
+
+    const [ task ] = taskList.tasks.filter(task => task.name === taskName);
+    
+    */
+
+    taskElement.remove();
+    taskElement.classList.remove('active-task');
 
     if (e.target.classList.contains('fa-check-square')) {
-      task.classList.add('completed-task');
-      completedTaskContainer.prepend(task);
+      taskElement.classList.add('completed-task');
+      completedTaskContainer.prepend(taskElement);
     } else {
-      task.classList.remove('completed-task');
-      incompleteTaskContainer.append(task);
+      taskElement.classList.remove('completed-task');
+      incompleteTaskContainer.append(taskElement);
     }
 
     return;
