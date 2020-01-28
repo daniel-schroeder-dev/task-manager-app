@@ -298,6 +298,10 @@ const hideDialogBox = (boxID) => {
 
 };
 
+/*
+*   Uses the taskLists loaded from the DB to create Task and TaskList objects
+*   and returns an array of TaskList objects.
+*/
 const instantiateTasksAndTaskLists = async () => {
   return (await loadTaskLists()).map((taskList) => {
     taskList.tasks = taskList.tasks.map((task) => {
