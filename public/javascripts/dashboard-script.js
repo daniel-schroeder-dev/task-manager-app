@@ -7,7 +7,7 @@ const centerCol = document.getElementById('centerCol');
 const createListInput = document.getElementById('createList');
 const taskListNavContainer = document.getElementById('taskListNavContainer');
 const incompleteTaskContainer = document.getElementById('incompleteTaskContainer');
-const completedTaskHeader = document.getElementById('completedTaskHeader');
+const completedTaskToggle = document.getElementById('completedTaskToggle');
 const completedTaskContainer = document.getElementById('completedTaskContainer');
 const createTaskInput = document.getElementById('createTask');
 const addListButton = document.getElementById('addListButton');
@@ -359,7 +359,7 @@ const updateTaskListUI = (taskListToRemove) => {
 
   if (!activeTaskList.tasks.length) {
     siteIcon.style.display = 'block';
-    completedTaskHeader.style.display = 'none';
+    completedTaskToggle.style.display = 'none';
   } else {
     siteIcon.style.display = 'none';
   }
@@ -441,13 +441,13 @@ centerCol.addEventListener('click', function(e) {
   /*
   *   Toggles the caret icon, and shows/hides the completedTaskContainer.
   */
-  if (e.target.id === 'completedTaskHeader' || e.target.parentElement.id === 'completedTaskHeader') {
+  if (e.target.id === 'completedTaskToggle' || e.target.parentElement.id === 'completedTaskToggle') {
 
     let toggleIcon = '';
 
     if (e.target.tagName === 'I') {
       toggleIcon = e.target;
-    } else if (e.target.id === 'completedTaskHeader') {
+    } else if (e.target.id === 'completedTaskToggle') {
       toggleIcon = e.target.querySelector('i');
     } else {
       toggleIcon = e.target.previousElementSibling;
@@ -455,7 +455,7 @@ centerCol.addEventListener('click', function(e) {
     
     toggleIcon.classList.toggle('fa-caret-down');
     toggleIcon.classList.toggle('fa-caret-right');
-    completedTaskHeader.classList.toggle('tasks-hidden');
+    completedTaskToggle.classList.toggle('tasks-hidden');
     completedTaskContainer.classList.toggle('hidden');
 
     return;
@@ -620,7 +620,7 @@ createTaskInput.addEventListener('keydown', async function(e) {
 
   activeTaskList.addTask(task);
   siteIcon.style.display = 'none';
-  completedTaskHeader.style.display = 'block';
+  completedTaskToggle.style.display = 'block';
   this.value = '';
 
 });
@@ -691,7 +691,7 @@ saveListButton.addEventListener('click', function(e) {
 if (centerCol.querySelector('li')) {
   siteIcon.style.display = 'none';
 } else {
-  completedTaskHeader.style.display = 'none';
+  completedTaskToggle.style.display = 'none';
 }
 
 /*
