@@ -226,12 +226,11 @@ const changePageURL = () => {
 
 /*
 *   1. Loads TaskLists from the DB and instantiates the appropriate TaskList 
-*   and Task objects for client-side use. 
-*   2. Stores all TaskLists in the taskLists array.
-*   3. Sets the activeTaskList to the currently loaded TaskList.
-*   4. Associates server-generated Task DOM elements with correct Task.element 
+*   and Task objects for client-side use and store in the taskLists array.
+*   2. Sets the activeTaskList to the currently loaded TaskList.
+*   3. Associates server-generated Task DOM elements with correct Task.element 
 *   in the activeTaskList array.
-*   5. Associates server-generated TaskListNav DOM elements with correct 
+*   4. Associates server-generated TaskListNav DOM elements with correct 
 *   taskList.navElement.
 */
 const initTaskLists = async () => {
