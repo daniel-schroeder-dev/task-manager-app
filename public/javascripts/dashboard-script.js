@@ -159,7 +159,8 @@ const Task = function(name, ownerId, description, completed, _id) {
   this.completed = completed || false;
   this.ownerId = ownerId;
   this._id = _id;
-  this.element = createTaskDOMElement(this.name);
+
+  this.createTaskDOMElement();
 
   this.createTaskDB = async function() {
     
@@ -184,31 +185,29 @@ const Task = function(name, ownerId, description, completed, _id) {
 
   };
 
-  function createTaskDOMElement(taskName) {
+};
 
-    const li = document.createElement('li');
-    const i = document.createElement('i');
-    const spanTaskName = document.createElement('span');
-    const spanEllipsis = document.createElement('span');
-    
-    i.classList.add('far', 'fa-square');
-    spanEllipsis.classList.add('ellipsis');
-    
-    spanTaskName.setAttribute('contenteditable', 'true');
-    spanTaskName.textContent = taskName;
+Task.prototype.createTaskDOMElement = function() {
 
-    // Fix wierd margin collapse when DOM element is added but page isn't reloaded.
-    spanTaskName.style.marginLeft = '3.5px' 
-    
-    spanEllipsis.innerHTML = '&hellip;';
-    
-    li.appendChild(i);
-    li.appendChild(spanTaskName);
-    li.appendChild(spanEllipsis);
+  this.element = document.createElement('li');
+  const i = document.createElement('i');
+  const spanTaskName = document.createElement('span');
+  const spanEllipsis = document.createElement('span');
+  
+  i.classList.add('far', 'fa-square');
+  spanEllipsis.classList.add('ellipsis');
+  
+  spanTaskName.setAttribute('contenteditable', 'true');
+  spanTaskName.textContent = this.name;
 
-    return li;
-
-  }
+  // Fix wierd margin collapse when DOM element is added but page isn't reloaded.
+  spanTaskName.style.marginLeft = '3.5px' 
+  
+  spanEllipsis.innerHTML = '&hellip;';
+  
+  this.element.appendChild(i);
+  this.element.appendChild(spanTaskName);
+  this.element.appendChild(spanEllipsis);
 
 };
 
