@@ -30,12 +30,7 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
   this.createCompletedTaskHeader();
   this.createCompletedTaskContainer();
   this.createTopLevelDOMElement();
-  this.setSiteIcon();
 
-};
-
-TaskList.prototype.setSiteIcon = function() {
-  this.siteIcon = document.getElementById('siteIcon');
 };
 
 TaskList.prototype.addTask = function(task) {
@@ -274,7 +269,7 @@ const changePageURL = (taskListName) => {
 *   in the taskLists array and TaskList.navElement.
 */
 const initTaskLists = async () => {
-  
+
   const lists = await loadTaskLists();
 
   lists.forEach((taskList) => {
@@ -436,9 +431,9 @@ const updateTaskListUI = (taskListToAdd, taskListToRemove) => {
   taskListToRemove.element.remove();
 
   if (!taskListToAdd.tasks.length) {
-    taskListToAdd.siteIcon.style.display = 'block';
+    siteIcon.style.display = 'block';
   } else {
-    taskListToAdd.siteIcon.style.display = 'none';
+    siteIcon.style.display = 'none';
   }
 
   taskListToAdd.populateTaskContainers();
@@ -760,7 +755,7 @@ createTaskInput.addEventListener('keydown', async function(e) {
   // if (!centerCol.querySelector('li')) {
   //   activeTaskList.siteIcon.style.display = 'none';
   // }
-  activeTaskList.siteIcon.style.display = 'none';
+  siteIcon.style.display = 'none';
   
   this.value = '';
 
