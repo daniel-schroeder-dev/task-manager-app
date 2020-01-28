@@ -428,7 +428,8 @@ that need to be removed as well.
 */
 const updateTaskListUI = (taskListToAdd, taskListToRemove) => {
 
-  taskListToRemove.element.remove();
+  // taskListToRemove.element.remove();
+  taskListToRemove.tasks.forEach(task => task.element.remove());
 
   if (!taskListToAdd.tasks.length) {
     siteIcon.style.display = 'block';
