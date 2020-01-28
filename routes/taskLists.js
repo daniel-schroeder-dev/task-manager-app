@@ -22,8 +22,8 @@ router.post('/', auth, async (req, res, next) => {
 });
 
 router.put('/', auth, async (req, res, next) => {
-  const taskList = await TaskList.findById(req.body.task.ownerId);
-  taskList.tasks.push(req.body.task._id);
+  const taskList = await TaskList.findById(req.body.ownerId);
+  taskList.tasks.push(req.body._id);
   await taskList.save();
   res.json(taskList);
 });
