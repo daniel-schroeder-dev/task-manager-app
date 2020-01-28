@@ -277,7 +277,7 @@ const loadTaskLists = async () => {
 /*
 *   Removes the box with boxID from the DOM and resets the state of the box.
 */
-const removeDialogBox = (boxID) => {
+const hideDialogBox = (boxID) => {
   
   const box = document.getElementById(boxID);
   
@@ -384,7 +384,7 @@ document.addEventListener('click', (e) => {
   *   Close the addListBox or the editTaskBox.
   */
   if (e.target.id === 'close' || e.target.classList.contains('btn-close')) {
-    return removeDialogBox(e.target.getAttribute('data-target'));
+    return hideDialogBox(e.target.getAttribute('data-target'));
   }
   
   /*
@@ -672,7 +672,7 @@ saveListButton.addEventListener('click', function(e) {
   updatePageState();
   updateTaskListUI(taskListToRemove);
   
-  removeDialogBox('addListBox');
+  hideDialogBox('addListBox');
 
   createTaskInput.focus();
   
