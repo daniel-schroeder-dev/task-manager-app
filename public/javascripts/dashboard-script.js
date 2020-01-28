@@ -30,13 +30,8 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
 };
 
 TaskList.prototype.addTask = function(task) {
-  
   this.tasks.push(task);
-  
-  // task.element.classList.add('active-task');
-  // incompleteTaskContainer.prepend(task.element);
   this.updateTaskListDB(task);
-
 };
 
 TaskList.prototype.createTaskListDB = async function() {
@@ -238,7 +233,6 @@ const initTaskLists = async () => {
 
     const tasks = taskList.tasks.map((task) => {
       const newTask = new Task(task.name, task.ownerId, task.description, task.completed, task._id);
-      newTask.taskList = taskList;
       return newTask;
     });
 
@@ -675,8 +669,6 @@ createTaskInput.addEventListener('keydown', async function(e) {
   *   call to work correctly.
   */
   await task.createTaskDB();
-
-  task.taskList = activeTaskList;
 
   activeTaskList.addTask(task);
   siteIcon.style.display = 'none';
