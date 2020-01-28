@@ -86,17 +86,16 @@
       <div>
         <ul id="incompleteTaskContainer" class="task-container">
           <% tasks.forEach((task, i) => { %>
-          <% if (i === 0) { %>
-            <li class="active-task">
-          <% } else { %>
-            <li>
-          <% } %>
-            <% if (!task.completed) { %>
-              <i class="far fa-square"></i>
-              <span contenteditable="true"><%= task.name %></span>
-              <span class="ellipsis">&#8230;</span>
-            </li>
+            <% if (task.completed) return; %>
+            <% if (i === 0) { %>
+              <li class="active-task">
+            <% } else { %>
+              <li>
             <% } %>
+                <i class="far fa-square"></i>
+                <span contenteditable="true"><%= task.name %></span>
+                <span class="ellipsis">&#8230;</span>
+              </li>
           <% }); %>
         </ul>
         <div id="completedTaskHeader">
