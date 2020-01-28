@@ -236,30 +236,9 @@ const changePageURL = () => {
 const initTaskLists = async () => {
 
   taskLists = await instantiateTasksAndTaskLists();
-
-  /*
-  *   1. Determine the current taskList that is loaded and set activeTaskList
-  *   to reference this list.
-  *   2. Associate the DOM elements representing Tasks with the correct Task 
-  *   in the activeTaskList.tasks array.
-  */
-
   setActiveTaskList();
   setTaskElementsInActiveTaskList();
   setTaskListNavElements();
-
-  /*
-  *   1. Get all TaskList nav elements.
-  *   2. Assign them to the appropriate taskList.navElement.
-  */
-
-  const taskListNavElements = Array.from(document.querySelectorAll('.task-list-nav-item'));
-
-  taskLists.forEach((taskList) => {
-    taskList.navElement = taskListNavElements.find((taskListNavElement) => {
-      return taskListNavElement.lastElementChild.lastElementChild.textContent === taskList.name;
-    });
-  });
 
 };
 
@@ -351,7 +330,7 @@ const setTaskListNavElements = () => {
   taskLists.forEach((taskList) => {
     taskList.navElement = Array.prototype.find.call(taskListNavElements, ((taskListNavElement) => taskListNavElement.lastElementChild.lastElementChild.textContent === taskList.name));
   });
-  
+
 };
 
 /*
