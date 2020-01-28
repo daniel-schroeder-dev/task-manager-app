@@ -187,10 +187,20 @@ Task.prototype.createTaskDOMElement = function() {
 };
 
 Task.prototype.toggleCompletedStatus = function() {
+  
   this.completed = !this.completed;
+  
   this.element.remove();
   this.element.classList.remove('active-task');
+  
+  if (this.completed) {
+    completedTaskContainer.add(this.element);
+  } else {
+    incompleteTaskContainer.add(this.element);
+  }
+  
   this.update();
+
 };
 
 Task.prototype.update = async function() {
@@ -523,12 +533,6 @@ centerCol.addEventListener('click', function(e) {
     const task = activeTaskList.tasks.find(task => task.name === taskElementName);
 
     task.toggleCompletedStatus();
-
-    if (task.completed) {
-      completedTaskContainer.add(task.element);
-    } else {
-      incompleteTaskContainer.add(task.element);
-    }
 
     return;
 
