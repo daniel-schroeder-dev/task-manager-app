@@ -178,10 +178,6 @@ Task.prototype.createTaskDOMElement = function() {
 
 };
 
-Task.prototype.setTaskList = function(taskList) {
-  this.taskList = taskList;
-};
-
 Task.prototype.getDBProps = function() {
   const props = {
     name: this.name,
@@ -242,7 +238,7 @@ const initTaskLists = async () => {
 
     const tasks = taskList.tasks.map((task) => {
       const newTask = new Task(task.name, task.ownerId, task.description, task.completed, task._id);
-      newTask.setTaskList(taskList);
+      newTask.taskList = taskList;
       return newTask;
     });
 
@@ -668,7 +664,7 @@ createTaskInput.addEventListener('keydown', async function(e) {
   */
   await task.createTaskDB();
 
-  task.setTaskList(activeTaskList);
+  task.taskList = activeTaskList;
 
   /*
   *   The task that is just created will be the .active-task, so make sure to 
