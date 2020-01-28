@@ -520,7 +520,8 @@ centerCol.addEventListener('click', function(e) {
 
   /*
   *   1. Toggles the completed checkbox of a Task.
-  *   2. Toggles which taskContainer the Task is in.
+  *   2. Toggles the completed status of a Task and which taskContainer the 
+  *   Task is in.
   */
   if (e.target.tagName === 'I') {
     
