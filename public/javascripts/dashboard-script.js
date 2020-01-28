@@ -25,14 +25,17 @@ const TaskList = function(name, url, tasks, ownerId, _id) {
   this.ownerId = ownerId;
   this._id = _id;
   
-  this.siteIcon = document.getElementById('siteIcon');
-  
   this.createTaskListNavDOMElement();
   this.createIncompleteTaskContainer();
   this.createCompletedTaskHeader();
   this.createCompletedTaskContainer();
   this.createTopLevelDOMElement();
+  this.setSiteIcon();
 
+};
+
+TaskList.prototype.setSiteIcon = function() {
+  this.siteIcon = document.getElementById('siteIcon');
 };
 
 TaskList.prototype.addTask = function(task) {
