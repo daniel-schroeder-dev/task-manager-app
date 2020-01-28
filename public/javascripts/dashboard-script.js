@@ -338,12 +338,12 @@ const setTodaysDate = () => {
 *   Changes the page title and placeholder for the createTaskInput to match
 *   the currently loaded TaskList.
 */
-const updatePageState = (taskListName) => {
+const updatePageState = () => {
 
   const pageTitleElement = document.getElementById('pageTitle');
   
-  pageTitleElement.textContent = taskListName;
-  pageTitleElement.nextElementSibling.setAttribute('placeholder', `Add Task to "${taskListName}"`);
+  pageTitleElement.textContent = activeTaskList.name;
+  pageTitleElement.nextElementSibling.setAttribute('placeholder', `Add Task to "${activeTaskList.name}"`);
 
 };
 
@@ -415,7 +415,7 @@ document.addEventListener('click', (e) => {
     activeTaskList.createTaskListDB();
     
     changePageURL();
-    updatePageState(activeTaskList.name);
+    updatePageState();
     updateTaskListUI(activeTaskList, taskListToRemove);
     
     removeBox('addListBox');
@@ -690,7 +690,7 @@ leftCol.addEventListener('click', (e) => {
   }
   
   changePageURL();
-  updatePageState(activeTaskList.name);
+  updatePageState();
   updateTaskListUI(activeTaskList, taskListToRemove);
 
 });
