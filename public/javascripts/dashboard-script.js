@@ -188,6 +188,8 @@ Task.prototype.createTaskDOMElement = function() {
 
 Task.prototype.toggleCompletedStatus = function() {
   this.completed = !this.completed;
+  this.element.remove();
+  this.element.classList.remove('active-task');
   this.update();
 };
 
@@ -519,9 +521,6 @@ centerCol.addEventListener('click', function(e) {
     const taskElementName = taskElement.querySelector('span[contenteditable="true"]').textContent;
 
     const task = activeTaskList.tasks.find(task => task.name === taskElementName);
-
-    task.element.remove();
-    task.element.classList.remove('active-task');
 
     task.toggleCompletedStatus();
 
