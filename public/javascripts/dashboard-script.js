@@ -414,6 +414,15 @@ const setToggleIcon = (clickedElement) => {
 
 };
 
+const toggleCaretIcon = () => {
+  
+  const toggleIcon = setToggleIcon();
+
+  toggleIcon.classList.toggle('fa-caret-down');
+  toggleIcon.classList.toggle('fa-caret-right');
+
+};
+
 const toggleCompletedCheckbox = (checkbox) => {
   checkbox.classList.toggle('far');
   checkbox.classList.toggle('fa-square');
