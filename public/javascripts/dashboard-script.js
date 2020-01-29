@@ -5,7 +5,7 @@ const ENTER_KEYCODE = 13;
 const leftCol = document.getElementById('leftCol');
 const centerCol = document.getElementById('centerCol');
 
-const taskListNavContainer = document.getElementById('taskListNavContainer');
+const listsHeading = document.getElementById('listsHeading');
 
 const incompleteTaskContainer = new TaskContainer(document.getElementById('incompleteTaskContainer'));
 const completedTaskContainer = new TaskContainer(document.getElementById('completedTaskContainer'));
@@ -745,7 +745,11 @@ saveListButton.addEventListener('click', function(e) {
 
   const newActiveTaskList = new TaskList(createListInput.value);
 
-  taskListNavContainer.firstElementChild.after(newActiveTaskList.navElement);
+  /*
+  *   All new TaskLists will be added right under the 'Lists' heading
+  *   in the taskListNavContainer.
+  */
+  listsHeading.after(newActiveTaskList.navElement);
   
   taskLists.push(newActiveTaskList);
   newActiveTaskList.createTaskListDB();
