@@ -252,6 +252,7 @@ const changeActiveTaskList = (newActiveTaskList) => {
   changePageURL(newActiveTaskList);
   updatePageState(newActiveTaskList);
   updateTaskListUI(newActiveTaskList);
+  createTaskInput.focus();
   activeTaskList = newActiveTaskList;
 };
 
@@ -732,8 +733,6 @@ saveListButton.addEventListener('click', function(e) {
   
   hideDialogBox('addListBox');
 
-  createTaskInput.focus();
-  
 });
 
 
