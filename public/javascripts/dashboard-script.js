@@ -549,23 +549,13 @@ centerCol.addEventListener('click', function(e) {
   *   Toggles the completed status of a Task, changing the checkbox icon, 
   *   taskContainer, and completed status on the Task object.
   */
-  if (e.target.tagName === 'I') {
-    
-    toggleCompletedStatus(e.target);
-
-    return;
-
-  }
+  if (e.target.tagName === 'I') return toggleCompletedStatus(e.target);
 
   /*
   *   Set the .active-task to the clicked Task.
   */
-
   if (e.target.tagName === 'LI' || e.target.hasAttribute('contenteditable')) {
-
-    setActiveTask(e.target);
-
-    return;
+    return setActiveTask(e.target);
   }
   
 });
