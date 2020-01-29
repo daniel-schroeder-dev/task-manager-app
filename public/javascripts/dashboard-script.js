@@ -545,17 +545,16 @@ centerCol.addEventListener('click', function(e) {
   }
 
   /*
-  *   Handler for editing a Task. Add focus to the Task that was clicked and 
-  *   make it the only .active-task.
+  *   Set the .active-task to the clicked Task.
   */
 
   if (e.target.tagName === 'LI' || e.target.hasAttribute('contenteditable')) {
 
-    if (!e.target.parentElement.classList.contains('active-task')) {
-      const currentActiveTask = this.querySelector('.active-task');
-      if (currentActiveTask) currentActiveTask.classList.remove('active-task');
-      e.target.parentElement.classList.add('active-task');
-    }
+    const taskElement = e.target.tagName === 'LI' ? e.target : e.target.parentElement;
+
+    this.querySelector('.active-task').classList.remove('active-task');
+
+    taskElement.classList.add('active-task');
 
     return;
   }
