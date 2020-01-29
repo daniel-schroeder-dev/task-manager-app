@@ -10,7 +10,7 @@ router.get('/', (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   const user = await User.create(req.body);
-  TaskList.createDefaultTaskLists(user._id);
+  await TaskList.createDefaultTaskLists(user._id);
   res.cookie('jwt', user.authToken, {
     httpOnly: true,
     expires: new Date(Date.now() + (1000 * 60 * 60 * 24 * 7)),
