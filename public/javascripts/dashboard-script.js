@@ -23,111 +23,11 @@ const siteIcon = document.getElementById('siteIcon');
 
 /**************** Constructor Functions **********************/
 
-function TaskContainer(element) {
-  this.element = element;
-};
 
-TaskContainer.prototype.add = function(element) {
-  siteIcon.style.display = 'none';
-  completedTaskToggle.style.display = 'block';
-  this.element.prepend(element);
-};
+/********************/
+/******* Task *******/
+/********************/
 
-function TaskList(name, url, tasks, ownerId, _id) {
-  
-  this.name = name;
-  this.url = url || '/' + name.toLowerCase().replace(/\s/gi, '-');
-  this.tasks = tasks || [];
-  this.ownerId = ownerId;
-  this._id = _id;
-  
-  this.createTaskListNavDOMElement();
-
-};
-
-TaskList.prototype.addTask = function(task) {
-  this.tasks.push(task);
-  this.updateTaskListDB(task);
-};
-
-TaskList.prototype.createTaskListDB = async function() {
-
-  const data = {
-    url: this.url,
-    name: this.name,
-  };
-
-  const response = await fetch('/taskLists', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  });
-
-  const taskList = await response.json();
-
-  this._id = taskList._id;
-
-};
-
-TaskList.prototype.createTaskListNavDOMElement = function() {
-    
-  this.navElement = document.createElement('div');
-  const i = document.createElement('i');
-  const span = document.createElement('span');
-  const a = document.createElement('a');
-
-  this.navElement.classList.add('task-list-nav-item');
-  
-  a.classList.add('task-list-nav');
-  a.href = this.url;
-
-  span.textContent = this.name;
-
-  // Fix wierd margin collapse when DOM element is added but page isn't reloaded.
-  span.style.marginLeft = '4px' 
-
-  i.classList.add('fas', 'fa-bars');
-
-  a.appendChild(i);
-  a.appendChild(span);
-  this.navElement.appendChild(a);
-
-};
-
-TaskList.prototype.populateTaskContainers = function() {
-  if (!this.tasks.length) {
-    siteIcon.style.display = 'block';
-    completedTaskToggle.style.display = 'none';
-  }
-  this.tasks.forEach((task, i) => {
-    if (i === this.tasks.length - 1) {
-      task.element.classList.add('active-task');
-    }
-    if (task.completed) {
-      completedTaskContainer.add(task.element);
-    } else {
-      incompleteTaskContainer.add(task.element);
-    }
-  });
-};
-
-TaskList.prototype.updateTaskListDB = async function(task) {
-
-  const data = task;
-
-  const response = await fetch('/taskLists', {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  });
-
-  const json = await response.json();
-
-};
 
 function Task(name, ownerId, description, completed, _id) {
 
@@ -225,6 +125,125 @@ Task.prototype.update = async function() {
   const json = await response.json();
 
 };
+
+
+/*****************************/
+/******* TaskContainer *******/
+/*****************************/
+
+
+function TaskContainer(element) {
+  this.element = element;
+};
+
+TaskContainer.prototype.add = function(element) {
+  siteIcon.style.display = 'none';
+  completedTaskToggle.style.display = 'block';
+  this.element.prepend(element);
+};
+
+
+/************************/
+/******* TaskList *******/
+/************************/
+
+
+function TaskList(name, url, tasks, ownerId, _id) {
+  
+  this.name = name;
+  this.url = url || '/' + name.toLowerCase().replace(/\s/gi, '-');
+  this.tasks = tasks || [];
+  this.ownerId = ownerId;
+  this._id = _id;
+  
+  this.createTaskListNavDOMElement();
+
+};
+
+TaskList.prototype.addTask = function(task) {
+  this.tasks.push(task);
+  this.updateTaskListDB(task);
+};
+
+TaskList.prototype.createTaskListDB = async function() {
+
+  const data = {
+    url: this.url,
+    name: this.name,
+  };
+
+  const response = await fetch('/taskLists', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+
+  const taskList = await response.json();
+
+  this._id = taskList._id;
+
+};
+
+TaskList.prototype.createTaskListNavDOMElement = function() {
+    
+  this.navElement = document.createElement('div');
+  const i = document.createElement('i');
+  const span = document.createElement('span');
+  const a = document.createElement('a');
+
+  this.navElement.classList.add('task-list-nav-item');
+  
+  a.classList.add('task-list-nav');
+  a.href = this.url;
+
+  span.textContent = this.name;
+
+  // Fix wierd margin collapse when DOM element is added but page isn't reloaded.
+  span.style.marginLeft = '4px' 
+
+  i.classList.add('fas', 'fa-bars');
+
+  a.appendChild(i);
+  a.appendChild(span);
+  this.navElement.appendChild(a);
+
+};
+
+TaskList.prototype.populateTaskContainers = function() {
+  if (!this.tasks.length) {
+    siteIcon.style.display = 'block';
+    completedTaskToggle.style.display = 'none';
+  }
+  this.tasks.forEach((task, i) => {
+    if (i === this.tasks.length - 1) {
+      task.element.classList.add('active-task');
+    }
+    if (task.completed) {
+      completedTaskContainer.add(task.element);
+    } else {
+      incompleteTaskContainer.add(task.element);
+    }
+  });
+};
+
+TaskList.prototype.updateTaskListDB = async function(task) {
+
+  const data = task;
+
+  const response = await fetch('/taskLists', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+
+  const json = await response.json();
+
+};
+
 
 /*************** Global Helper Functions *******************/
 
