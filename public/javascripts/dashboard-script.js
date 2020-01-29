@@ -703,17 +703,17 @@ leftCol.addEventListener('click', (e) => {
 */
 saveListButton.addEventListener('click', function(e) {
 
-  const taskListToRemove = activeTaskList;
-  activeTaskList = new TaskList(createListInput.value);
+  // const taskListToRemove = activeTaskList;
+  const newActiveTaskList = new TaskList(createListInput.value);
 
-  taskListNavContainer.firstElementChild.after(activeTaskList.navElement);
+  taskListNavContainer.firstElementChild.after(newActiveTaskList.navElement);
   
-  taskLists.push(activeTaskList);
-  activeTaskList.createTaskListDB();
+  taskLists.push(newActiveTaskList);
+  newActiveTaskList.createTaskListDB();
   
   changePageURL();
   updatePageState();
-  updateTaskListUI(taskListToRemove);
+  updateTaskListUI(newActiveTaskList);
   
   hideDialogBox('addListBox');
 
