@@ -7,6 +7,9 @@ const centerCol = document.getElementById('centerCol');
 
 const taskListNavContainer = document.getElementById('taskListNavContainer');
 
+const incompleteTaskContainer = new TaskContainer(document.getElementById('incompleteTaskContainer'));
+const completedTaskContainer = new TaskContainer(document.getElementById('completedTaskContainer'));
+
 const completedTaskToggle = document.getElementById('completedTaskToggle');
 
 const createListInput = document.getElementById('createList');
@@ -20,7 +23,7 @@ const siteIcon = document.getElementById('siteIcon');
 
 /**************** Constructor Functions **********************/
 
-const TaskContainer = function(element) {
+function TaskContainer(element) {
   this.element = element;
 };
 
@@ -762,7 +765,3 @@ setTodaysDate();
 *   array.
 */
 initTaskLists();
-
-const incompleteTaskContainer = new TaskContainer(document.getElementById('incompleteTaskContainer'));
-const completedTaskContainer = new TaskContainer(document.getElementById('completedTaskContainer'));
-
