@@ -414,9 +414,9 @@ const setToggleIcon = (clickedElement) => {
 
 };
 
-const toggleCaretIcon = () => {
+const toggleCaretIcon = (clickedElement) => {
   
-  const toggleIcon = setToggleIcon();
+  const toggleIcon = setToggleIcon(clickedElement);
 
   toggleIcon.classList.toggle('fa-caret-down');
   toggleIcon.classList.toggle('fa-caret-right');
@@ -538,10 +538,8 @@ centerCol.addEventListener('click', function(e) {
   */
   if (e.target.id === 'completedTaskToggle' || e.target.parentElement.id === 'completedTaskToggle') {
 
-    const toggleIcon = setToggleIcon(e.target);
-    
-    toggleIcon.classList.toggle('fa-caret-down');
-    toggleIcon.classList.toggle('fa-caret-right');
+    toggleCaretIcon(e.target);
+
     completedTaskToggle.classList.toggle('tasks-hidden');
     completedTaskContainer.element.classList.toggle('hidden');
 
