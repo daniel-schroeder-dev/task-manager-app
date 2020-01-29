@@ -532,7 +532,7 @@ centerCol.addEventListener('click', function(e) {
   if (e.target.id === 'createTask') return;
   
   /*
-  *   The completedTaskToglge has it's own handler attached, so break out of
+  *   The completedTaskToggle has it's own handler attached, so break out of
   *   this handler if it is clicked.
   */
   if (e.target.id === 'completedTaskToggle' || e.target.parentElement.id === 'completedTaskToggle') return;
