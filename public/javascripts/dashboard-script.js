@@ -750,6 +750,8 @@ if (centerCol.querySelector('li')) {
   completedTaskToggle.style.display = 'none';
 }
 
+createTaskInput.focus();
+
 /*
 *   Sets the date in the 'Today' icon representing tasks due today.
 */
