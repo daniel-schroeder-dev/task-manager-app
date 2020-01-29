@@ -23,7 +23,7 @@ taskListSchema.statics.createDefaultTaskLists = function(ownerId) {
   ];
 
   defaultTaskListNames.forEach((taskListName) => {
-    new TaskList({
+    new this({
       name: taskListName,
       url: '/' + taskListName.toLowerCase(),
       ownerId,

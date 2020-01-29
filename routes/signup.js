@@ -10,13 +10,7 @@ router.get('/', (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   const user = await User.create(req.body);
-  const inbox = new TaskList({
-    name: 'Inbox',
-    url: '/inbox',
-    ownerId: user._id,
-    createdAt: Date.now(),
-  });
-  await inbox.save();
+  TaskList.createDefaultTaskLists(user._id);
   res.cookie('jwt', user.authToken, {
     httpOnly: true,
     expires: new Date(Date.now() + (1000 * 60 * 60 * 24 * 7)),
