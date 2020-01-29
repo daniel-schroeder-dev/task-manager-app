@@ -698,21 +698,9 @@ taskListNavContainer.addEventListener('click', (e) => {
   
   e.preventDefault();
 
-  let newActiveTaskList = [];
+  const taskListLink = e.target.tagName === 'A' ? e.target : e.target.parentElement;
   
-  if (e.target.tagName === 'A') {
-
-    newActiveTaskList = taskLists.find((taskList) => {
-      return taskList.url === e.target.getAttribute('href');
-    });
-
-  } else {
-
-    newActiveTaskList = taskLists.find((taskList) => {
-      return taskList.name === e.target.textContent;
-    });
-
-  }
+  const newActiveTaskList = taskLists.find(taskList => taskList.url === taskListLink.getAttribute('href'));
 
   changeActiveTaskList(newActiveTaskList);
 
