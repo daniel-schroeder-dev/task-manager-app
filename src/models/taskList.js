@@ -12,4 +12,25 @@ const taskListSchema = new mongoose.Schema({
   createdAt: Date,
 });
 
+taskListSchema.statics.createDefaultTaskLists = function(ownerId) {
+  
+  const defaultTaskListNames = [
+    'Today',
+    'Week',
+    'Inbox',
+    'Completed',
+    'Trash',
+  ];
+
+  defaultTaskListNames.forEach((taskListName) => {
+    new TaskList({
+      name: taskListName,
+      url: '/' + taskListName.toLowerCase(),
+      ownerId,
+      createdAt: Date.now(),
+    }).save();
+  });
+
+};
+
 module.exports = mongoose.model('TaskList', taskListSchema);
