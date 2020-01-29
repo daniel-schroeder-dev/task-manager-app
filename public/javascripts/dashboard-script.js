@@ -525,19 +525,6 @@ addListButton.addEventListener('click', () => {
 centerCol.addEventListener('click', function(e) {
 
   /*
-  *   The createTaskInput has it's own handler attached, if the user clicks 
-  *   into that input this listener will run, but there is no proccessing that
-  *   needs to be handled here so just exit the listener.
-  */  
-  if (e.target.id === 'createTask') return;
-  
-  /*
-  *   The completedTaskToggle has it's own handler attached, so break out of
-  *   this handler if it is clicked.
-  */
-  if (e.target.id === 'completedTaskToggle' || e.target.parentElement.id === 'completedTaskToggle') return;
-
-  /*
   
   *** TODO ***
 
