@@ -611,7 +611,7 @@ createListInput.addEventListener('keyup', function(e) {
   *   'Save' button. 
   */
   if (e.keyCode === ENTER_KEYCODE) {
-    return this.nextElementSibling.querySelector('.btn-save').click();
+    return document.querySelector('#addListBox .btn-save').click();
   }
 
   /*
