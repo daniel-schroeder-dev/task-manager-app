@@ -413,12 +413,12 @@ const toggleCompletedStatus = (checkbox) => {
 *   Changes the page title and placeholder for the createTaskInput to match
 *   the currently loaded TaskList.
 */
-const updatePageState = () => {
+const updatePageState = (newActiveTaskList) => {
 
   const pageTitleElement = document.getElementById('pageTitle');
   
-  pageTitleElement.textContent = activeTaskList.name;
-  pageTitleElement.nextElementSibling.setAttribute('placeholder', `Add Task to "${activeTaskList.name}"`);
+  pageTitleElement.textContent = newActiveTaskList.name;
+  pageTitleElement.nextElementSibling.setAttribute('placeholder', `Add Task to "${newActiveTaskList.name}"`);
 
 };
 
@@ -693,7 +693,7 @@ leftCol.addEventListener('click', (e) => {
   }
 
   changePageURL(newActiveTaskList);
-  updatePageState();
+  updatePageState(newActiveTaskList);
   updateTaskListUI(newActiveTaskList);
   activeTaskList = newActiveTaskList;
 
@@ -712,7 +712,7 @@ saveListButton.addEventListener('click', function(e) {
   newActiveTaskList.createTaskListDB();
   
   changePageURL(newActiveTaskList);
-  updatePageState();
+  updatePageState(newActiveTaskList);
   updateTaskListUI(newActiveTaskList);
   activeTaskList = newActiveTaskList;
   
