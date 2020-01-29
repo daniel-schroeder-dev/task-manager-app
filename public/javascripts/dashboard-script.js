@@ -529,15 +529,7 @@ centerCol.addEventListener('click', function(e) {
   */
   if (e.target.id === 'completedTaskToggle' || e.target.parentElement.id === 'completedTaskToggle') {
 
-    let toggleIcon = '';
-
-    if (e.target.tagName === 'I') {
-      toggleIcon = e.target;
-    } else if (e.target.id === 'completedTaskToggle') {
-      toggleIcon = e.target.querySelector('i');
-    } else {
-      toggleIcon = e.target.previousElementSibling;
-    }
+    const toggleIcon = setToggleIcon(e.target);
     
     toggleIcon.classList.toggle('fa-caret-down');
     toggleIcon.classList.toggle('fa-caret-right');
