@@ -675,25 +675,26 @@ leftCol.addEventListener('click', (e) => {
   
   e.preventDefault();
 
-  const taskListToRemove = activeTaskList;
+  // const taskListToRemove = activeTaskList;
+  let newActiveTaskList = [];
   
   if (e.target.tagName === 'A') {
 
-    activeTaskList = taskLists.find((taskList) => {
+    newActiveTaskList = taskLists.find((taskList) => {
       return taskList.url === e.target.getAttribute('href');
     });
 
   } else {
 
-    activeTaskList = taskLists.find((taskList) => {
+    newActiveTaskList = taskLists.find((taskList) => {
       return taskList.name === e.target.textContent;
     });
 
   }
-  
+
   changePageURL();
   updatePageState();
-  updateTaskListUI(taskListToRemove);
+  updateTaskListUI(newActiveTaskList);
 
 });
 
