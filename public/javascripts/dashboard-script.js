@@ -549,9 +549,7 @@ centerCol.addEventListener('click', function(e) {
   *   make it the only .active-task.
   */
 
-  if (e.target.tagName === 'LI' || e.target.parentElement.classList.contains('task-container')) {
-
-    e.target.focus();
+  if (e.target.tagName === 'LI' || e.target.hasAttribute('contenteditable')) {
 
     if (!e.target.parentElement.classList.contains('active-task')) {
       const currentActiveTask = this.querySelector('.active-task');
