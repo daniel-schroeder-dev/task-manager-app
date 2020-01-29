@@ -398,6 +398,22 @@ const setTodaysDate = () => {
 
 };
 
+const setToggleIcon = (clickedElement) => {
+  
+  let toggleIcon = '';
+
+  if (clickedElement.tagName === 'I') {
+    toggleIcon = clickedElement;
+  } else if (clickedElement.id === 'completedTaskToggle') {
+    toggleIcon = clickedElement.querySelector('i');
+  } else {
+    toggleIcon = clickedElement.previousElementSibling;
+  }
+
+  return toggleIcon;
+
+};
+
 const toggleCompletedCheckbox = (checkbox) => {
   checkbox.classList.toggle('far');
   checkbox.classList.toggle('fa-square');
