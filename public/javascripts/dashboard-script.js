@@ -729,9 +729,9 @@ saveListButton.addEventListener('click', function(e) {
   taskLists.push(newActiveTaskList);
   newActiveTaskList.createTaskListDB();
   
-  changeActiveTaskList(newActiveTaskList);
-  
   hideDialogBox('addListBox');
+  
+  changeActiveTaskList(newActiveTaskList);
 
 });
 
