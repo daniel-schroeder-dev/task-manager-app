@@ -551,18 +551,12 @@ centerCol.addEventListener('click', function(e) {
 
   if (e.target.tagName === 'LI' || e.target.parentElement.classList.contains('task-container')) {
 
-    let currentNode = e.target;
+    e.target.focus();
 
-    if (currentNode.tagName !== 'SPAN') {
-      currentNode = currentNode.querySelector('span[contenteditable="true"]');
-    }
-
-    currentNode.focus();
-
-    if (!currentNode.parentElement.classList.contains('active-task')) {
+    if (!e.target.parentElement.classList.contains('active-task')) {
       const currentActiveTask = this.querySelector('.active-task');
       if (currentActiveTask) currentActiveTask.classList.remove('active-task');
-      currentNode.parentElement.classList.add('active-task');
+      e.target.parentElement.classList.add('active-task');
     }
 
     return;
