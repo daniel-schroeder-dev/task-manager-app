@@ -93,18 +93,18 @@ i {
   left: 2px;
 }
 
-#taskListNavContainer {
+#addListButton {
   border-bottom: 1px solid rgba(0,0,0,.08);
 }
 
-#taskListNavContainer div:first-child {
+#listsHeading {
   border-bottom: 1px solid black;
   text-align: center;
   padding-bottom: 8px;
   margin-bottom: 16px;
 }
 
-#taskListNavContainer div:first-child span {
+#listsHeading span {
   margin-right: 10px;
 }
 
