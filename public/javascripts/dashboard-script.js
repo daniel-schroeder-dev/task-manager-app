@@ -534,18 +534,10 @@ centerCol.addEventListener('click', function(e) {
   if (e.target.id === 'createTask') return;
   
   /*
-  *   Toggles the caret icon, and shows/hides the completedTaskContainer.
+  *   The completedTaskToglge has it's own handler attached, so break out of
+  *   this handler if it is clicked.
   */
-  if (e.target.id === 'completedTaskToggle' || e.target.parentElement.id === 'completedTaskToggle') {
-
-    toggleCaretIcon(e.target);
-
-    completedTaskToggle.classList.toggle('tasks-hidden');
-    completedTaskContainer.element.classList.toggle('hidden');
-
-    return;
-    
-  }
+  if (e.target.id === 'completedTaskToggle' || e.target.parentElement.id === 'completedTaskToggle') return;
 
   /*
   
@@ -602,6 +594,15 @@ centerCol.addEventListener('keydown', (e) => {
   e.target.blur();
   createTaskInput.focus();
 
+});
+
+/*
+*   Toggles the caret icon, and shows/hides the completedTaskContainer.
+*/
+completedTaskToggle.addEventListener('click', function(e) {
+  toggleCaretIcon(e.target);
+  this.classList.toggle('tasks-hidden');
+  completedTaskContainer.element.classList.toggle('hidden');
 });
 
 /* 
