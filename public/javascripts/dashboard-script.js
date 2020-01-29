@@ -563,11 +563,7 @@ centerCol.addEventListener('click', function(e) {
 
   if (e.target.tagName === 'LI' || e.target.hasAttribute('contenteditable')) {
 
-    const taskElement = e.target.tagName === 'LI' ? e.target : e.target.parentElement;
-
-    this.querySelector('.active-task').classList.remove('active-task');
-
-    taskElement.classList.add('active-task');
+    setActiveTask(e.target);
 
     return;
   }
