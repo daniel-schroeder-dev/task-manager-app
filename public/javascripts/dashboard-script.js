@@ -532,8 +532,7 @@ addListButton.addEventListener('click', () => {
 *
 *     a.) Toggles the completed checkbox of a Task.
 *
-*     b.) Adds focus to the Task that was clicked and makes it the only
-*     .active-task.
+*     b.) Sets the .active-task to the clicked Task.
 */
 centerCol.addEventListener('click', function(e) {
 
