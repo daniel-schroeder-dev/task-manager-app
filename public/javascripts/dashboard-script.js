@@ -342,6 +342,19 @@ const instantiateTasksAndTaskLists = async () => {
 };
 
 /*
+*   Sets the .active-task to the Task represented by clickedElement.
+*/
+const setActiveTask = (clickedElement) => {
+  
+  const taskElement = clickedElement.tagName === 'LI' ? clickedElement : clickedElement.parentElement;
+
+  centerCol.querySelector('.active-task').classList.remove('active-task');
+
+  taskElement.classList.add('active-task');
+
+};
+
+/*
 *   Sets the activeTaskList global variable to the taskList that is currently
 *   displayed on the page.
 */
