@@ -5,10 +5,11 @@ const ENTER_KEYCODE = 13;
 const leftCol = document.getElementById('leftCol');
 const centerCol = document.getElementById('centerCol');
 
-const listsHeading = document.getElementById('listsHeading');
-
+const taskListNavContainer = document.getElementById('taskListNavContainer');
 const incompleteTaskContainer = new TaskContainer(document.getElementById('incompleteTaskContainer'));
 const completedTaskContainer = new TaskContainer(document.getElementById('completedTaskContainer'));
+
+const listsHeading = document.getElementById('listsHeading');
 
 const completedTaskToggle = document.getElementById('completedTaskToggle');
 
@@ -706,7 +707,7 @@ should just be a taskListNav container holding all of them.
 *   Loads the appropriate TaskList into the centerCol and changes the URL to
 *   the TaskList name.
 */
-leftCol.addEventListener('click', (e) => {
+taskListNavContainer.addEventListener('click', (e) => {
 
   if (e.target.tagName !== 'A' && e.target.parentElement.tagName !== 'A') return;
   
