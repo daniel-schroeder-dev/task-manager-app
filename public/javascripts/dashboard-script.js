@@ -517,11 +517,9 @@ addListButton.addEventListener('click', () => {
 /*
 *   This event listener performs ONE of the following options on 'click':
 *
-*     a.) Toggles the caret icon and shows/hides the completedTaskContainer.
+*     a.) Toggles the completed checkbox of a Task.
 *
-*     b.) Toggles the completed checkbox of a Task.
-*
-*     c.) Adds focus to the Task that was clicked and makes it the only
+*     b.) Adds focus to the Task that was clicked and makes it the only
 *     .active-task.
 */
 centerCol.addEventListener('click', function(e) {
@@ -548,9 +546,8 @@ centerCol.addEventListener('click', function(e) {
   */
 
   /*
-  *   1. Toggles the completed checkbox of a Task.
-  *   2. Toggles the completed status of a Task and which taskContainer the 
-  *   Task is in.
+  *   Toggles the completed status of a Task, changing the checkbox icon, 
+  *   taskContainer, and completed status on the Task object.
   */
   if (e.target.tagName === 'I') {
     
