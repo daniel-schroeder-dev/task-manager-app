@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/*', auth, async (req, res, next) => {
   const [ taskList ] = await TaskList.find({ url: req.url }).populate('tasks').exec();
-  let taskLists = await TaskList.find( { ownerId: req.user._id });
+  let taskLists = await TaskList.findUserCreatedTaskLists(req.user._id);
   if (taskLists.length > 1) {
     taskLists = taskLists.sort((a, b) => {
       return Date.parse(b.createdAt) - Date.parse(a.createdAt);
