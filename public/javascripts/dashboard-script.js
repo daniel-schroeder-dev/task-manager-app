@@ -703,7 +703,13 @@ leftCol.addEventListener('click', (e) => {
 });
 
 /*
-*   Create a new TaskList in the DOM/DB, update the URL and page state.
+*   1. Create a new TaskList.
+*     - Add the taskList.navElement to the taskListNavContainer.
+*     - Add the taskList to the taskLists array.
+*     - Store the new taskList in the DB.
+*   2. Change the activeTaskList to the newly created TaskList.
+*   3. Hide the addList dialog box.
+*   4. Give the createTaskInput focus.
 */
 saveListButton.addEventListener('click', function(e) {
 
