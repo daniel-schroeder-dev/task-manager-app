@@ -558,25 +558,29 @@ centerCol.addEventListener('click', function(e) {
   }
 
   /*
-  *   At this point, other options have been ruled out so I assume that the 
-  *   user is clicking a Task and wants to edit it. So, here I add focus to 
-  *   the Task that was clicked and make it the only .active-task.
+  *   Handler for editing a Task. Add focus to the Task that was clicked and 
+  *   make it the only .active-task.
   */
+
+  if (e.target.tagName === 'LI' || e.target.parentElement.classList.contains('task-container')) {
+
+    let currentNode = e.target;
+
+    if (currentNode.tagName !== 'SPAN') {
+      currentNode = currentNode.querySelector('span[contenteditable="true"]');
+    }
+
+    currentNode.focus();
+
+    if (!currentNode.parentElement.classList.contains('active-task')) {
+      const currentActiveTask = this.querySelector('.active-task');
+      if (currentActiveTask) currentActiveTask.classList.remove('active-task');
+      currentNode.parentElement.classList.add('active-task');
+    }
+
+    return;
+  }
   
-  let currentNode = e.target;
-
-  if (currentNode.tagName !== 'SPAN') {
-    currentNode = currentNode.querySelector('span[contenteditable="true"]');
-  }
-
-  currentNode.focus();
-
-  if (!currentNode.parentElement.classList.contains('active-task')) {
-    const currentActiveTask = this.querySelector('.active-task');
-    if (currentActiveTask) currentActiveTask.classList.remove('active-task');
-    currentNode.parentElement.classList.add('active-task');
-  }
-
 });
 
 /*
