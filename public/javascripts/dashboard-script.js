@@ -700,11 +700,6 @@ leftCol.addEventListener('click', (e) => {
 
   changeActiveTaskList(newActiveTaskList);
 
-  changePageURL(newActiveTaskList);
-  updatePageState(newActiveTaskList);
-  updateTaskListUI(newActiveTaskList);
-  activeTaskList = newActiveTaskList;
-
 });
 
 /*
@@ -719,10 +714,7 @@ saveListButton.addEventListener('click', function(e) {
   taskLists.push(newActiveTaskList);
   newActiveTaskList.createTaskListDB();
   
-  changePageURL(newActiveTaskList);
-  updatePageState(newActiveTaskList);
-  updateTaskListUI(newActiveTaskList);
-  activeTaskList = newActiveTaskList;
+  changeActiveTaskList(newActiveTaskList);
   
   hideDialogBox('addListBox');
 
