@@ -689,21 +689,6 @@ createTaskInput.addEventListener('keydown', async function(e) {
 });
 
 /*
-
-*** REFACTOR? ***
-
-Eventually, I will need to have one container that holds all the taskListNav 
-elements, and add this eventListener to that container. Currently, there isn't
-a lot going on in leftCol, so this works fine, but eventually there will be 
-the ability to adjust profile settings and search tasks in this area, and
-I don't want all of that handled here. I will need to refactor the HTML, as
-currently I have 3 separate containers for the taskListNav's, grouped by
-the main divisions dueDate, taskLists, completedLists. This is dumb, there
-should just be a taskListNav container holding all of them.
-
-*/
-
-/*
 *   Loads the appropriate TaskList into the centerCol and changes the URL to
 *   the TaskList name.
 */
