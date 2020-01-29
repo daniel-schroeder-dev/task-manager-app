@@ -228,9 +228,9 @@ Task.prototype.update = async function() {
 /*
 *   Set the page URL to the activeTaskList.name.
 */
-const changePageURL = () => {
+const changePageURL = (newActiveTaskList) => {
   
-  const url = '/' + activeTaskList.name.toLowerCase().replace(/\s/gi, '-');
+  const url = '/' + newActiveTaskList.name.toLowerCase().replace(/\s/gi, '-');
   
   /*
 
@@ -692,7 +692,7 @@ leftCol.addEventListener('click', (e) => {
 
   }
 
-  changePageURL();
+  changePageURL(newActiveTaskList);
   updatePageState();
   updateTaskListUI(newActiveTaskList);
   activeTaskList = newActiveTaskList;
@@ -711,7 +711,7 @@ saveListButton.addEventListener('click', function(e) {
   taskLists.push(newActiveTaskList);
   newActiveTaskList.createTaskListDB();
   
-  changePageURL();
+  changePageURL(newActiveTaskList);
   updatePageState();
   updateTaskListUI(newActiveTaskList);
   activeTaskList = newActiveTaskList;
