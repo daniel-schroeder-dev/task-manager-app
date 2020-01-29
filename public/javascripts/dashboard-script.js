@@ -33,7 +33,7 @@ TaskContainer.prototype.add = function(element) {
   this.element.prepend(element);
 };
 
-const TaskList = function(name, url, tasks, ownerId, _id) {
+function TaskList(name, url, tasks, ownerId, _id) {
   
   this.name = name;
   this.url = url || '/' + name.toLowerCase().replace(/\s/gi, '-');
@@ -129,7 +129,7 @@ TaskList.prototype.updateTaskListDB = async function(task) {
 
 };
 
-const Task = function(name, ownerId, description, completed, _id) {
+function Task(name, ownerId, description, completed, _id) {
 
   this.name = name;
   this.description = description;
