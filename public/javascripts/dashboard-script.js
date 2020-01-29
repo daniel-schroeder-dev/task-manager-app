@@ -225,6 +225,13 @@ Task.prototype.update = async function() {
 
 /*************** Global Helper Functions *******************/
 
+const changeActiveTaskList = (newActiveTaskList) => {
+  changePageURL(newActiveTaskList);
+  updatePageState(newActiveTaskList);
+  updateTaskListUI(newActiveTaskList);
+  activeTaskList = newActiveTaskList;
+};
+
 /*
 *   Set the page URL to the newActiveTaskList.name.
 */
@@ -675,7 +682,6 @@ leftCol.addEventListener('click', (e) => {
   
   e.preventDefault();
 
-  // const taskListToRemove = activeTaskList;
   let newActiveTaskList = [];
   
   if (e.target.tagName === 'A') {
@@ -691,6 +697,8 @@ leftCol.addEventListener('click', (e) => {
     });
 
   }
+
+  changeActiveTaskList(newActiveTaskList);
 
   changePageURL(newActiveTaskList);
   updatePageState(newActiveTaskList);
