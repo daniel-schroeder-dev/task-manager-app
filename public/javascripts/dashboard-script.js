@@ -411,7 +411,7 @@ const toggleCompletedStatus = (checkbox) => {
 
 /*
 *   Changes the page title and placeholder for the createTaskInput to match
-*   the currently loaded TaskList.
+*   the newActiveTaskList that will be loaded.
 */
 const updatePageState = (newActiveTaskList) => {
 
