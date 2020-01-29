@@ -18,65 +18,83 @@
         </div>
         <i class="fas fa-search"></i>
       </div>
-      
-      <div id="dueDateContainer" class="list-container">
-        <div id="todaysDate">
-          <span id="date"></span>
-        </div>
-        <div class="task-list-nav-item">
-          <a href="/today" class="task-list-nav">
-            <i class="fas fa-calendar"></i>
-            <span>Today</span>
-          </a>
-        </div>
-        <div class="task-list-nav-item">
-          <a href="/week" class="task-list-nav">
-            <i class="fas fa-calendar-alt"></i>
-            <span>Next 7 Days</span>
-          </a>
-        </div>
-        <div class="task-list-nav-item">
-          <a href="/inbox" class="task-list-nav">
-            <i class="fas fa-archive"></i>
-            <span>Inbox</span>
-          </a>
-        </div>
-      </div>
-      
-      <div id="taskListNavContainer" class="list-container">
-        <div>
-          <span>Lists</span>
-        </div>
-        <% taskLists.forEach((taskList) => { %>
-        <% if (taskList.name === 'Inbox') return; %>
-        <div class="task-list-nav-item">
-          <a class="task-list-nav" href="<%= taskList.url %>">
-            <i class="fas fa-bars"></i>
-            <span data-id=<%= taskList._id %>><%= taskList.name %></span>
-          </a>
-        </div>
-        <% }); %>
-        <div id="addListButton">
-          <i class="fas fa-plus-circle"></i>
-          <span>Add List</span>          
-        </div>
-      </div>
 
-      <div id="completedListsContainer" class="list-container">
-        <div class="task-list-nav-item">
-          <a href="/completed" class="task-list-nav">
-            <i class="fas fa-check-square"></i>
-            <span>Completed</span>
-          </a>
-        </div>
-        <div class="task-list-nav-item">
-          <a href="/trash" class="task-list-nav">
-            <i class="fas fa-trash"></i>
-            <span>Trash</span>
-          </a>
-        </div>
-      </div>
-    </div>
+      <div id="navContainer">
+      
+        <div id="dueDateContainer" class="list-container">
+          
+          <div id="todaysDate">
+            <span id="date"></span>
+          </div>
+          
+          <div class="task-list-nav-item">
+            <a href="/today" class="task-list-nav">
+              <i class="fas fa-calendar"></i>
+              <span>Today</span>
+            </a>
+          </div>
+          
+          <div class="task-list-nav-item">
+            <a href="/week" class="task-list-nav">
+              <i class="fas fa-calendar-alt"></i>
+              <span>Next 7 Days</span>
+            </a>
+          </div>
+
+          <div class="task-list-nav-item">
+            <a href="/inbox" class="task-list-nav">
+              <i class="fas fa-archive"></i>
+              <span>Inbox</span>
+            </a>
+          </div>
+
+        </div> <!-- end #dueDateContainer -->
+        
+        <div id="taskListNavContainer" class="list-container">
+          
+          <div>
+            <span>Lists</span>
+          </div>
+          
+          <% taskLists.forEach((taskList) => { %>
+          <% if (taskList.name === 'Inbox') return; %>
+          
+            <div class="task-list-nav-item">
+              <a class="task-list-nav" href="<%= taskList.url %>">
+                <i class="fas fa-bars"></i>
+                <span data-id=<%= taskList._id %>><%= taskList.name %></span>
+              </a>
+            </div>
+          
+          <% }); %>
+          <div id="addListButton">
+            <i class="fas fa-plus-circle"></i>
+            <span>Add List</span>          
+          </div>
+        
+        </div> <!-- end #taskListNavContainer --> 
+
+        <div id="completedListsContainer" class="list-container">
+          
+          <div class="task-list-nav-item">
+            <a href="/completed" class="task-list-nav">
+              <i class="fas fa-check-square"></i>
+              <span>Completed</span>
+            </a>
+          </div>
+          
+          <div class="task-list-nav-item">
+            <a href="/trash" class="task-list-nav">
+              <i class="fas fa-trash"></i>
+              <span>Trash</span>
+            </a>
+          </div>
+
+        </div> <!-- end #completedListsContainer -->
+
+      </div> <!-- end #navContainer -->
+    
+    </div> <!-- end #leftCol -->
 
     <div id="centerCol" class="col">
       
