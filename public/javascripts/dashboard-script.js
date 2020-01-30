@@ -752,7 +752,8 @@ if (centerCol.querySelector('li')) {
 
 if (window.location.pathname === '/completed') {
   completedTaskToggle.style.display = 'block';
-  siteIcon.querySelector('p').textContent = 'No completed tasks yet'
+  siteIcon.querySelector('p').textContent = 'No completed tasks yet';
+  createTaskInput.classList.add('hidden');
 }
 
 createTaskInput.focus();
