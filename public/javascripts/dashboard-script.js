@@ -175,8 +175,8 @@ function TaskList(name, url, tasks, ownerId, _id) {
 };
 
 TaskList.prototype.addTask = async function(task) {
+
   this.tasks.push(task);
-  // this.updateTaskListDB(task);
 
   const response = await fetch(`/taskLists/${this._id}/tasks`, {
     method: 'POST',
@@ -187,6 +187,7 @@ TaskList.prototype.addTask = async function(task) {
   });
 
   const json = await response.json();
+
 };
 
 TaskList.prototype.createTaskListDB = async function() {
