@@ -103,11 +103,10 @@ Task.prototype.toggleCompletedStatus = function() {
   
   if (this.completed) {
     completedTaskContainer.add(this.element);
-    // const completedTaskList = taskLists.find((taskList) => {
-    //   return taskList.name === 'Completed';
-    // });
-    // console.log(completedTaskList);
-    // completedTaskList.addTask(this);
+    const completedTaskList = taskLists.find((taskList) => {
+      return taskList.name === 'Completed';
+    });
+    completedTaskList.addTask(this);
   } else {
     incompleteTaskContainer.add(this.element);
   }
@@ -147,14 +146,6 @@ TaskContainer.prototype.add = function(element) {
   completedTaskToggle.style.display = 'block';
   this.element.prepend(element);
 };
-
-// completedTaskContainer.add = function(task) {
-//   TaskContainer.prototype.add.call(this, task.element);
-//   const completedTaskList = taskLists.find((taskList) => {
-//     return taskList.name === 'Completed';
-//   });
-//   completedTaskList.addTask(task);
-// };
 
 
 /************************/
@@ -252,23 +243,6 @@ TaskList.prototype.populateTaskContainers = function() {
     }
   });
 };
-
-// TaskList.prototype.updateTaskListDB = async function(task) {
-
-//   const data = task;
-
-//   const response = await fetch('/taskLists', {
-//     method: 'PUT',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(data),
-//   });
-
-//   const json = await response.json();
-
-// };
-
 
 /*************** Global Helper Functions *******************/
 
