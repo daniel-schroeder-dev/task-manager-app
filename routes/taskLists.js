@@ -28,14 +28,4 @@ router.post('/', auth, async (req, res, next) => {
   res.json(taskList);
 });
 
-
-
-// router.put('/', auth, async (req, res, next) => {
-//   const taskList = await TaskList.findById(req.body.ownerId);
-//   console.log('DB taskList: ', taskList);
-//   taskList.tasks.push(req.body._id);
-//   await taskList.save();
-//   res.json(taskList);
-// });
-
 module.exports = router;
