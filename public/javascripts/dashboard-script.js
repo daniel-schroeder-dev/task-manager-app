@@ -178,7 +178,7 @@ TaskList.prototype.addTask = function(task) {
   this.tasks.push(task);
   // this.updateTaskListDB(task);
 
-  const response = await fetch('/taskLists/task', {
+  const response = await fetch(`/taskLists/${this._id}/task`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
