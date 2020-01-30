@@ -176,7 +176,17 @@ function TaskList(name, url, tasks, ownerId, _id) {
 
 TaskList.prototype.addTask = function(task) {
   this.tasks.push(task);
-  this.updateTaskListDB(task);
+  // this.updateTaskListDB(task);
+
+  const response = await fetch('/taskLists/task', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(task),
+  });
+
+  const json = await response.json();
 };
 
 TaskList.prototype.createTaskListDB = async function() {
@@ -242,21 +252,21 @@ TaskList.prototype.populateTaskContainers = function() {
   });
 };
 
-TaskList.prototype.updateTaskListDB = async function(task) {
+// TaskList.prototype.updateTaskListDB = async function(task) {
 
-  const data = task;
+//   const data = task;
 
-  const response = await fetch('/taskLists', {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  });
+//   const response = await fetch('/taskLists', {
+//     method: 'PUT',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify(data),
+//   });
 
-  const json = await response.json();
+//   const json = await response.json();
 
-};
+// };
 
 
 /*************** Global Helper Functions *******************/
