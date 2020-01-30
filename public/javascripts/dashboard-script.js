@@ -754,9 +754,10 @@ if (window.location.pathname === '/completed') {
   completedTaskToggle.style.display = 'block';
   siteIcon.querySelector('p').textContent = 'No completed tasks yet';
   createTaskInput.classList.add('hidden');
+} else {
+  createTaskInput.focus();
 }
 
-createTaskInput.focus();
 
 /*
 *   Sets the date in the 'Today' icon representing tasks due today.
