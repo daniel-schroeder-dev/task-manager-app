@@ -750,6 +750,10 @@ if (centerCol.querySelector('li')) {
   completedTaskToggle.style.display = 'none';
 }
 
+if (window.location.pathname === '/completed') {
+  completedTaskToggle.style.display = 'block';
+}
+
 createTaskInput.focus();
 
 /*
