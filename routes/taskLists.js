@@ -4,6 +4,13 @@ const TaskList = require('../src/models/taskList');
 
 const router = express.Router();
 
+router.post('/:id/tasks', auth, async (req, res, next) => {
+  const taskList = await TaskList.findById(req.params.id);
+  taskList.tasks.push(req.body._id);
+  await taskList.save();
+  res.json(taskList);
+});
+
 router.get('/', auth, async (req, res, next) => {
   const taskLists = await TaskList.find().populate('tasks').exec();
   res.json(taskLists);
@@ -20,6 +27,8 @@ router.post('/', auth, async (req, res, next) => {
   }
   res.json(taskList);
 });
+
+
 
 // router.put('/', auth, async (req, res, next) => {
 //   const taskList = await TaskList.findById(req.body.ownerId);
