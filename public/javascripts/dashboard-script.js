@@ -103,6 +103,11 @@ Task.prototype.toggleCompletedStatus = function() {
   
   if (this.completed) {
     completedTaskContainer.add(this.element);
+    // const completedTaskList = taskLists.find((taskList) => {
+    //   return taskList.name === 'Completed';
+    // });
+    // console.log(completedTaskList);
+    // completedTaskList.addTask(this);
   } else {
     incompleteTaskContainer.add(this.element);
   }
@@ -142,6 +147,14 @@ TaskContainer.prototype.add = function(element) {
   completedTaskToggle.style.display = 'block';
   this.element.prepend(element);
 };
+
+// completedTaskContainer.add = function(task) {
+//   TaskContainer.prototype.add.call(this, task.element);
+//   const completedTaskList = taskLists.find((taskList) => {
+//     return taskList.name === 'Completed';
+//   });
+//   completedTaskList.addTask(task);
+// };
 
 
 /************************/
@@ -766,7 +779,6 @@ if (window.location.pathname === '/completed') {
   createTaskInput.focus();
 }
 
-
 /*
 *   Sets the date in the 'Today' icon representing tasks due today.
 */
@@ -778,3 +790,4 @@ setTodaysDate();
 *   array.
 */
 initTaskLists();
+
