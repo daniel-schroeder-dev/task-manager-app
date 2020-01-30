@@ -572,7 +572,7 @@ centerCol.addEventListener('click', function(e) {
   *   Toggles the completed status of a Task, changing the checkbox icon, 
   *   taskContainer, and completed status on the Task object.
   */
-  if (e.target.tagName === 'I') return toggleCompletedStatus(e.target);
+  if (e.target.tagName === 'I' && e.target.parentElement !== completedTaskToggle) return toggleCompletedStatus(e.target);
 
   /*
   *   Set the .active-task to the clicked Task.
