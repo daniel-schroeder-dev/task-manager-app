@@ -249,6 +249,14 @@ TaskList.prototype.updateTaskListDB = async function(task) {
 /*************** Global Helper Functions *******************/
 
 const changeActiveTaskList = (newActiveTaskList) => {
+  if (newActiveTaskList.name === 'Completed') {
+    completedTaskToggle.style.display = 'block';
+    siteIcon.querySelector('p').textContent = 'No completed tasks yet';
+    createTaskInput.classList.add('hidden');
+  } else {
+    siteIcon.querySelector('p').textContent = 'Tap the input box to create some new taskst';
+    createTaskInput.classList.remove('hidden');
+  }
   changePageURL(newActiveTaskList);
   updatePageState(newActiveTaskList);
   updateTaskListUI(newActiveTaskList);
