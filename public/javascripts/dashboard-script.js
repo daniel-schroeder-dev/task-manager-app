@@ -110,6 +110,14 @@ Task.prototype.toggleCompletedStatus = function() {
     completedTaskList.addTask(this);
   } else {
     incompleteTaskContainer.add(this.element);
+    
+    /*
+
+    *** TODO ***
+    
+    Need to remove the task from the completedTaskList here
+
+    */
   }
   
   this.update();
