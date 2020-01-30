@@ -101,11 +101,12 @@ Task.prototype.toggleCompletedStatus = function() {
   this.element.remove();
   this.element.classList.remove('active-task');
   
+  const completedTaskList = taskLists.find((taskList) => {
+    return taskList.name === 'Completed';
+  });
+
   if (this.completed) {
     completedTaskContainer.add(this.element);
-    const completedTaskList = taskLists.find((taskList) => {
-      return taskList.name === 'Completed';
-    });
     completedTaskList.addTask(this);
   } else {
     incompleteTaskContainer.add(this.element);
