@@ -272,10 +272,11 @@ TaskList.prototype.removeTask = async function(taskToRemove) {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ _id: task._id }),
+    body: JSON.stringify({ _id: taskToRemove._id }),
   });
 
-  const json = await response.json();
+  const taskList = await response.json();
+
 };
 
 /*************** Global Helper Functions *******************/
