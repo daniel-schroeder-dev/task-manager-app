@@ -262,8 +262,19 @@ TaskList.prototype.populateTaskContainers = function() {
   });
 };
 
-TaskList.prototype.removeTask = function() {
+TaskList.prototype.removeTask = async function(task) {
 
+  this.tasks = this.tasks.filter(task => task !== task);
+
+  // const response = await fetch(`/taskLists/${this._id}/tasks`, {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //   },
+  //   body: JSON.stringify({ _id: task._id }),
+  // });
+
+  // const json = await response.json();
 };
 
 /*************** Global Helper Functions *******************/
