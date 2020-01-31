@@ -572,10 +572,8 @@ document.addEventListener('click', (e) => {
   */
   if (e.target.classList.contains('ellipsis')) {
     
-    const editTaskBox = document.getElementById('editTaskBox');
-    
-    editTaskBox.style.display = 'block';
-    editTaskBox.classList.remove('is-paused');
+    editTaskDialogBox.element.style.display = 'block';
+    editTaskDialogBox.element.classList.remove('is-paused');
     
     return;
 
