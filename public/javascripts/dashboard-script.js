@@ -107,6 +107,12 @@ Task.prototype.createTaskDOMElement = function() {
 Task.prototype.remove = function() {
   this.element.remove();
   activeTaskList.removeTask(this);
+  if (activeTaskList.name !== 'Completed') {
+    const completedTaskList = taskLists.find((taskList) => {
+      return taskList.name === 'Completed';
+    });
+    completedTaskList.removeTask(this);
+  }
   const trashTaskList = taskLists.find(taskList => taskList.name === 'Trash');
   trashTaskList.addTask(this);
 };
