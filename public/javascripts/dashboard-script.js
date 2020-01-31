@@ -174,6 +174,15 @@ function TaskList(name, url, tasks, ownerId, _id) {
 
 };
 
+/*
+
+*** REFACTOR? ***
+
+It seems like this method should also be responsible for adding the Task to the
+UI.
+
+*/
+
 TaskList.prototype.addTask = async function(task) {
 
   this.tasks.push(task);
