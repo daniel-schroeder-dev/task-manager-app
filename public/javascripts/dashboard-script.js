@@ -111,14 +111,6 @@ Task.prototype.toggleCompletedStatus = function() {
   } else {
     completedTaskList.removeTask(this);
     if (activeTaskList.name !== 'Completed') incompleteTaskContainer.add(this.element);
-
-    /*
-
-    *** TODO ***
-    
-    Need to remove the task from the completedTaskList here
-
-    */
   }
   
   this.update();
