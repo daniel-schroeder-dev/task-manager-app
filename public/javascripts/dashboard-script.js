@@ -25,6 +25,13 @@ const siteIcon = document.getElementById('siteIcon');
 
 /**************** Constructor Functions **********************/
 
+/*************************/
+/******* DialogBox *******/
+/*************************/
+
+function DialogBox(element) {
+  this.element = element;
+};
 
 /********************/
 /******* Task *******/
@@ -728,7 +735,7 @@ createTaskInput.addEventListener('keydown', async function(e) {
 });
 
 deleteTaskButton.addEventListener('click', function(e) {
-  
+
   this.previousElementSibling.click();  
 
 });
