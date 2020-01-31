@@ -118,7 +118,7 @@ Task.prototype.remove = function() {
 };
 
 Task.prototype.toggleCompletedStatus = function() {
-  
+
   this.completed = !this.completed;
   
   this.element.remove();
@@ -531,6 +531,8 @@ const toggleCompletedCheckbox = (checkbox) => {
 };
 
 const toggleCompletedStatus = (checkbox) => {
+
+  if (activeTaskList.name === 'Trash') return;
   
   toggleCompletedCheckbox(checkbox);
 
