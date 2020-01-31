@@ -270,6 +270,9 @@ TaskList.prototype.populateTaskContainers = function() {
     if (i === this.tasks.length - 1) {
       task.element.classList.add('active-task');
     }
+    if (this.name === 'Trash') {
+      task.element.querySelector('i').classList.add('not-allowed');
+    }
     if (task.completed) {
       completedTaskContainer.add(task.element);
     } else {
