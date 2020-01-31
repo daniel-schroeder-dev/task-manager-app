@@ -105,7 +105,7 @@ Task.prototype.createTaskDOMElement = function() {
 };
 
 Task.prototype.remove = function() {
-  console.log(this);
+  this.element.remove();
 };
 
 Task.prototype.toggleCompletedStatus = function() {
