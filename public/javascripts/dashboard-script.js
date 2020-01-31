@@ -110,6 +110,7 @@ Task.prototype.toggleCompletedStatus = function() {
     completedTaskList.addTask(this);
   } else {
     incompleteTaskContainer.add(this.element);
+    completedTaskList.removeTask(this);
 
     /*
 
@@ -262,19 +263,19 @@ TaskList.prototype.populateTaskContainers = function() {
   });
 };
 
-TaskList.prototype.removeTask = async function(task) {
+TaskList.prototype.removeTask = async function(taskToRemove) {
 
-  this.tasks = this.tasks.filter(task => task !== task);
+  this.tasks = this.tasks.filter(task => task !== taskToRemove);
 
-  // const response = await fetch(`/taskLists/${this._id}/tasks`, {
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //   },
-  //   body: JSON.stringify({ _id: task._id }),
-  // });
+  const response = await fetch(`/taskLists/${this._id}/tasks`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ _id: task._id }),
+  });
 
-  // const json = await response.json();
+  const json = await response.json();
 };
 
 /*************** Global Helper Functions *******************/
