@@ -741,9 +741,11 @@ createTaskInput.addEventListener('keydown', async function(e) {
 
 });
 
-deleteTaskButton.addEventListener('click', function(e) {
+editTaskDialogBox.element.addEventListener('click', function(e) {
 
-  this.previousElementSibling.click();  
+  if (e.target === deleteTaskButton) {
+    deleteTaskButton.previousElementSibling.click();  
+  }
 
 });
 
