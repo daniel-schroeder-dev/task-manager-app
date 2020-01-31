@@ -568,7 +568,8 @@ document.addEventListener('click', (e) => {
   }
   
   /*
-  *   Show the editTaskDialogBox.
+  *   Show the editTaskDialogBox and set the editTaskDialogBox.task property to
+  *   the task to edit.
   */
   if (e.target.classList.contains('ellipsis')) {
     
