@@ -574,7 +574,11 @@ document.addEventListener('click', (e) => {
     
     editTaskDialogBox.element.style.display = 'block';
     editTaskDialogBox.element.classList.remove('is-paused');
-    
+
+    const taskToEdit = activeTaskList.tasks.find((task) => {
+      return task.element === e.target.parentElement;
+    });
+
     return;
 
   }
