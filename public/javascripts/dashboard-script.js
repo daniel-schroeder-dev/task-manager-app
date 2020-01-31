@@ -303,7 +303,7 @@ const changeActiveTaskList = (newActiveTaskList) => {
     siteIcon.querySelector('p').textContent = 'No completed tasks yet';
     createTaskInput.classList.add('hidden');
   } else {
-    siteIcon.querySelector('p').textContent = 'Tap the input box to create some new taskst';
+    siteIcon.querySelector('p').textContent = 'Tap the input box to create some new tasks';
     createTaskInput.classList.remove('hidden');
   }
   createTaskInput.focus();
