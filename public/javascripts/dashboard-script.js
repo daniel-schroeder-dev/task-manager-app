@@ -727,6 +727,12 @@ createTaskInput.addEventListener('keydown', async function(e) {
 
 });
 
+deleteTaskButton.addEventListener('click', function(e) {
+  
+  this.previousElementSibling.click();  
+
+});
+
 /*
 *   Loads the appropriate TaskList into the centerCol and changes the URL to
 *   the TaskList name.
