@@ -110,7 +110,7 @@ Task.prototype.toggleCompletedStatus = function() {
     completedTaskList.addTask(this);
   } else {
     incompleteTaskContainer.add(this.element);
-    
+
     /*
 
     *** TODO ***
@@ -251,6 +251,10 @@ TaskList.prototype.populateTaskContainers = function() {
       incompleteTaskContainer.add(task.element);
     }
   });
+};
+
+TaskList.prototype.removeTask = function() {
+
 };
 
 /*************** Global Helper Functions *******************/
