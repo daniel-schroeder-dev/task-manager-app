@@ -106,11 +106,11 @@ Task.prototype.toggleCompletedStatus = function() {
   });
 
   if (this.completed) {
-    completedTaskContainer.add(this.element);
     completedTaskList.addTask(this);
+    completedTaskContainer.add(this.element);
   } else {
-    incompleteTaskContainer.add(this.element);
     completedTaskList.removeTask(this);
+    if (activeTaskList.name !== 'Completed') incompleteTaskContainer.add(this.element);
 
     /*
 
