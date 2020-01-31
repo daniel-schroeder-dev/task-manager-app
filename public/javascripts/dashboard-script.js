@@ -629,14 +629,6 @@ addListButton.addEventListener('click', () => {
 centerCol.addEventListener('click', function(e) {
 
   /*
-  
-  *** TODO ***
-
-  This should add the Task to the completedTaskList.
-
-  */
-
-  /*
   *   Toggles the completed status of a Task, changing the checkbox icon, 
   *   taskContainer, and completed status on the Task object.
   */
