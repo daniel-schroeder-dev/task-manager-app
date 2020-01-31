@@ -269,6 +269,10 @@ TaskList.prototype.removeTask = async function(taskToRemove) {
 
   const taskList = await response.json();
 
+  if (!this.tasks.length) {
+    siteIcon.style.display = 'block';
+  }
+
 };
 
 /*************** Global Helper Functions *******************/
