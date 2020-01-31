@@ -104,6 +104,10 @@ Task.prototype.createTaskDOMElement = function() {
 
 };
 
+Task.prototype.remove = function() {
+  console.log(this);
+};
+
 Task.prototype.toggleCompletedStatus = function() {
   
   this.completed = !this.completed;
@@ -744,6 +748,7 @@ createTaskInput.addEventListener('keydown', async function(e) {
 editTaskDialogBox.element.addEventListener('click', function(e) {
 
   if (e.target === deleteTaskButton) {
+    editTaskDialogBox.task.remove();
     deleteTaskButton.previousElementSibling.click();  
   }
 
