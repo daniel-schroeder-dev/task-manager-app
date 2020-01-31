@@ -753,7 +753,8 @@ editTaskDialogBox.element.addEventListener('click', function(e) {
 
   if (e.target === deleteTaskButton) {
     editTaskDialogBox.task.remove();
-    deleteTaskButton.previousElementSibling.click();  
+    deleteTaskButton.previousElementSibling.click();
+    return;
   }
 
 });
