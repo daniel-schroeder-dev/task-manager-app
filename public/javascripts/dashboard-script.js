@@ -302,6 +302,9 @@ const changeActiveTaskList = (newActiveTaskList) => {
     completedTaskToggle.style.display = 'block';
     siteIcon.querySelector('p').textContent = 'No completed tasks yet';
     createTaskInput.classList.add('hidden');
+  } else if (newActiveTaskList.name === 'Trash') {
+    siteIcon.querySelector('p').textContent = 'No deleted tasks yet';
+    createTaskInput.classList.add('hidden');
   } else {
     siteIcon.querySelector('p').textContent = 'Tap the input box to create some new tasks';
     createTaskInput.classList.remove('hidden');
