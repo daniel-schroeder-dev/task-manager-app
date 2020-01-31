@@ -825,6 +825,9 @@ if (window.location.pathname === '/completed') {
   completedTaskToggle.style.display = 'block';
   siteIcon.querySelector('p').textContent = 'No completed tasks yet';
   createTaskInput.classList.add('hidden');
+} else if (window.location.pathname === '/trash') {
+  siteIcon.querySelector('p').textContent = 'No deleted tasks yet';
+  createTaskInput.classList.add('hidden');
 } else {
   createTaskInput.focus();
 }
