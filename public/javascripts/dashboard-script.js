@@ -18,6 +18,7 @@ const createTaskInput = document.getElementById('createTask');
 
 const addListButton = document.getElementById('addListButton');
 const saveListButton = document.querySelector('#addListBox .btn-save');
+const deleteTaskButton = document.querySelector('#editTaskBox .btn-delete');
 
 const siteIcon = document.getElementById('siteIcon');
 
