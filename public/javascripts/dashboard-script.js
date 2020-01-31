@@ -16,11 +16,11 @@ const completedTaskToggle = document.getElementById('completedTaskToggle');
 const createListInput = document.getElementById('createList');
 const createTaskInput = document.getElementById('createTask');
 
-const editTaskDialogBox = new DialogBox(document.getElementById('editTaskBox'));
+const editTaskDialogBox = new DialogBox(document.getElementById('editTaskDialogBox'));
 
 const addListButton = document.getElementById('addListButton');
 const saveListButton = document.querySelector('#addListBox .btn-save');
-const deleteTaskButton = document.querySelector('#editTaskBox .btn-delete');
+const deleteTaskButton = document.querySelector('#editTaskDialogBox .btn-delete');
 
 const siteIcon = document.getElementById('siteIcon');
 
@@ -553,22 +553,22 @@ const updateTaskListUI = (newActiveTaskList) => {
 /*
 *   This listener will perform ONE of the following options on 'click':
 *
-*     a.) Removes addListBox or editTaskBox from the DOM when a close button 
+*     a.) Removes addListBox or editTaskDialogBox from the DOM when a close button 
 *     is clicked.
 *
-*     b.) Shows the editTaskBox when the ellipsis is clicked.
+*     b.) Shows the editTaskDialogBox when the ellipsis is clicked.
 */
 document.addEventListener('click', (e) => {
 
   /*
-  *   Close the addListBox or the editTaskBox.
+  *   Close the addListBox or the editTaskDialogBox.
   */
   if (e.target.id === 'close' || e.target.classList.contains('btn-close')) {
     return hideDialogBox(e.target.getAttribute('data-target'));
   }
   
   /*
-  *   Show the editTaskBox.
+  *   Show the editTaskDialogBox.
   */
   if (e.target.classList.contains('ellipsis')) {
     
