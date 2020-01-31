@@ -253,6 +253,11 @@ i {
   color: #fff;
 }
 
+.btn-delete {
+  background-color: #FA0018;
+  color: #fff;
+}
+
 .task-list-nav {
   text-decoration: none;
   color: inherit;
