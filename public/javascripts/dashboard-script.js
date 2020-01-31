@@ -16,6 +16,8 @@ const completedTaskToggle = document.getElementById('completedTaskToggle');
 const createListInput = document.getElementById('createList');
 const createTaskInput = document.getElementById('createTask');
 
+const editTaskDialogBox = new DialogBox(document.getElementById('editTaskBox'));
+
 const addListButton = document.getElementById('addListButton');
 const saveListButton = document.querySelector('#addListBox .btn-save');
 const deleteTaskButton = document.querySelector('#editTaskBox .btn-delete');
