@@ -518,7 +518,7 @@ const setTodaysDate = () => {
 
   // When there is only 1 character, this will help center the date inside the calendar icon.
   if (todaysDate < 10) {
-    dateSpan.style.marginLeft = '2px';
+    dateSpan.style.marginLeft = '3px';
   }
 
 };
