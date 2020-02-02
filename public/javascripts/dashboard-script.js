@@ -339,7 +339,6 @@ const changeActiveTaskList = (newActiveTaskList) => {
   }
 
   if (newActiveTaskList.name === 'Completed') {
-    completedTaskToggle.style.display = 'block';
     siteIcon.querySelector('p').textContent = 'No completed tasks yet';
     createTaskInput.classList.add('hidden');
   } else if (newActiveTaskList.name === 'Trash') {
@@ -896,7 +895,6 @@ if (centerCol.querySelector('li')) {
 }
 
 if (window.location.pathname === '/completed') {
-  completedTaskToggle.style.display = 'block';
   siteIcon.querySelector('p').textContent = 'No completed tasks yet';
   createTaskInput.classList.add('hidden');
 } else if (window.location.pathname === '/trash') {
