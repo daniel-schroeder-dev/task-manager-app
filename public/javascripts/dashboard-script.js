@@ -602,6 +602,10 @@ const updateTaskListUI = (newActiveTaskList) => {
   newActiveTaskList.populateTaskContainers();
 };
 
+const showDialogBox = (dialogBox) => {
+  dialogBox.element.style.display = 'block';
+  dialogBox.element.classList.remove('is-paused');
+};
 
 /********************* Event Listeners ***********************/
 
@@ -627,9 +631,8 @@ document.addEventListener('click', (e) => {
   *   the task to edit.
   */
   if (e.target.classList.contains('ellipsis')) {
-    
-    editTaskDialogBox.element.style.display = 'block';
-    editTaskDialogBox.element.classList.remove('is-paused');
+
+    showDialogBox(editTaskDialogBox);
 
     const task = activeTaskList.tasks.find((task) => {
       return task.element === e.target.parentElement;
