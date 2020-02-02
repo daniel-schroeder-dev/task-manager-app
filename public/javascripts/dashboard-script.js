@@ -866,6 +866,7 @@ if (window.location.pathname === '/completed') {
   siteIcon.querySelector('p').textContent = 'No deleted tasks yet';
   createTaskInput.classList.add('hidden');
   centerCol.querySelectorAll('li i').forEach(i => i.classList.add('not-allowed'));
+  toggleDumpsterIcon();
 } else {
   createTaskInput.focus();
 }
