@@ -400,7 +400,16 @@ const initTaskLists = async () => {
   trashTaskList = taskLists.find(taskList => taskList.name === 'Trash');
 
   trashTaskList.clearTrash = function() {
+    
     this.tasks.forEach(task => task.element.remove());
+
+    const response = await fetch(`/taskLists/${this._id}/tasks`, {
+      method: 'DELETE',
+    });
+
+    const taskList = await response.json();
+
+  
   };
 
 };
