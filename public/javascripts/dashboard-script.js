@@ -317,7 +317,7 @@ TaskList.prototype.removeTask = async function(taskToRemove) {
 
   const taskList = await response.json();
 
-  if (!this.tasks.length) {
+  if (this === activeTaskList && !this.tasks.length) {
     siteIcon.style.display = 'block';
   }
 
