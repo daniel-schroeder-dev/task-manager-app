@@ -310,10 +310,6 @@ TaskList.prototype.removeTask = async function(taskToRemove) {
 
   const response = await fetch(`/taskLists/${this._id}/tasks/${taskToRemove._id}`, {
     method: 'DELETE',
-    // headers: {
-    //   'Content-Type': 'application/json',
-    // },
-    // body: JSON.stringify({ _id: taskToRemove._id }),
   });
 
   const taskList = await response.json();
@@ -399,7 +395,7 @@ const initTaskLists = async () => {
 
   trashTaskList = taskLists.find(taskList => taskList.name === 'Trash');
 
-  trashTaskList.clearTrash = function() {
+  trashTaskList.clearTrash = async function() {
     
     this.tasks.forEach(task => task.element.remove());
 

@@ -11,17 +11,17 @@ router.post('/:id/tasks', auth, async (req, res, next) => {
   res.json(taskList);
 });
 
-router.delete('/:id/tasks', auth, async (req, res, next) => {
+router.delete('/:id/tasks/:taskId', auth, async (req, res, next) => {
   
   const taskList = await TaskList.findById(req.params.id);
   
   /*
   *   Since task will be an ObjectID, we need to use the .equals method to 
-  *   compare it with the ObjectID passed in on req.body._id. Simple string
-  *   comparisons won't work.
+  *   compare it with the ObjectID passed in on req.params.taskId. Simple 
+  *   string comparisons won't work.
   */
   taskList.tasks = taskList.tasks.filter(task => {
-    return !task.equals(req.body._id);
+    return !task.equals(req.params.taskId);
   });
 
   await taskList.save();
