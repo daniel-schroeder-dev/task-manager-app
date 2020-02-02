@@ -1,12 +1,21 @@
 const express = require('express');
 const auth = require('../src/middleware/auth');
 const TaskList = require('../src/models/taskList');
+const Task = require('../src/models/task');
 
 const router = express.Router();
 
 router.post('/:id/tasks', auth, async (req, res, next) => {
   const taskList = await TaskList.findById(req.params.id);
   taskList.tasks.push(req.body._id);
+  await taskList.save();
+  res.json(taskList);
+});
+
+router.delete('/:id/tasks', auth, async (req, res, next) => {
+  const taskList = await TaskList.findById(req.params.id);
+  await Task.deleteMany({ _id: { $in: taskList.tasks }});
+  taskList.tasks = [];
   await taskList.save();
   res.json(taskList);
 });
