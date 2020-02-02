@@ -395,6 +395,14 @@ const initTaskLists = async () => {
   setTaskElementsInActiveTaskList();
   setTaskListNavElements();
 
+  /**************** Special Object Properties *******************/
+
+  const trashTaskList = taskLists.find(taskList => taskList.name === 'Trash');
+
+  trashTaskList.clearTrash = function() {
+    trashTaskList.tasks.forEach(task => task.element.remove());
+  };
+
 };
 
 /*
@@ -811,7 +819,7 @@ editTaskDialogBox.element.addEventListener('click', function(e) {
 deleteTaskDialogBox.element.addEventListener('click', function(e) {
 
   if (e.target.classList.contains('btn-delete')) {
-    
+
   }
 
 });
