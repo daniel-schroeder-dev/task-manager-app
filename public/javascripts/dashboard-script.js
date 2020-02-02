@@ -308,15 +308,17 @@ TaskList.prototype.removeTask = async function(taskToRemove) {
 
   this.tasks = this.tasks.filter(task => task !== taskToRemove);
 
+  if (this === activeTaskList && !this.tasks.length) {
+    siteIcon.style.display = 'block';
+    completedTaskToggle.style.display = 'none';
+  }
+  
   const response = await fetch(`/taskLists/${this._id}/tasks/${taskToRemove._id}`, {
     method: 'DELETE',
   });
 
   const taskList = await response.json();
 
-  if (this === activeTaskList && !this.tasks.length) {
-    siteIcon.style.display = 'block';
-  }
 
 };
 
