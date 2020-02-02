@@ -1,5 +1,6 @@
 let taskLists = [];
 let activeTaskList = {};
+let trashTaskList = {};
 const ENTER_KEYCODE = 13;
 
 const leftCol = document.getElementById('leftCol');
@@ -397,10 +398,10 @@ const initTaskLists = async () => {
 
   /**************** Special Object Properties *******************/
 
-  const trashTaskList = taskLists.find(taskList => taskList.name === 'Trash');
+  trashTaskList = taskLists.find(taskList => taskList.name === 'Trash');
 
   trashTaskList.clearTrash = function() {
-    trashTaskList.tasks.forEach(task => task.element.remove());
+    this.tasks.forEach(task => task.element.remove());
   };
 
 };
@@ -819,7 +820,8 @@ editTaskDialogBox.element.addEventListener('click', function(e) {
 deleteTaskDialogBox.element.addEventListener('click', function(e) {
 
   if (e.target.classList.contains('btn-delete')) {
-
+    trashTaskList.clearTrash();
+    e.target.previousElementSibling.click();
   }
 
 });
