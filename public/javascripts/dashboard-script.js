@@ -136,7 +136,6 @@ Task.prototype.remove = function() {
     completedTaskList.removeTask(this);
   }
 
-  const trashTaskList = taskLists.find(taskList => taskList.name === 'Trash');
   trashTaskList.addTask(this);
 
 };
