@@ -17,6 +17,7 @@ const createListInput = document.getElementById('createList');
 const createTaskInput = document.getElementById('createTask');
 
 const editTaskDialogBox = new DialogBox(document.getElementById('editTaskDialogBox'));
+const deleteTaskDialogBox = new DialogBox(document.getElementById('deleteTaskDialogBox'));
 
 const addListButton = document.getElementById('addListButton');
 const saveListButton = document.querySelector('#addListBox .btn-save');
@@ -641,6 +642,12 @@ document.addEventListener('click', (e) => {
     editTaskDialogBox.task = task;
 
     return;
+
+  }
+
+  if (e.target.id === 'clearTrash' || e.target.parentElement.id === 'clearTrash') {
+
+    showDialogBox(deleteTaskDialogBox);
 
   }
 
