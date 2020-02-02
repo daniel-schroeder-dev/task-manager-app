@@ -808,6 +808,14 @@ editTaskDialogBox.element.addEventListener('click', function(e) {
 
 });
 
+deleteTaskDialogBox.element.addEventListener('click', function(e) {
+
+  if (e.target.classList.contains('btn-delete')) {
+    
+  }
+
+});
+
 /*
 *   Loads the appropriate TaskList into the centerCol and changes the URL to
 *   the TaskList name.
