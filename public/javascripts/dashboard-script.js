@@ -351,6 +351,7 @@ const changeActiveTaskList = (newActiveTaskList) => {
     siteIcon.querySelector('p').textContent = 'Tap the input box to create some new tasks';
     createTaskInput.classList.remove('hidden');
   }
+  createTaskInput.placeholder = `Add Task to "${newActiveTaskList.name}"`;
   createTaskInput.focus();
   activeTaskList = newActiveTaskList;
 };
