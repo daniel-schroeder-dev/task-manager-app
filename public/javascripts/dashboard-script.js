@@ -308,12 +308,12 @@ TaskList.prototype.removeTask = async function(taskToRemove) {
 
   this.tasks = this.tasks.filter(task => task !== taskToRemove);
 
-  const response = await fetch(`/taskLists/${this._id}/tasks`, {
+  const response = await fetch(`/taskLists/${this._id}/tasks/${taskToRemove._id}`, {
     method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ _id: taskToRemove._id }),
+    // headers: {
+    //   'Content-Type': 'application/json',
+    // },
+    // body: JSON.stringify({ _id: taskToRemove._id }),
   });
 
   const taskList = await response.json();
