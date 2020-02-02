@@ -405,6 +405,7 @@ const initTaskLists = async () => {
 
     const taskList = await response.json();
 
+    siteIcon.style.display = 'block';
   
   };
 
