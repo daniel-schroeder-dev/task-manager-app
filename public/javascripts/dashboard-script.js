@@ -397,6 +397,9 @@ const initTaskLists = async () => {
 
   trashTaskList.clearTrash = async function() {
     
+    siteIcon.style.display = 'block';
+    completedTaskToggle.style.display = 'none';
+    
     this.tasks.forEach(task => task.element.remove());
 
     const response = await fetch(`/taskLists/${this._id}/tasks`, {
@@ -405,8 +408,6 @@ const initTaskLists = async () => {
 
     const taskList = await response.json();
 
-    siteIcon.style.display = 'block';
-  
   };
 
 };
