@@ -325,10 +325,20 @@ TaskList.prototype.removeTask = async function(taskToRemove) {
 
 /*************** Global Helper Functions *******************/
 
+const toggleDumpsterIcon = () => {
+  const pageTitleContainerSpanElements = document.querySelectorAll('.page-title-container span');
+  pageTitleContainerSpanElements.forEach(element => element.classList.toggle('hidden'));
+};
+
 const changeActiveTaskList = (newActiveTaskList) => {
   changePageURL(newActiveTaskList);
   updatePageState(newActiveTaskList);
   updateTaskListUI(newActiveTaskList);
+
+  if (activeTaskList.name === 'Trash') {
+    toggleDumpsterIcon();
+  }
+
   if (newActiveTaskList.name === 'Completed') {
     completedTaskToggle.style.display = 'block';
     siteIcon.querySelector('p').textContent = 'No completed tasks yet';
@@ -336,6 +346,7 @@ const changeActiveTaskList = (newActiveTaskList) => {
   } else if (newActiveTaskList.name === 'Trash') {
     siteIcon.querySelector('p').textContent = 'No deleted tasks yet';
     createTaskInput.classList.add('hidden');
+    toggleDumpsterIcon();
   } else {
     siteIcon.querySelector('p').textContent = 'Tap the input box to create some new tasks';
     createTaskInput.classList.remove('hidden');
