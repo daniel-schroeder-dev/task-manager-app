@@ -353,6 +353,17 @@ i.fas.fa-caret-right {
   cursor: not-allowed;
 }
 
+.page-title-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.page-title-container span {
+  /* Line-up the ellipsis with the Task ellpsis */
+  margin-right: -19px;
+  cursor: pointer;
+}
+
 @media (max-width: 1024px) {
 
   .container {

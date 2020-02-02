@@ -87,7 +87,11 @@
 
     <div id="centerCol" class="col">
       
-      <h1 id="pageTitle"><%= pageTitle %></h1>
+      <div class="page-title-container">
+        <h1 id="pageTitle"><%= pageTitle %></h1>
+        <span>&#8230;</span>
+      </div>
+
       <input type="text" name="createTask" id="createTask" placeholder="Add Task to &quot;<%= pageTitle %>&quot;">
       
         <ul id="incompleteTaskContainer" class="task-container">
