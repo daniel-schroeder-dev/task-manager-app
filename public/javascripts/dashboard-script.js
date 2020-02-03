@@ -25,7 +25,7 @@ dialogBoxes.push(editTaskDialogBox);
 dialogBoxes.push(deleteTaskDialogBox);
 
 const addListButton = document.getElementById('addListButton');
-const saveListButton = document.querySelector('#addListBox .btn-save');
+const saveListButton = document.querySelector('#addListDialogBox .btn-save');
 const deleteTaskButton = document.querySelector('#editTaskDialogBox .btn-delete');
 
 const siteIcon = document.getElementById('siteIcon');
@@ -75,7 +75,7 @@ DialogBox.prototype.hideDialogBox = function() {
     
     this.element.style.display = 'none';
     
-    if (this.element.id === 'addListBox') {
+    if (this.element.id === 'addListDialogBox') {
       createListInput.value = '';
       saveListButton.setAttribute('disabled', true);
     }
@@ -633,7 +633,7 @@ const showDialogBox = (dialogBox) => {
 /*
 *   This listener will perform ONE of the following options on 'click':
 *
-*     a.) Removes addListBox or editTaskDialogBox from the DOM when a close button 
+*     a.) Removes addListDialogBox or editTaskDialogBox from the DOM when a close button 
 *     is clicked.
 *
 *     b.) Shows the editTaskDialogBox when the ellipsis is clicked.
@@ -641,7 +641,7 @@ const showDialogBox = (dialogBox) => {
 document.addEventListener('click', (e) => {
 
   /*
-  *   Close the addListBox or the editTaskDialogBox.
+  *   Close the addListDialogBox or the editTaskDialogBox.
   */
   if (e.target.id === 'close' || e.target.classList.contains('btn-close')) {
     const dialogBox = dialogBoxes.find(dialogBox => dialogBox.element.id === e.target.getAttribute('data-target'));
@@ -676,15 +676,15 @@ document.addEventListener('click', (e) => {
 });
 
 /*
-*   Show the addListBox when the addListButton is clicked and give the 
+*   Show the addListDialogBox when the addListButton is clicked and give the 
 *   createListInput focus.
 */
 addListButton.addEventListener('click', () => {
 
-  const addListBox = document.getElementById('addListBox');
+  const addListDialogBox = new DialogBox(document.getElementById('addListDialogBox'));
 
-  addListBox.style.display = 'block';
-  addListBox.classList.remove('is-paused');
+  addListDialogBox.element.style.display = 'block';
+  addListDialogBox.element.classList.remove('is-paused');
 
   createListInput.focus();
 
@@ -766,7 +766,7 @@ createListInput.addEventListener('keyup', function(e) {
   *   'Save' button. 
   */
   if (e.keyCode === ENTER_KEYCODE) {
-    return document.querySelector('#addListBox .btn-save').click();
+    return document.querySelector('#addListDialogBox .btn-save').click();
   }
 
   /*
@@ -879,7 +879,7 @@ saveListButton.addEventListener('click', function(e) {
   taskLists.push(newActiveTaskList);
   newActiveTaskList.createTaskListDB();
   
-  hideDialogBox('addListBox');
+  hideDialogBox('addListDialogBox');
   
   changeActiveTaskList(newActiveTaskList);
 
