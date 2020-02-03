@@ -644,7 +644,9 @@ document.addEventListener('click', (e) => {
   *   Close the addListBox or the editTaskDialogBox.
   */
   if (e.target.id === 'close' || e.target.classList.contains('btn-close')) {
-    return hideDialogBox(e.target.getAttribute('data-target'));
+    const dialogBox = dialogBoxes.find(dialogBox => dialogBox.element.id === e.target.getAttribute('data-target'));
+    dialogBox.hideDialogBox();
+    return;
   }
   
   /*
