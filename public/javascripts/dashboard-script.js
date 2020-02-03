@@ -853,6 +853,11 @@ taskListNavContainer.addEventListener('click', (e) => {
 
 });
 
+window.onpopstate = (e) => {
+  const newActiveTaskList = taskLists.find(taskList => taskList.url === window.location.pathname);
+  changeActiveTaskList(newActiveTaskList);
+};
+
 /*
 *   1. Create a new TaskList.
 *     - Add the taskList.navElement to the taskListNavContainer.
