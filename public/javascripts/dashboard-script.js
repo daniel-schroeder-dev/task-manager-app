@@ -632,6 +632,11 @@ const updateTaskListUI = (newActiveTaskList) => {
 
 /********************* Event Listeners ***********************/
 
+window.onpopstate = (e) => {
+  const newActiveTaskList = taskLists.find(taskList => taskList.url === window.location.pathname);
+  changeActiveTaskList(newActiveTaskList);
+};
+
 /*
 *   This listener will perform ONE of the following options on 'click':
 *
@@ -836,29 +841,6 @@ deleteTaskDialogBox.element.addEventListener('click', function(e) {
 });
 
 /*
-*   Loads the appropriate TaskList into the centerCol and changes the URL to
-*   the TaskList name.
-*/
-taskListNavContainer.addEventListener('click', (e) => {
-
-  if (e.target.tagName !== 'A' && e.target.parentElement.tagName !== 'A') return;
-  
-  e.preventDefault();
-
-  const taskListLink = e.target.tagName === 'A' ? e.target : e.target.parentElement;
-  
-  const newActiveTaskList = taskLists.find(taskList => taskList.url === taskListLink.getAttribute('href'));
-
-  changeActiveTaskList(newActiveTaskList);
-
-});
-
-window.onpopstate = (e) => {
-  const newActiveTaskList = taskLists.find(taskList => taskList.url === window.location.pathname);
-  changeActiveTaskList(newActiveTaskList);
-};
-
-/*
 *   1. Create a new TaskList.
 *     - Add the taskList.navElement to the taskListNavContainer.
 *     - Add the taskList to the taskLists array.
@@ -886,6 +868,23 @@ saveListButton.addEventListener('click', function(e) {
 
 });
 
+/*
+*   Loads the appropriate TaskList into the centerCol and changes the URL to
+*   the TaskList name.
+*/
+taskListNavContainer.addEventListener('click', (e) => {
+
+  if (e.target.tagName !== 'A' && e.target.parentElement.tagName !== 'A') return;
+  
+  e.preventDefault();
+
+  const taskListLink = e.target.tagName === 'A' ? e.target : e.target.parentElement;
+  
+  const newActiveTaskList = taskLists.find(taskList => taskList.url === taskListLink.getAttribute('href'));
+
+  changeActiveTaskList(newActiveTaskList);
+
+});
 
 /************************** Init Page Load ************************/
 
