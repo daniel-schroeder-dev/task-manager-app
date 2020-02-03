@@ -657,7 +657,7 @@ document.addEventListener('click', (e) => {
   */
   if (e.target.classList.contains('ellipsis')) {
 
-    showDialogBox(editTaskDialogBox);
+    editTaskDialogBox.showDialogBox();
 
     const task = activeTaskList.tasks.find((task) => {
       return task.element === e.target.parentElement;
@@ -671,7 +671,7 @@ document.addEventListener('click', (e) => {
 
   if (e.target.id === 'clearTrash' || e.target.parentElement.id === 'clearTrash') {
 
-    showDialogBox(deleteTaskDialogBox);
+    deleteTaskDialogBox.showDialogBox();
 
   }
 
