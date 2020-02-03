@@ -86,6 +86,11 @@ DialogBox.prototype.hideDialogBox = function() {
 
 };
 
+DialogBox.prototype.showDialogBox = function() {
+  this.element.style.display = 'block';
+  this.element.classList.remove('is-paused');
+};
+
 /********************/
 /******* Task *******/
 /********************/
@@ -623,11 +628,6 @@ const updatePageState = (newActiveTaskList) => {
 const updateTaskListUI = (newActiveTaskList) => {
   activeTaskList.tasks.forEach(task => task.element.remove());
   newActiveTaskList.populateTaskContainers();
-};
-
-const showDialogBox = (dialogBox) => {
-  dialogBox.element.style.display = 'block';
-  dialogBox.element.classList.remove('is-paused');
 };
 
 /********************* Event Listeners ***********************/
