@@ -422,7 +422,7 @@ const changePageURL = (newActiveTaskList) => {
 
   */
 
-  window.history.replaceState({ taskListName: activeTaskList.name }, '', url);
+  window.history.pushState({ taskListName: activeTaskList.name }, '', url);
   
 };
 
