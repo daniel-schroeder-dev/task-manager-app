@@ -1,6 +1,7 @@
 let taskLists = [];
 let activeTaskList = {};
 let trashTaskList = {};
+const dialogBoxes = [];
 const ENTER_KEYCODE = 13;
 
 const leftCol = document.getElementById('leftCol');
@@ -19,6 +20,9 @@ const createTaskInput = document.getElementById('createTask');
 
 const editTaskDialogBox = new DialogBox(document.getElementById('editTaskDialogBox'));
 const deleteTaskDialogBox = new DialogBox(document.getElementById('deleteTaskDialogBox'));
+
+dialogBoxes.push(editTaskDialogBox);
+dialogBoxes.push(deleteTaskDialogBox);
 
 const addListButton = document.getElementById('addListButton');
 const saveListButton = document.querySelector('#addListBox .btn-save');
