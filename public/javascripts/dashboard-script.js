@@ -324,10 +324,6 @@ TaskList.prototype.removeTask = async function(taskToRemove) {
 
 /*************** Global Helper Functions *******************/
 
-const toggleDumpsterIcon = () => {
-  const pageTitleContainerSpanElements = document.querySelectorAll('.page-title-container span');
-  pageTitleContainerSpanElements.forEach(element => element.classList.toggle('hidden'));
-};
 
 const changeActiveTaskList = (newActiveTaskList) => {
   changePageURL(newActiveTaskList);
@@ -377,6 +373,50 @@ const changePageURL = (newActiveTaskList) => {
 };
 
 /*
+*   Removes the box with boxID from the DOM and resets the state of the box.
+*/
+const hideDialogBox = (boxID) => {
+  
+  const box = document.getElementById(boxID);
+  
+  box.classList.remove('fade-in');
+  box.classList.add('fade-out');
+  
+  /*
+
+  *** RESEARCH ***
+  
+  I honestly don't understand why I need this setTimeout() call to get this 
+  fade-in/fade-out animation to work, but it was the only thing I tried that 
+  worked so I'm using it. I'm not sure if the issue is the animation itself, 
+  or the way in which I'm triggering it. I have a vague understanding that 
+  setTimeout() will run this code in a different portion of the event loop, 
+  but I really need to understand this concept deeply if I'm going to use it 
+  in my code.
+
+  */
+
+  /* 
+  *   This is neccessary to give the fade-out animation time to run before 
+  *   adding back the .fade-in and .is-paused classes.
+  */
+  setTimeout(() => {
+
+    box.classList.add('is-paused');
+    box.classList.add('fade-in');
+    box.classList.remove('fade-out');
+    
+    box.style.display = 'none';
+    
+    if (boxID === 'addListBox') createListInput.value = '';
+    
+    saveListButton.setAttribute('disabled', true);
+
+  }, 100);
+
+};
+
+/*
 *   1. Loads TaskLists from the DB and instantiates the appropriate TaskList 
 *   and Task objects for client-side use and store in the taskLists array.
 *   2. Sets the activeTaskList to the currently loaded TaskList.
@@ -422,50 +462,6 @@ const loadTaskLists = async () => {
   const taskLists = await responseTaskLists.json();
 
   return taskLists;
-
-};
-
-/*
-*   Removes the box with boxID from the DOM and resets the state of the box.
-*/
-const hideDialogBox = (boxID) => {
-  
-  const box = document.getElementById(boxID);
-  
-  box.classList.remove('fade-in');
-  box.classList.add('fade-out');
-  
-  /*
-
-  *** RESEARCH ***
-  
-  I honestly don't understand why I need this setTimeout() call to get this 
-  fade-in/fade-out animation to work, but it was the only thing I tried that 
-  worked so I'm using it. I'm not sure if the issue is the animation itself, 
-  or the way in which I'm triggering it. I have a vague understanding that 
-  setTimeout() will run this code in a different portion of the event loop, 
-  but I really need to understand this concept deeply if I'm going to use it 
-  in my code.
-
-  */
-
-  /* 
-  *   This is neccessary to give the fade-out animation time to run before 
-  *   adding back the .fade-in and .is-paused classes.
-  */
-  setTimeout(() => {
-
-    box.classList.add('is-paused');
-    box.classList.add('fade-in');
-    box.classList.remove('fade-out');
-    
-    box.style.display = 'none';
-    
-    if (boxID === 'addListBox') createListInput.value = '';
-    
-    saveListButton.setAttribute('disabled', true);
-
-  }, 100);
 
 };
 
@@ -595,6 +591,11 @@ const toggleCompletedStatus = (checkbox) => {
 
   task.toggleCompletedStatus();
 
+};
+
+const toggleDumpsterIcon = () => {
+  const pageTitleContainerSpanElements = document.querySelectorAll('.page-title-container span');
+  pageTitleContainerSpanElements.forEach(element => element.classList.toggle('hidden'));
 };
 
 /*
