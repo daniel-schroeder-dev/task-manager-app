@@ -682,12 +682,8 @@ document.addEventListener('click', (e) => {
 *   createListInput focus.
 */
 addListButton.addEventListener('click', () => {
-
-  addListDialogBox.element.style.display = 'block';
-  addListDialogBox.element.classList.remove('is-paused');
-
+  addListDialogBox.showDialogBox();
   createListInput.focus();
-
 });
 
 /*
