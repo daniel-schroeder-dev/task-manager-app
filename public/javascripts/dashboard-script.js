@@ -632,6 +632,9 @@ const updateTaskListUI = (newActiveTaskList) => {
 
 /********************* Event Listeners ***********************/
 
+/*
+*   Allows the browser's 'back' button to function correctly.
+*/
 window.onpopstate = (e) => {
   const newActiveTaskList = taskLists.find(taskList => taskList.url === window.location.pathname);
   changeActiveTaskList(newActiveTaskList);
