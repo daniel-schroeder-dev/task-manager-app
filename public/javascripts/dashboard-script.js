@@ -18,9 +18,11 @@ const completedTaskToggle = document.getElementById('completedTaskToggle');
 const createListInput = document.getElementById('createList');
 const createTaskInput = document.getElementById('createTask');
 
+const addListDialogBox = new DialogBox(document.getElementById('addListDialogBox'));
 const editTaskDialogBox = new DialogBox(document.getElementById('editTaskDialogBox'));
 const deleteTaskDialogBox = new DialogBox(document.getElementById('deleteTaskDialogBox'));
 
+dialogBoxes.push(addListDialogBox);
 dialogBoxes.push(editTaskDialogBox);
 dialogBoxes.push(deleteTaskDialogBox);
 
@@ -680,8 +682,6 @@ document.addEventListener('click', (e) => {
 *   createListInput focus.
 */
 addListButton.addEventListener('click', () => {
-
-  const addListDialogBox = new DialogBox(document.getElementById('addListDialogBox'));
 
   addListDialogBox.element.style.display = 'block';
   addListDialogBox.element.classList.remove('is-paused');
