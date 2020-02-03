@@ -79,7 +79,6 @@ DialogBox.prototype.hideDialogBox = function() {
     
     if (this.element.id === 'addListDialogBox') {
       createListInput.value = '';
-      saveListButton.setAttribute('disabled', true);
     }
     
   }, 100);
