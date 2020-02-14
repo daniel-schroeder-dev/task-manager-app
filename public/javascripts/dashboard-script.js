@@ -271,6 +271,16 @@ TaskContainer.prototype.remove = function(element) {
   }
 };
 
+TaskContainer.prototype.removeAllTasks = function() {
+  while (this.element.hasChildNodes()) {
+    this.element.removeChild(this.element.firstChild);
+  }
+  this.numTasks = 0;
+  if (this === completedTaskContainer) {
+    completedTaskToggle.classList.add('hidden');
+  }
+};
+
 
 /************************/
 /******* TaskList *******/
@@ -644,7 +654,6 @@ const updatePageState = (newActiveTaskList) => {
 *   2. Adds all tasks in newActiveTaskList to the DOM.
 */
 const updateTaskListUI = (newActiveTaskList) => {
-  // activeTaskList.tasks.forEach(task => task.element.remove());
   incompleteTaskContainer.removeAllTasks();
   completedTaskContainer.removeAllTasks();
   newActiveTaskList.populateTaskContainers();
