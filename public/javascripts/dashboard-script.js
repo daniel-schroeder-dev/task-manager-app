@@ -633,6 +633,12 @@ const updatePageState = (newActiveTaskList) => {
 const updateTaskListUI = (newActiveTaskList) => {
   activeTaskList.tasks.forEach(task => task.element.remove());
   newActiveTaskList.populateTaskContainers();
+  if (!incompleteTaskContainer.numTasks && !completedTaskContainer.numTasks) {
+    siteIcon.style.display = 'block';
+  }
+  if (!completedTaskContainer.numTasks) {
+    completedTaskToggle.classList.add('hidden');
+  }
 };
 
 /********************* Event Listeners ***********************/
