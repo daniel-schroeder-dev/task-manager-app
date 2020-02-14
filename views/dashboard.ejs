@@ -110,10 +110,14 @@
           <% }); %>
         </ul>
 
-        <div id="completedTaskToggle" class="hidden">
-          <i class="fas fa-caret-down"></i>
-          <span>Completed</span>
-        </div>
+        <% if (tasks.find(task => task.completed)) { %>
+          <div id="completedTaskToggle">
+        <% } else { %>
+          <div id="completedTaskToggle" class="hidden">
+        <% } %>
+            <i class="fas fa-caret-down"></i>
+            <span>Completed</span>
+          </div>
         
         <ul id="completedTaskContainer" class="task-container">
           <% tasks.forEach((task) => { %>
