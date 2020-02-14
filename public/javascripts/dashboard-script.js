@@ -249,6 +249,15 @@ TaskContainer.prototype.add = function(element) {
   this.numTasks++;
 };
 
+/*
+
+*** TODO ***
+
+Add a TaskContainer.prototype.remove(element) method that will remove an
+element from the TaskContainer, update the numTasks, and possibly deal with
+setting up siteIcon and completedTaskToggle display properties.
+
+*/
 
 /************************/
 /******* TaskList *******/
