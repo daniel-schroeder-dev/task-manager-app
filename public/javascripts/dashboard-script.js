@@ -207,7 +207,6 @@ Task.prototype.toggleCompletedStatus = function() {
   if (this.completed) {
     completedTaskList.addTask(this);
     completedTaskContainer.add(this.element);
-    completedTaskToggle.classList.remove('hidden');
   } else {
     completedTaskList.removeTask(this);
     if (activeTaskList.name !== 'Completed') incompleteTaskContainer.add(this.element);
@@ -249,6 +248,13 @@ TaskContainer.prototype.add = function(element) {
   this.element.prepend(element);
   this.numTasks++;
 };
+
+completedTaskContainer.add = function(element) {
+  siteIcon.style.display = 'none';
+  this.element.prepend(element);
+  this.numTasks++;
+  completedTaskToggle.classList.remove('hidden');
+}
 
 /*
 
