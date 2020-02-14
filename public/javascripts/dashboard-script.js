@@ -926,16 +926,6 @@ taskListNavContainer.addEventListener('click', (e) => {
 
 /************************** Init Page Load ************************/
 
-
-/*
-*   When the page first loads, if there are any tasks in the centerCol, 
-*   remove the siteIcon. If there aren't any tasks, remove the 
-*   completedTaskToggle.
-*/
-if (centerCol.querySelector('li')) {
-  siteIcon.style.display = 'none';
-}
-
 if (window.location.pathname === '/completed') {
   siteIcon.querySelector('p').textContent = 'No completed tasks yet';
   createTaskInput.classList.add('hidden');
