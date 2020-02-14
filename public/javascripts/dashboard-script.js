@@ -592,12 +592,7 @@ taskListNavContainer.addEventListener('click', (e) => {
 
 /************************** Init Page Load ************************/
 
-if (window.location.pathname === '/completed') {
-  siteIcon.querySelector('p').textContent = 'No completed tasks yet';
-  createTaskInput.classList.add('hidden');
-} else if (window.location.pathname === '/trash') {
-  siteIcon.querySelector('p').textContent = 'No deleted tasks yet';
-  createTaskInput.classList.add('hidden');
+if (window.location.pathname === '/trash') {
   centerCol.querySelectorAll('li i').forEach(i => i.classList.add('not-allowed'));
   toggleDumpsterIcon();
 } else {
