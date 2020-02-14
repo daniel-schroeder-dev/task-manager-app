@@ -240,11 +240,13 @@ Task.prototype.update = async function() {
 
 function TaskContainer(element) {
   this.element = element;
+  this.numTasks = 0;
 };
 
 TaskContainer.prototype.add = function(element) {
   siteIcon.style.display = 'none';
   this.element.prepend(element);
+  this.numTasks++;
 };
 
 
