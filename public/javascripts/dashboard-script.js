@@ -269,7 +269,7 @@ TaskContainer.prototype.remove = function(element) {
   if (this === completedTaskContainer && !this.numTasks) {
     completedTaskToggle.classList.add('hidden');
   }
-}
+};
 
 
 /************************/
@@ -644,13 +644,12 @@ const updatePageState = (newActiveTaskList) => {
 *   2. Adds all tasks in newActiveTaskList to the DOM.
 */
 const updateTaskListUI = (newActiveTaskList) => {
-  activeTaskList.tasks.forEach(task => task.element.remove());
+  // activeTaskList.tasks.forEach(task => task.element.remove());
+  incompleteTaskContainer.removeAllTasks();
+  completedTaskContainer.removeAllTasks();
   newActiveTaskList.populateTaskContainers();
   if (!incompleteTaskContainer.numTasks && !completedTaskContainer.numTasks) {
     siteIcon.style.display = 'block';
-  }
-  if (!completedTaskContainer.numTasks) {
-    completedTaskToggle.classList.add('hidden');
   }
 };
 
