@@ -369,7 +369,7 @@ TaskList.prototype.removeTask = async function(taskToRemove) {
 
   if (this === activeTaskList && !this.tasks.length) {
     siteIcon.style.display = 'block';
-    completedTaskToggle.style.display = 'none';
+    completedTaskToggle.classList.add('hidden');
   }
   
   const response = await fetch(`/taskLists/${this._id}/tasks/${taskToRemove._id}`, {
@@ -454,7 +454,7 @@ const initTaskLists = async () => {
   trashTaskList.clearTrash = async function() {
     
     siteIcon.style.display = 'block';
-    completedTaskToggle.style.display = 'none';
+    completedTaskToggle.classList.add('hidden');
     
     this.tasks.forEach(task => task.element.remove());
 
