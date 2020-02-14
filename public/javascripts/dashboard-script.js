@@ -255,7 +255,7 @@ function TaskContainer(element) {
 };
 
 TaskContainer.prototype.add = function(element) {
-  siteIcon.style.display = 'none';
+  siteIcon.classList.add('hidden');
   this.element.prepend(element);
   this.numTasks++;
   if (this === completedTaskContainer) {
@@ -391,7 +391,7 @@ TaskList.prototype.removeTask = async function(taskToRemove) {
   this.tasks = this.tasks.filter(task => task !== taskToRemove);
 
   if (this === activeTaskList && !this.tasks.length) {
-    siteIcon.style.display = 'block';
+    siteIcon.classList.remove('hidden');
     completedTaskToggle.classList.add('hidden');
   }
   
@@ -476,7 +476,7 @@ const initTaskLists = async () => {
 
   trashTaskList.clearTrash = async function() {
     
-    siteIcon.style.display = 'block';
+    siteIcon.classList.remove('hidden');
     completedTaskToggle.classList.add('hidden');
     
     this.tasks.forEach(task => task.element.remove());
@@ -658,7 +658,7 @@ const updateTaskListUI = (newActiveTaskList) => {
   completedTaskContainer.removeAllTasks();
   newActiveTaskList.populateTaskContainers();
   if (!incompleteTaskContainer.numTasks && !completedTaskContainer.numTasks) {
-    siteIcon.style.display = 'block';
+    siteIcon.classList.remove('hidden');
   }
 };
 
