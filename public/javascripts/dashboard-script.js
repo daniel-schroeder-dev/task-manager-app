@@ -244,7 +244,6 @@ function TaskContainer(element) {
 
 TaskContainer.prototype.add = function(element) {
   siteIcon.style.display = 'none';
-  completedTaskToggle.style.display = 'block';
   this.element.prepend(element);
 };
 
