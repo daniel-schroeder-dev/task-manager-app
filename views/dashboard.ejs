@@ -137,7 +137,13 @@
         <div id="siteIcon" class="hidden">
       <% } %>
           <i class="fas fa-clipboard-list"></i>
-          <p>Tap the input box to create some new tasks</p>
+          <% if (pageTitle === 'Trash') { %>
+            <p>No deleted tasks yet</p>
+          <% } else if (pageTitle === 'Completed')  { %>
+            <p>No completed tasks yet</p>
+          <% } else { %>
+            <p>Tap the input box to create some new tasks</p>
+          <% } %>
       </div>
     
     </div>
