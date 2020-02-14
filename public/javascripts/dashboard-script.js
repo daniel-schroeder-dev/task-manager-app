@@ -901,8 +901,6 @@ taskListNavContainer.addEventListener('click', (e) => {
 */
 if (centerCol.querySelector('li')) {
   siteIcon.style.display = 'none';
-} else {
-  completedTaskToggle.style.display = 'none';
 }
 
 if (window.location.pathname === '/completed') {
