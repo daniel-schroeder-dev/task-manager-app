@@ -348,10 +348,6 @@ TaskList.prototype.createTaskListNavDOMElement = function() {
 };
 
 TaskList.prototype.populateTaskContainers = function() {
-  if (!this.tasks.length) {
-    siteIcon.style.display = 'block';
-    completedTaskToggle.style.display = 'none';
-  }
   this.tasks.forEach((task, i) => {
     if (i === this.tasks.length - 1) {
       task.element.classList.add('active-task');
