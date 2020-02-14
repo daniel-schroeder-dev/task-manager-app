@@ -67,40 +67,6 @@ Task.prototype.createTaskDOMElement = function() {
 
 };
 
-/*
-*   Removes the Task from all taskLists that the Task is a part of and adds
-*   the Task to the trashTaskList.
-*/
-Task.prototype.remove = function() {
-
-  this.element.remove();
-
-  /*
-  
-  *** NOTE ***
-  
-  Originally used activeTaskList, but this won't work because what if the 
-  Task is marked completed in 'Inbox', but the user Deletes the Task from 
-  the 'Completed' taskList? Then, activeTaskList would be the 
-  completedTaskList, and the Task would only be removed from that list, and
-  would still show up in 'Inbox' as marked complete.
-  
-  */
-  const taskOwner = taskLists.find((taskList) => taskList._id === this.ownerId);
-
-  taskOwner.removeTask(this);
-
-  if (this.completed) {
-    const completedTaskList = taskLists.find((taskList) => {
-      return taskList.name === 'Completed';
-    });
-    completedTaskList.removeTask(this);
-  }
-
-  trashTaskList.addTask(this);
-
-};
-
 Task.prototype.toggleCompletedStatus = function() {
 
   this.completed = !this.completed;

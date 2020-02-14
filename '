@@ -1,0 +1,343 @@
+Make Task a module.
+
+This is going to be a headache, but with modules I can't rely on
+global variables. This is a good thing though, using all those
+globals in my Constructor Functions just seems wrong. Lots of 
+refactoring to come.
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch modules
+# Changes to be committed:
+#	modified:   public/javascripts/dashboard-script.js
+#	new file:   public/javascripts/modules/task.mjs
+#
+# ------------------------ >8 ------------------------
+# Do not touch the line above.
+# Everything below will be removed.
+diff --git a/public/javascripts/dashboard-script.js b/public/javascripts/dashboard-script.js
+index 9ed57c3..f1cf619 100644
+--- a/public/javascripts/dashboard-script.js
++++ b/public/javascripts/dashboard-script.js
+@@ -1,5 +1,6 @@
+ import { DialogBox } from './modules/dialog-box.mjs';
+ import { TaskContainer } from './modules/task-container.mjs';
++import { Task } from './modules/task.mjs';
+ 
+ let taskLists = [];
+ let activeTaskList = {};
+@@ -36,154 +37,9 @@ const deleteTaskButton = document.querySelector('#editTaskDialogBox .btn-delete'
+ const siteIcon = document.getElementById('siteIcon');
+ 
+ 
+-
+-
+ /**************** Constructor Functions **********************/
+ 
+-/********************/
+-/******* Task *******/
+-/********************/
+-
+-
+-function Task(name, ownerId, description, completed, _id) {
+-
+-  this.name = name;
+-  this.description = description;
+-  this.completed = completed || false;
+-  this.ownerId = ownerId;
+-  this._id = _id;
+-
+-  this.createTaskDOMElement();
+-
+-};
+-
+-Task.prototype.createTaskDB = async function() {
+-    
+-  const data = {
+-    name: this.name,
+-    completed: this.completed,
+-    ownerId: this.ownerId,
+-    description: this.description,
+-  };
+-
+-  const response = await fetch('/tasks', {
+-    method: 'POST',
+-    headers: {
+-      'Content-Type': 'application/json',
+-    },
+-    body: JSON.stringify(data),
+-  });
+-
+-  const task = await response.json();
+-
+-  this._id = task._id;
+-
+-};
+-
+-Task.prototype.createTaskDOMElement = function() {
+-
+-  this.element = document.createElement('li');
+-  const i = document.createElement('i');
+-  const spanTaskName = document.createElement('span');
+-  const spanEllipsis = document.createElement('span');
+-  
+-  if (this.completed) {
+-    i.classList.add('fas', 'fa-check-square');
+-  } else {
+-    i.classList.add('far', 'fa-square');
+-  }
+-
+-  spanEllipsis.classList.add('ellipsis');
+-  
+-  spanTaskName.setAttribute('contenteditable', 'true');
+-  spanTaskName.textContent = this.name;
+-
+-  // Fix wierd margin collapse when DOM element is added but page isn't reloaded.
+-  spanTaskName.style.marginLeft = '3.5px' 
+-  
+-  spanEllipsis.innerHTML = '&hellip;';
+-  
+-  this.element.appendChild(i);
+-  this.element.appendChild(spanTaskName);
+-  this.element.appendChild(spanEllipsis);
+-
+-};
+-
+-/*
+-*   Removes the Task from all taskLists that the Task is a part of and adds
+-*   the Task to the trashTaskList.
+-*/
+-Task.prototype.remove = function() {
+-
+-  this.element.remove();
+-
+-  /*
+-  
+-  *** NOTE ***
+-  
+-  Originally used activeTaskList, but this won't work because what if the 
+-  Task is marked completed in 'Inbox', but the user Deletes the Task from 
+-  the 'Completed' taskList? Then, activeTaskList would be the 
+-  completedTaskList, and the Task would only be removed from that list, and
+-  would still show up in 'Inbox' as marked complete.
+-  
+-  */
+-  const taskOwner = taskLists.find((taskList) => taskList._id === this.ownerId);
+-
+-  taskOwner.removeTask(this);
+-
+-  if (this.completed) {
+-    const completedTaskList = taskLists.find((taskList) => {
+-      return taskList.name === 'Completed';
+-    });
+-    completedTaskList.removeTask(this);
+-  }
+-
+-  trashTaskList.addTask(this);
+-
+-};
+-
+-Task.prototype.toggleCompletedStatus = function() {
+ 
+-  this.completed = !this.completed;
+-  
+-  this.element.classList.remove('active-task');
+-  
+-  const completedTaskList = taskLists.find((taskList) => {
+-    return taskList.name === 'Completed';
+-  });
+-
+-  if (this.completed) {
+-    incompleteTaskContainer.remove(this.element);
+-    completedTaskList.addTask(this);
+-    completedTaskContainer.add(this.element);
+-  } else {
+-    completedTaskContainer.remove(this.element);
+-    completedTaskList.removeTask(this);
+-    if (activeTaskList.name !== 'Completed') {
+-      incompleteTaskContainer.add(this.element);
+-    }
+-  }
+-  
+-  this.update();
+-
+-};
+-
+-Task.prototype.update = async function() {
+-
+-  const data = this;
+-
+-  const response = await fetch('/tasks', {
+-    method: 'PUT',
+-    headers: {
+-      'Content-Type': 'application/json',
+-    },
+-    body: JSON.stringify(data),
+-  });
+-
+-  const json = await response.json();
+-
+-};
+ 
+ 
+ /************************/
+@@ -533,6 +389,22 @@ const toggleCompletedStatus = (checkbox) => {
+ 
+   task.toggleCompletedStatus();
+ 
++  const completedTaskList = taskLists.find((taskList) => {
++    return taskList.name === 'Completed';
++  });
++
++  if (task.completed) {
++    incompleteTaskContainer.remove(task.element);
++    completedTaskList.addTask(task);
++    completedTaskContainer.add(task.element);
++  } else {
++    completedTaskContainer.remove(task.element);
++    completedTaskList.removeTask(task);
++    if (activeTaskList.name !== 'Completed') {
++      incompleteTaskContainer.add(task.element);
++    }
++  }
++
+ };
+ 
+ const toggleDumpsterIcon = () => {
+diff --git a/public/javascripts/modules/task.mjs b/public/javascripts/modules/task.mjs
+new file mode 100644
+index 0000000..90f244a
+--- /dev/null
++++ b/public/javascripts/modules/task.mjs
+@@ -0,0 +1,130 @@
++/********************/
++/******* Task *******/
++/********************/
++
++
++function Task(name, ownerId, description, completed, _id) {
++
++  this.name = name;
++  this.description = description;
++  this.completed = completed || false;
++  this.ownerId = ownerId;
++  this._id = _id;
++
++  this.createTaskDOMElement();
++
++};
++
++Task.prototype.createTaskDB = async function() {
++    
++  const data = {
++    name: this.name,
++    completed: this.completed,
++    ownerId: this.ownerId,
++    description: this.description,
++  };
++
++  const response = await fetch('/tasks', {
++    method: 'POST',
++    headers: {
++      'Content-Type': 'application/json',
++    },
++    body: JSON.stringify(data),
++  });
++
++  const task = await response.json();
++
++  this._id = task._id;
++
++};
++
++Task.prototype.createTaskDOMElement = function() {
++
++  this.element = document.createElement('li');
++  const i = document.createElement('i');
++  const spanTaskName = document.createElement('span');
++  const spanEllipsis = document.createElement('span');
++  
++  if (this.completed) {
++    i.classList.add('fas', 'fa-check-square');
++  } else {
++    i.classList.add('far', 'fa-square');
++  }
++
++  spanEllipsis.classList.add('ellipsis');
++  
++  spanTaskName.setAttribute('contenteditable', 'true');
++  spanTaskName.textContent = this.name;
++
++  // Fix wierd margin collapse when DOM element is added but page isn't reloaded.
++  spanTaskName.style.marginLeft = '3.5px' 
++  
++  spanEllipsis.innerHTML = '&hellip;';
++  
++  this.element.appendChild(i);
++  this.element.appendChild(spanTaskName);
++  this.element.appendChild(spanEllipsis);
++
++};
++
++/*
++*   Removes the Task from all taskLists that the Task is a part of and adds
++*   the Task to the trashTaskList.
++*/
++Task.prototype.remove = function() {
++
++  this.element.remove();
++
++  /*
++  
++  *** NOTE ***
++  
++  Originally used activeTaskList, but this won't work because what if the 
++  Task is marked completed in 'Inbox', but the user Deletes the Task from 
++  the 'Completed' taskList? Then, activeTaskList would be the 
++  completedTaskList, and the Task would only be removed from that list, and
++  would still show up in 'Inbox' as marked complete.
++  
++  */
++  const taskOwner = taskLists.find((taskList) => taskList._id === this.ownerId);
++
++  taskOwner.removeTask(this);
++
++  if (this.completed) {
++    const completedTaskList = taskLists.find((taskList) => {
++      return taskList.name === 'Completed';
++    });
++    completedTaskList.removeTask(this);
++  }
++
++  trashTaskList.addTask(this);
++
++};
++
++Task.prototype.toggleCompletedStatus = function() {
++
++  this.completed = !this.completed;
++  
++  this.element.classList.remove('active-task');
++  
++  this.update();
++
++};
++
++Task.prototype.update = async function() {
++
++  const data = this;
++
++  const response = await fetch('/tasks', {
++    method: 'PUT',
++    headers: {
++      'Content-Type': 'application/json',
++    },
++    body: JSON.stringify(data),
++  });
++
++  const json = await response.json();
++
++};
++
++export { Task };
+\ No newline at end of file

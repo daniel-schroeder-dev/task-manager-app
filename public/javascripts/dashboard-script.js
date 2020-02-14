@@ -638,8 +638,26 @@ createTaskInput.addEventListener('keydown', async function(e) {
 editTaskDialogBox.element.addEventListener('click', function(e) {
 
   if (e.target === deleteTaskButton) {
-    editTaskDialogBox.task.remove();
+    
+    const taskToRemove = editTaskDialogBox.task;
+
+    taskToRemove.element.remove();
+
+    const taskOwner = taskLists.find((taskList) => taskList._id === taskToRemove.ownerId);
+
+    taskOwner.removeTask(taskToRemove);
+
+    if (taskToRemove.completed) {
+      const completedTaskList = taskLists.find((taskList) => {
+        return taskList.name === 'Completed';
+      });
+      completedTaskList.removeTask(taskToRemove);
+    }
+
+    trashTaskList.addTask(taskToRemove);
+    
     deleteTaskButton.previousElementSibling.click();
+
     return;
   }
 
