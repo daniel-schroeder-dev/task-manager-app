@@ -131,9 +131,13 @@
           <% }); %>
         </ul>
       
-      <div id="siteIcon">
-        <i class="fas fa-clipboard-list"></i>
-        <p>Tap the input box to create some new tasks</p>
+      <% if (!tasks.length) { %>
+        <div id="siteIcon">
+      <% } else { %>
+        <div id="siteIcon" class="hidden">
+      <% } %>
+          <i class="fas fa-clipboard-list"></i>
+          <p>Tap the input box to create some new tasks</p>
       </div>
     
     </div>
