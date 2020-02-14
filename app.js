@@ -4,6 +4,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const logger = require('morgan');
+const nocache = require('nocache');
 
 const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
@@ -20,6 +21,7 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(nocache());
 app.use(cookieParser());
 app.use(logger('dev'));
 app.use(express.json());
