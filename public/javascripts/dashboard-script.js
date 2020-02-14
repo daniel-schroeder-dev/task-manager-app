@@ -258,24 +258,19 @@ TaskContainer.prototype.add = function(element) {
   siteIcon.style.display = 'none';
   this.element.prepend(element);
   this.numTasks++;
+  if (this === completedTaskContainer) {
+    completedTaskToggle.classList.remove('hidden');
+  }
 };
 
-completedTaskContainer.add = function(element) {
-  siteIcon.style.display = 'none';
-  this.element.prepend(element);
-  this.numTasks++;
-  completedTaskToggle.classList.remove('hidden');
+TaskContainer.prototype.remove = function(element) {
+  element.remove();
+  this.numTasks--;
+  if (this === completedTaskContainer && !this.numTasks) {
+    completedTaskToggle.classList.add('hidden');
+  }
 }
 
-/*
-
-*** TODO ***
-
-Add a TaskContainer.prototype.remove(element) method that will remove an
-element from the TaskContainer, update the numTasks, and possibly deal with
-setting up siteIcon and completedTaskToggle display properties.
-
-*/
 
 /************************/
 /******* TaskList *******/
