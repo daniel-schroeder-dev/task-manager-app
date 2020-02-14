@@ -207,6 +207,7 @@ Task.prototype.toggleCompletedStatus = function() {
   if (this.completed) {
     completedTaskList.addTask(this);
     completedTaskContainer.add(this.element);
+    completedTaskToggle.classList.remove('hidden');
   } else {
     completedTaskList.removeTask(this);
     if (activeTaskList.name !== 'Completed') incompleteTaskContainer.add(this.element);
