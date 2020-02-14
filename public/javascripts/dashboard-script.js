@@ -1,4 +1,5 @@
 import { DialogBox } from './modules/dialog-box.mjs';
+import { TaskContainer } from './modules/task-container.mjs';
 
 let taskLists = [];
 let activeTaskList = {};
@@ -33,6 +34,8 @@ const saveListButton = document.querySelector('#addListDialogBox .btn-save');
 const deleteTaskButton = document.querySelector('#editTaskDialogBox .btn-delete');
 
 const siteIcon = document.getElementById('siteIcon');
+
+
 
 
 /**************** Constructor Functions **********************/
@@ -144,14 +147,6 @@ Task.prototype.toggleCompletedStatus = function() {
 
   this.completed = !this.completed;
   
-  /*
-
-  *** NOTE ***
-
-  This should be handled by the taskContainer that the Task is a part of
-
-  */
-  // this.element.remove();
   this.element.classList.remove('active-task');
   
   const completedTaskList = taskLists.find((taskList) => {
@@ -188,44 +183,6 @@ Task.prototype.update = async function() {
 
   const json = await response.json();
 
-};
-
-
-/*****************************/
-/******* TaskContainer *******/
-/*****************************/
-
-
-function TaskContainer(element) {
-  this.element = element;
-  this.numTasks = 0;
-};
-
-TaskContainer.prototype.add = function(element) {
-  siteIcon.classList.add('hidden');
-  this.element.prepend(element);
-  this.numTasks++;
-  if (this === completedTaskContainer) {
-    completedTaskToggle.classList.remove('hidden');
-  }
-};
-
-TaskContainer.prototype.remove = function(element) {
-  element.remove();
-  this.numTasks--;
-  if (this === completedTaskContainer && !this.numTasks) {
-    completedTaskToggle.classList.add('hidden');
-  }
-};
-
-TaskContainer.prototype.removeAllTasks = function() {
-  while (this.element.hasChildNodes()) {
-    this.element.removeChild(this.element.firstChild);
-  }
-  this.numTasks = 0;
-  if (this === completedTaskContainer) {
-    completedTaskToggle.classList.add('hidden');
-  }
 };
 
 
