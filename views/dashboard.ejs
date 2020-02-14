@@ -93,7 +93,12 @@
         <span class="hidden" id="clearTrash"><i class="fas fa-dumpster"></i></span>
       </div>
 
-      <input type="text" name="createTask" id="createTask" placeholder="Add Task to &quot;<%= pageTitle %>&quot;">
+      <% if (pageTitle === 'Trash' || pageTitle === 'Completed') { %>
+        <input class="hidden" type="text" name="createTask" id="createTask" placeholder="Add Task to &quot;<%= pageTitle %>&quot;">
+      <% } else { %>
+        <input type="text" name="createTask" id="createTask" placeholder="Add Task to &quot;<%= pageTitle %>&quot;">
+      <% } %>
+
       
         <ul id="incompleteTaskContainer" class="task-container">
           <% tasks.forEach((task, i) => { %>
