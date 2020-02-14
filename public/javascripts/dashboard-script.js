@@ -197,7 +197,14 @@ Task.prototype.toggleCompletedStatus = function() {
 
   this.completed = !this.completed;
   
-  this.element.remove();
+  /*
+
+  *** NOTE ***
+
+  This should be handled by the taskContainer that the Task is a part of
+
+  */
+  // this.element.remove();
   this.element.classList.remove('active-task');
   
   const completedTaskList = taskLists.find((taskList) => {
@@ -205,11 +212,15 @@ Task.prototype.toggleCompletedStatus = function() {
   });
 
   if (this.completed) {
+    incompleteTaskContainer.remove(this.element);
     completedTaskList.addTask(this);
     completedTaskContainer.add(this.element);
   } else {
+    completedTaskContainer.remove(this.element);
     completedTaskList.removeTask(this);
-    if (activeTaskList.name !== 'Completed') incompleteTaskContainer.add(this.element);
+    if (activeTaskList.name !== 'Completed') {
+      incompleteTaskContainer.add(this.element);
+    }
   }
   
   this.update();
