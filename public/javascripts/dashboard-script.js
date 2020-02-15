@@ -2,7 +2,7 @@ import { DialogBox } from './modules/dialog-box.mjs';
 import { TaskContainer } from './modules/task-container.mjs';
 import { Task } from './modules/task.mjs';
 import { TaskList } from './modules/task-list.mjs';
-import { setTodaysDate, toggleDumpsterIcon, initTaskLists, changeActiveTaskList } from './modules/helpers.mjs';
+import { setTodaysDate, toggleDumpsterIcon, initTaskLists, changeActiveTaskList, setActiveTask } from './modules/helpers.mjs';
 
 let taskLists = [];
 let trashTaskList = {};
@@ -39,21 +39,6 @@ const saveListButton = document.querySelector('#addListDialogBox .btn-save');
 const deleteTaskButton = document.querySelector('#editTaskDialogBox .btn-delete');
 
 /*************** Global Helper Functions *******************/
-
-
-
-/*
-*   Sets the .active-task to the Task represented by clickedElement.
-*/
-const setActiveTask = (clickedElement) => {
-  
-  const taskElement = clickedElement.tagName === 'LI' ? clickedElement : clickedElement.parentElement;
-
-  centerCol.querySelector('.active-task').classList.remove('active-task');
-
-  taskElement.classList.add('active-task');
-
-};
 
 const setToggleIcon = (clickedElement) => {
   
