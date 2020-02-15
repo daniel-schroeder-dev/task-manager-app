@@ -2,7 +2,7 @@ import { DialogBox } from './modules/dialog-box.mjs';
 import { TaskContainer } from './modules/task-container.mjs';
 import { Task } from './modules/task.mjs';
 import { TaskList } from './modules/task-list.mjs';
-import { setTodaysDate } from './modules/helpers.mjs';
+import { setTodaysDate, toggleDumpsterIcon } from './modules/helpers.mjs';
 
 let taskLists = [];
 let activeTaskList = {};
@@ -261,11 +261,6 @@ const toggleCompletedStatus = (checkbox) => {
     }
   }
 
-};
-
-const toggleDumpsterIcon = () => {
-  const pageTitleContainerSpanElements = document.querySelectorAll('.page-title-container span');
-  pageTitleContainerSpanElements.forEach(element => element.classList.toggle('hidden'));
 };
 
 /*
