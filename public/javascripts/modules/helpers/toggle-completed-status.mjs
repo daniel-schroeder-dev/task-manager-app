@@ -5,7 +5,7 @@ const toggleCompletedCheckbox = (checkbox) => {
   checkbox.classList.toggle('fa-check-square');
 };
 
-const toggleCompletedStatus = (checkbox, activeTaskList, completedTaskList) => {
+const toggleCompletedStatus = (checkbox, activeTaskList, completedTaskList, incompleteTaskContainer, completedTaskContainer) => {
 
   if (activeTaskList.name === 'Trash') return;
   
