@@ -99,7 +99,9 @@ TaskList.prototype.populateTaskContainers = function(completedTaskContainer, inc
       incompleteTaskContainer.add(task.element);
     }
   });
-  incompleteTaskContainer.element.firstChild.classList.add('active-task');
+  if (incompleteTaskContainer.element.hasChildNodes()) {
+    incompleteTaskContainer.element.firstChild.classList.add('active-task');
+  }
 };
 
 TaskList.prototype.removeTask = async function(taskToRemove) {
