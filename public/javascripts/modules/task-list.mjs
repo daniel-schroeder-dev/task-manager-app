@@ -90,9 +90,6 @@ TaskList.prototype.createTaskListNavDOMElement = function() {
 
 TaskList.prototype.populateTaskContainers = function(completedTaskContainer, incompleteTaskContainer) {
   this.tasks.forEach((task, i) => {
-    if (i === this.tasks.length - 1) {
-      task.element.classList.add('active-task');
-    }
     if (this.name === 'Trash') {
       task.element.querySelector('i').classList.add('not-allowed');
     }
@@ -102,6 +99,7 @@ TaskList.prototype.populateTaskContainers = function(completedTaskContainer, inc
       incompleteTaskContainer.add(task.element);
     }
   });
+  incompleteTaskContainer.element.firstChild.classList.add('active-task');
 };
 
 TaskList.prototype.removeTask = async function(taskToRemove) {
