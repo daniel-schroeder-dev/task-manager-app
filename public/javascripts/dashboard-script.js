@@ -2,7 +2,7 @@ import { DialogBox } from './modules/dialog-box.mjs';
 import { TaskContainer } from './modules/task-container.mjs';
 import { Task } from './modules/task.mjs';
 import { TaskList } from './modules/task-list.mjs';
-import { setTodaysDate, toggleDumpsterIcon, initTaskLists, changeActiveTaskList, setActiveTask } from './modules/helpers.mjs';
+import { setTodaysDate, toggleDumpsterIcon, initTaskLists, changeActiveTaskList, setActiveTask, toggleCaretIcon } from './modules/helpers.mjs';
 
 let taskLists = [];
 let trashTaskList = {};
@@ -40,30 +40,6 @@ const deleteTaskButton = document.querySelector('#editTaskDialogBox .btn-delete'
 
 /*************** Global Helper Functions *******************/
 
-const setToggleIcon = (clickedElement) => {
-  
-  let toggleIcon = '';
-
-  if (clickedElement.tagName === 'I') {
-    toggleIcon = clickedElement;
-  } else if (clickedElement.id === 'completedTaskToggle') {
-    toggleIcon = clickedElement.querySelector('i');
-  } else {
-    toggleIcon = clickedElement.previousElementSibling;
-  }
-
-  return toggleIcon;
-
-};
-
-const toggleCaretIcon = (clickedElement) => {
-  
-  const toggleIcon = setToggleIcon(clickedElement);
-
-  toggleIcon.classList.toggle('fa-caret-down');
-  toggleIcon.classList.toggle('fa-caret-right');
-
-};
 
 const toggleCompletedCheckbox = (checkbox) => {
   checkbox.classList.toggle('far');
