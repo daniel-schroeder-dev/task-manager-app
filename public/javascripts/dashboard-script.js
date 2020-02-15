@@ -2,6 +2,7 @@ import { DialogBox } from './modules/dialog-box.mjs';
 import { TaskContainer } from './modules/task-container.mjs';
 import { Task } from './modules/task.mjs';
 import { TaskList } from './modules/task-list.mjs';
+import { setTodaysDate } from './modules/helpers.mjs';
 
 let taskLists = [];
 let activeTaskList = {};
@@ -198,23 +199,6 @@ const setTaskListNavElements = () => {
   taskLists.forEach((taskList) => {
     taskList.navElement = Array.prototype.find.call(taskListNavElements, ((taskListNavElement) => taskListNavElement.lastElementChild.lastElementChild.textContent === taskList.name));
   });
-
-};
-
-/*
-*   Sets the date in the 'Today' icon representing tasks due today.
-*/
-const setTodaysDate = () => {
-  
-  const dateSpan = document.getElementById('date');
-  const todaysDate = new Date().getDate();
-  
-  dateSpan.textContent = todaysDate;
-
-  // When there is only 1 character, this will help center the date inside the calendar icon.
-  if (todaysDate < 10) {
-    dateSpan.style.marginLeft = '3px';
-  }
 
 };
 
