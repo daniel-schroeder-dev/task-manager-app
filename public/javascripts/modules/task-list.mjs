@@ -99,7 +99,7 @@ TaskList.prototype.populateTaskContainers = function(completedTaskContainer, inc
       incompleteTaskContainer.add(task.element);
     }
   });
-  if (incompleteTaskContainer.element.hasChildNodes()) {
+  if (incompleteTaskContainer.element.querySelector('li')) {
     incompleteTaskContainer.element.firstElementChild.classList.add('active-task');
   }
 };

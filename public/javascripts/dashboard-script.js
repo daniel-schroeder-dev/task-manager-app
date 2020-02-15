@@ -2,7 +2,7 @@ import { DialogBox } from './modules/dialog-box.mjs';
 import { TaskContainer } from './modules/task-container.mjs';
 import { Task } from './modules/task.mjs';
 import { TaskList } from './modules/task-list.mjs';
-import { setTodaysDate, toggleDumpsterIcon, initTaskLists, changeActiveTaskList, setActiveTask, toggleCaretIcon } from './modules/helpers.mjs';
+import { setTodaysDate, toggleDumpsterIcon, initTaskLists, changeActiveTaskList, setActiveTask, toggleCaretIcon, toggleCompletedStatus } from './modules/helpers.mjs';
 
 let taskLists = [];
 let trashTaskList = {};
@@ -37,45 +37,6 @@ dialogBoxes.push(deleteTaskDialogBox);
 const addListButton = document.getElementById('addListButton');
 const saveListButton = document.querySelector('#addListDialogBox .btn-save');
 const deleteTaskButton = document.querySelector('#editTaskDialogBox .btn-delete');
-
-/*************** Global Helper Functions *******************/
-
-
-const toggleCompletedCheckbox = (checkbox) => {
-  checkbox.classList.toggle('far');
-  checkbox.classList.toggle('fa-square');
-  checkbox.classList.toggle('fas');
-  checkbox.classList.toggle('fa-check-square');
-};
-
-const toggleCompletedStatus = (checkbox) => {
-
-  if (TaskList.activeTaskList.name === 'Trash') return;
-  
-  toggleCompletedCheckbox(checkbox);
-
-  const taskElement = checkbox.parentElement;
-  const task = TaskList.activeTaskList.tasks.find(task => task.element === taskElement);
-
-  task.toggleCompletedStatus();
-
-  const completedTaskList = taskLists.find((taskList) => {
-    return taskList.name === 'Completed';
-  });
-
-  if (task.completed) {
-    incompleteTaskContainer.remove(task.element);
-    completedTaskList.addTask(task);
-    completedTaskContainer.add(task.element);
-  } else {
-    completedTaskContainer.remove(task.element);
-    completedTaskList.removeTask(task);
-    if (TaskList.activeTaskList.name !== 'Completed') {
-      incompleteTaskContainer.add(task.element);
-    }
-  }
-
-};
 
 
 /********************* Event Listeners ***********************/
@@ -159,7 +120,13 @@ centerCol.addEventListener('click', function(e) {
   *   Toggles the completed status of a Task, changing the checkbox icon, 
   *   taskContainer, and completed status on the Task object.
   */
-  if (e.target.tagName === 'I' && e.target.parentElement !== completedTaskToggle) return toggleCompletedStatus(e.target);
+  if (e.target.tagName === 'I' && e.target.parentElement !== completedTaskToggle) {
+    const completedTaskList = taskLists.find((taskList) => {
+      return taskList.name === 'Completed';
+    });
+    toggleCompletedStatus(e.target, TaskList.activeTaskList, completedTaskList);
+    return;
+  }
 
   /*
   *   Set the .active-task to the clicked Task.
@@ -370,7 +337,7 @@ if (window.location.pathname === '/trash') {
   toggleDumpsterIcon();
 }
 
-if (incompleteTaskContainer.element.hasChildNodes()) {
+if (incompleteTaskContainer.element.querySelector('li')) {
   incompleteTaskContainer.element.firstElementChild.classList.add('active-task');
 }
 
