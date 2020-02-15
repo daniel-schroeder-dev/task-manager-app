@@ -108,7 +108,7 @@ TaskList.prototype.removeTask = async function(taskToRemove) {
 
   this.tasks = this.tasks.filter(task => task !== taskToRemove);
 
-  if (this === activeTaskList && !this.tasks.length) {
+  if (this === TaskList.activeTaskList && !this.tasks.length) {
     siteIcon.classList.remove('hidden');
     completedTaskToggle.classList.add('hidden');
   }

@@ -5,7 +5,6 @@ import { TaskList } from './modules/task-list.mjs';
 import { setTodaysDate, toggleDumpsterIcon, initTaskLists } from './modules/helpers.mjs';
 
 let taskLists = [];
-let activeTaskList = {};
 let trashTaskList = {};
 
 const dialogBoxes = [];
@@ -46,7 +45,7 @@ const changeActiveTaskList = (newActiveTaskList) => {
   updatePageState(newActiveTaskList);
   updateTaskListUI(newActiveTaskList);
 
-  if (activeTaskList.name === 'Trash') {
+  if (TaskList.activeTaskList.name === 'Trash') {
     toggleDumpsterIcon();
   }
 
@@ -63,7 +62,7 @@ const changeActiveTaskList = (newActiveTaskList) => {
   }
   createTaskInput.placeholder = `Add Task to "${newActiveTaskList.name}"`;
   createTaskInput.focus();
-  activeTaskList = newActiveTaskList;
+  TaskList.activeTaskList = newActiveTaskList;
 };
 
 /*
@@ -84,7 +83,7 @@ const changePageURL = (newActiveTaskList) => {
 
   */
 
-  window.history.pushState({ taskListName: activeTaskList.name }, '', url);
+  window.history.pushState({ taskListName: TaskList.activeTaskList.name }, '', url);
   
 };
 
@@ -100,12 +99,6 @@ const setActiveTask = (clickedElement) => {
   taskElement.classList.add('active-task');
 
 };
-
-
-
-
-
-
 
 const setToggleIcon = (clickedElement) => {
   
@@ -141,12 +134,12 @@ const toggleCompletedCheckbox = (checkbox) => {
 
 const toggleCompletedStatus = (checkbox) => {
 
-  if (activeTaskList.name === 'Trash') return;
+  if (TaskList.activeTaskList.name === 'Trash') return;
   
   toggleCompletedCheckbox(checkbox);
 
   const taskElement = checkbox.parentElement;
-  const task = activeTaskList.tasks.find(task => task.element === taskElement);
+  const task = TaskList.activeTaskList.tasks.find(task => task.element === taskElement);
 
   task.toggleCompletedStatus();
 
@@ -161,7 +154,7 @@ const toggleCompletedStatus = (checkbox) => {
   } else {
     completedTaskContainer.remove(task.element);
     completedTaskList.removeTask(task);
-    if (activeTaskList.name !== 'Completed') {
+    if (TaskList.activeTaskList.name !== 'Completed') {
       incompleteTaskContainer.add(task.element);
     }
   }
@@ -234,7 +227,7 @@ document.addEventListener('click', (e) => {
 
     editTaskDialogBox.showDialogBox();
 
-    const task = activeTaskList.tasks.find((task) => {
+    const task = TaskList.activeTaskList.tasks.find((task) => {
       return task.element === e.target.parentElement;
     });
 
@@ -365,7 +358,7 @@ createTaskInput.addEventListener('keydown', async function(e) {
   
   if (e.keyCode !== ENTER_KEYCODE) return;
 
-  const task = new Task(this.value, activeTaskList._id);
+  const task = new Task(this.value, TaskList.activeTaskList._id);
 
   /*
   *   The task that is just created will be the .active-task, so make sure to 
@@ -386,7 +379,7 @@ createTaskInput.addEventListener('keydown', async function(e) {
   */
   await task.createTaskDB();
 
-  activeTaskList.addTask(task);
+  TaskList.activeTaskList.addTask(task);
   this.value = '';
 
 });
@@ -496,7 +489,7 @@ setTodaysDate();
 initTaskLists().then((results) => {
   
   taskLists = results.taskLists;
-  activeTaskList = results.activeTaskList;
+  TaskList.activeTaskList = results.activeTaskList;
 
   /**************** Special Object Properties *******************/
 
