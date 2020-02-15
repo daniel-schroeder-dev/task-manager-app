@@ -100,7 +100,7 @@ TaskList.prototype.populateTaskContainers = function(completedTaskContainer, inc
     }
   });
   if (incompleteTaskContainer.element.hasChildNodes()) {
-    incompleteTaskContainer.element.firstChild.classList.add('active-task');
+    incompleteTaskContainer.element.firstElementChild.classList.add('active-task');
   }
 };
 
