@@ -574,9 +574,9 @@ taskListNavContainer.addEventListener('click', (e) => {
 if (window.location.pathname === '/trash') {
   centerCol.querySelectorAll('li i').forEach(i => i.classList.add('not-allowed'));
   toggleDumpsterIcon();
-} else {
-  createTaskInput.focus();
 }
+
+createTaskInput.focus();
 
 /*
 *   Sets the date in the 'Today' icon representing tasks due today.
