@@ -2,7 +2,7 @@ import { DialogBox } from './modules/dialog-box.mjs';
 import { TaskContainer } from './modules/task-container.mjs';
 import { Task } from './modules/task.mjs';
 import { TaskList } from './modules/task-list.mjs';
-import { setTodaysDate, toggleDumpsterIcon, initTaskLists } from './modules/helpers.mjs';
+import { setTodaysDate, toggleDumpsterIcon, initTaskLists, changeActiveTaskList } from './modules/helpers.mjs';
 
 let taskLists = [];
 let trashTaskList = {};
@@ -14,6 +14,7 @@ const leftCol = document.getElementById('leftCol');
 const centerCol = document.getElementById('centerCol');
 
 const taskListNavContainer = document.getElementById('taskListNavContainer');
+
 const incompleteTaskContainer = new TaskContainer(document.getElementById('incompleteTaskContainer'));
 const completedTaskContainer = new TaskContainer(document.getElementById('completedTaskContainer'));
 
@@ -40,52 +41,6 @@ const deleteTaskButton = document.querySelector('#editTaskDialogBox .btn-delete'
 /*************** Global Helper Functions *******************/
 
 
-const changeActiveTaskList = (newActiveTaskList) => {
-  changePageURL(newActiveTaskList);
-  updatePageState(newActiveTaskList);
-  updateTaskListUI(newActiveTaskList);
-
-  if (TaskList.activeTaskList.name === 'Trash') {
-    toggleDumpsterIcon();
-  }
-
-  if (newActiveTaskList.name === 'Completed') {
-    siteIcon.querySelector('p').textContent = 'No completed tasks yet';
-    createTaskInput.classList.add('hidden');
-  } else if (newActiveTaskList.name === 'Trash') {
-    siteIcon.querySelector('p').textContent = 'No deleted tasks yet';
-    createTaskInput.classList.add('hidden');
-    toggleDumpsterIcon();
-  } else {
-    siteIcon.querySelector('p').textContent = 'Tap the input box to create some new tasks';
-    createTaskInput.classList.remove('hidden');
-  }
-  createTaskInput.placeholder = `Add Task to "${newActiveTaskList.name}"`;
-  createTaskInput.focus();
-  TaskList.activeTaskList = newActiveTaskList;
-};
-
-/*
-*   Set the page URL to the newActiveTaskList.name.
-*/
-const changePageURL = (newActiveTaskList) => {
-  
-  const url = '/' + newActiveTaskList.name.toLowerCase().replace(/\s/gi, '-');
-  
-  /*
-
-  *** RESEARCH ***
-  
-  I'm not exactly sure how the HistoryAPI works, or if I'm using this
-  correctly. I copied this from a project I did using the HistoryAPI, 
-  but I need to understand what's happening here if this code is going
-  to stay in this project.
-
-  */
-
-  window.history.pushState({ taskListName: TaskList.activeTaskList.name }, '', url);
-  
-};
 
 /*
 *   Sets the .active-task to the Task represented by clickedElement.
@@ -161,31 +116,6 @@ const toggleCompletedStatus = (checkbox) => {
 
 };
 
-/*
-*   Changes the page title and placeholder for the createTaskInput to match
-*   the newActiveTaskList that will be loaded.
-*/
-const updatePageState = (newActiveTaskList) => {
-
-  const pageTitleElement = document.getElementById('pageTitle');
-  
-  pageTitleElement.textContent = newActiveTaskList.name;
-  pageTitleElement.nextElementSibling.setAttribute('placeholder', `Add Task to "${newActiveTaskList.name}"`);
-
-};
-
-/*
-*   1. Wipes the activeTaskList tasks from the DOM.
-*   2. Adds all tasks in newActiveTaskList to the DOM.
-*/
-const updateTaskListUI = (newActiveTaskList) => {
-  incompleteTaskContainer.removeAllTasks();
-  completedTaskContainer.removeAllTasks();
-  newActiveTaskList.populateTaskContainers(completedTaskContainer, incompleteTaskContainer);
-  if (!incompleteTaskContainer.numTasks && !completedTaskContainer.numTasks) {
-    siteIcon.classList.remove('hidden');
-  }
-};
 
 /********************* Event Listeners ***********************/
 
@@ -194,7 +124,8 @@ const updateTaskListUI = (newActiveTaskList) => {
 */
 window.onpopstate = (e) => {
   const newActiveTaskList = taskLists.find(taskList => taskList.url === window.location.pathname);
-  changeActiveTaskList(newActiveTaskList);
+  changeActiveTaskList(newActiveTaskList, TaskList.activeTaskList, incompleteTaskContainer, completedTaskContainer);
+  TaskList.activeTaskList = newActiveTaskList;
 };
 
 /*
@@ -445,7 +376,9 @@ saveListButton.addEventListener('click', function(e) {
   
   addListDialogBox.hideDialogBox();
   
-  changeActiveTaskList(newActiveTaskList);
+  changeActiveTaskList(newActiveTaskList, TaskList.activeTaskList, incompleteTaskContainer, completedTaskContainer);
+
+  TaskList.activeTaskList = newActiveTaskList;
 
 });
 
@@ -463,7 +396,9 @@ taskListNavContainer.addEventListener('click', (e) => {
   
   const newActiveTaskList = taskLists.find(taskList => taskList.url === taskListLink.getAttribute('href'));
 
-  changeActiveTaskList(newActiveTaskList);
+  changeActiveTaskList(newActiveTaskList, TaskList.activeTaskList, incompleteTaskContainer, completedTaskContainer);
+
+  TaskList.activeTaskList = newActiveTaskList;
 
 });
 
