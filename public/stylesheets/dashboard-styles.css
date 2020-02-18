@@ -314,6 +314,10 @@ i {
   right: -20px;
 }
 
+.task-list-nav-item .ellipsis {
+  right: 0px;
+}
+
 #completedTaskContainer,
 #completedTaskContainer i {
   color: #ababab;

@@ -30,6 +30,7 @@
             <i class="fas fa-calendar"></i>
             <span>Today</span>
           </a>
+          <span class="ellipsis">&#8230;</span>
         </div>
         
         <div class="task-list-nav-item">
@@ -37,12 +38,14 @@
             <i class="fas fa-calendar-alt"></i>
             <span>Next 7 Days</span>
           </a>
+          <span class="ellipsis">&#8230;</span>
         </div>
 
         <div class="task-list-nav-item">
           <a href="/inbox" class="task-list-nav">
             <i class="fas fa-archive"></i>
             <span>Inbox</span>
+            <span class="ellipsis">&#8230;</span>
           </a>
         </div>
           
@@ -58,6 +61,7 @@
               <i class="fas fa-bars"></i>
               <span data-id=<%= taskList._id %>><%= taskList.name %></span>
             </a>
+            <span class="ellipsis">&#8230;</span>
           </div>
         
         <% }); %>
@@ -72,6 +76,7 @@
             <i class="fas fa-check-square"></i>
             <span>Completed</span>
           </a>
+          <span class="ellipsis">&#8230;</span>
         </div>
         
         <div class="task-list-nav-item">
@@ -79,6 +84,7 @@
             <i class="fas fa-trash"></i>
             <span>Trash</span>
           </a>
+          <span class="ellipsis">&#8230;</span>
         </div>
 
       </div> <!-- end #taskListNavContainer -->
