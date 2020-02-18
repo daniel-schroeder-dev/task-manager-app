@@ -271,6 +271,10 @@ i {
   color: inherit;
 }
 
+.task-list-nav-item:hover {
+  background-color: rgba(75,111,222,.12);
+}
+
 .task-container {
   list-style-type: none;
   padding: 0;
