@@ -38,7 +38,6 @@ dialogBoxes.push(editTaskListDialogBox);
 
 const addListButton = document.getElementById('addListButton');
 const saveListButton = document.querySelector('#addListDialogBox .btn-save');
-const deleteTaskButton = document.querySelector('#editTaskDialogBox .btn-delete');
 
 
 /********************* Event Listeners ***********************/
@@ -267,7 +266,7 @@ createTaskInput.addEventListener('keydown', async function(e) {
 
 editTaskDialogBox.element.addEventListener('click', function(e) {
 
-  if (e.target === deleteTaskButton) {
+  if (e.target.classList.contains('btn-delete')) {
     
     const taskToRemove = editTaskDialogBox.task;
 
