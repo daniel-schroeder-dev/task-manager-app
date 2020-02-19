@@ -88,6 +88,18 @@ TaskList.prototype.createTaskListNavDOMElement = function() {
 
 };
 
+TaskList.prototype.delete = async function() {
+
+  const response = await fetch(`/taskLists/${this._id}`, {
+    method: 'DELETE',
+  });
+
+  const taskList = await response.json();
+
+  console.log(taskList);
+
+};
+
 TaskList.prototype.populateTaskContainers = function(completedTaskContainer, incompleteTaskContainer) {
   this.tasks.forEach((task, i) => {
     if (this.name === 'Trash') {

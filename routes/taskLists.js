@@ -5,6 +5,17 @@ const Task = require('../src/models/task');
 
 const router = express.Router();
 
+router.delete('/:id', auth, async (req, res, next) => {
+  const taskList = await TaskList.findByIdAndDelete(req.params.id);
+  let [ completedTaskList ] = await TaskList.find({ name: 'Completed' });
+  await Task.deleteMany({ _id: { $in: taskList.tasks }});
+  if (completedTaskList.tasks.length) {
+    completedTaskList.tasks.filter(task => taskList.tasks.indexOf(task) !== -1);
+    await completedTaskList.save();
+  }
+  res.json({ taskList, completedTaskList });
+});
+
 router.post('/:id/tasks', auth, async (req, res, next) => {
   const taskList = await TaskList.findById(req.params.id);
   taskList.tasks.push(req.body._id);

@@ -273,6 +273,29 @@ editTaskDialogBox.element.addEventListener('click', function(e) {
 
 });
 
+editTaskListDialogBox.element.addEventListener('click', async function(e) {
+
+  if (e.target.classList.contains('btn-delete')) {
+
+    taskLists = taskLists.filter(taskList => taskList.name !== editTaskListDialogBox.taskList.name);
+
+    const completedTasks = editTaskListDialogBox.taskList.tasks.filter(task => task.completed);
+
+    const completedTaskList = taskLists.find((taskList) => {
+        return taskList.name === 'Completed';
+    });
+
+    editTaskListDialogBox.taskList.navElement.remove();
+
+    completedTasks.forEach(task => completedTaskList.removeTask(task));
+
+    const res = await editTaskListDialogBox.taskList.delete();
+    e.target.previousElementSibling.click();
+    document.querySelector('.task-list-nav-item a[href="/inbox"]').click();
+  }
+
+});
+
 deleteTaskDialogBox.element.addEventListener('click', function(e) {
 
   if (e.target.classList.contains('btn-delete')) {
