@@ -92,17 +92,13 @@
 
         <h1 id="pageTitle"><%= pageTitle %></h1>
 
-        <% const hideEllip = [ 'Inbox', 'Today', 'Week', 'Trash', 'Completed' ] %>
+      <% const hideEllip = [ 'Inbox', 'Today', 'Week', 'Trash', 'Completed' ] %>
 
-        <% if (hideEllip.indexOf(pageTitle) !== -1) { %>
-
-          <span class="ellipsis hidden" data-target="<%= pageTitle %>">&#8230;</span>
-        
-        <% } else { %>
-        
-          <span class="ellipsis" data-target="<%= pageTitle %>">&#8230;</span>
-        
-        <% } %>
+      <% if (hideEllip.indexOf(pageTitle) !== -1) { %>
+        <span class="ellipsis hidden" data-target="<%= pageTitle %>">&#8230;</span>
+      <% } else { %>
+        <span class="ellipsis" data-target="<%= pageTitle %>">&#8230;</span>
+      <% } %>
 
         <span class="hidden" id="clearTrash"><i class="fas fa-dumpster"></i></span>
       
@@ -113,61 +109,63 @@
       <% } else { %>
         <input type="text" name="createTask" id="createTask" placeholder="Add Task to &quot;<%= pageTitle %>&quot;">
       <% } %>
-
       
-        <ul id="incompleteTaskContainer" class="task-container">
-          <% tasks.forEach((task, i) => { %>
-            <% if (task.completed) return; %>
-              <li>
-                <i class="far fa-square"></i>
-                <span contenteditable="true"><%= task.name %></span>
-                <span class="ellipsis">&#8230;</span>
-              </li>
-          <% }); %>
-        </ul>
+      <ul id="incompleteTaskContainer" class="task-container">
+        <% tasks.forEach((task, i) => { %>
+          <% if (task.completed) return; %>
+            <li>
+              <i class="far fa-square"></i>
+              <span contenteditable="true"><%= task.name %></span>
+              <span class="ellipsis">&#8230;</span>
+            </li>
+        <% }); %>
+      </ul>
 
-        <% if (tasks.find(task => task.completed)) { %>
-          <div id="completedTaskToggle">
-        <% } else { %>
-          <div id="completedTaskToggle" class="hidden">
-        <% } %>
-            <i class="fas fa-caret-down"></i>
-            <span>Completed</span>
-          </div>
-        
-        <ul id="completedTaskContainer" class="task-container">
-          <% tasks.forEach((task) => { %>
-            <% if (task.completed) { %>
-              <li>
-                <i class="fas fa-check-square"></i>
-                <span contenteditable="true"><%= task.name %></span>
-                <span class="ellipsis">&#8230;</span>
-              </li>
-            <% } %>
-          <% }); %>
-        </ul>
-      
-      <% if (!tasks.length) { %>
-        <div id="siteIcon">
+      <% if (tasks.find(task => task.completed)) { %>
+        <div id="completedTaskToggle">
       <% } else { %>
-        <div id="siteIcon" class="hidden">
+        <div id="completedTaskToggle" class="hidden">
       <% } %>
-          <i class="fas fa-clipboard-list"></i>
-          <% if (pageTitle === 'Trash') { %>
-            <p>No deleted tasks yet</p>
-          <% } else if (pageTitle === 'Completed')  { %>
-            <p>No completed tasks yet</p>
-          <% } else { %>
-            <p>Tap the input box to create some new tasks</p>
+
+          <i class="fas fa-caret-down"></i>
+          <span>Completed</span>
+        </div>
+      
+      <ul id="completedTaskContainer" class="task-container">
+        <% tasks.forEach((task) => { %>
+          <% if (task.completed) { %>
+            <li>
+              <i class="fas fa-check-square"></i>
+              <span contenteditable="true"><%= task.name %></span>
+              <span class="ellipsis">&#8230;</span>
+            </li>
           <% } %>
+        <% }); %>
+      </ul>
+      
+    <% if (!tasks.length) { %>
+      <div id="siteIcon">
+    <% } else { %>
+      <div id="siteIcon" class="hidden">
+    <% } %>
+
+        <i class="fas fa-clipboard-list"></i>
+        <% if (pageTitle === 'Trash') { %>
+          <p>No deleted tasks yet</p>
+        <% } else if (pageTitle === 'Completed')  { %>
+          <p>No completed tasks yet</p>
+        <% } else { %>
+          <p>Tap the input box to create some new tasks</p>
+        <% } %>
+
       </div>
     
-    </div>
+    </div> <!-- end #centerCol -->
 
     <div id="rightCol" class="col">
     </div>
 
-  </div>
+  </div> <!-- end .container -->
 
   <div id="addListDialogBox" class="is-paused fade-in toggle-box">
     <div class="list-box-header">
