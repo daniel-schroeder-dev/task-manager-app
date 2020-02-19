@@ -61,7 +61,7 @@ const setTaskListNavElements = (taskLists) => {
   const taskListNavElements = document.querySelectorAll('.task-list-nav-item');
 
   taskLists.forEach((taskList) => {
-    taskList.navElement = Array.prototype.find.call(taskListNavElements, ((taskListNavElement) => taskListNavElement.lastElementChild.lastElementChild.textContent === taskList.name));
+    taskList.navElement = Array.prototype.find.call(taskListNavElements, ((taskListNavElement) => taskListNavElement.firstElementChild.lastElementChild.textContent === taskList.name));
   });
 
 };
