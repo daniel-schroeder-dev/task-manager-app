@@ -20,7 +20,7 @@ i {
 
 .container {
   display: grid;
-  grid-template-columns: 18% 46% 36%;
+  grid-template-columns: 16% 46% 38%;
 }
 
 .col {
