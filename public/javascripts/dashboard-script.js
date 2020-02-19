@@ -55,8 +55,7 @@ window.onpopstate = (e) => {
 /*
 *   This listener will perform ONE of the following options on 'click':
 *
-*     a.) Removes addListDialogBox or editTaskDialogBox from the DOM when a close button 
-*     is clicked.
+*     a.) Closes a dialogBox.
 *
 *     b.) Shows the editTaskDialogBox when the ellipsis is clicked.
 */
@@ -75,8 +74,8 @@ document.addEventListener('click', (e) => {
   }
 
   /*
-  *   Show the editTaskDialogBox and set the editTaskDialogBox.task property to
-  *   the task to edit.
+  *   Show the editTaskListDialogBox and set the 
+  *   editTaskListDialogBox.taskListproperty to the task to edit.
   */
   if (e.target.classList.contains('ellipsis') && e.target.getAttribute('data-target')) {
 
