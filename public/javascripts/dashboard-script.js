@@ -29,10 +29,12 @@ const createTaskInput = document.getElementById('createTask');
 const addListDialogBox = new DialogBox(document.getElementById('addListDialogBox'));
 const editTaskDialogBox = new DialogBox(document.getElementById('editTaskDialogBox'));
 const deleteTaskDialogBox = new DialogBox(document.getElementById('deleteTaskDialogBox'));
+const editTaskListDialogBox = new DialogBox(document.getElementById('editTaskListDialogBox'));
 
 dialogBoxes.push(addListDialogBox);
 dialogBoxes.push(editTaskDialogBox);
 dialogBoxes.push(deleteTaskDialogBox);
+dialogBoxes.push(editTaskListDialogBox);
 
 const addListButton = document.getElementById('addListButton');
 const saveListButton = document.querySelector('#addListDialogBox .btn-save');
@@ -276,6 +278,28 @@ deleteTaskDialogBox.element.addEventListener('click', function(e) {
   if (e.target.classList.contains('btn-delete')) {
     trashTaskList.clearTrash();
     e.target.previousElementSibling.click();
+  }
+
+});
+
+leftCol.addEventListener('click', function(e) {
+
+  /*
+  *   Show the editTaskDialogBox and set the editTaskDialogBox.task property to
+  *   the task to edit.
+  */
+  if (e.target.classList.contains('ellipsis')) {
+
+    editTaskListDialogBox.showDialogBox();
+
+    const taskList = taskLists.find(taskList => {
+      return taskList.name === e.target.previousElementSibling.lastElementChild.textContent;;
+    });
+
+    editTaskListDialogBox.taskList = taskList;
+
+    return;
+
   }
 
 });
