@@ -10,7 +10,7 @@ router.delete('/:id', auth, async (req, res, next) => {
   const completedTaskList = await TaskList.findOne({ name: 'Completed' });
   await Task.deleteMany({ _id: { $in: taskList.tasks }});
   if (completedTaskList.tasks.length) {
-    completedTaskList.tasks.filter(task => taskList.tasks.indexOf(task) !== -1);
+    completedTaskList.tasks = completedTaskList.tasks.filter(task => taskList.tasks.indexOf(task) !== -1);
     await completedTaskList.save();
   }
   res.json({ taskList, completedTaskList });
