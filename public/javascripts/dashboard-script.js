@@ -326,28 +326,6 @@ deleteTaskDialogBox.element.addEventListener('click', function(e) {
 
 });
 
-// leftCol.addEventListener('click', function(e) {
-
-//   /*
-//   *   Show the editTaskDialogBox and set the editTaskDialogBox.task property to
-//   *   the task to edit.
-//   */
-//   if (e.target.classList.contains('ellipsis')) {
-
-//     editTaskListDialogBox.showDialogBox();
-
-//     const taskList = taskLists.find(taskList => {
-//       return taskList.name === e.target.getAttribute('data-target');
-//     });
-
-//     editTaskListDialogBox.taskList = taskList;
-
-//     return;
-
-//   }
-
-// });
-
 /*
 *   1. Create a new TaskList.
 *     - Add the taskList.navElement to the taskListNavContainer.
