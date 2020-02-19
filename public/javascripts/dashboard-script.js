@@ -58,11 +58,13 @@ window.onpopstate = (e) => {
 *     a.) Closes a dialogBox.
 *
 *     b.) Shows a dialogBox when the ellipsis is clicked.
+*
+*     c.) Shows a dialogBox when the dumpsterIcon is clicked.
 */
 document.addEventListener('click', (e) => {
 
   /*
-  *   Close the addListDialogBox or the editTaskDialogBox.
+  *   Close a dialogBox.
   */
   if (e.target.id === 'close' || e.target.classList.contains('btn-close')) {
     
@@ -104,6 +106,9 @@ document.addEventListener('click', (e) => {
 
   }
 
+  /*
+  *   Show the deleteTaskDialogBox.
+  */
   if (e.target.id === 'dumpsterIcon' || e.target.parentElement.id === 'dumpsterIcon') {
 
     deleteTaskDialogBox.showDialogBox();
@@ -315,7 +320,7 @@ deleteTaskDialogBox.element.addEventListener('click', function(e) {
 
   if (e.target.classList.contains('btn-delete')) {
     trashTaskList.clearTrash();
-    e.target.previousElementSibling.click();
+    deleteTaskDialogBox.hideDialogBox();
   }
 
 });
