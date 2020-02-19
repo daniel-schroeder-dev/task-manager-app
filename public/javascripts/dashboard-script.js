@@ -27,14 +27,14 @@ const createListInput = document.getElementById('createList');
 const createTaskInput = document.getElementById('createTask');
 
 const addListDialogBox = new DialogBox(document.getElementById('addListDialogBox'));
+const editTaskListDialogBox = new DialogBox(document.getElementById('editTaskListDialogBox'));
 const editTaskDialogBox = new DialogBox(document.getElementById('editTaskDialogBox'));
 const clearTrashDialogBox = new DialogBox(document.getElementById('clearTrashDialogBox'));
-const editTaskListDialogBox = new DialogBox(document.getElementById('editTaskListDialogBox'));
 
 dialogBoxes.push(addListDialogBox);
+dialogBoxes.push(editTaskListDialogBox);
 dialogBoxes.push(editTaskDialogBox);
 dialogBoxes.push(clearTrashDialogBox);
-dialogBoxes.push(editTaskListDialogBox);
 
 const addListButton = document.getElementById('addListButton');
 const saveListButton = document.querySelector('#addListDialogBox .btn-save');
