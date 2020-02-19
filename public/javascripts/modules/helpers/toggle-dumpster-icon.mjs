@@ -1,5 +1,5 @@
 const toggleDumpsterIcon = () => {
-  const dumpsterIcon = document.getElementById('clearTrash');
+  const dumpsterIcon = document.getElementById('dumpsterIcon');
   dumpsterIcon.classList.toggle('hidden');
 };
 
