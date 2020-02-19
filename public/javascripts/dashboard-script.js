@@ -65,7 +65,7 @@ document.addEventListener('click', (e) => {
   /*
   *   Close a dialogBox.
   */
-  if (e.target.id === 'close' || e.target.classList.contains('btn-close')) {
+  if (e.target.dataset.triggerClose) {
     
     const dialogBox = dialogBoxes.find(dialogBox => dialogBox.element.id === e.target.dataset.triggerClose);
     
