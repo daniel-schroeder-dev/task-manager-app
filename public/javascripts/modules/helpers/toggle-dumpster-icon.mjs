@@ -1,6 +1,6 @@
 const toggleDumpsterIcon = () => {
-  const pageTitleContainerSpanElements = document.querySelectorAll('.page-title-container span');
-  pageTitleContainerSpanElements.forEach(element => element.classList.toggle('hidden'));
+  const dumpsterIcon = document.getElementById('clearTrash');
+  dumpsterIcon.classList.toggle('hidden');
 };
 
 export { toggleDumpsterIcon };
