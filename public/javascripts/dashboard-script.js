@@ -74,9 +74,29 @@ document.addEventListener('click', (e) => {
     return;
   }
 
+  /*
+  *   Show the editTaskDialogBox and set the editTaskDialogBox.task property to
+  *   the task to edit.
+  */
+  if (e.target.classList.contains('ellipsis') && e.target.getAttribute('data-target')) {
+
+    editTaskListDialogBox.showDialogBox();
+
+    const taskList = taskLists.find(taskList => {
+      return taskList.name === e.target.getAttribute('data-target');
+    });
+
+    editTaskListDialogBox.taskList = taskList;
+
+    return;
+
+  }
+
   if (e.target.id === 'clearTrash' || e.target.parentElement.id === 'clearTrash') {
 
     deleteTaskDialogBox.showDialogBox();
+
+    return;
 
   }
 
@@ -305,27 +325,27 @@ deleteTaskDialogBox.element.addEventListener('click', function(e) {
 
 });
 
-leftCol.addEventListener('click', function(e) {
+// leftCol.addEventListener('click', function(e) {
 
-  /*
-  *   Show the editTaskDialogBox and set the editTaskDialogBox.task property to
-  *   the task to edit.
-  */
-  if (e.target.classList.contains('ellipsis')) {
+//   /*
+//   *   Show the editTaskDialogBox and set the editTaskDialogBox.task property to
+//   *   the task to edit.
+//   */
+//   if (e.target.classList.contains('ellipsis')) {
 
-    editTaskListDialogBox.showDialogBox();
+//     editTaskListDialogBox.showDialogBox();
 
-    const taskList = taskLists.find(taskList => {
-      return taskList.name === e.target.getAttribute('data-target');
-    });
+//     const taskList = taskLists.find(taskList => {
+//       return taskList.name === e.target.getAttribute('data-target');
+//     });
 
-    editTaskListDialogBox.taskList = taskList;
+//     editTaskListDialogBox.taskList = taskList;
 
-    return;
+//     return;
 
-  }
+//   }
 
-});
+// });
 
 /*
 *   1. Create a new TaskList.
