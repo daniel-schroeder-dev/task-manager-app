@@ -92,6 +92,24 @@ document.addEventListener('click', (e) => {
 
   }
 
+  /*
+  *   Show the editTaskDialogBox and set the editTaskDialogBox.task property to
+  *   the task to edit.
+  */
+  if (e.target.classList.contains('ellipsis')) {
+
+    editTaskDialogBox.showDialogBox();
+
+    const task = TaskList.activeTaskList.tasks.find((task) => {
+      return task.element === e.target.parentElement;
+    });
+
+    editTaskDialogBox.task = task;
+
+    return;
+
+  }
+
   if (e.target.id === 'clearTrash' || e.target.parentElement.id === 'clearTrash') {
 
     deleteTaskDialogBox.showDialogBox();
@@ -139,23 +157,6 @@ centerCol.addEventListener('click', function(e) {
     return setActiveTask(e.target);
   }
 
-  /*
-  *   Show the editTaskDialogBox and set the editTaskDialogBox.task property to
-  *   the task to edit.
-  */
-  if (e.target.classList.contains('ellipsis')) {
-
-    editTaskDialogBox.showDialogBox();
-
-    const task = TaskList.activeTaskList.tasks.find((task) => {
-      return task.element === e.target.parentElement;
-    });
-
-    editTaskDialogBox.task = task;
-
-    return;
-
-  }
   
 });
 
@@ -310,7 +311,7 @@ editTaskListDialogBox.element.addEventListener('click', async function(e) {
     completedTasks.forEach(task => completedTaskList.removeTask(task));
 
     const res = await editTaskListDialogBox.taskList.delete();
-    e.target.previousElementSibling.click();
+    editTaskListDialogBox.hideDialogBox();
     document.querySelector('.task-list-nav-item a[href="/inbox"]').click();
   }
 
