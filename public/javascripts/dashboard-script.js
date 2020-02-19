@@ -316,7 +316,7 @@ leftCol.addEventListener('click', function(e) {
     editTaskListDialogBox.showDialogBox();
 
     const taskList = taskLists.find(taskList => {
-      return taskList.name === e.target.previousElementSibling.lastElementChild.textContent;;
+      return taskList.name === e.target.getAttribute('data-target');
     });
 
     editTaskListDialogBox.taskList = taskList;
