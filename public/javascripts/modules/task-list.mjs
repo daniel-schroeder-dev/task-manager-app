@@ -85,7 +85,7 @@ TaskList.prototype.createTaskListNavDOMElement = function() {
 
   ellipsis.classList.add('ellipsis', 'hidden');
   ellipsis.innerHTML = '&#8230;';
-  ellipsis.dataset.trigger = 'taskListDialogBox';
+  ellipsis.dataset.triggerOpen = 'taskListDialogBox';
 
   a.appendChild(i);
   a.appendChild(span);

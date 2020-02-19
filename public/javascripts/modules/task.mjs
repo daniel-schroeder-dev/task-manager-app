@@ -52,7 +52,7 @@ Task.prototype.createTaskDOMElement = function() {
   }
 
   spanEllipsis.classList.add('ellipsis');
-  spanEllipsis.dataset.trigger = 'taskDialogBox';
+  spanEllipsis.dataset.triggerOpen = 'taskDialogBox';
   
   spanTaskName.setAttribute('contenteditable', 'true');
   spanTaskName.textContent = this.name;

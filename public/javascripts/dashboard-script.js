@@ -77,9 +77,9 @@ document.addEventListener('click', (e) => {
   /*
   *   Show the correct type of dialogBox based on the data-trigger attribute.
   */
-  if (e.target.dataset.trigger) {
+  if (e.target.dataset.triggerOpen) {
     
-    if (e.target.dataset.trigger === 'taskListDialogBox') {
+    if (e.target.dataset.triggerOpen === 'taskListDialogBox') {
 
       editTaskListDialogBox.showDialogBox();
 
@@ -89,7 +89,7 @@ document.addEventListener('click', (e) => {
 
       editTaskListDialogBox.taskList = taskList;
 
-    } else if (e.target.dataset.trigger === 'taskDialogBox') {
+    } else if (e.target.dataset.triggerOpen === 'taskDialogBox') {
 
       editTaskDialogBox.showDialogBox();
 
