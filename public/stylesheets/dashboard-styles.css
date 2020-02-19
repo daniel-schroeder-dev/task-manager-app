@@ -381,6 +381,10 @@ i.fas.fa-caret-right {
   font-size: 16px;
 }
 
+#dumpsterIcon {
+  cursor: pointer;
+}
+
 @media (max-width: 1024px) {
 
   .container {
