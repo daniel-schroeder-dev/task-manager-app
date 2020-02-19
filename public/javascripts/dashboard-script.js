@@ -79,17 +79,17 @@ document.addEventListener('click', (e) => {
   */
   if (e.target.dataset.triggerOpen) {
     
-    if (e.target.dataset.triggerOpen === 'taskListDialogBox') {
+    if (e.target.dataset.triggerOpen === 'editTaskListDialogBox') {
 
       editTaskListDialogBox.showDialogBox();
 
       const taskList = taskLists.find(taskList => {
-        return taskList.name === e.target.getAttribute('data-target');
+        return taskList.name === e.target.dataset.target;
       });
 
       editTaskListDialogBox.taskList = taskList;
 
-    } else if (e.target.dataset.triggerOpen === 'taskDialogBox') {
+    } else if (e.target.dataset.triggerOpen === 'editTaskDialogBox') {
 
       editTaskDialogBox.showDialogBox();
 
