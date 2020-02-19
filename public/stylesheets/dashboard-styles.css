@@ -318,6 +318,10 @@ i {
   right: 0px;
 }
 
+.task-list-nav-item:hover .ellipsis {
+  display: inline-block;
+}
+
 #completedTaskContainer,
 #completedTaskContainer i {
   color: #ababab;
