@@ -73,6 +73,10 @@ document.addEventListener('click', (e) => {
     return;
   }
 
+  if (e.target.dataset.trigger) {
+    console.log(e.target.dataset.trigger);
+  }
+
   /*
   *   Show the editTaskListDialogBox and set the 
   *   editTaskListDialogBox.taskListproperty to the task to edit.
