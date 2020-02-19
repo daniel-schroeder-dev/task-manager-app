@@ -71,24 +71,6 @@ document.addEventListener('click', (e) => {
     
     return;
   }
-  
-  /*
-  *   Show the editTaskDialogBox and set the editTaskDialogBox.task property to
-  *   the task to edit.
-  */
-  if (e.target.classList.contains('ellipsis')) {
-
-    editTaskDialogBox.showDialogBox();
-
-    const task = TaskList.activeTaskList.tasks.find((task) => {
-      return task.element === e.target.parentElement;
-    });
-
-    editTaskDialogBox.task = task;
-
-    return;
-
-  }
 
   if (e.target.id === 'clearTrash' || e.target.parentElement.id === 'clearTrash') {
 
@@ -133,6 +115,24 @@ centerCol.addEventListener('click', function(e) {
   */
   if (e.target.tagName === 'LI' || e.target.hasAttribute('contenteditable')) {
     return setActiveTask(e.target);
+  }
+
+  /*
+  *   Show the editTaskDialogBox and set the editTaskDialogBox.task property to
+  *   the task to edit.
+  */
+  if (e.target.classList.contains('ellipsis')) {
+
+    editTaskDialogBox.showDialogBox();
+
+    const task = TaskList.activeTaskList.tasks.find((task) => {
+      return task.element === e.target.parentElement;
+    });
+
+    editTaskDialogBox.task = task;
+
+    return;
+
   }
   
 });
