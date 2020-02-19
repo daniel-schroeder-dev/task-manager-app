@@ -314,7 +314,7 @@ i {
 }
 
 .task-list-nav-item .ellipsis {
-  right: 0px;
+  right: 10px;
 }
 
 .task-list-nav-item:hover .ellipsis {
