@@ -31,10 +31,12 @@ const changePageURL = (newActiveTaskList, activeTaskList) => {
 */
 const updatePageState = (newActiveTaskList) => {
 
-  const pageTitleElement = document.getElementById('pageTitle');
+  const pageTitleHeading = document.getElementById('pageTitle');
+  const pageTitleElement = document.querySelector('title');
   
-  pageTitleElement.textContent = newActiveTaskList.name;
-  pageTitleElement.nextElementSibling.setAttribute('placeholder', `Add Task to "${newActiveTaskList.name}"`);
+  pageTitleHeading.textContent = newActiveTaskList.name;
+  pageTitleElement.innerHTML = newActiveTaskList.name + ' &#45; Task Manager';
+  pageTitleHeading.nextElementSibling.setAttribute('placeholder', `Add Task to "${newActiveTaskList.name}"`);
 
 };
 
