@@ -110,7 +110,7 @@ document.addEventListener('click', (e) => {
 
   }
 
-  if (e.target.id === 'clearTrash' || e.target.parentElement.id === 'clearTrash') {
+  if (e.target.id === 'dumpsterIcon' || e.target.parentElement.id === 'dumpsterIcon') {
 
     deleteTaskDialogBox.showDialogBox();
 
