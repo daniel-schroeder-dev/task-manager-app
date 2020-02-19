@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.delete('/:id', auth, async (req, res, next) => {
   const taskList = await TaskList.findByIdAndDelete(req.params.id);
-  let [ completedTaskList ] = await TaskList.find({ name: 'Completed' });
+  let completedTaskList = await TaskList.findOne({ name: 'Completed' });
   await Task.deleteMany({ _id: { $in: taskList.tasks }});
   if (completedTaskList.tasks.length) {
     completedTaskList.tasks.filter(task => taskList.tasks.indexOf(task) !== -1);
