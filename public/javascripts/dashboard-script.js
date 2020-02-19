@@ -28,12 +28,12 @@ const createTaskInput = document.getElementById('createTask');
 
 const addListDialogBox = new DialogBox(document.getElementById('addListDialogBox'));
 const editTaskDialogBox = new DialogBox(document.getElementById('editTaskDialogBox'));
-const deleteTaskDialogBox = new DialogBox(document.getElementById('deleteTaskDialogBox'));
+const clearTrashDialogBox = new DialogBox(document.getElementById('clearTrashDialogBox'));
 const editTaskListDialogBox = new DialogBox(document.getElementById('editTaskListDialogBox'));
 
 dialogBoxes.push(addListDialogBox);
 dialogBoxes.push(editTaskDialogBox);
-dialogBoxes.push(deleteTaskDialogBox);
+dialogBoxes.push(clearTrashDialogBox);
 dialogBoxes.push(editTaskListDialogBox);
 
 const addListButton = document.getElementById('addListButton');
@@ -106,11 +106,11 @@ document.addEventListener('click', (e) => {
   }
 
   /*
-  *   Show the deleteTaskDialogBox.
+  *   Show the clearTrashDialogBox.
   */
   if (e.target.id === 'dumpsterIcon' || e.target.parentElement.id === 'dumpsterIcon') {
 
-    deleteTaskDialogBox.showDialogBox();
+    clearTrashDialogBox.showDialogBox();
 
     return;
 
@@ -315,11 +315,11 @@ editTaskListDialogBox.element.addEventListener('click', async function(e) {
 
 });
 
-deleteTaskDialogBox.element.addEventListener('click', function(e) {
+clearTrashDialogBox.element.addEventListener('click', function(e) {
 
   if (e.target.classList.contains('btn-delete')) {
     trashTaskList.clearTrash();
-    deleteTaskDialogBox.hideDialogBox();
+    clearTrashDialogBox.hideDialogBox();
   }
 
 });
