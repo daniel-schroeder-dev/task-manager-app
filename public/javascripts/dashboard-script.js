@@ -67,7 +67,7 @@ document.addEventListener('click', (e) => {
   */
   if (e.target.id === 'close' || e.target.classList.contains('btn-close')) {
     
-    const dialogBox = dialogBoxes.find(dialogBox => dialogBox.element.id === e.target.getAttribute('data-target'));
+    const dialogBox = dialogBoxes.find(dialogBox => dialogBox.element.id === e.target.dataset.target);
     
     dialogBox.hideDialogBox();
     
