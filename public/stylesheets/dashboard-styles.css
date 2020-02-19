@@ -71,8 +71,7 @@ i {
 }
 
 .list-container > div {
-  padding: 8px;
-  margin-bottom: 6px;
+  padding: 14px 8px;
   cursor: pointer;
 }
 
