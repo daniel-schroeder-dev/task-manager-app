@@ -286,7 +286,7 @@ editTaskDialogBox.element.addEventListener('click', function(e) {
 
     trashTaskList.addTask(taskToRemove);
     
-    deleteTaskButton.previousElementSibling.click();
+    editTaskDialogBox.hideDialogBox();
 
     return;
   }
