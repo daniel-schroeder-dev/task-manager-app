@@ -4,7 +4,7 @@ const connectionOptions = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
-  useFindAndModify: true,
+  useFindAndModify: false,
 };
 
 mongoose.connect(process.env.MONGODB_URL, connectionOptions)
