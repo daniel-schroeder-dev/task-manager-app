@@ -69,6 +69,7 @@ TaskList.prototype.createTaskListNavDOMElement = function() {
   const i = document.createElement('i');
   const span = document.createElement('span');
   const a = document.createElement('a');
+  const ellipsis = document.createElement('span');
 
   this.navElement.classList.add('task-list-nav-item');
   
@@ -82,9 +83,13 @@ TaskList.prototype.createTaskListNavDOMElement = function() {
 
   i.classList.add('fas', 'fa-bars');
 
+  ellipsis.classList.add('ellipsis', 'hidden');
+  ellipsis.innerHTML = '&#8230;';
+
   a.appendChild(i);
   a.appendChild(span);
   this.navElement.appendChild(a);
+  this.navElement.appendChild(ellipsis);
 
 };
 
