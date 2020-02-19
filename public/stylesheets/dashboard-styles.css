@@ -370,9 +370,9 @@ i.fas.fa-caret-right {
   justify-content: space-between;
 }
 
-.page-title-container span {
+.page-title-container .ellipsis {
   /* Line-up the ellipsis with the Task ellpsis */
-  margin-right: -19px;
+  position: static;
   cursor: pointer;
   align-self: center;
 }
