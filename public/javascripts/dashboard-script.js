@@ -57,7 +57,7 @@ window.onpopstate = (e) => {
 *
 *     a.) Closes a dialogBox.
 *
-*     b.) Shows the editTaskDialogBox when the ellipsis is clicked.
+*     b.) Shows a dialogBox when the ellipsis is clicked.
 */
 document.addEventListener('click', (e) => {
 
@@ -73,41 +73,32 @@ document.addEventListener('click', (e) => {
     return;
   }
 
+  /*
+  *   Show the correct type of dialogBox based on the data-trigger attribute.
+  */
   if (e.target.dataset.trigger) {
-    console.log(e.target.dataset.trigger);
-  }
+    
+    if (e.target.dataset.trigger === 'taskListDialogBox') {
 
-  /*
-  *   Show the editTaskListDialogBox and set the 
-  *   editTaskListDialogBox.taskListproperty to the task to edit.
-  */
-  if (e.target.classList.contains('ellipsis') && e.target.getAttribute('data-target')) {
+      editTaskListDialogBox.showDialogBox();
 
-    editTaskListDialogBox.showDialogBox();
+      const taskList = taskLists.find(taskList => {
+        return taskList.name === e.target.getAttribute('data-target');
+      });
 
-    const taskList = taskLists.find(taskList => {
-      return taskList.name === e.target.getAttribute('data-target');
-    });
+      editTaskListDialogBox.taskList = taskList;
 
-    editTaskListDialogBox.taskList = taskList;
+    } else if (e.target.dataset.trigger === 'taskDialogBox') {
 
-    return;
+      editTaskDialogBox.showDialogBox();
 
-  }
+      const task = TaskList.activeTaskList.tasks.find((task) => {
+        return task.element === e.target.parentElement;
+      });
 
-  /*
-  *   Show the editTaskDialogBox and set the editTaskDialogBox.task property to
-  *   the task to edit.
-  */
-  if (e.target.classList.contains('ellipsis')) {
+      editTaskDialogBox.task = task;
 
-    editTaskDialogBox.showDialogBox();
-
-    const task = TaskList.activeTaskList.tasks.find((task) => {
-      return task.element === e.target.parentElement;
-    });
-
-    editTaskDialogBox.task = task;
+    }
 
     return;
 
