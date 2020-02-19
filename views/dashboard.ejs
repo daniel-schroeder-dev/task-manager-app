@@ -92,9 +92,7 @@
 
         <h1 id="pageTitle"><%= pageTitle %></h1>
 
-      <% const hideEllip = [ 'Inbox', 'Today', 'Week', 'Trash', 'Completed' ] %>
-
-      <% if (hideEllip.indexOf(pageTitle) !== -1) { %>
+      <% if (defaultTaskLists.indexOf(pageTitle) !== -1) { %>
         <span class="ellipsis hidden" data-target="<%= pageTitle %>">&#8230;</span>
       <% } else { %>
         <span class="ellipsis" data-target="<%= pageTitle %>">&#8230;</span>
