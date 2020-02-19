@@ -33,7 +33,14 @@ const updatePageState = (newActiveTaskList) => {
 
   const pageTitleHeading = document.getElementById('pageTitle');
   const pageTitleElement = document.querySelector('title');
-  
+
+  if (newActiveTaskList.name === 'Inbox') {
+    pageTitleHeading.nextElementSibling.classList.add('hidden');
+  } else {
+    pageTitleHeading.nextElementSibling.classList.remove('hidden');
+    pageTitleHeading.nextElementSibling.setAttribute('data-target', newActiveTaskList.name);
+  }
+
   pageTitleHeading.textContent = newActiveTaskList.name;
   pageTitleElement.innerHTML = newActiveTaskList.name + ' &#45; Task Manager';
   pageTitleHeading.nextElementSibling.setAttribute('placeholder', `Add Task to "${newActiveTaskList.name}"`);
