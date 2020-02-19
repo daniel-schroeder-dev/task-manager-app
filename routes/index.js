@@ -9,6 +9,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/*', auth, async (req, res, next) => {
+  console.log('\n\n\n\n\n\n\n\n\n\n');
   const taskList = await TaskList.findOne({ url: req.url }).populate('tasks').exec();
   let taskLists = await TaskList.findUserCreatedTaskLists(req.user._id);
   if (taskLists.length > 1) {
