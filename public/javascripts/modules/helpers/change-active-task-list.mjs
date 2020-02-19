@@ -34,7 +34,9 @@ const updatePageState = (newActiveTaskList) => {
   const pageTitleHeading = document.getElementById('pageTitle');
   const pageTitleElement = document.querySelector('title');
 
-  if (newActiveTaskList.name === 'Inbox') {
+  const hideEllip = [ 'Inbox', 'Today', 'Week', 'Completed', 'Trash' ];
+
+  if (hideEllip.indexOf(newActiveTaskList.name) !== -1) {
     pageTitleHeading.nextElementSibling.classList.add('hidden');
   } else {
     pageTitleHeading.nextElementSibling.classList.remove('hidden');
