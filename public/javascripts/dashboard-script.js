@@ -290,6 +290,7 @@ editTaskDialogBox.element.addEventListener('click', function(e) {
     trashTaskList.addTask(taskToRemove);
 
     taskOwner.navElement.querySelector('.num-tasks').textContent = taskOwner.numIncompleteTasks() || '';
+    trashTaskList.navElement.querySelector('.num-tasks').textContent = trashTaskList.tasks.length;
     
     editTaskDialogBox.hideDialogBox();
 
