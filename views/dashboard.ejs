@@ -53,7 +53,7 @@
         </div>
         
         <% taskLists.forEach((taskList) => { %>
-        <% if (taskList.name === 'Inbox') return; %>
+        <% if (defaultTaskLists.indexOf(taskList.name) !== -1) return; %>
         
           <div class="task-list-nav-item">
             <a class="task-list-nav" href="<%= taskList.url %>">
@@ -75,6 +75,8 @@
           <a href="/completed" class="task-list-nav">
             <i class="fas fa-check-square"></i>
             <span>Completed</span>
+            <% const completedTaskList = taskLists.find(taskList => taskList.name === 'Completed'); %>
+            <span class="num-tasks"><%= completedTaskList.tasks.length || '' %></span>
           </a>
         </div>
         
@@ -82,6 +84,8 @@
           <a href="/trash" class="task-list-nav">
             <i class="fas fa-trash"></i>
             <span>Trash</span>
+            <% const trashTaskList = taskLists.find(taskList => taskList.name === 'Trash'); %>
+            <span class="num-tasks"><%= trashTaskList.tasks.length || '' %></span>
           </a>
         </div>
 
