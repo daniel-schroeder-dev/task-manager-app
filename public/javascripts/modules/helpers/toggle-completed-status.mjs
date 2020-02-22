@@ -5,7 +5,7 @@ const toggleCompletedCheckbox = (checkbox) => {
   checkbox.classList.toggle('fa-check-square');
 };
 
-const toggleCompletedStatus = (checkbox, activeTaskList, completedTaskList, incompleteTaskContainer, completedTaskContainer) => {
+const toggleCompletedStatus = (checkbox, activeTaskList, completedTaskList, incompleteTaskContainer, completedTaskContainer, taskLists) => {
 
   if (activeTaskList.name === 'Trash') return;
   
@@ -25,6 +25,9 @@ const toggleCompletedStatus = (checkbox, activeTaskList, completedTaskList, inco
     completedTaskList.removeTask(task);
     if (activeTaskList.name !== 'Completed') {
       incompleteTaskContainer.add(task.element);
+    } else {
+      const taskOwner = taskLists.find(taskList => taskList._id === task.ownerId);
+      taskOwner.navElement.querySelector('.num-tasks').textContent = taskOwner.tasks.length;
     }
   }
 

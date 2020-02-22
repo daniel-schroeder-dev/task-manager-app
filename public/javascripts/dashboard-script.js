@@ -144,7 +144,7 @@ centerCol.addEventListener('click', function(e) {
     const completedTaskList = taskLists.find((taskList) => {
       return taskList.name === 'Completed';
     });
-    toggleCompletedStatus(e.target, TaskList.activeTaskList, completedTaskList, incompleteTaskContainer, completedTaskContainer);
+    toggleCompletedStatus(e.target, TaskList.activeTaskList, completedTaskList, incompleteTaskContainer, completedTaskContainer, taskLists);
     return;
   }
 
