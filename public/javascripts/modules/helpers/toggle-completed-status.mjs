@@ -28,7 +28,7 @@ const toggleCompletedStatus = (checkbox, activeTaskList, completedTaskList, inco
     }
   }
 
-  activeTaskList.navElement.querySelector('.num-tasks').textContent = activeTaskList.numIncompleteTasks();
+  activeTaskList.navElement.querySelector('.num-tasks').textContent = activeTaskList.numIncompleteTasks() || '';
 
 };
 
