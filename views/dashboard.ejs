@@ -28,21 +28,21 @@
         <div class="task-list-nav-item">
           <a href="/today" class="task-list-nav">
             <i class="fas fa-calendar"></i>
-            <span>Today</span>
+            <span data-task-list-name="Today">Today</span>
           </a>
         </div>
         
         <div class="task-list-nav-item">
           <a href="/week" class="task-list-nav">
             <i class="fas fa-calendar-alt"></i>
-            <span>Next 7 Days</span>
+            <span data-task-list-name="Week">Next 7 Days</span>
           </a>
         </div>
 
         <div class="task-list-nav-item">
           <a href="/inbox" class="task-list-nav">
             <i class="fas fa-archive"></i>
-            <span>Inbox</span>
+            <span data-task-list-name="Inbox">Inbox</span>
             <span class="num-tasks"><%= findIncompleteTasks('Inbox').length || '' %></span>
           </a>
         </div>
@@ -57,7 +57,7 @@
           <div class="task-list-nav-item user-created-task-list">
             <a class="task-list-nav" href="<%= taskList.url %>">
               <i class="fas fa-bars"></i>
-              <span data-id=<%= taskList._id %>><%= taskList.name %></span>
+              <span data-id=<%= taskList._id %> data-task-list-name=<%= taskList.name %> ><%= taskList.name %></span>
             </a>
             <span class="num-tasks"><%= findIncompleteTasks(taskList.name).length || '' %></span>
             <span class="ellipsis hidden" data-trigger-open="editTaskListDialogBox" data-target="<%= pageTitle %>">&#8230;</span>
@@ -73,7 +73,7 @@
         <div class="task-list-nav-item">
           <a href="/completed" class="task-list-nav">
             <i class="fas fa-check-square"></i>
-            <span>Completed</span>
+            <span data-task-list-name="Completed">Completed</span>
             <% const completedTaskList = taskLists.find(taskList => taskList.name === 'Completed'); %>
             <span class="num-tasks"><%= completedTaskList.tasks.length || '' %></span>
           </a>
@@ -82,7 +82,7 @@
         <div class="task-list-nav-item">
           <a href="/trash" class="task-list-nav">
             <i class="fas fa-trash"></i>
-            <span>Trash</span>
+            <span data-task-list-name="Trash">Trash</span>
             <% const trashTaskList = taskLists.find(taskList => taskList.name === 'Trash'); %>
             <span class="num-tasks"><%= trashTaskList.tasks.length || '' %></span>
           </a>
