@@ -321,6 +321,14 @@ i {
   display: inline-block;
 }
 
+.num-tasks {
+  position: absolute;
+  right: 10px;
+  margin-top: 3px;
+  font-size: 12px;
+  color: #ababab;
+}
+
 #completedTaskContainer,
 #completedTaskContainer i {
   color: #ababab;
