@@ -420,6 +420,8 @@ initTaskLists().then((results) => {
     
     this.tasks.forEach(task => task.element.remove());
 
+    this.tasks = [];
+
     const response = await fetch(`/taskLists/${this._id}/tasks`, {
       method: 'DELETE',
     });
