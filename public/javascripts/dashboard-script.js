@@ -261,7 +261,7 @@ createTaskInput.addEventListener('keydown', async function(e) {
 
   TaskList.activeTaskList.addTask(task);
   
-  TaskList.activeTaskList.navElement.querySelector('.num-tasks').textContent = TaskList.activeTaskList.tasks.length;
+  TaskList.activeTaskList.navElement.querySelector('.num-tasks').textContent = TaskList.activeTaskList.numIncompleteTasks();
   
   this.value = '';
 

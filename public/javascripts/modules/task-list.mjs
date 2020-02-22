@@ -110,6 +110,10 @@ TaskList.prototype.delete = async function() {
 
 };
 
+TaskList.prototype.numIncompleteTasks = function() {
+  return this.tasks.filter(task => !task.completed).length;
+};
+
 TaskList.prototype.populateTaskContainers = function(completedTaskContainer, incompleteTaskContainer) {
   this.tasks.forEach((task, i) => {
     if (this.name === 'Trash') {
