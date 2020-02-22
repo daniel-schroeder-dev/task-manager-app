@@ -43,6 +43,8 @@
           <a href="/inbox" class="task-list-nav">
             <i class="fas fa-archive"></i>
             <span>Inbox</span>
+            <% const inboxTaskList = taskLists.find(taskList => taskList.name === 'Inbox'); %>
+            <span class="num-tasks"><%= inboxTaskList.tasks.length || '' %></span>
           </a>
         </div>
           
