@@ -284,6 +284,7 @@ editTaskDialogBox.element.addEventListener('click', function(e) {
         return taskList.name === 'Completed';
       });
       completedTaskList.removeTask(taskToRemove);
+      completedTaskList.navElement.querySelector('.num-tasks').textContent = completedTaskList.tasks.length || '';
     }
 
     trashTaskList.addTask(taskToRemove);
