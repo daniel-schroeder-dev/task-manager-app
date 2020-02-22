@@ -70,8 +70,9 @@ TaskList.prototype.createTaskListNavDOMElement = function() {
   const span = document.createElement('span');
   const a = document.createElement('a');
   const ellipsis = document.createElement('span');
+  const numTasks = document.createElement('span');
 
-  this.navElement.classList.add('task-list-nav-item');
+  this.navElement.classList.add('task-list-nav-item', 'user-created-task-list');
   
   a.classList.add('task-list-nav');
   a.href = this.url;
@@ -79,7 +80,7 @@ TaskList.prototype.createTaskListNavDOMElement = function() {
   span.textContent = this.name;
 
   // Fix wierd margin collapse when DOM element is added but page isn't reloaded.
-  span.style.marginLeft = '4px' 
+  span.style.marginLeft = '4px'; 
 
   i.classList.add('fas', 'fa-bars');
 
@@ -87,9 +88,12 @@ TaskList.prototype.createTaskListNavDOMElement = function() {
   ellipsis.innerHTML = '&#8230;';
   ellipsis.dataset.triggerOpen = 'editTaskListDialogBox';
 
+  numTasks.classList.add('num-tasks');
+
   a.appendChild(i);
   a.appendChild(span);
   this.navElement.appendChild(a);
+  this.navElement.appendChild(numTasks);
   this.navElement.appendChild(ellipsis);
 
 };
