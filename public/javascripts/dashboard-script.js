@@ -260,6 +260,9 @@ createTaskInput.addEventListener('keydown', async function(e) {
   await task.createTaskDB();
 
   TaskList.activeTaskList.addTask(task);
+  
+  TaskList.activeTaskList.navElement.querySelector('.num-tasks').textContent = TaskList.activeTaskList.tasks.length;
+  
   this.value = '';
 
 });
