@@ -55,7 +55,7 @@
         <% taskLists.forEach((taskList) => { %>
         <% if (defaultTaskLists.indexOf(taskList.name) !== -1) return; %>
         
-          <div class="task-list-nav-item">
+          <div class="task-list-nav-item user-created-task-list">
             <a class="task-list-nav" href="<%= taskList.url %>">
               <i class="fas fa-bars"></i>
               <span data-id=<%= taskList._id %>><%= taskList.name %></span>

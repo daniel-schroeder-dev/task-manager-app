@@ -329,6 +329,10 @@ i {
   color: #ababab;
 }
 
+.user-created-task-list:hover .num-tasks {
+  display: none;
+}
+
 #completedTaskContainer,
 #completedTaskContainer i {
   color: #ababab;
