@@ -422,6 +422,8 @@ initTaskLists().then((results) => {
 
     this.tasks = [];
 
+    this.navElement.querySelector('.num-tasks').textContent = '';
+
     const response = await fetch(`/taskLists/${this._id}/tasks`, {
       method: 'DELETE',
     });
