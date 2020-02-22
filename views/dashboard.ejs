@@ -43,8 +43,9 @@
           <a href="/inbox" class="task-list-nav">
             <i class="fas fa-archive"></i>
             <span>Inbox</span>
-            <% const inboxTaskList = taskLists.find(taskList => taskList.name === 'Inbox'); %>
-            <span class="num-tasks"><%= inboxTaskList.tasks.length || '' %></span>
+            <% const findIncompleteTasks = (taskListName) => taskLists.find(taskList => taskList.name === taskListName).tasks.filter(task => !task.completed); %>
+            <% const inboxIncompleteTasks = findIncompleteTasks('Inbox'); %>
+            <span class="num-tasks"><%= inboxIncompleteTasks.length || '' %></span>
           </a>
         </div>
           
