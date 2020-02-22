@@ -57,7 +57,7 @@
           <div class="task-list-nav-item user-created-task-list">
             <a class="task-list-nav" href="<%= taskList.url %>">
               <i class="fas fa-bars"></i>
-              <span data-id=<%= taskList._id %> data-task-list-name=<%= taskList.name %> ><%= taskList.name %></span>
+              <span data-id="<%= taskList._id %>" data-task-list-name="<%= taskList.name %>" ><%= taskList.name %></span>
             </a>
             <span class="num-tasks"><%= findIncompleteTasks(taskList.name).length || '' %></span>
             <span class="ellipsis hidden" data-trigger-open="editTaskListDialogBox" data-target="<%= taskList.name %>">&#8230;</span>

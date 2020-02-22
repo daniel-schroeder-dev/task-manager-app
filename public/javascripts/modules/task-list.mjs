@@ -78,6 +78,7 @@ TaskList.prototype.createTaskListNavDOMElement = function() {
   a.href = this.url;
 
   span.textContent = this.name;
+  span.dataset.taskListName = this.name;
 
   // Fix wierd margin collapse when DOM element is added but page isn't reloaded.
   span.style.marginLeft = '4px'; 
@@ -87,6 +88,7 @@ TaskList.prototype.createTaskListNavDOMElement = function() {
   ellipsis.classList.add('ellipsis', 'hidden');
   ellipsis.innerHTML = '&#8230;';
   ellipsis.dataset.triggerOpen = 'editTaskListDialogBox';
+  ellipsis.dataset.target = this.name;
 
   numTasks.classList.add('num-tasks');
 

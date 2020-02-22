@@ -87,8 +87,6 @@ document.addEventListener('click', (e) => {
         return taskList.name === e.target.dataset.target;
       });
 
-      console.log('Triggering with taskList, ', taskList);
-
       editTaskListDialogBox.taskList = taskList;
 
     } else if (e.target.dataset.triggerOpen === 'editTaskDialogBox') {
@@ -304,9 +302,6 @@ editTaskDialogBox.element.addEventListener('click', function(e) {
 editTaskListDialogBox.element.addEventListener('click', async function(e) {
 
   if (e.target.classList.contains('btn-delete')) {
-
-    console.log(editTaskListDialogBox.taskList);
-
 
     taskLists = taskLists.filter(taskList => taskList.name !== editTaskListDialogBox.taskList.name);
 
