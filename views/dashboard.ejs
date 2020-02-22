@@ -60,7 +60,7 @@
               <span data-id=<%= taskList._id %> data-task-list-name=<%= taskList.name %> ><%= taskList.name %></span>
             </a>
             <span class="num-tasks"><%= findIncompleteTasks(taskList.name).length || '' %></span>
-            <span class="ellipsis hidden" data-trigger-open="editTaskListDialogBox" data-target="<%= pageTitle %>">&#8230;</span>
+            <span class="ellipsis hidden" data-trigger-open="editTaskListDialogBox" data-target="<%= taskList.name %>">&#8230;</span>
           </div>
         
         <% }); %>
