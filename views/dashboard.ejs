@@ -187,15 +187,20 @@
     </div>
   </div>
 
-  <div id="editTaskDialogBox" class="is-paused fade-in toggle-box">
-    <div class="list-box-header">
+  <div id="editTaskDialogBox" class="is-paused fade-in toggle-box edit-box">
+    <ul>
+      <li>
+        <a href="#"><i class="fas fa-trash"></i>Delete Task</a>
+      </li>
+    </ul>
+    <!-- <div class="list-box-header">
       <h2>Edit Task</h2>
       <span id="close" data-trigger-close="editTaskDialogBox">&#10006;</span>
-    </div>
-    <div class="toggle-buttons">
+    </div> -->
+    <!-- <div class="toggle-buttons">
       <button class="btn btn-close" data-trigger-close="editTaskDialogBox">Close</button>
       <button class="btn btn-delete">Delete</button>
-    </div>
+    </div> -->
   </div>
 
   <div id="clearTrashDialogBox" class="is-paused fade-in toggle-box">
@@ -210,14 +215,11 @@
   </div>
 
   <div id="editTaskListDialogBox" class="is-paused fade-in toggle-box edit-box">
-      <ul>
-        <li>
-          <a href="#"><i class="fas fa-trash"></i>Delete List</a>
-        </li>
-      </ul>
-      <!-- <button class="btn btn-close" data-trigger-close="editTaskListDialogBox">Close</button> -->
-      <!-- <button class="btn btn-delete">Delete</button> -->
-    <!-- </div> -->
+    <ul>
+      <li>
+        <a href="#"><i class="fas fa-trash"></i>Delete List</a>
+      </li>
+    </ul>
   </div>
 
 <script type="module" src="/javascripts/dashboard-script.js"></script>

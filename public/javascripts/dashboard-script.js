@@ -91,6 +91,12 @@ document.addEventListener('click', (e) => {
 
     } else if (e.target.dataset.triggerOpen === 'editTaskDialogBox') {
 
+      const rect = e.target.parentElement.getBoundingClientRect();
+
+      const top = rect.top + 40;
+
+      editTaskDialogBox.element.style.top = top + 'px';
+
       editTaskDialogBox.showDialogBox();
 
       const task = TaskList.activeTaskList.tasks.find((task) => {
