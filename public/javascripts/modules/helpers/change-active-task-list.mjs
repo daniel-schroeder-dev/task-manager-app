@@ -85,6 +85,8 @@ const changeActiveTaskList = (newActiveTaskList, activeTaskList, incompleteTaskC
   }
   createTaskInput.placeholder = `Add Task to "${newActiveTaskList.name}"`;
   createTaskInput.focus();
+  activeTaskList.navElement.classList.remove('active');
+  newActiveTaskList.navElement.classList.add('active');
 };
 
 export { changeActiveTaskList };
