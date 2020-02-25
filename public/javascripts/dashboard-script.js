@@ -123,6 +123,7 @@ document.addEventListener('click', (e) => {
   *   Hide any open dialogBox when the page is clicked and a dialogBox is open.
   */
   if (dialogBoxes.some(dialogBox => dialogBox.isActive)) {
+    e.preventDefault();
     dialogBoxes.find(dialogBox => dialogBox.isActive).hideDialogBox();
     return;
   }
@@ -304,24 +305,21 @@ editTaskDialogBox.element.addEventListener('click', function(e) {
 
 editTaskListDialogBox.element.addEventListener('click', async function(e) {
 
-  if (e.target.classList.contains('btn-delete')) {
+  taskLists = taskLists.filter(taskList => taskList.name !== editTaskListDialogBox.taskList.name);
 
-    taskLists = taskLists.filter(taskList => taskList.name !== editTaskListDialogBox.taskList.name);
+  const completedTasks = editTaskListDialogBox.taskList.tasks.filter(task => task.completed);
 
-    const completedTasks = editTaskListDialogBox.taskList.tasks.filter(task => task.completed);
+  const completedTaskList = taskLists.find((taskList) => {
+      return taskList.name === 'Completed';
+  });
 
-    const completedTaskList = taskLists.find((taskList) => {
-        return taskList.name === 'Completed';
-    });
+  editTaskListDialogBox.taskList.navElement.remove();
 
-    editTaskListDialogBox.taskList.navElement.remove();
+  completedTasks.forEach(task => completedTaskList.removeTask(task));
 
-    completedTasks.forEach(task => completedTaskList.removeTask(task));
-
-    const res = await editTaskListDialogBox.taskList.delete();
-    editTaskListDialogBox.hideDialogBox();
-    document.querySelector('.task-list-nav-item a[href="/inbox"]').click();
-  }
+  const res = await editTaskListDialogBox.taskList.delete();
+  editTaskListDialogBox.hideDialogBox();
+  document.querySelector('.task-list-nav-item a[href="/inbox"]').click();
 
 });
 

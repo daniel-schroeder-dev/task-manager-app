@@ -108,8 +108,6 @@ TaskList.prototype.delete = async function() {
 
   const taskList = await response.json();
 
-  console.log(taskList);
-
 };
 
 TaskList.prototype.numIncompleteTasks = function() {
