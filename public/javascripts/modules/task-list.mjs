@@ -127,9 +127,6 @@ TaskList.prototype.populateTaskContainers = function(completedTaskContainer, inc
       incompleteTaskContainer.add(task.element);
     }
   });
-  if (incompleteTaskContainer.element.querySelector('li')) {
-    incompleteTaskContainer.element.firstElementChild.classList.add('active-task');
-  }
 };
 
 TaskList.prototype.removeTask = async function(taskToRemove) {
