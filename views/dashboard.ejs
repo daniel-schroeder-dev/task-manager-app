@@ -115,7 +115,7 @@
       <% } %>
       
       <ul id="incompleteTaskContainer" class="task-container">
-        <% tasks.forEach((task, i) => { %>
+        <% tasks.forEach(task => { %>
           <% if (task.completed) return; %>
             <li>
               <i class="far fa-square"></i>
