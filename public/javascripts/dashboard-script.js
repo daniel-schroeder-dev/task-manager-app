@@ -384,7 +384,10 @@ taskListNavContainer.addEventListener('click', (e) => {
 /************************** Init Page Load ************************/
 
 if (window.location.pathname === '/trash') {
-  centerCol.querySelectorAll('li i').forEach(i => i.classList.add('not-allowed'));
+  centerCol.querySelectorAll('.task-container li').forEach(li => {
+    li.classList.add('not-allowed');
+    li.querySelector('span[contenteditable]').removeAttribute('contenteditable');
+  });
   toggleDumpsterIcon();
 }
 

@@ -373,8 +373,9 @@ i.fas.fa-caret-right {
   display: none;
 }
 
-.not-allowed {
+.task-container li.not-allowed {
   cursor: not-allowed;
+  background-color: transparent;
 }
 
 .page-title-container {
