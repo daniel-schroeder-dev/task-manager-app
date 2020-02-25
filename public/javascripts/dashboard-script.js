@@ -388,7 +388,6 @@ if (window.location.pathname === '/trash') {
     li.classList.add('not-allowed');
     li.querySelector('span[contenteditable]').removeAttribute('contenteditable');
   });
-  toggleDumpsterIcon();
 }
 
 createTaskInput.focus();

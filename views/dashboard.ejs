@@ -104,7 +104,11 @@
         <span class="ellipsis" data-trigger-open="editTaskListDialogBox" data-target="<%= pageTitle %>">&#8230;</span>
       <% } %>
 
+      <% if (pageTitle === 'Trash') { %>
+        <span id="dumpsterIcon"><i class="fas fa-dumpster"></i></span>
+      <% } else { %>
         <span class="hidden" id="dumpsterIcon"><i class="fas fa-dumpster"></i></span>
+      <% } %>
       
       </div>
 
