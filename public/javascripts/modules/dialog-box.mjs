@@ -13,6 +13,8 @@ DialogBox.prototype.hideDialogBox = function() {
   
   this.element.classList.remove('fade-in');
   this.element.classList.add('fade-out');
+
+  this.isActive = false;
   
   /*
 
@@ -51,6 +53,7 @@ DialogBox.prototype.hideDialogBox = function() {
 DialogBox.prototype.showDialogBox = function() {
   this.element.style.display = 'block';
   this.element.classList.remove('is-paused');
+  this.isActive = true;
 };
 
 export { DialogBox };

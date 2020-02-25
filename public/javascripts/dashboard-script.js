@@ -116,6 +116,13 @@ document.addEventListener('click', (e) => {
 
   }
 
+  /*
+  *   Hide any open dialogBox when the page is clicked and a dialogBox is open.
+  */
+  if (dialogBoxes.some(dialogBox => dialogBox.isActive)) {
+    dialogBoxes.find(dialogBox => dialogBox.isActive).hideDialogBox();
+  }
+
 });
 
 /*
