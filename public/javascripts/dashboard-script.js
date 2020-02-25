@@ -388,10 +388,6 @@ if (window.location.pathname === '/trash') {
   toggleDumpsterIcon();
 }
 
-if (incompleteTaskContainer.element.querySelector('li')) {
-  incompleteTaskContainer.element.firstElementChild.classList.add('active-task');
-}
-
 createTaskInput.focus();
 
 /*
