@@ -164,6 +164,28 @@ i {
   display: none;
 }
 
+.edit-box {
+  width: auto;
+  margin: 0;
+  top: 60px;
+  left: 55%;
+  padding: 0 12px;
+}
+
+.edit-box ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.edit-box a {
+  text-decoration: none;
+  color: #6a6a6a;
+}
+
+.edit-box i {
+  margin-right: 12px;
+}
+
 /*** Animations ***/
 
 .fade-in {
