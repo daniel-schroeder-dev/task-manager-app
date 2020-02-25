@@ -310,7 +310,21 @@ i {
 
 .ellipsis {
   position: absolute;
-  right: -20px;
+  right: -15px;
+}
+
+.task-ellipsis {
+  display: none;
+  /* makes a bigger target for clicking */
+  height: 30px;
+}
+
+.task-container li:hover .task-ellipsis {
+  display: inline-block;
+}
+
+.task-ellipsis:hover {
+  display: inline-block;
 }
 
 .task-list-nav-item .ellipsis {
