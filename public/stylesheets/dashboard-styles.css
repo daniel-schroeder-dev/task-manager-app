@@ -271,8 +271,17 @@ i {
 }
 
 .task-list-nav-item:hover {
-  /*background-color: rgba(75,111,222,.12);*/
   background-color: rgba(75,111,222,.06);
+}
+
+.task-list-nav-item.active {
+  background-color: rgba(75,111,222,.12);
+  font-weight: bold;
+}
+
+.active .num-tasks {
+  font-weight: bold;
+  color: #666;
 }
 
 .task-container {
