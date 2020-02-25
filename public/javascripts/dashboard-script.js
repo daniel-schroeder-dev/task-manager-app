@@ -407,6 +407,8 @@ initTaskLists().then((results) => {
   taskLists = results.taskLists;
   TaskList.activeTaskList = results.activeTaskList;
 
+  TaskList.activeTaskList.navElement.classList.add('active');
+
   /**************** Special Object Properties *******************/
 
   trashTaskList = taskLists.find(taskList => taskList.name === 'Trash');
