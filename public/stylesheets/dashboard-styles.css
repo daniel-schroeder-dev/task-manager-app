@@ -271,7 +271,8 @@ i {
 }
 
 .task-list-nav-item:hover {
-  background-color: rgba(75,111,222,.12);
+  /*background-color: rgba(75,111,222,.12);*/
+  background-color: rgba(75,111,222,.06);
 }
 
 .task-container {
