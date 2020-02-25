@@ -99,6 +99,9 @@ document.addEventListener('click', (e) => {
 
       editTaskDialogBox.task = task;
 
+    } else if (e.target.dataset.triggerOpen === 'addListDialogBox') {
+      addListDialogBox.showDialogBox();
+      createListInput.focus();
     }
 
     return;
@@ -121,18 +124,11 @@ document.addEventListener('click', (e) => {
   */
   if (dialogBoxes.some(dialogBox => dialogBox.isActive)) {
     dialogBoxes.find(dialogBox => dialogBox.isActive).hideDialogBox();
+    return;
   }
 
 });
 
-/*
-*   Show the addListDialogBox when the addListButton is clicked and give the 
-*   createListInput focus.
-*/
-addListButton.addEventListener('click', () => {
-  addListDialogBox.showDialogBox();
-  createListInput.focus();
-});
 
 /*
 *   This event listener performs ONE of the following options on 'click':
