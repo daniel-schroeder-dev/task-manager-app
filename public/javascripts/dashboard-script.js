@@ -386,7 +386,7 @@ taskListNavContainer.addEventListener('click', (e) => {
 if (window.location.pathname === '/trash') {
   centerCol.querySelectorAll('.task-container li').forEach(li => {
     li.classList.add('not-allowed');
-    li.querySelector('span[contenteditable]').removeAttribute('contenteditable');
+    li.querySelector('span[contenteditable]').setAttribute('contenteditable', 'false');
   });
 }
 

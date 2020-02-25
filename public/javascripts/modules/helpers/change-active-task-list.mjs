@@ -70,6 +70,10 @@ const changeActiveTaskList = (newActiveTaskList, activeTaskList, incompleteTaskC
 
   if (activeTaskList.name === 'Trash') {
     toggleDumpsterIcon();
+    centerCol.querySelectorAll('.task-container li').forEach(li => {
+      li.classList.remove('not-allowed');
+      li.querySelector('span[contenteditable]').setAttribute('contenteditable', 'true');
+    });
   }
 
   if (newActiveTaskList.name === 'Completed') {
@@ -79,6 +83,10 @@ const changeActiveTaskList = (newActiveTaskList, activeTaskList, incompleteTaskC
     siteIcon.querySelector('p').textContent = 'No deleted tasks yet';
     createTaskInput.classList.add('hidden');
     toggleDumpsterIcon();
+    centerCol.querySelectorAll('.task-container li').forEach(li => {
+      li.classList.add('not-allowed');
+      li.querySelector('span[contenteditable]').setAttribute('contenteditable', 'false');
+    });
   } else {
     siteIcon.querySelector('p').textContent = 'Tap the input box to create some new tasks';
     createTaskInput.classList.remove('hidden');
