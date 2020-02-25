@@ -278,34 +278,29 @@ createTaskInput.addEventListener('keydown', async function(e) {
 });
 
 editTaskDialogBox.element.addEventListener('click', function(e) {
-
-  if (e.target.classList.contains('btn-delete')) {
     
-    const taskToRemove = editTaskDialogBox.task;
+  const taskToRemove = editTaskDialogBox.task;
 
-    taskToRemove.element.remove();
+  taskToRemove.element.remove();
 
-    const taskOwner = taskLists.find((taskList) => taskList._id === taskToRemove.ownerId);
+  const taskOwner = taskLists.find((taskList) => taskList._id === taskToRemove.ownerId);
 
-    taskOwner.removeTask(taskToRemove);
+  taskOwner.removeTask(taskToRemove);
 
-    if (taskToRemove.completed) {
-      const completedTaskList = taskLists.find((taskList) => {
-        return taskList.name === 'Completed';
-      });
-      completedTaskList.removeTask(taskToRemove);
-      completedTaskList.navElement.querySelector('.num-tasks').textContent = completedTaskList.tasks.length || '';
-    }
-
-    trashTaskList.addTask(taskToRemove);
-
-    taskOwner.navElement.querySelector('.num-tasks').textContent = taskOwner.numIncompleteTasks() || '';
-    trashTaskList.navElement.querySelector('.num-tasks').textContent = trashTaskList.tasks.length;
-    
-    editTaskDialogBox.hideDialogBox();
-
-    return;
+  if (taskToRemove.completed) {
+    const completedTaskList = taskLists.find((taskList) => {
+      return taskList.name === 'Completed';
+    });
+    completedTaskList.removeTask(taskToRemove);
+    completedTaskList.navElement.querySelector('.num-tasks').textContent = completedTaskList.tasks.length || '';
   }
+
+  trashTaskList.addTask(taskToRemove);
+
+  taskOwner.navElement.querySelector('.num-tasks').textContent = taskOwner.numIncompleteTasks() || '';
+  trashTaskList.navElement.querySelector('.num-tasks').textContent = trashTaskList.tasks.length;
+  
+  editTaskDialogBox.hideDialogBox();
 
 });
 
