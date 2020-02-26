@@ -58,7 +58,7 @@ const setTaskElementsInActiveTaskList = (activeTaskList) => {
 */
 const setTaskListNavElements = (taskLists) => {
 
-  const taskListNavElements = document.querySelectorAll('.task-list-nav-item');
+  const taskListNavElements = document.querySelectorAll('.task-list-nav-item:not(#addListButton)');
 
   taskLists.forEach((taskList) => {
     taskList.navElement = Array.prototype.find.call(taskListNavElements, ((taskListNavElement) => taskListNavElement.querySelector('span[data-task-list-name').dataset.taskListName === taskList.name));
