@@ -178,6 +178,9 @@ centerCol.addEventListener('keydown', (e) => {
   if (!e.target.hasAttribute('contenteditable')) return;
  
   e.target.blur();
+  const task = TaskList.activeTaskList.tasks.find(task => task.element === e.target.parentElement);
+  task.name = e.target.textContent;
+  task.update();
   createTaskInput.focus();
 
 });
