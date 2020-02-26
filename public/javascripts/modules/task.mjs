@@ -51,7 +51,7 @@ Task.prototype.createTaskDOMElement = function() {
     i.classList.add('far', 'fa-square');
   }
 
-  spanEllipsis.classList.add('ellipsis');
+  spanEllipsis.classList.add('ellipsis', 'task-ellipsis');
   spanEllipsis.dataset.triggerOpen = 'editTaskDialogBox';
   
   spanTaskName.setAttribute('contenteditable', 'true');
