@@ -424,6 +424,10 @@ i.fas.fa-caret-right {
   background-color: transparent;
 }
 
+.task-container li.not-allowed:hover .task-ellipsis {
+  display: none;
+}
+
 .page-title-container {
   display: flex;
   justify-content: space-between;
