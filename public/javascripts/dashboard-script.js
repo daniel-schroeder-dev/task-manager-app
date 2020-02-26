@@ -77,7 +77,7 @@ document.addEventListener('click', (e) => {
   /*
   *   Show the correct type of dialogBox based on the data-trigger attribute.
   */
-  if (e.target.dataset.triggerOpen) {
+  if (e.target.dataset.triggerOpen || e.target.parentElement.dataset.triggerOpen) {
     
     if (e.target.dataset.triggerOpen === 'editTaskListDialogBox') {
 
@@ -105,7 +105,7 @@ document.addEventListener('click', (e) => {
 
       editTaskDialogBox.task = task;
 
-    } else if (e.target.dataset.triggerOpen === 'addListDialogBox') {
+    } else if (e.target.dataset.triggerOpen === 'addListDialogBox' || e.target.parentElement.dataset.triggerOpen === 'addListDialogBox') {
       addListDialogBox.showDialogBox();
       createListInput.focus();
     }
