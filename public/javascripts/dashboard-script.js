@@ -321,6 +321,8 @@ editTaskListDialogBox.element.addEventListener('click', async function(e) {
 
   completedTasks.forEach(task => completedTaskList.removeTask(task));
 
+  completedTaskList.navElement.querySelector('.num-tasks').textContent = completedTaskList.tasks.length || '';
+
   const res = await editTaskListDialogBox.taskList.delete();
   editTaskListDialogBox.hideDialogBox();
   document.querySelector('.task-list-nav-item a[href="/inbox"]').click();
