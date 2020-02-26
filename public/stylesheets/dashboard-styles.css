@@ -448,6 +448,35 @@ i.fas.fa-caret-right {
   cursor: pointer;
 }
 
+table {
+  width: 100%;
+  text-align: center;
+}
+
+thead {
+  color: #ababab;
+}
+
+tbody {
+  cursor: pointer;
+}
+
+td, th {
+  padding: 8px;
+  width: 25px;
+  height: 25px;
+}
+
+td:hover {
+  background-color: blue;
+  border-radius: 100%;
+  color: #fff;
+}
+
+#calendarDialogBox {
+  padding: 18px;
+}
+
 @media (max-width: 1024px) {
 
   .container {

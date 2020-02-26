@@ -217,6 +217,59 @@
     </ul>
   </div>
 
+  <!-- <div id="calendarDialogBox" class="is-paused fade-in toggle-box"> -->
+  <div id="calendarDialogBox" class="toggle-box edit-box" style="display:block;">
+    <div class="list-box-header">
+      <h2>Calendar</h2>
+      <span id="close" data-trigger-close="calendarDialogBox">&#10006;</span>
+    </div>
+    <div id="calendar">
+      <table>
+          <thead>
+              <tr>
+                  <th>Su</th>
+                  <th>Mo</th>
+                  <th>Tu</th>
+                  <th>We</th>
+                  <th>Th</th>
+                  <th>Fr</th>
+                  <th>Sa</th>
+              </tr>
+          </thead>
+          <tbody>
+          <% const date = new Date(); %>
+          <% let day = 1; %>
+          <% const days = []; %>
+          <% while (day < 31) days.push(day++); %>
+            <tr>
+              <% days.slice(0, 7).forEach(day => { %>
+                <td><%= day %></td>
+              <% }); %>
+            </tr>
+            <tr>
+              <% days.slice(7, 14).forEach(day => { %>
+                <td><%= day %></td>
+              <% }); %>
+            </tr>
+            <tr>
+              <% days.slice(14, 21).forEach(day => { %>
+                <td><%= day %></td>
+              <% }); %>
+            </tr>
+            <tr>
+              <% days.slice(21, 28).forEach(day => { %>
+                <td><%= day %></td>
+              <% }); %>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+    <div class="toggle-buttons">
+      <button class="btn btn-close" data-trigger-close="calendarDialogBox">Close</button>
+      <button class="btn btn-save" disabled>Save</button>
+    </div>
+  </div>
+
 <script type="module" src="/javascripts/dashboard-script.js"></script>
 </body>
 </html>
