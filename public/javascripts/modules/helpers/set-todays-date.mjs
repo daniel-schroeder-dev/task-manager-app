@@ -12,7 +12,7 @@ const setTodaysDate = () => {
   if (todaysDate < 10) {
     dateSpan.style.marginLeft = '3px';
   }
-
+  
 };
 
 export { setTodaysDate };

@@ -237,30 +237,7 @@
               </tr>
           </thead>
           <tbody>
-          <% const date = new Date(); %>
-          <% let day = 1; %>
-          <% const days = []; %>
-          <% while (day < 31) days.push(day++); %>
-            <tr>
-              <% days.slice(0, 7).forEach(day => { %>
-                <td><%= day %></td>
-              <% }); %>
-            </tr>
-            <tr>
-              <% days.slice(7, 14).forEach(day => { %>
-                <td><%= day %></td>
-              <% }); %>
-            </tr>
-            <tr>
-              <% days.slice(14, 21).forEach(day => { %>
-                <td><%= day %></td>
-              <% }); %>
-            </tr>
-            <tr>
-              <% days.slice(21, 28).forEach(day => { %>
-                <td><%= day %></td>
-              <% }); %>
-            </tr>
+          
           </tbody>
       </table>
     </div>

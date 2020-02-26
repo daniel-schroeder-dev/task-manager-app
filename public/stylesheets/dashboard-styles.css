@@ -473,6 +473,16 @@ td:hover {
   color: #fff;
 }
 
+.current-date {
+  background-color: #ddd;
+  border-radius: 100%;
+  color: blue;
+}
+
+.grey-out {
+  color: #ababab;
+}
+
 #calendarDialogBox {
   padding: 18px;
 }

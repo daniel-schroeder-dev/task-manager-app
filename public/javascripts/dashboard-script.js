@@ -441,4 +441,79 @@ initTaskLists().then((results) => {
 });
 
 
+let day = 1;
+const days = [];
+
+const currentDate = new Date();
+const currentMonth = new Date();
+
+currentMonth.setDate(1);
+
+const previousMonth = new Date();
+previousMonth.setMonth(currentMonth.getMonth() - 1);
+previousMonth.setDate(1);
+
+const previousMonthNum = previousMonth.getMonth();
+let daysInPreviousMonth = 1;
+
+while(previousMonth.getMonth() === previousMonthNum) {
+  previousMonth.setDate(++daysInPreviousMonth);
+}
+// the number of days in the previous month is now correct;
+--daysInPreviousMonth;
+
+let daysToDisplayFromPreviousMonth = currentMonth.getDay();
+
+// reset the previousMonth to the correct month
+previousMonth.setMonth(currentMonth.getMonth() - 1);
+
+// pull the number of days we need from the previous month
+while (daysToDisplayFromPreviousMonth--) {
+  previousMonth.setDate(daysInPreviousMonth--);
+  days.unshift({ date: previousMonth.getDate(), month: 'previous' });
+}
+
+const currentMonthNum = currentMonth.getMonth();
+while (currentMonth.getMonth() === currentMonthNum) {
+  days.push({ date: currentMonth.getDate(), month: 'current' });
+  currentMonth.setDate(currentMonth.getDate() + 1);
+}
+
+currentMonth.setDate(currentMonth.getDate() - 1);
+
+let LAST_DAY_OF_WEEK = 6;
+let DAYS_IN_WEEK = 7;
+let daysInNextMonthToAdd = LAST_DAY_OF_WEEK - currentMonth.getDay() + DAYS_IN_WEEK;
+
+const nextMonth = new Date();
+
+nextMonth.setMonth(currentMonth.getMonth() + 1);
+nextMonth.setDate(1);
+
+while (daysInNextMonthToAdd--) {
+  days.push({ date: nextMonth.getDate(), month: 'next' });
+  nextMonth.setDate(nextMonth.getDate() + 1);
+}
+
+const tbody = document.querySelector('tbody');
+
+let weekElement = null;
+days.forEach((day, i) => {
+  if (!(i % 7)) {
+    if (weekElement) tbody.appendChild(weekElement);
+    weekElement = document.createElement('tr');
+  }
+  let td = document.createElement('td');
+  td.textContent = day.date;
+  if (day.month !== 'current') {
+    td.classList.add('grey-out');
+  }
+  if (day.date === new Date().getDate()) {
+    td.classList.add('current-date');
+  }
+  weekElement.appendChild(td);
+  if (i === days.length - 1) {
+    tbody.appendChild(weekElement);
+  }
+});
 
