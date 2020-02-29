@@ -510,6 +510,11 @@ td:hover {
   margin-right: 24px;
 }
 
+#editTaskDialogBox a {
+  display: block;
+  margin-bottom: 12px;
+}
+
 @media (max-width: 1024px) {
 
   .container {

@@ -32,11 +32,13 @@ const addListDialogBox = new DialogBox(document.getElementById('addListDialogBox
 const editTaskListDialogBox = new DialogBox(document.getElementById('editTaskListDialogBox'));
 const editTaskDialogBox = new DialogBox(document.getElementById('editTaskDialogBox'));
 const clearTrashDialogBox = new DialogBox(document.getElementById('clearTrashDialogBox'));
+const calendarDialogBox = new DialogBox(document.getElementById('calendarDialogBox'));
 
 dialogBoxes.push(addListDialogBox);
 dialogBoxes.push(editTaskListDialogBox);
 dialogBoxes.push(editTaskDialogBox);
 dialogBoxes.push(clearTrashDialogBox);
+dialogBoxes.push(calendarDialogBox);
 
 const addListButton = document.getElementById('addListButton');
 const saveListButton = document.querySelector('#addListDialogBox .btn-save');
@@ -110,6 +112,10 @@ document.addEventListener('click', (e) => {
     } else if (e.target.dataset.triggerOpen === 'addListDialogBox' || e.target.parentElement.dataset.triggerOpen === 'addListDialogBox') {
       addListDialogBox.showDialogBox();
       createListInput.focus();
+    } else if (e.target.dataset.triggerOpen === 'calendarDialogBox' || e.target.parentElement.dataset.triggerOpen === 'calendarDialogBox') {
+      e.preventDefault();
+      calendarDialogBox.showDialogBox();
+      editTaskDialogBox.hideDialogBox();
     }
 
     return;
@@ -299,7 +305,9 @@ createTaskInput.addEventListener('keydown', async function(e) {
 });
 
 editTaskDialogBox.element.addEventListener('click', function(e) {
-    
+
+  if (e.target.classList.contains('fa-calendar-alt')) return;
+
   const taskToRemove = editTaskDialogBox.task;
 
   taskToRemove.element.remove();
@@ -323,6 +331,8 @@ editTaskDialogBox.element.addEventListener('click', function(e) {
   
   editTaskDialogBox.hideDialogBox();
 
+
+  
 });
 
 editTaskListDialogBox.element.addEventListener('click', async function(e) {
