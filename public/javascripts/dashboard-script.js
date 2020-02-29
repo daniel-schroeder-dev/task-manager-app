@@ -7,6 +7,8 @@ import { setTodaysDate, toggleDumpsterIcon, initTaskLists, changeActiveTaskList,
 let taskLists = [];
 let trashTaskList = {};
 
+let currentCalendarMonth;
+
 const dialogBoxes = [];
 const ENTER_KEYCODE = 13;
 
@@ -123,6 +125,22 @@ document.addEventListener('click', (e) => {
 
     return;
 
+  }
+
+  if (e.target.classList.contains('fa-angle-left') || e.target.classList.contains('fa-angle-right')) {
+
+    const newCalendarMonth = new Date();
+    newCalendarMonth.setDate(1);
+
+    if (e.target.classList.contains('fa-angle-left')) {
+      newCalendarMonth.setMonth(--currentCalendarMonth)
+    } else {
+      newCalendarMonth.setMonth(++currentCalendarMonth);
+    }
+
+    buildCalendar(newCalendarMonth);
+    
+    return;
   }
 
   /*
@@ -484,12 +502,12 @@ function buildCalendar(currentDate) {
   // pull the number of days we need from the previous month
   while (daysToDisplayFromPreviousMonth--) {
     previousMonth.setDate(daysInPreviousMonth--);
-    days.unshift({ date: previousMonth.getDate(), month: 'previous' });
+    days.unshift({ date: previousMonth.getDate(), monthDisplay: 'previous' });
   }
 
   const currentMonthNum = currentMonth.getMonth();
   while (currentMonth.getMonth() === currentMonthNum) {
-    days.push({ date: currentMonth.getDate(), month: 'current' });
+    days.push({ date: currentMonth.getDate(), monthDisplay: 'current', month: currentMonth.getMonth() });
     currentMonth.setDate(currentMonth.getDate() + 1);
   }
 
@@ -505,11 +523,13 @@ function buildCalendar(currentDate) {
   nextMonth.setDate(1);
 
   while (daysInNextMonthToAdd--) {
-    days.push({ date: nextMonth.getDate(), month: 'next' });
+    days.push({ date: nextMonth.getDate(), monthDisplay: 'next' });
     nextMonth.setDate(nextMonth.getDate() + 1);
   }
 
   const tbody = document.querySelector('tbody');
+
+  tbody.innerHTML = '';
 
   let weekElement = null;
   
@@ -524,11 +544,11 @@ function buildCalendar(currentDate) {
   
     td.textContent = day.date;
   
-    if (day.month !== 'current') {
+    if (day.monthDisplay !== 'current') {
       td.classList.add('grey-out');
     }
-  
-    if (day.date === new Date().getDate() && day.month === 'current') {
+    
+    if (day.date === new Date().getDate() && day.month === new Date().getMonth()) {
       td.classList.add('current-date');
     }
   
@@ -546,12 +566,10 @@ function buildCalendar(currentDate) {
   monthSpan.textContent = months[currentMonth.getMonth()];
   yearSpan.textContent = currentMonth.getFullYear();
 
+  return currentMonth.getMonth();
+
 }
 
-const prev = new Date();
-prev.setDate(1);
-prev.setMonth(prev.getMonth() - 1);
-
-buildCalendar(new Date());
+currentCalendarMonth = buildCalendar(new Date(), true);
 
 
