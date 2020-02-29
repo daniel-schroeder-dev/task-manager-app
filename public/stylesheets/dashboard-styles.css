@@ -532,6 +532,40 @@ td:hover {
   color: inherit;
 }
 
+
+.tooltip {
+  position: absolute;
+  top: 40px;
+  background-color: black;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 8px;
+  display: none;
+}
+
+#editTaskDialogBox li .calendar-trigger:first-child .tooltip {
+  left: 0;
+}
+
+.tooltip:first-child {
+  left: 0;
+}
+
+#editTaskDialogBox li .calendar-trigger:nth-child(2) .tooltip {
+  left: 15px;
+}
+
+#editTaskDialogBox li .calendar-trigger:nth-child(3) .tooltip {
+  left: 40px;
+}
+
+#editTaskDialogBox li .calendar-trigger:nth-child(4) .tooltip {
+  left: 80px;
+}
+
+#editTaskDialogBox .calendar-trigger:hover > .tooltip {
+  display: block;
+}
+
 @media (max-width: 1024px) {
 
   .container {

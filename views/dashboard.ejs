@@ -190,10 +190,22 @@
   <div id="editTaskDialogBox" class="is-paused fade-in toggle-box edit-box">
     <ul>
       <li>
-        <a href="#" class="calendar-trigger"><i class="fas fa-calendar-day"></i></a>
-        <a href="#" class="calendar-trigger"><i class="fas fa-calendar-plus"></i></a>
-        <a href="#" class="calendar-trigger"><i class="fas fa-calendar-week"></i></a>
-        <a href="#" class="calendar-trigger" data-trigger-open="calendarDialogBox"><i class="fas fa-calendar-alt"></i></a>
+        <a href="#" class="calendar-trigger">
+          <i class="fas fa-calendar-day"></i>
+          <div class="tooltip">Today</div>
+        </a>
+        <a href="#" class="calendar-trigger">
+          <i class="fas fa-calendar-plus"></i>
+          <div class="tooltip">Tomorrow</div>
+        </a>
+        <a href="#" class="calendar-trigger">
+          <i class="fas fa-calendar-week"></i>
+          <div class="tooltip">Next Week</div>
+        </a>
+        <a href="#" class="calendar-trigger" data-trigger-open="calendarDialogBox">
+          <i class="fas fa-calendar-alt"></i>
+          <div class="tooltip">Custom</div>
+        </a>
         <a href="#"><i class="fas fa-trash"></i>Delete Task</a>
       </li>
     </ul>
