@@ -536,7 +536,7 @@ td:hover {
 
 .tooltip {
   position: absolute;
-  top: 40px;
+  top: 65px;
   background-color: black;
   color: rgba(255, 255, 255, 0.8);
   padding: 8px;
@@ -547,19 +547,25 @@ td:hover {
   display: inline;
 }
 
-#editTaskDialogBox li:first-child .tooltip {
-  left: 0;
+#editTaskDialogBox li:first-child {
+  display: block;
+  padding-bottom: 12px;
+  font-size: 12px;
 }
 
 #editTaskDialogBox li:nth-child(2) .tooltip {
-  left: 15px;
+  left: 0;
 }
 
 #editTaskDialogBox li:nth-child(3) .tooltip {
-  left: 40px;
+  left: 15px;
 }
 
 #editTaskDialogBox li:nth-child(4) .tooltip {
+  left: 40px;
+}
+
+#editTaskDialogBox li:nth-child(5) .tooltip {
   left: 80px;
 }
 
