@@ -112,10 +112,6 @@ document.addEventListener('click', (e) => {
     } else if (e.target.dataset.triggerOpen === 'addListDialogBox' || e.target.parentElement.dataset.triggerOpen === 'addListDialogBox') {
       addListDialogBox.showDialogBox();
       createListInput.focus();
-    } else if (e.target.dataset.triggerOpen === 'calendarDialogBox' || e.target.parentElement.dataset.triggerOpen === 'calendarDialogBox') {
-      e.preventDefault();
-      calendarDialogBox.showDialogBox();
-      editTaskDialogBox.hideDialogBox();
     }
 
     return;
@@ -306,7 +302,12 @@ createTaskInput.addEventListener('keydown', async function(e) {
 
 editTaskDialogBox.element.addEventListener('click', function(e) {
 
-  if (e.target.classList.contains('fa-calendar-alt')) return;
+  if (e.target.dataset.triggerOpen === 'calendarDialogBox' || e.target.parentElement.dataset.triggerOpen === 'calendarDialogBox') {
+    e.preventDefault();
+    calendarDialogBox.showDialogBox();
+    editTaskDialogBox.hideDialogBox();
+    return;
+  }
 
   const taskToRemove = editTaskDialogBox.task;
 
