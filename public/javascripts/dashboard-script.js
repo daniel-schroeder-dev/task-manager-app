@@ -34,6 +34,14 @@ const editTaskDialogBox = new DialogBox(document.getElementById('editTaskDialogB
 const clearTrashDialogBox = new DialogBox(document.getElementById('clearTrashDialogBox'));
 const calendarDialogBox = new DialogBox(document.getElementById('calendarDialogBox'));
 
+calendarDialogBox.hideDialogBox = async function() {
+  await DialogBox.prototype.hideDialogBox.call(this);
+  setTimeout(() => {
+    currentCalendarMonth = buildCalendar(new Date());
+  }, 500);
+  
+};
+
 dialogBoxes.push(addListDialogBox);
 dialogBoxes.push(editTaskListDialogBox);
 dialogBoxes.push(editTaskDialogBox);
@@ -112,7 +120,11 @@ document.addEventListener('click', (e) => {
     } else if (e.target.dataset.triggerOpen === 'addListDialogBox' || e.target.parentElement.dataset.triggerOpen === 'addListDialogBox') {
       addListDialogBox.showDialogBox();
       createListInput.focus();
-    }
+    } else if (e.target.dataset.triggerOpen === 'calendarDialogBox' || e.target.parentElement.dataset.triggerOpen === 'calendarDialogBox') {
+      e.preventDefault();
+      calendarDialogBox.showDialogBox();
+      editTaskDialogBox.hideDialogBox();
+  }
 
     return;
 
@@ -303,9 +315,6 @@ createTaskInput.addEventListener('keydown', async function(e) {
 editTaskDialogBox.element.addEventListener('click', function(e) {
 
   if (e.target.dataset.triggerOpen === 'calendarDialogBox' || e.target.parentElement.dataset.triggerOpen === 'calendarDialogBox') {
-    e.preventDefault();
-    calendarDialogBox.showDialogBox();
-    editTaskDialogBox.hideDialogBox();
     return;
   }
 
@@ -469,6 +478,6 @@ initTaskLists().then((results) => {
   };
 });
 
-currentCalendarMonth = buildCalendar(new Date(), true);
+currentCalendarMonth = buildCalendar(new Date());
 
 
