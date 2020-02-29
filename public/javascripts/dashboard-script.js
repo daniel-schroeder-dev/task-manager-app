@@ -34,8 +34,8 @@ const editTaskDialogBox = new DialogBox(document.getElementById('editTaskDialogB
 const clearTrashDialogBox = new DialogBox(document.getElementById('clearTrashDialogBox'));
 const calendarDialogBox = new DialogBox(document.getElementById('calendarDialogBox'));
 
-calendarDialogBox.hideDialogBox = async function() {
-  await DialogBox.prototype.hideDialogBox.call(this);
+calendarDialogBox.hideDialogBox = function() {
+  DialogBox.prototype.hideDialogBox.call(this);
   setTimeout(() => {
     currentCalendarMonth = buildCalendar(new Date());
   }, 500);
