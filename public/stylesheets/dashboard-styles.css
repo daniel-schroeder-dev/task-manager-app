@@ -515,6 +515,23 @@ td:hover {
   margin-bottom: 12px;
 }
 
+#editTaskDialogBox a:last-child {
+  border-top: 1px solid #ababab;
+  padding-top: 12px;
+}
+
+#editTaskDialogBox .calendar-trigger {
+  display: inline-block;
+}
+
+#editTaskDialogBox .calendar-trigger i {
+  color: #ababab;
+}
+
+#editTaskDialogBox .calendar-trigger i:hover {
+  color: inherit;
+}
+
 @media (max-width: 1024px) {
 
   .container {
