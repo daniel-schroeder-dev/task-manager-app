@@ -487,6 +487,24 @@ td:hover {
   padding: 18px;
 }
 
+#calendarNav {
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#calendarNav i {
+  margin: 0;
+}
+
+#calendarNav span:first-of-type {
+  margin-left: 24px;
+} 
+
+#calendarNav span:last-of-type {
+  margin-right: 24px;
+}
+
 @media (max-width: 1024px) {
 
   .container {
