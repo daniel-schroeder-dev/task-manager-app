@@ -508,7 +508,7 @@ days.forEach((day, i) => {
   if (day.month !== 'current') {
     td.classList.add('grey-out');
   }
-  if (day.date === new Date().getDate()) {
+  if (day.date === new Date().getDate() && day.month === 'current') {
     td.classList.add('current-date');
   }
   weekElement.appendChild(td);
