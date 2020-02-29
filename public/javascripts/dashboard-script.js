@@ -440,6 +440,21 @@ initTaskLists().then((results) => {
   };
 });
 
+const months = [
+  'January',
+  'Februray',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
 function buildCalendar(currentDate) {
   
   const days = [];
@@ -525,11 +540,17 @@ function buildCalendar(currentDate) {
   
   });
 
+  const monthSpan = document.querySelector('#calendarNav span:first-of-type');
+  const yearSpan = document.querySelector('#calendarNav span:last-of-type');
+
+  monthSpan.textContent = months[currentMonth.getMonth()];
+  yearSpan.textContent = currentMonth.getFullYear();
+
 }
 
-// const prev = new Date();
-// prev.setDate(1);
-// prev.setMonth(prev.getMonth() - 1);
+const prev = new Date();
+prev.setDate(1);
+prev.setMonth(prev.getMonth() - 1);
 
 buildCalendar(new Date());
 
