@@ -495,6 +495,11 @@ td:hover {
 
 #calendarNav i {
   margin: 0;
+  color: #ababab;
+}
+
+#calendarNav i:hover {
+  color: #000;
 }
 
 #calendarNav span:first-of-type {
